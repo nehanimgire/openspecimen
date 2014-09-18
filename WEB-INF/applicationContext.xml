@@ -27,6 +27,24 @@
   <context:component-scan base-package="com.krishagni.catissueplus"/>
   <context:component-scan base-package="edu.wustl.dynamicextensions.formdesigner"/>
 
+  <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    <property name="jndiName" value="java:catissuecore"/>
+  </bean>
+  
+  <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="changeLog" value="classpath:db.changelog-master.xml" />
+  </bean>
+  
+  <bean id="appContexListener" class="edu.wustl.catissuecore.util.listener.CatissueCoreServletContextListener">
+    <property name="liquibase" ref="liquibase"/>
+  </bean>
+  
+  <!--bean id="contextListenerInit" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+   <property name="targetClass"><value>edu.wustl.catissuecore.util.listener.CatissueCoreServletContextListener</value></property>
+   <property name="targetMethod"><value>init</value></property>
+  </bean-->
+  
   <bean class="com.krishagni.catissueplus.core.common.RestErrorController" /> 
   <!-- Beans for caCORE starts -->
   <bean id="remoteService" class="gov.nih.nci.system.comm.server.ApplicationServiceServerImpl" />
