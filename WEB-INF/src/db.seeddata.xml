@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+  <changeSet author="dpatil" id="initialize catissue_address">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_address</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_address` VALUES (1,NULL,'Not Specified',NULL,'United States',NULL,NULL,NULL);
+	</sql>
+  </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_auth_providers">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_auth_providers</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_auth_providers` 
+		VALUES (1,'catissue','com.krishagni.catissueplus.core.auth.services.impl.CatissueAuthServiceImpl');
+	</sql>
+  </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_auth_providers">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_auth_providers</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_auth_providers` 
+		VALUES (1,'catissue','com.krishagni.catissueplus.core.auth.services.impl.CatissueAuthServiceImpl');
+	</sql>
+  </changeSet>
+  
+  <changeSet author="dpatil" id="initialize csm_user">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_user</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_user` 
+		VALUES (1,'admin@admin.com','Admin','Admin',NULL,'1',NULL,NULL,'xxits++sTge8j2uyHEABIQ==','admin@admin.com','2005-08-30',NULL,'2005-08-30');
+	</sql>
+  </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_cancer_research_group">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_cancer_research_group</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_cancer_research_group` VALUES (1,'c');
+	</sql>
+  </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_department">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_department</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_department` VALUES (1,'d');
+	</sql>
+  </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_institution">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_institution</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_institution` VALUES (1,'i','Active');
+	</sql>
+  </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_user">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_user</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_user` 
+		VALUES (1,'admin@admin.com','Admin','Admin','admin@admin.com',NULL,'Active',1,1,1,1,1,NULL,1,NULL,'catissue');
+	</sql>
+  </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_capacity">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_capacity</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_capacity` VALUES (1,100,1);
+	</sql>
+  </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_container_type">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_container_type</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_container_type` 
+		VALUES 
+		(1,NULL,'All',NULL,NULL,NULL,'Disabled','Numbers','Numbers'),
+		(2,NULL,'Any',NULL,NULL,NULL,'Disabled','Numbers','Numbers'),
+		(3,1,'Shipment Container','X','Y',NULL,'Active','Numbers','Numbers');
+	</sql>
+  </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_interface_column_data">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_interface_column_data</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_interface_column_data` 
+		VALUES 
+		(1,4,'IDENTIFIER','bigint'),(2,4,'STREET','varchar'),(3,4,'CITY','varchar'),(4,4,'STATE','varchar'),
+		(5,4,'COUNTRY','varchar'),(6,4,'ZIPCODE','varchar'),(7,4,'PHONE_NUMBER','varchar'),(8,4,'FAX_NUMBER','varchar'),
+		(9,39,'IDENTIFIER','bigint'),(10,39,'IP_ADDRESS','varchar'),(11,39,'EVENT_TIMESTAMP','timestamp'),
+		(12,39,'USER_ID','bigint'),(13,39,'COMMENTS','text'),(14,40,'IDENTIFIER','bigint'),(15,40,'ELEMENT_NAME','varchar'),
+		(16,40,'PREVIOUS_VALUE','varchar'),(17,40,'CURRENT_VALUE','varchar'),(18,40,'AUDIT_EVENT_LOG_ID','bigint'),
+		(19,41,'IDENTIFIER','bigint'),(20,41,'OBJECT_IDENTIFIER','bigint'),(21,41,'OBJECT_NAME','varchar'),
+		(22,41,'EVENT_TYPE','varchar'),(23,41,'AUDIT_EVENT_ID','bigint'),(24,8,'IDENTIFIER','bigint'),
+		(25,8,'NAME','varchar'),(26,8,'COMMENTS','text'),(27,8,'TYPE','varchar'),(28,7,'IDENTIFIER','bigint'),
+		(29,7,'NAME','varchar'),(30,42,'PUBLIC_ID','varchar'),(31,42,'LONG_NAME','varchar'),(32,42,'DEFINITION','text'),
+		(33,42,'VERSION','varchar'),(37,12,'QUANTITY_ID','bigint'),(38,12,'SPECIMEN_CLASS','varchar'),
+		(39,43,'IDENTIFIER','bigint'),(40,43,'NEOPLASTIC_CELLULARITY_PER','double'),(41,43,'VIABLE_CELL_PERCENTAGE','double'),
+		(42,44,'IDENTIFIER','bigint'),(43,44,'STORAGE_STATUS','varchar'),(47,17,'COLLECTION_PROTOCOL_ID','bigint'),
+		(48,17,'USER_ID','bigint'),(49,45,'COLLECTION_PROTOCOL_ID','bigint'),(50,45,'DISTRIBUTION_PROTOCOL_ID','bigint'),
+		(51,46,'IDENTIFIER','bigint'),(52,46,'COLLECTION_PROCEDURE','varchar'),(53,46,'CONTAINER','varchar'),
+		(54,10,'IDENTIFIER','bigint'),(55,11,'IDENTIFIER','bigint'),(56,11,'CLINICAL_STATUS','varchar'),
+		(57,11,'STUDY_CALENDAR_EVENT_POINT','double'),(58,11,'COLLECTION_PROTOCOL_ID','bigint'),(59,27,'IDENTIFIER','bigint'),
+		(60,27,'PROTOCOL_PARTICIPANT_ID','varchar'),(61,27,'REGISTRATION_DATE','date'),(62,27,'PARTICIPANT_ID','bigint'),
+		(63,27,'COLLECTION_PROTOCOL_ID','bigint'),(64,27,'ACTIVITY_STATUS','varchar'),(65,18,'COLLECTION_PROTOCOL_EVENT_ID','bigint'),
+		(66,18,'SPECIMEN_REQUIREMENT_ID','bigint'),(67,5,'IDENTIFIER','bigint'),(68,5,'NAME','varchar'),(69,47,'IDENTIFIER','bigint'),
+		(70,47,'REASON','varchar'),(71,37,'IDENTIFIER','bigint'),(72,37,'QUANTITY','double'),(73,37,'SPECIMEN_ID','bigint'),
+		(74,37,'DISTRIBUTION_ID','bigint'),(75,38,'IDENTIFIER','bigint'),(76,38,'TO_SITE_ID','bigint'),
+		(78,38,'DISTRIBUTION_PROTOCOL_ID','bigint'),(79,19,'IDENTIFIER','bigint'),(80,20,'DISTRIBUTION_PROTOCOL_ID','bigint'),
+		(82,48,'IDENTIFIER','bigint'),(83,48,'EMBEDDING_MEDIUM','varchar'),(84,28,'IDENTIFIER','bigint'),(85,28,'NAME','varchar'),
+		(86,28,'VALUE','varchar'),(87,28,'SPECIMEN_ID','bigint'),(88,49,'IDENTIFIER','bigint'),(89,49,'FIXATION_TYPE','varchar'),
+		(90,49,'DURATION_IN_MINUTES','integer'),(96,50,'IDENTIFIER','bigint'),(97,50,'CELL_COUNT','double'),
+		(98,51,'IDENTIFIER','bigint'),(99,51,'METHOD','varchar'),(100,6,'IDENTIFIER','bigint'),(101,6,'NAME','varchar'),
+		(102,33,'SPECIMEN_CLASS','varchar'),(103,33,'INITIAL_QUANTITY','double'),(104,33,'AVAILABLE_QUANTITY','double'),
+		(108,52,'IDENTIFIER','bigint'),(109,52,'GEL_IMAGE_URL','varchar'),(110,52,'QUALITY_INDEX','varchar'),
+		(111,52,'LANE_NUMBER','varchar'),(112,52,'GEL_NUMBER','integer'),(113,52,'ABSORBANCE_AT_260','double'),
+		(114,52,'ABSORBANCE_AT_280','double'),(115,52,'RATIO_28S_TO_18S','double'),(116,31,'IDENTIFIER','bigint'),
+		(117,31,'LAST_NAME','varchar'),(118,31,'FIRST_NAME','varchar'),(119,31,'MIDDLE_NAME','varchar'),(120,31,'BIRTH_DATE','date'),
+		(121,31,'GENDER','varchar'),(122,31,'GENOTYPE','varchar'),(124,31,'ETHNICITY','varchar'),
+		(125,31,'SOCIAL_SECURITY_NUMBER','varchar'),(126,31,'ACTIVITY_STATUS','varchar'),(127,32,'IDENTIFIER','bigint'),
+		(128,32,'MEDICAL_RECORD_NUMBER','varchar'),(129,32,'SITE_ID','bigint'),(130,32,'PARTICIPANT_ID','bigint'),
+		(131,53,'IDENTIFIER','varchar'),(132,53,'CONCEPT_CODE','varchar'),(133,53,'DEFINITION','text'),(134,53,'EVS_CODE','text'),
+		(135,53,'PARENT_IDENTIFIER','varchar'),(136,53,'VALUE','varchar'),(137,53,'PUBLIC_ID','varchar'),(138,54,'IDENTIFIER','bigint'),
+		(139,54,'URL','varchar'),(140,54,'NAME','varchar'),(141,55,'IDENTIFIER','bigint'),(142,55,'TABLE_ID','bigint'),
+		(143,55,'COLUMN_NAME','varchar'),(144,55,'DISPLAY_NAME','varchar'),(145,55,'ATTRIBUTE_TYPE','varchar'),
+		(146,56,'TABLE_ID','bigint'),(147,56,'DISPLAY_NAME','varchar'),(148,56,'TABLE_NAME','varchar'),
+		(149,56,'ALIAS_NAME','varchar'),(150,57,'IDENTIFIER','bigint'),(151,57,'RECEIVED_QUALITY','varchar'),
+		(152,58,'FIRST_TABLE_ID','bigint'),(153,58,'SECOND_TABLE_ID','bigint'),(154,58,'FIRST_TABLE_JOIN_COLUMN','varchar'),
+		(155,58,'SECOND_TABLE_JOIN_COLUMN','varchar'),(156,59,'IDENTIFIER','bigint'),(157,59,'AFFILIATION','varchar'),
+		(158,59,'NAME_OF_REPORTER','varchar'),(159,59,'REPORTERS_EMAIL_ID','varchar'),(160,59,'MESSAGE_BODY','varchar'),
+		(161,59,'SUBJECT','varchar'),(162,59,'REPORTED_DATE','date'),(163,59,'ACTIVITY_STATUS','varchar'),
+		(164,59,'COMMENTS','text'),(165,60,'IDENTIFIER','bigint'),(166,61,'IDENTIFIER','bigint'),(167,61,'FIRST_NAME','varchar'),
+		(168,61,'LAST_NAME','varchar'),(169,61,'LOGIN_NAME','varchar'),(170,61,'EMAIL_ADDRESS','varchar'),
+		(171,61,'START_DATE','date'),(172,61,'ACTIVITY_STATUS','varchar'),(173,61,'DEPARTMENT_ID','bigint'),
+		(174,61,'STREET','varchar'),(175,61,'CITY','varchar'),(176,61,'STATE','varchar'),(177,61,'COUNTRY','varchar'),
+		(178,61,'ZIPCODE','varchar'),(179,61,'PHONE_NUMBER','varchar'),(180,61,'FAX_NUMBER','varchar'),
+		(181,61,'CANCER_RESEARCH_GROUP_ID','bigint'),(182,61,'INSTITUTION_ID','bigint'),(183,61,'STATUS_COMMENT','text'),
+		(184,3,'IDENTIFIER','bigint'),(185,3,'NAME','varchar'),(186,3,'TYPE','varchar'),(187,3,'EMAIL_ADDRESS','varchar'),
+		(188,3,'USER_ID','bigint'),(189,3,'ACTIVITY_STATUS','varchar'),(190,3,'ADDRESS_ID','bigint'),(191,33,'IDENTIFIER','bigint'),
+		(192,33,'SPECIMEN_TYPE','varchar'),(193,33,'AVAILABLE','tinyint'),(196,33,'BARCODE','varchar'),(197,33,'COMMENTS','varchar'),
+		(198,33,'ACTIVITY_STATUS','varchar'),(199,33,'PARENT_SPECIMEN_ID','bigint'),(200,94,'STORAGE_CONTAINER_IDENTIFIER','bigint'),
+		(201,33,'SPECIMEN_COLLECTION_GROUP_ID','bigint'),(202,33,'SPECIMEN_CHARACTERISTICS_ID','bigint'),(203,62,'BIOHAZARD_ID','bigint'),
+		(204,62,'SPECIMEN_ID','bigint'),(205,33,'IDENTIFIER','bigint'),(206,33,'TISSUE_SITE','varchar'),(207,33,'TISSUE_SIDE','varchar'),
+		(208,33,'PATHOLOGICAL_STATUS','varchar'),(209,35,'IDENTIFIER','bigint'),(210,35,'CLINICAL_DIAGNOSIS','varchar'),
+		(211,35,'CLINICAL_STATUS','varchar'),(212,35,'ACTIVITY_STATUS','varchar'),(213,35,'SITE_ID','bigint'),
+		(214,35,'COLLECTION_PROTOCOL_EVENT_ID','bigint'),(215,35,'SURGICAL_PATHOLOGY_NUMBER','varchar'),
+		(216,35,'COLLECTION_PROTOCOL_REG_ID','bigint'),(217,63,'IDENTIFIER','bigint'),(218,63,'SPECIMEN_ID','bigint'),
+		(219,63,'EVENT_TIMESTAMP','timestamptime'),(220,63,'USER_ID','bigint'),(221,63,'COMMENTS','text'),
+		(222,10,'IDENTIFIER','bigint'),(223,10,'PRINCIPAL_INVESTIGATOR_ID','bigint'),(224,10,'TITLE','varchar'),
+		(225,10,'SHORT_TITLE','varchar'),(226,10,'IRB_IDENTIFIER','varchar'),(227,10,'START_DATE','date'),(228,10,'END_DATE','date'),
+		(229,10,'ENROLLMENT','integer'),(230,10,'DESCRIPTION_URL','varchar'),(231,10,'ACTIVITY_STATUS','varchar'),
+		(232,12,'IDENTIFIER','bigint'),(233,12,'SPECIMEN_TYPE','varchar'),(234,12,'TISSUE_SITE','varchar'),(235,12,'PATHOLOGY_STATUS','varchar'),
+		(236,64,'IDENTIFIER','bigint'),(237,64,'GFORCE','double'),(238,64,'DURATION_IN_MINUTES','integer'),(239,21,'IDENTIFIER','bigint'),
+		(240,70,'NAME','varchar'),(241,21,'TEMPERATURE','double'),(242,70,'CONT_FULL','tinyint'),(243,70,'BARCODE','varchar'),
+		(244,70,'ACTIVITY_STATUS','varchar'),(245,21,'STORAGE_TYPE_ID','bigint'),(246,21,'SITE_ID','bigint'),
+		(247,95,'PARENT_CONTAINER_ID','bigint'),(248,70,'CAPACITY_ID','bigint'),(249,93,'POSITION_DIMENSION_ONE','integer'),
+		(250,93,'POSITION_DIMENSION_TWO','integer'),(251,2,'IDENTIFIER','bigint'),(252,2,'ONE_DIMENSION_CAPACITY','integer'),
+		(253,2,'TWO_DIMENSION_CAPACITY','integer'),(258,1,'IDENTIFIER','bigint'),(260,1,'DEFAULT_TEMPERATURE','double'),
+		(261,69,'ONE_DIMENSION_LABEL','varchar'),(262,69,'TWO_DIMENSION_LABEL','varchar'),(263,69,'CAPACITY_ID','bigint'),
+		(264,65,'PARENT_TABLE_ID','bigint'),(265,65,'CHILD_TABLE_ID','bigint'),(266,66,'IDENTIFIER','bigint'),
+		(272,67,'IDENTIFIER','bigint'),(273,67,'NEOPLASTIC_CELLULARITY_PER','double'),(274,67,'NECROSIS_PERCENTAGE','double'),
+		(275,67,'LYMPHOCYTIC_PERCENTAGE','double'),(276,67,'TOTAL_CELLULARITY_PERCENTAGE','double'),
+		(277,67,'HISTOLOGICAL_QUALITY','varchar'),(278,68,'IDENTIFIER','bigint'),(279,68,'FROM_POSITION_DIMENSION_ONE','integer'),
+		(280,68,'FROM_POSITION_DIMENSION_TWO','integer'),(281,68,'TO_POSITION_DIMENSION_ONE','integer'),
+		(282,68,'TO_POSITION_DIMENSION_TWO','integer'),(283,68,'TO_STORAGE_CONTAINER_ID','bigint'),
+		(284,68,'FROM_STORAGE_CONTAINER_ID','bigint'),(285,23,'IDENTIFIER','bigint'),(286,23,'ACTIVITY_STATUS','varchar'),
+		(287,23,'DEPARTMENT_ID','bigint'),(288,23,'CANCER_RESEARCH_GROUP_ID','bigint'),(289,23,'INSTITUTION_ID','bigint'),
+		(290,23,'ADDRESS_ID','bigint'),(291,23,'STATUS_COMMENT','text'),(292,23,'LAST_NAME','varchar'),(293,23,'FIRST_NAME','varchar'),
+		(294,23,'LOGIN_NAME','varchar'),(295,23,'START_DATE','date'),(296,63,'EVENT_TIMESTAMP','timestampdate'),
+		(297,38,'ACTIVITY_STATUS','varchar'),(298,38,'EVENT_TIMESTAMP','timestampdate'),(299,38,'USER_ID','bigint'),
+		(300,38,'COMMENTS','varchar'),(301,38,'SPECIMEN_ID','bigint'),(302,38,'EVENT_TIMESTAMP','timestamptime'),
+		(303,31,'DEATH_DATE','date'),(304,31,'VITAL_STATUS','varchar'),(305,1,'ACTIVITY_STATUS','varchar'),
+		(306,69,'IDENTIFIER','bigint'),(307,69,'NAME','varchar'),(308,69,'COMMENTS','varchar'),(309,70,'IDENTIFIER','bigint'),
+		(310,70,'COMMENTS','varchar'),(311,71,'IDENTIFIER','bigint'),(312,71,'SPECIMEN_CLASS','varchar'),
+		(313,72,'IDENTIFIER','bigint'),(314,72,'CREATED_BY_ID','bigint'),(315,72,'SPECIMEN_ARRAY_TYPE_ID','bigint'),
+		(316,73,'PARTICIPANT_ID','bigint'),(317,73,'RACE_NAME','varchar'),(320,35,'NAME','varchar'),
+		(321,72,'DISTRIBUTION_ID','bigint'),(322,33,'LINEAGE','varchar'),(323,33,'LABEL','varchar'),(324,72,'AVAILABLE','tinyint'),
+		(325,75,'EVENT_TIMESTAMP','timestampdate'),(326,75,'EVENT_TIMESTAMP','timestamptime'),(327,75,'IDENTIFIER','bigint'),
+		(328,33,'CREATED_ON_DATE','date'),(329,11,'COLLECTION_POINT_LABEL','varchar'),(330,35,'IDENTIFIER','bigint'),
+		(331,94,'IDENTIFIER','bigint'),(332,94,'SPECIMEN_ID','bigint'),(333,94,'CONTAINER_ID','bigint'),(334,95,'IDENTIFIER','bigint'),
+		(335,95,'CONTAINER_ID','bigint'),(336,93,'IDENTIFIER','bigint'),(337,33,'IDENTIFIER','bigint'),(338,35,'BARCODE','varchar'),
+		(339,27,'BARCODE','varchar'),(340,20,'SPECIMEN_TYPE','varchar'),(341,20,'SPECIMEN_CLASS','varchar'),(342,20,'TISSUE_SITE','varchar'),
+		(343,20,'PATHOLOGY_STATUS','varchar'),(344,20,'QUANTITY','double'),(345,33,'CONCENTRATION','double'),(347,19,'TITLE','varchar'),
+		(348,19,'SHORT_TITLE','varchar'),(349,19,'IRB_IDENTIFIER','varchar'),(350,19,'START_DATE','date'),(351,19,'END_DATE','date'),
+		(352,19,'ENROLLMENT','integer'),(353,19,'DESCRIPTION_URL','varchar'),(354,19,'ACTIVITY_STATUS','varchar');
+	</sql>  
+ </changeSet>
+ <changeSet author="dpatil" id="initialize catissue_privileges">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_privileges</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_privileges` 
+		VALUES 
+		(1,'ACCESS'),(2,'ASSIGN_READ'),(3,'ASSIGN_USE'),(4,'CREATE'),(5,'DEFINE_ANNOTATION'),(6,'DELETE'),(9,'DISTRIBUTION'),(7,'EXECUTE'),
+		(8,'GENERAL_ADMINISTRATION'),(10,'GENERAL_SITE_ADMINISTRATION'),(11,'IDENTIFIED_DATA_ACCESS'),(12,'PARTICIPANT_SCG_ANNOTATION'),
+		(13,'PHI_ACCESS'),(14,'PROTOCOL_ADMINISTRATION'),(15,'QUERY'),(16,'READ'),(17,'READ_DENIED'),(18,'REGISTRATION'),
+		(19,'REPOSITORY_ADMINISTRATION'),(20,'SHIPMENT_PROCESSING'),(21,'SPECIMEN_ACCESSION'),(22,'SPECIMEN_ANNOTATION'),
+		(23,'SPECIMEN_PROCESSING'),(24,'SPECIMEN_STORAGE'),(25,'STORAGE_ADMINISTRATION'),(26,'UPDATE'),(27,'USE'),(28,'USER_PROVISIONING'),
+		(29,'WRITE');
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize catissue_query_editlink_cols">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_query_editlink_cols</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_query_editlink_cols` 
+		VALUES 
+		(8,25),(7,29),(10,225),(10,224),(27,59),(5,68),(38,75),(19,224),(19,225),(75,327),(6,101),(3,185),(33,196),(33,323),
+		(72,240),(72,243),(71,307),(35,320),(21,240),(1,307),(23,292),(23,293),(23,294),(27,60);
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize catissue_query_table_data">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_query_table_data</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_query_table_data` 
+		VALUES 
+		(1,'CATISSUE_STORAGE_TYPE','Storage Type','StorageType',1,1),
+		(2,'CATISSUE_CAPACITY','Storage Container Capacity','StorageContainerCapacity',2,NULL),
+		(3,'CATISSUE_SITE','Site','Site',2,1),(4,'CATISSUE_ADDRESS','Address','Address',2,NULL),
+		(5,'CATISSUE_DEPARTMENT','Department','Department',1,1),(6,'CATISSUE_INSTITUTION','Institution','Institution',1,1),
+		(7,'CATISSUE_CANCER_RESEARCH_GROUP','Cancer Research Group','CancerResearchGroup',1,1),
+		(8,'CATISSUE_BIOHAZARD','Biohazard','Biohazard',1,1),
+		(10,'CATISSUE_COLLECTION_PROTOCOL','Collection Protocol','CollectionProtocol',2,1),
+		(11,'CATISSUE_COLL_PROT_EVENT','Collection Protocol Event','CollectionProtocolEvent',2,NULL),
+		(12,'CATISSUE_SPECIMEN_REQUIREMENT','Specimen Requirement','SpecimenRequirement',2,NULL),
+		(17,'CATISSUE_COLL_COORDINATORS','Collection Coordinators','CollectionCoordinators',2,NULL),
+		(18,'CATISSUE_CP_REQ_SPECIMEN','Collection Specimen Requirement','CollectionSpecReq',2,NULL),
+		(19,'CATISSUE_DISTRIBUTION_PROTOCOL','Distribution Protocol','DistributionProtocol',2,1),
+		(20,'CATISSUE_DISTRIBUTION_SPEC_REQ','Distribution Specimen Requirement','DistributionSpecReq',1,NULL),
+		(21,'CATISSUE_STORAGE_CONTAINER','Storage Container','StorageContainer',2,1),(23,'CATISSUE_USER','User','User',2,1),
+		(27,'CATISSUE_COLL_PROT_REG','Collection Protocol Registration','CollectionProtReg',2,1),
+		(28,'CATISSUE_EXTERNAL_IDENTIFIER','External Identifier','ExternalIdentifier',2,NULL),
+		(31,'CATISSUE_PARTICIPANT','Participant','Participant',2,1),
+		(32,'CATISSUE_PART_MEDICAL_ID','Participant Medical Identifier','ParticipantMedicalId',2,NULL),
+		(33,'CATISSUE_SPECIMEN','Specimen','Specimen',2,1),
+		(34,'CATISSUE_SPECIMEN_CHAR','Specimen Characteristics','SpecimenCharacteristics',2,NULL),
+		(35,'CATISSUE_SPECIMEN_COLL_GROUP','Specimen Collection Group','SpecimenCollectionGroup',2,1),
+		(37,'CATISSUE_DISTRIBUTED_ITEM','Distributed Item','DistributedItem',1,NULL),
+		(38,'CATISSUE_DISTRIBUTION','Distribution','Distribution',2,1),(39,'CATISSUE_AUDIT_EVENT','Audit Event','AuditEvent',1,NULL),
+		(40,'CATISSUE_AUDIT_EVENT_DETAILS','Audit Event Details','AuditEventDetails',1,NULL),
+		(41,'CATISSUE_AUDIT_EVENT_LOG','Audit Event Log','AuditEventLog',1,NULL),(42,'CATISSUE_CDE','Cde','Cde',0,NULL),
+		(43,'CATISSUE_CELL_SPE_REVIEW_PARAM','Cell Specimen Review Parameters','CellSpecimenParam',2,1),
+		(44,'CATISSUE_IN_OUT_EVENT_PARAM','Checkin Checkout Event Parameter','CheckinoutEventParam',2,1),
+		(45,'CATISSUE_COLL_DISTRIBUTION_REL','Collection Distribution Relation','CollectionDistributionRel',2,NULL),
+		(46,'CATISSUE_COLL_EVENT_PARAM','Collection Event Parameters','CollectionEventParam',2,1),
+		(47,'CATISSUE_DISPOSAL_EVENT_PARAM','Disposal Event Parameters','DisposalEventParam',2,1),
+		(48,'CATISSUE_EMBEDDED_EVENT_PARAM','Embedded Event Parameters','EmbeddedEventParam',2,1),
+		(49,'CATISSUE_FIXED_EVENT_PARAM','Fixed Event Parameters','FixedEventParameters',2,1),
+		(50,'CATISSUE_FLUID_SPE_EVENT_PARAM','Fluid Specimen Review Event Parameters','FluidSpecEventParam',2,1),
+		(51,'CATISSUE_FROZEN_EVENT_PARAM','Frozen Event Parameters','FrozenEventParameters',2,1),
+		(52,'CATISSUE_MOL_SPE_REVIEW_PARAM','Molecular Specimen Review Parameters','MolecularSpecParam',2,1),
+		(53,'CATISSUE_PERMISSIBLE_VALUE','Permissible Value','PermissibleValue',0,NULL),
+		(54,'CATISSUE_PROCEDURE_EVENT_PARAM','Procedure Event Parameters','ProcedureEventParam',2,1),
+		(55,'CATISSUE_INTERFACE_COLUMN_DATA','Query Interface Column Data','QueryInterfaceColumnData',0,NULL),
+		(56,'CATISSUE_QUERY_TABLE_DATA','Query Interface Table Data','QueryInterfaceTableData',0,NULL),
+		(57,'CATISSUE_RECEIVED_EVENT_PARAM','Received Event Parameters','ReceivedEventParam',2,1),
+		(58,'CATISSUE_RELATED_TABLES_MAP','Related Tables Map','RelatedTablesMap',0,NULL),
+		(59,'CATISSUE_REPORTED_PROBLEM','Reported Problem','ReportedProblem',1,1),
+		(60,'CATISSUE_EVENT_PARAM','Review Event Parameters','ReviewEventParameters',2,NULL),
+		(61,'CATISSUE_SIGNUP_USER','Signup User','SignupUser',2,NULL),
+		(62,'CATISSUE_SPECIMEN_BIOHZ_REL','Biohazard','SpecimenBiohazardRel',2,NULL),
+		(63,'CATISSUE_SPECIMEN_EVENT_PARAM','Specimen Event Parameters','SpecimenEventParameters',2,NULL),
+		(64,'CATISSUE_SPUN_EVENT_PARAMETERS','Spun Event Parameters','SpunEventParameters',2,1),
+		(65,'CATISSUE_TABLE_RELATION','Table Relation','TableRelation',0,NULL),
+		(66,'CATISSUE_THAW_EVENT_PARAMETERS','Thaw Event Parameters','ThawEventParameters',2,1),
+		(67,'CATISSUE_TIS_SPE_EVENT_PARAM','Tissue Specimen Review Event Parameters','TissueSpecEventParam',2,1),
+		(68,'CATISSUE_TRANSFER_EVENT_PARAM','Transfer Event Parameter','TransferEventParameter',2,1),
+		(69,'CATISSUE_CONTAINER_TYPE','Container Type','ContainerType',0,NULL),
+		(70,'CATISSUE_CONTAINER','Container','Container',0,NULL),
+		(71,'CATISSUE_SPECIMEN_ARRAY_TYPE','Specimen Array Type','SpecimenArrayType',2,1),
+		(72,'CATISSUE_SPECIMEN_ARRAY','Specimen Array','SpecimenArray',2,1),(73,'CATISSUE_RACE','Race','Race',0,NULL),
+		(75,'CATISSUE_DISTRIBUTION','Distribution_array','Distribution_array',2,1),(76,'CATISSUE_ORDER','Order','OrderDetails',2,NULL),
+		(77,'CATISSUE_REPORT_QUEUE','Report Queue','ReportQueue',2,NULL),
+		(78,'CATISSUE_PATHOLOGY_REPORT','Surgical Pathology Report','SurgicalPathologyReport',2,NULL),
+		(79,'CATISSUE_IDENTIFIED_REPORT','Identified Surgical Pathology Report','IdentifiedSurgicalPathologyReport',2,NULL),
+		(80,'CATISSUE_DEIDENTIFIED_REPORT','Deidentified Surgical Pathology Report','DeidentifiedSurgicalPathologyReport',2,NULL),
+		(81,'CATISSUE_REPORT_CONTENT','Report Content','ReportContent',2,NULL),
+		(82,'CATISSUE_REPORT_TEXTCONTENT','Text Content','TextContent',2,NULL),
+		(83,'CATISSUE_REPORT_BICONTENT','Binary Content','BinaryContent',2,NULL),
+		(84,'CATISSUE_REPORT_SECTION','Report Section','ReportSection',2,NULL),(85,'CATISSUE_CONCEPT','Concept','Concept',2,NULL),
+		(87,'CATISSUE_CONCEPT_REFERENT','Concept Referent','ConceptReferent',2,NULL),
+		(88,'CATISSUE_CONCEPT_CLASSIFICATN','Concept Referent Classification','ConceptReferentClassification',2,NULL),
+		(89,'CATISSUE_SEMANTIC_TYPE','Semantic Type','SemanticType',2,NULL),
+		(90,'CATISSUE_REVIEW_PARAMS','Pathology Report Review Parameter','PathologyReportReviewParameter',2,NULL),
+		(91,'CATISSUE_QUARANTINE_PARAMS','Quarantine Event Parameter','QuarantineEventParameter',2,NULL),
+		(92,'CATISSUE_ABS_SPECI_COLL_GROUP','Abstract Specimen Coll Group','AbstractScg',2,NULL),
+		(93,'CATISSUE_ABSTRACT_POSITION','Abstract Position','AbstractPosition',2,NULL),
+		(94,'CATISSUE_SPECIMEN_POSITION','Specimen Position','SpecimenPosition',2,1),
+		(95,'CATISSUE_CONTAINER_POSITION','Container Position','ContainerPosition',2,1),
+		(96,'catissue_tissue_specimen','Tissue Specimen','Tissue Specimen',2,NULL),
+		(97,'catissue_cell_specimen','Cell Specimen','Cell Specimen',2,NULL),
+		(98,'catissue_fluid_specimen','Fluid Specimen','Fluid Specimen',2,NULL),
+		(99,'catissue_molecular_specimen','Molecular Specimen','MolecularSpecimen',2,NULL),
+		(100,'CATISSUE_ABSTRACT_SPECIMEN','Abstract Specimen','AbstractSpecimen',2,NULL),
+		(101,'CATISSUE_SHIPMENT','Shipment','Shipment',2,NULL),(102,'CATISSUE_SHIPMENT_REQUEST','Shipment Request','ShipmentRequest',2,NULL);
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize catissue_related_tables_map">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_related_tables_map</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_related_tables_map` 
+		VALUES 
+		(10,11,'IDENTIFIER','COLLECTION_PROTOCOL_ID'),(5,23,'IDENTIFIER','DEPARTMENT_ID'),(6,23,'IDENTIFIER','INSTITUTION_ID'),
+		(7,23,'IDENTIFIER','CANCER_RESEARCH_GROUP_ID'),(4,23,'IDENTIFIER','ADDRESS_ID'),(4,3,'IDENTIFIER','ADDRESS_ID'),
+		(9,10,'IDENTIFIER','IDENTIFIER'),(23,9,'IDENTIFIER','PRINCIPAL_INVESTIGATOR_ID'),(23,17,'IDENTIFIER','USER_ID'),
+		(10,17,'IDENTIFIER','COLLECTION_PROTOCOL_ID'),(12,18,'IDENTIFIER','SPECIMEN_REQUIREMENT_ID'),
+		(11,18,'IDENTIFIER','COLLECTION_PROTOCOL_EVENT_ID'),(9,19,'IDENTIFIER','IDENTIFIER'),(19,20,'IDENTIFIER','DISTRIBUTION_PROTOCOL_ID'),
+		(23,24,'IDENTIFIER','USER_ID'),(31,32,'IDENTIFIER','PARTICIPANT_ID'),(31,73,'IDENTIFIER','PARTICIPANT_ID'),
+		(10,27,'IDENTIFIER','COLLECTION_PROTOCOL_ID'),(31,27,'IDENTIFIER','PARTICIPANT_ID'),(3,92,'IDENTIFIER','SITE_ID'),
+		(11,35,'IDENTIFIER','COLLECTION_PROTOCOL_EVENT_ID'),(27,35,'IDENTIFIER','COLLECTION_PROTOCOL_REG_ID'),
+		(35,33,'IDENTIFIER','SPECIMEN_COLLECTION_GROUP_ID'),(34,100,'IDENTIFIER','SPECIMEN_CHARACTERISTICS_ID'),
+		(100,100,'IDENTIFIER','PARENT_SPECIMEN_ID'),(33,37,'IDENTIFIER','SPECIMEN_ID'),(38,37,'IDENTIFIER','DISTRIBUTION_ID'),
+		(33,62,'IDENTIFIER','SPECIMEN_ID'),(8,62,'IDENTIFIER','BIOHAZARD_ID'),(33,28,'IDENTIFIER','SPECIMEN_ID'),
+		(33,63,'IDENTIFIER','SPECIMEN_ID'),(1,69,'IDENTIFIER','IDENTIFIER'),(3,21,'IDENTIFIER','SITE_ID'),(2,70,'IDENTIFIER','CAPACITY_ID'),
+		(1,21,'IDENTIFIER','STORAGE_TYPE_ID'),(70,21,'IDENTIFIER','IDENTIFIER'),(71,69,'IDENTIFIER','IDENTIFIER'),
+		(72,71,'SPECIMEN_ARRAY_TYPE_ID','IDENTIFIER'),(72,70,'IDENTIFIER','IDENTIFIER'),(75,37,'IDENTIFIER','DISTRIBUTION_ID'),
+		(72,37,'IDENTIFIER','SPECIMEN_ARRAY_ID'),(63,43,'IDENTIFIER','IDENTIFIER'),(63,44,'IDENTIFIER','IDENTIFIER'),
+		(63,46,'IDENTIFIER','IDENTIFIER'),(63,47,'IDENTIFIER','IDENTIFIER'),(63,48,'IDENTIFIER','IDENTIFIER'),
+		(63,49,'IDENTIFIER','IDENTIFIER'),(63,50,'IDENTIFIER','IDENTIFIER'),(63,51,'IDENTIFIER','IDENTIFIER'),
+		(63,52,'IDENTIFIER','IDENTIFIER'),(63,54,'IDENTIFIER','IDENTIFIER'),(63,57,'IDENTIFIER','IDENTIFIER'),
+		(63,64,'IDENTIFIER','IDENTIFIER'),(63,66,'IDENTIFIER','IDENTIFIER'),(63,67,'IDENTIFIER','IDENTIFIER'),
+		(63,68,'IDENTIFIER','IDENTIFIER'),(23,63,'IDENTIFIER','USER_ID'),(38,9,'DISTRIBUTION_PROTOCOL_ID','IDENTIFIER'),
+		(75,3,'TO_SITE_ID','IDENTIFIER'),(75,9,'DISTRIBUTION_PROTOCOL_ID','IDENTIFIER'),(92,35,'IDENTIFIER','IDENTIFIER'),
+		(93,94,'IDENTIFIER','IDENTIFIER'),(93,95,'IDENTIFIER','IDENTIFIER'),(33,94,'IDENTIFIER','SPECIMEN_ID'),
+		(72,95,'IDENTIFIER','CONTAINER_ID'),(21,94,'IDENTIFIER','CONTAINER_ID'),(21,95,'IDENTIFIER','CONTAINER_ID'),
+		(100,33,'IDENTIFIER','IDENTIFIER'),(33,99,'IDENTIFIER','IDENTIFIER');	
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize catissue_site">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_site</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_site` VALUES (1,'In Transit','Repository','admin@admin.com',1,'Active',1,NULL);
+	</sql>
+ </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_site_coordinators">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_site_coordinators</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_site_coordinators` VALUES (1,1);
+	</sql>
+ </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_specimen_array_type">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_specimen_array_type</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_specimen_array_type` VALUES (2,NULL);
+	</sql>
+ </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_storage_type">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_storage_type</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_storage_type` VALUES (1,NULL),(3,-80);
+	</sql>
+ </changeSet>
+  <changeSet author="dpatil" id="initialize catissue_stor_type_holds_type">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from atissue_stor_type_holds_type</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_stor_type_holds_type` VALUES (1,3);
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize catissue_stor_type_spec_class">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_stor_type_spec_class</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_stor_type_spec_class` VALUES (3,'Fluid'),(3,'Tissue'),(3,'Molecular'),(3,'Cell');
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize catissue_table_relation">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_table_relation</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_table_relation` VALUES (1,1,1,NULL),(2,6,6,NULL),(3,5,5,NULL),(4,7,7,NULL),(5,8,8,NULL),
+		(6,3,3,NULL),(7,3,4,NULL),(8,21,21,NULL),(9,21,2,'70'),(10,21,69,'1'),(11,21,3,NULL),(12,10,10,NULL),(14,10,11,NULL),
+		(15,10,12,'11:18'),(16,10,18,'11'),(17,19,19,NULL),(18,19,9,NULL),(19,19,20,NULL),(21,23,23,NULL),(23,23,4,NULL),
+		(24,23,5,NULL),(25,23,6,NULL),(26,23,7,NULL),(27,31,31,NULL),(28,31,32,NULL),(29,27,27,NULL),(30,35,35,NULL),
+		(31,35,11,NULL),(32,35,3,NULL),(33,35,27,NULL),(34,33,33,NULL),(36,38,38,NULL),(37,38,37,NULL),(41,10,17,NULL),
+		(44,31,3,'32'),(45,27,9,'10'),(46,27,31,NULL),(47,35,26,NULL),(48,35,9,'27:10'),(50,33,28,NULL),(52,38,100,'37'),
+		(53,38,9,NULL),(54,35,31,'27'),(55,38,34,'37:33'),(57,43,43,NULL),(58,43,63,NULL),(59,43,23,NULL),(60,44,44,NULL),
+		(61,44,63,NULL),(62,44,23,NULL),(63,46,46,NULL),(64,46,63,NULL),(65,46,23,NULL),(66,47,47,NULL),(67,47,63,NULL),
+		(68,47,23,NULL),(69,48,48,NULL),(70,48,63,NULL),(71,48,23,NULL),(72,49,49,NULL),(73,49,63,NULL),(74,49,23,NULL),
+		(75,50,50,NULL),(76,50,63,NULL),(77,50,23,NULL),(78,51,51,NULL),(79,51,63,NULL),(80,51,23,NULL),(81,52,52,NULL),
+		(82,52,63,NULL),(83,52,23,NULL),(84,54,54,NULL),(85,54,63,NULL),(86,54,23,NULL),(87,57,57,NULL),(88,57,63,NULL),
+		(89,57,23,NULL),(90,64,64,NULL),(91,64,63,NULL),(92,64,23,NULL),(93,66,66,NULL),(94,66,63,NULL),(95,66,23,NULL),
+		(96,67,67,NULL),(97,67,63,NULL),(98,67,23,NULL),(99,68,68,NULL),(100,68,63,NULL),(101,68,23,NULL),(102,59,59,NULL),
+		(103,31,10,'27'),(104,10,35,'27'),(105,62,8,NULL),(106,33,8,'62'),(107,23,63,NULL),(108,1,69,NULL),(110,21,70,NULL),
+		(111,71,71,NULL),(112,71,69,NULL),(113,72,72,NULL),(114,72,70,NULL),(115,72,2,'70'),(116,72,69,'71'),(121,75,72,'37'),
+		(122,75,75,NULL),(123,75,3,NULL),(124,75,9,NULL),(125,75,69,'37:72:71'),(127,75,70,'37:72'),(129,72,71,NULL),(130,21,1,NULL),
+		(131,75,37,NULL),(132,78,79,NULL),(133,78,80,NULL),(134,81,82,NULL),(135,81,83,NULL),(136,81,84,NULL),(138,94,93,NULL)catissue_stor_type_spec_class,
+		(139,95,93,NULL),(140,33,94,NULL),(141,72,95,'70'),(142,21,95,'70'),(143,94,94,NULL),(144,95,95,NULL),(145,21,94,NULL);
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize catissue_password">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_password</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `catissue_password` VALUES (1,'xxits++sTge8j2uyHEABIQ==','2014-09-12',1);
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize csm_application">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_application</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_application` VALUES (1,'catissuecore','caTISSUE Core',0,0,'2005-08-22',NULL,NULL,NULL,NULL,NULL);
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize csm_group">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_group</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_group` 
+		VALUES 
+		(1,'ADMINISTRATOR_GROUP','Group of Administrators','2005-01-01',1),
+		(2,'SUPERVISOR_GROUP','Group of Supervisors','2005-01-01',1),
+		(3,'TECHNICIAN_GROUP','Group of Technicians','2005-01-01',1),
+		(4,'PUBLIC_GROUP','Group of Public Users','2005-01-01',1);
+	</sql>
+ </changeSet>
+ 
+ <changeSet author="dpatil" id="initialize csm_privilege">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_privilege</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_privilege` 
+		VALUES 
+		(1,'CREATE','This privilege grants permission to a user to create an entity. This entity can be an object, a database entry, or a resource such as a network connection','2005-08-22'),
+		(2,'ACCESS','This privilege allows a user to access a particular resource.  Examples of resources include a network or database connection, socket, module of the application, or even the application itself','2005-08-22'),
+		(3,'READ','This privilege permits the user to read data from a file, URL, database, an object, etc. This can be used at an entity level signifying that the user is allowed to read data about a particular entry','2005-08-22'),
+		(4,'WRITE','This privilege allows a user to write data to a file, URL, database, an object, etc. This can be used at an entity level signifying that the user is allowed to write data about a particular entity','2005-08-22'),
+		(5,'UPDATE','This privilege grants permission at an entity level and signifies that the user is allowed to update data for a particular entity. Entities may include an object, object attribute, database row etc','2005-08-22'),
+		(6,'DELETE','This privilege permits a user to delete a logical entity. This entity can be an object, a database entry, a resource such as a network connection, etc','2005-08-22'),
+		(7,'EXECUTE','This privilege allows a user to execute a particular resource. The resource can be a method, function, behavior of the application, URL, button etc','2005-08-22'),
+		(8,'USE','This privilege allows a user to use a particular resource','2005-08-22'),
+		(9,'ASSIGN_READ','This privilege allows a user to assign a read privilege to others','2005-08-22'),
+		(10,'ASSIGN_USE','This privilege allows a user to assign a use privilege to others','2005-08-22'),
+		(11,'IDENTIFIED_DATA_ACCESS','This privilege allows a user to view identified data of an object','2005-08-22'),
+		(12,'READ_DENIED','This privilege doesnt permit the user to read data','2005-08-22'),
+		(13,'USER_PROVISIONING','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR USER CREATION AND ASSIGNING PRIVILEGES TO THAT USER','2008-06-19'),
+		(14,'REPOSITORY_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT SITES','2008-06-19'),
+		(15,'STORAGE_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT STORAGE TYPES AND CONTAINERS','2008-06-19'),
+		(16,'PROTOCOL_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT COLLECTION AS WELL AS DISTRIBUTION PROTOCOLS','2008-06-19'),
+		(17,'DEFINE_ANNOTATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT ANNOTATIONS','2008-06-19'),
+		(18,'REGISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR REGISTERING PARTICIPANT AND CONSENTS','2008-06-19'),
+		(20,'SPECIMEN_ACCESSION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT SPECIMEN,SPECIMEN COLLECTION GROUP AND CONSENTS','2008-06-19'),
+		(21,'DISTRIBUTION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR DISTRIBUTION','2008-06-19'),
+		(22,'QUERY','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR QUERY','2008-06-19'),
+		(23,'PHI_ACCESS','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR VIEWING PHI DATA','2008-06-19'),
+		(24,'PARTICIPANT_SCG_ANNOTATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT ANNOTATION TO PARTICIPANT OR SCG','2008-06-19'),
+		(25,'SPECIMEN_ANNOTATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR FOR ADD EDIT SPECIMEN ANNOTATION','2008-06-19'),
+		(26,'SPECIMEN_PROCESSING','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT ALIQUOT, DERIVATIVE, EVENTS','2008-06-19'),
+		(27,'SPECIMEN_STORAGE','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT STORAGE AND TRANSFER EVENTS','2008-06-19'),
+		(28,'GENERAL_SITE_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT SITES','2008-06-19'),
+		(29,'GENERAL_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT DEPARTMENT,INSTITUTION,CANCER RESEARCH GROUP','2008-06-19'),
+		(30,'SHIPMENT_PROCESSING','THIS PRIVILEGE GRANTS PERMISSION TO A USER TO PROCESS SHIPMENTS','2008-08-20');
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize csm_protection_element">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_protection_element</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_protection_element` 
+		VALUES 
+		(9,'edu.wustl.catissuecore.domain.User_1','User class','edu.wustl.catissuecore.domain.User_1',NULL,NULL,1,'2005-01-01'),
+		(10,'Participant','Participant class','edu.wustl.catissuecore.domain.Participant',NULL,NULL,1,'2005-01-01'),
+		(11,'ParticipantMedicalIdentifier','ParticipantMedicalIdentifier class','edu.wustl.catissuecore.domain.ParticipantMedicalIdentifier',NULL,NULL,1,'2005-01-01'),
+		(12,'ClinicalReport','ClinicalReport class','edu.wustl.catissuecore.domain.ClinicalReport',NULL,NULL,1,'2005-01-01'),
+		(13,'SpecimenCollectionGroup','SpecimenCollectionGroup class','edu.wustl.catissuecore.domain.SpecimenCollectionGroup',NULL,NULL,1,'2005-01-01'),
+		(14,'CollectionProtocolRegistration','CollectionProtocolRegistration class','edu.wustl.catissuecore.domain.CollectionProtocolRegistration',NULL,NULL,1,'2005-01-01'),
+		(15,'SpecimenCharacteristics','SpecimenCharacteristics class','edu.wustl.catissuecore.domain.SpecimenCharacteristics',NULL,NULL,1,'2005-01-01'),
+		(16,'FluidSpecimen','FluidSpecimen class','edu.wustl.catissuecore.domain.FluidSpecimen',NULL,NULL,1,'2005-01-01'),
+		(17,'TissueSpecimen','TissueSpecimen class','edu.wustl.catissuecore.domain.TissueSpecimen',NULL,NULL,1,'2005-01-01'),
+		(18,'CellSpecimen','CellSpecimen class','edu.wustl.catissuecore.domain.CellSpecimen',NULL,NULL,1,'2005-01-01'),
+		(19,'MolecularSpecimen','MolecularSpecimen class','edu.wustl.catissuecore.domain.MolecularSpecimen',NULL,NULL,1,'2005-01-01'),
+		(20,'Biohazard','Biohazard class','edu.wustl.catissuecore.domain.Biohazard',NULL,NULL,1,'2005-01-01'),
+		(21,'Specimen','Specimen class','edu.wustl.catissuecore.domain.Specimen',NULL,NULL,1,'2005-01-01'),
+		(22,'ExternalIdentifier','ExternalIdentifier class','edu.wustl.catissuecore.domain.ExternalIdentifier',NULL,NULL,1,'2005-01-01'),
+		(23,'EventParameters','EventParameters class','edu.wustl.catissuecore.domain.EventParameters',NULL,NULL,1,'2005-01-01'),
+		(24,'FluidSpecimenReviewEventParameters','FluidSpecimenReviewEventParameters class','edu.wustl.catissuecore.domain.FluidSpecimenReviewEventParameters',NULL,NULL,1,'2005-01-01'),
+		(25,'CellSpecimenReviewParameters','CellSpecimenReviewParameters class','edu.wustl.catissuecore.domain.CellSpecimenReviewParameters',NULL,NULL,1,'2005-01-01'),
+		(26,'TissueSpecimenReviewEventParameters','TissueSpecimenReviewEventParameters class','edu.wustl.catissuecore.domain.TissueSpecimenReviewEventParameters',NULL,NULL,1,'2005-01-01'),
+		(27,'MolecularSpecimenReviewParameters','MolecularSpecimenReviewParameters class','edu.wustl.catissuecore.domain.MolecularSpecimenReviewParameters',NULL,NULL,1,'2005-01-01'),
+		(28,'CheckInCheckOutEventParameter','CheckInCheckOutEventParameter class','edu.wustl.catissuecore.domain.CheckInCheckOutEventParameter',NULL,NULL,1,'2005-01-01'),
+		(29,'FrozenEventParameters','FrozenEventParameters class','edu.wustl.catissuecore.domain.FrozenEventParameters',NULL,NULL,1,'2005-01-01'),
+		(30,'EmbeddedEventParameters','EmbeddedEventParameters class','edu.wustl.catissuecore.domain.EmbeddedEventParameters',NULL,NULL,1,'2005-01-01'),
+		(31,'ReviewEventParameters','ReviewEventParameters class','edu.wustl.catissuecore.domain.ReviewEventParameters',NULL,NULL,1,'2005-01-01'),
+		(32,'SpunEventParameters','SpunEventParameters class','edu.wustl.catissuecore.domain.SpunEventParameters',NULL,NULL,1,'2005-01-01'),
+		(33,'ThawEventParameters','ThawEventParameters class','edu.wustl.catissuecore.domain.ThawEventParameters',NULL,NULL,1,'2005-01-01'),
+		(34,'SpecimenEventParameters','SpecimenEventParameters class','edu.wustl.catissuecore.domain.SpecimenEventParameters',NULL,NULL,1,'2005-01-01'),
+		(35,'ReceivedEventParameters','ReceivedEventParameters class','edu.wustl.catissuecore.domain.ReceivedEventParameters',NULL,NULL,1,'2005-01-01'),
+		(36,'DisposalEventParameters','DisposalEventParameters class','edu.wustl.catissuecore.domain.DisposalEventParameters',NULL,NULL,1,'2005-01-01'),
+		(37,'FixedEventParameters','FixedEventParameters class','edu.wustl.catissuecore.domain.FixedEventParameters',NULL,NULL,1,'2005-01-01'),
+		(38,'ProcedureEventParameters','ProcedureEventParameters class','edu.wustl.catissuecore.domain.ProcedureEventParameters',NULL,NULL,1,'2005-01-01'),
+		(39,'TransferEventParameters','TransferEventParameters class','edu.wustl.catissuecore.domain.TransferEventParameters',NULL,NULL,1,'2005-01-01'),
+		(40,'CollectionEventParameters','CollectionEventParameters class','edu.wustl.catissuecore.domain.CollectionEventParameters',NULL,NULL,1,'2005-01-01'),
+		(41,'Site','Site class','edu.wustl.catissuecore.domain.Site',NULL,NULL,1,'2005-01-01'),
+		(42,'StorageContainer','StorageContainer class','edu.wustl.catissuecore.domain.StorageContainer',NULL,NULL,1,'2005-01-01'),
+		(43,'StorageContainerDetails','StorageContainerDetails class','edu.wustl.catissuecore.domain.StorageContainerDetails',NULL,NULL,1,'2005-01-01'),
+		(44,'Capacity','Capacity class','edu.wustl.catissuecore.domain.Capacity',NULL,NULL,1,'2005-01-01'),
+		(45,'StorageType','StorageType class','edu.wustl.catissuecore.domain.StorageType',NULL,NULL,1,'2005-01-01'),
+		(46,'User','User class','edu.wustl.catissuecore.domain.User',NULL,NULL,1,'2005-01-01'),
+		(47,'Address','Address class','edu.wustl.catissuecore.domain.Address',NULL,NULL,1,'2005-01-01'),
+		(48,'CancerResearchGroup','CancerResearchGroup class','edu.wustl.catissuecore.domain.CancerResearchGroup',NULL,NULL,1,'2005-01-01'),
+		(50,'Department','Department class','edu.wustl.catissuecore.domain.Department',NULL,NULL,1,'2005-01-01'),
+		(51,'Institution','Institution class','edu.wustl.catissuecore.domain.Institution',NULL,NULL,1,'2005-01-01'),
+		(52,'Distribution','Distribution class','edu.wustl.catissuecore.domain.Distribution',NULL,NULL,1,'2005-01-01'),
+		(53,'DistributedItem','DistributedItem class','edu.wustl.catissuecore.domain.DistributedItem',NULL,NULL,1,'2005-01-01'),
+		(54,'CollectionProtocolEvent','CollectionProtocolEvent class','edu.wustl.catissuecore.domain.CollectionProtocolEvent',NULL,NULL,1,'2005-01-01'),
+		(55,'CollectionProtocol','CollectionProtocol class','edu.wustl.catissuecore.domain.CollectionProtocol',NULL,NULL,1,'2005-01-01'),
+		(56,'DistributionProtocol','DistributionProtocol class','edu.wustl.catissuecore.domain.DistributionProtocol',NULL,NULL,1,'2005-01-01'),
+		(57,'SpecimenProtocol','SpecimenProtocol class','edu.wustl.catissuecore.domain.SpecimenProtocol',NULL,NULL,1,'2005-01-01'),
+		(269,'edu.wustl.catissuecore.domain.ReportedProblem','edu.wustl.catissuecore.domain.ReportedProblem','edu.wustl.catissuecore.domain.ReportedProblem',NULL,NULL,1,'2005-08-31'),
+		(272,'edu.wustl.catissuecore.domain.SignUpUser','edu.wustl.catissuecore.domain.SignUpUser','edu.wustl.catissuecore.domain.SignUpUser',NULL,NULL,1,'2005-08-31'),
+		(276,'SpecimenArrayType','SpecimenArrayType Class','edu.wustl.catissuecore.domain.SpecimenArrayType',NULL,NULL,1,'2006-08-31'),
+		(281,'SpecimenArray','SpecimenArray Class','edu.wustl.catissuecore.domain.SpecimenArray',NULL,NULL,1,'2006-08-31'),
+		(294,'Local Extensions','Local Extensions class','edu.common.dynamicextensions.domain.integration.EntityMap',NULL,NULL,1,'2007-01-17'),
+		(300,'Consent Tier','ConsentTier Object','edu.wustl.catissuecore.domain.ConsentTier',NULL,NULL,1,'2006-11-27'),
+		(301,'Consent Tier Response','Consent Tier Response Object','edu.wustl.catissuecore.domain.ConsentTierResponse',NULL,NULL,1,'2006-11-27'),
+		(302,'Consent Tier Status','Consent Tier Status Object','edu.wustl.catissuecore.domain.ConsentTierStatus',NULL,NULL,1,'2006-11-27'),
+		(303,'ReturnEventParameters','ReturnEventParameters Class','edu.wustl.catissuecore.domain.ReturnEventParameters',NULL,NULL,1,'2007-01-17'),
+		(304,'Order','Order Object','edu.wustl.catissuecore.domain.OrderDetails',NULL,NULL,1,'2006-11-27'),
+		(305,'OrderItem','OrderItem Object','edu.wustl.catissuecore.domain.OrderItem',NULL,NULL,1,'2006-11-27'),
+		(306,'Derived Specimen Order Item','Derived Specimen Order Item Object','edu.wustl.catissuecore.domain.DerivedSpecimenOrderItem',NULL,NULL,1,'2006-11-27'),
+		(307,'Existing Specimen Array Order Item','Existing Specimen Array Order Item Object','edu.wustl.catissuecore.domain.ExistingSpecimenArrayOrderItem',NULL,NULL,1,'2006-11-27'),
+		(308,'Existing Specimen Order Item','Existing Specimen Order Item Object','edu.wustl.catissuecore.domain.ExistingSpecimenOrderItem',NULL,NULL,1,'2006-11-27'),
+		(309,'New Specimen Array Order Item','New Specimen Array Order Item Object','edu.wustl.catissuecore.domain.NewSpecimenArrayOrderItem',NULL,NULL,1,'2006-11-27'),
+		(310,'New Specimen Order Item','New Specimen Order Item Object','edu.wustl.catissuecore.domain.NewSpecimenOrderItem',NULL,NULL,1,'2006-11-27'),
+		(311,'Pathological Case Order Item','Pathological Case Order Item Object','edu.wustl.catissuecore.domain.PathologicalCaseOrderItem',NULL,NULL,1,'2006-11-27'),
+		(312,'Specimen Array Order Item','Specimen Array Order Item Object','edu.wustl.catissuecore.domain.SpecimenArrayOrderItem',NULL,NULL,1,'2006-11-27'),
+		(313,'Specimen Order Item','Specimen Order Item Object','edu.wustl.catissuecore.domain.SpecimenOrderItem',NULL,NULL,1,'2006-11-27'),
+		(315,'IdentifiedSurgicalPathologyReport','IdentifiedSurgicalPathologyReport Object','edu.wustl.catissuecore.domain.pathology.IdentifiedSurgicalPathologyReport',NULL,NULL,1,'2006-11-27'),
+		(316,'DeidentifiedSurgicalPathologyReport','DeidentifiedSurgicalPathologyReport Object','edu.wustl.catissuecore.domain.pathology.DeidentifiedSurgicalPathologyReport',NULL,NULL,1,'2006-11-27'),
+		(317,'ReportLoaderQueue','ReportLoaderQueue Object','edu.wustl.catissuecore.domain.pathology.ReportLoaderQueue',NULL,NULL,1,'2006-11-27'),
+		(318,'Review Comments','PathologyReportReviewParameter Object','edu.wustl.catissuecore.domain.pathology.PathologyReportReviewParameter',NULL,NULL,1,'2006-11-27'),
+		(319,'Quarantine Comments','QuarantineEventParameter Object','edu.wustl.catissuecore.domain.pathology.QuarantineEventParameter',NULL,NULL,1,'2006-11-27'),
+		(326,'AbstractPosition','AbstractPosition Object','edu.wustl.catissuecore.domain.AbstractPosition',NULL,NULL,1,'2008-05-28'),
+		(327,'SpecimenPosition','SpecimenPosition Object','edu.wustl.catissuecore.domain.SpecimenPosition',NULL,NULL,1,'2008-05-28'),
+		(328,'ContainerPosition','ContainerPosition Object','edu.wustl.catissuecore.domain.ContainerPosition',NULL,NULL,1,'2008-05-28'),
+		(329,'AbstractSpecimen','AbstractSpecimen Object','edu.wustl.catissuecore.domain.AbstractSpecimen',NULL,NULL,1,'2008-05-28'),
+		(330,'SpecimenRequirement','SpecimenRequirement Object','edu.wustl.catissuecore.domain.SpecimenRequirement',NULL,NULL,1,'2008-05-28'),
+		(331,'MolecularSpecimenRequirement','MolecularSpecimenRequirement Object','edu.wustl.catissuecore.domain.MolecularSpecimenRequirement',NULL,NULL,1,'2008-05-28'),
+		(332,'FluidSpecimenRequirement','FluidSpecimenRequirement Object','edu.wustl.catissuecore.domain.FluidSpecimenRequirement',NULL,NULL,1,'2008-05-28'),
+		(333,'CellSpecimenRequirement','CellSpecimenRequirement Object','edu.wustl.catissuecore.domain.CellSpecimenRequirement',NULL,NULL,1,'2008-05-28'),
+		(334,'TissueSpecimenRequirement','TissueSpecimenRequirement Object','edu.wustl.catissuecore.domain.TissueSpecimenRequirement',NULL,NULL,1,'2008-05-28'),
+		(335,'DistributionSpecimenRequirement','DistributionSpecimenRequirement Object','edu.wustl.catissuecore.domain.DistributionSpecimenRequirement',NULL,NULL,1,'2008-05-28'),
+		(336,'ADMIN_PROTECTION_ELEMENT','ADMIN_PROTECTION_ELEMENT Object','ADMIN_PROTECTION_ELEMENT',NULL,NULL,1,'2008-07-22');
+	</sql>
+ </changeSet>  
+ <changeSet author="dpatil" id="initialize catissue_query_editlink_cols">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_protection_group</sqlCheck>
+    </preConditions>
+	<sql>
+	INSERT INTO `csm_protection_group` 
+	VALUES 
+	(1,'ADMINISTRATOR_PROTECTION_GROUP','Protection elements for class names of objects that belong to Administrative data',1,0,'2005-01-01',NULL),
+	(2,'SUPERVISOR_PROTECTION_GROUP','Protection elements for class names of objects that belong to Supervisor\'s data',1,0,'2005-01-01',NULL),
+	(3,'TECHNICIAN_PROTECTION_GROUP','Protection elements for class names of objects that belong to Technician data',1,0,'2005-01-01',NULL),
+	(17,'SECURED_ADMINISTRATIVE_ACTIONS',NULL,1,0,'2005-01-01',NULL),
+	(18,'SECURED_SUPERVISORY_ACTIONS',NULL,1,0,'2005-01-01',NULL),
+	(19,'SECURED_TECHNICIAN_ACTIONS',NULL,1,0,'2005-01-01',NULL),
+	(20,'PUBLIC_DATA_GROUP',NULL,1,0,'2005-01-01',NULL),
+	(21,'ADMINISTRATORS_DATA_GROUP',NULL,1,0,'2005-01-01',NULL),
+	(22,'SUPERVISORS_DATA_GROUP',NULL,1,0,'2005-01-01',NULL),
+	(23,'TECHNICIANS_DATA_GROUP',NULL,1,0,'2005-01-01',NULL),
+	(24,'SECURED_PUBLIC_ACTIONS',NULL,1,0,'2005-01-01',NULL),
+	(44,'SCIENTIST_PROTECTION_GROUP',NULL,1,0,'2005-01-01',NULL),
+	(45,'PUBLIC_QUERY_PROTECTION_GROUP',NULL,1,0,'2009-08-06',NULL);
+	</sql>
+ </changeSet> 
+ <changeSet author="dpatil" id="initialize csm_pg_pe">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_pg_pe</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_pg_pe` 
+		VALUES 
+		(16,21,9,NULL),(17,2,10,NULL),(19,2,11,NULL),(20,2,12,NULL),(21,2,13,NULL),(22,2,14,NULL),
+		(23,3,15,NULL),(24,3,16,NULL),(25,3,17,NULL),(26,3,18,NULL),(27,3,19,NULL),(28,1,20,NULL),
+		(29,3,21,NULL),(30,3,22,NULL),(31,3,23,NULL),(32,3,24,NULL),(33,3,25,NULL),(34,3,26,NULL),
+		(35,3,27,NULL),(36,3,28,NULL),(37,3,29,NULL),(38,3,30,NULL),(39,3,31,NULL),(40,3,32,NULL),
+		(41,3,33,NULL),(42,3,34,NULL),(43,3,35,NULL),(44,3,36,NULL),(45,3,37,NULL),(46,3,38,NULL),
+		(47,3,39,NULL),(48,3,40,NULL),(49,1,41,NULL),(50,1,42,NULL),(51,1,43,NULL),(52,1,44,NULL),
+		(53,1,45,NULL),(54,1,46,NULL),(55,1,47,NULL),(56,1,48,NULL),(58,1,50,NULL),(59,1,51,NULL),
+		(60,3,52,NULL),(61,3,53,NULL),(299,1,269,NULL),(302,1,272,NULL),(306,1,276,NULL),(312,3,281,NULL),
+		(330,1,54,NULL),(331,1,55,NULL),(332,1,56,NULL),(335,44,304,'2007-01-04'),
+		(336,44,305,'2007-01-04'),(337,44,306,'2007-01-04'),(338,44,307,'2007-01-04'),
+		(339,44,308,'2007-01-04'),(340,44,309,'2007-01-04'),(341,44,310,'2007-01-04'),
+		(342,44,311,'2007-01-04'),(343,44,312,'2007-01-04'),(344,44,313,'2007-01-04'),
+		(348,1,304,'2006-11-27'),(349,2,304,'2006-11-27'),(350,3,304,'2006-11-27'),
+		(351,1,305,'2006-11-27'),(352,2,305,'2006-11-27'),(353,3,305,'2006-11-27'),
+		(354,1,306,'2006-11-27'),(355,2,306,'2006-11-27'),(356,3,306,'2006-11-27'),
+		(357,1,307,'2006-11-27'),(358,2,307,'2006-11-27'),(359,3,307,'2006-11-27'),
+		(360,1,308,'2006-11-27'),(361,2,308,'2006-11-27'),(362,3,308,'2006-11-27'),
+		(363,1,309,'2006-11-27'),(364,2,309,'2006-11-27'),(365,3,309,'2006-11-27'),
+		(366,1,310,'2006-11-27'),(367,2,310,'2006-11-27'),(368,3,310,'2006-11-27'),
+		(369,1,311,'2006-11-27'),(370,2,311,'2006-11-27'),(371,3,311,'2006-11-27'),
+		(372,1,312,'2006-11-27'),(373,2,312,'2006-11-27'),(374,3,312,'2006-11-27'),
+		(375,1,313,'2006-11-27'),(376,2,313,'2006-11-27'),(377,3,313,'2006-11-27'),
+		(378,1,300,'2006-11-27'),(379,2,300,'2006-11-27'),(380,3,300,'2006-11-27'),
+		(381,1,301,'2006-11-27'),(382,2,301,'2006-11-27'),(383,3,301,'2006-11-27'),
+		(384,1,302,'2006-11-27'),(385,2,302,'2006-11-27'),(386,3,302,'2006-11-27'),
+		(387,3,303,'2007-01-18'),(388,1,315,'2006-11-27'),(389,1,316,'2006-11-27'),
+		(390,1,317,'2006-11-27'),(391,1,318,'2006-11-27'),(392,1,319,'2006-11-27'),
+		(399,1,326,'2008-05-28'),(400,1,327,'2008-05-28'),(401,1,328,'2008-05-28'),
+		(402,1,329,'2008-05-28'),(403,1,330,'2008-05-28'),(404,1,331,'2008-05-28'),
+		(405,1,332,'2008-05-28'),(406,1,333,'2008-05-28'),(407,1,334,'2008-05-28'),
+		(408,1,335,'2008-05-28'),(409,1,336,'2008-07-22');
+	</sql>
+ </changeSet>
+  <changeSet author="dpatil" id="initialize csm_role">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_role</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_role` 
+		VALUES 
+		(1,'Administrator','Role for Administrator',1,0,'2005-01-01'),(2,'Supervisor','Role for Supervisor',1,0,'2005-01-01'),
+		(3,'Technician','Role for Technician',1,0,'2005-01-01'),(4,'PI','Role for Principal Investigator',1,0,'2005-01-01'),
+		(5,'READ_ONLY','Read Only Role',1,0,'2005-01-01'),(6,'USE_ONLY','Use Only Role',1,0,'2005-01-01'),
+		(7,'Scientist','Role for Public',1,0,'2005-01-01'),(8,'UPDATE_ONLY','Update Only Role',1,0,'2005-01-01'),
+		(9,'EXECUTE_ONLY','Execute Only Role',1,0,'2005-01-01'),(10,'READ_DENIED','Read Denied Role',1,0,'2005-01-01'),
+		(11,'Coordinator','Role for Coordinator',1,0,'2005-01-01'),(12,'CREATE_ONLY','Create only role',1,0,'2005-01-01'),
+		(13,'SUPERADMINISTRATOR','SUPER ADMINISTRATOR ROLE',1,0,'2008-06-19');
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize csm_role_privilege">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_role_privilege</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_role_privilege` 
+		VALUES 
+		(1,1,1,'2005-01-01'),(2,1,3,'2005-01-01'),(3,1,5,'2005-01-01'),(4,1,7,'2005-01-01'),(5,1,8,'2005-01-01'),(6,1,9,'2005-01-01'),
+		(7,1,10,'2005-01-01'),(8,2,3,'2005-01-01'),(9,2,7,'2005-01-01'),(11,3,1,'2005-01-01'),(12,3,3,'2005-01-01'),(13,3,5,'2005-01-01'),
+		(14,3,7,'2005-01-01'),(16,4,3,'2005-01-01'),(17,4,9,'2005-01-01'),(18,5,3,'2005-01-01'),(19,6,8,'2005-01-01'),(20,8,5,'2005-01-01'),
+		(21,9,7,'2005-01-01'),(22,6,3,'2005-01-01'),(23,8,3,'2005-01-01'),(24,1,11,'2005-01-01'),(25,2,11,'2005-01-01'),
+		(26,4,11,'2005-01-01'),(27,10,12,'2005-01-01'),(28,11,3,'2005-01-01'),(29,11,11,'2005-01-01'),(30,12,1,'2005-01-01'),
+		(31,13,13,'2008-06-19'),(32,13,17,'2008-06-19'),(33,13,14,'2008-06-19'),(34,13,15,'2008-06-19'),(35,13,16,'2008-06-19'),
+		(36,13,18,'2008-06-19'),(37,13,20,'2008-06-19'),(38,13,21,'2008-06-19'),(39,13,22,'2008-06-19'),(40,13,23,'2008-06-19'),
+		(41,13,24,'2008-06-19'),(42,13,25,'2008-06-19'),(43,13,26,'2008-06-19'),(44,13,27,'2008-06-19'),(45,13,28,'2008-06-19'),
+		(46,13,29,'2008-06-19'),(47,1,13,'2008-06-19'),(48,1,14,'2008-06-19'),(49,1,15,'2008-06-19'),(50,1,16,'2008-06-19'),
+		(51,1,18,'2008-06-19'),(52,1,20,'2008-06-19'),(53,1,21,'2008-06-19'),(54,1,22,'2008-06-19'),(55,1,23,'2008-06-19'),
+		(56,1,24,'2008-06-19'),(57,1,25,'2008-06-19'),(58,1,26,'2008-06-19'),(59,1,27,'2008-06-19'),(60,1,28,'2008-06-19'),(61,2,18,'2008-06-19'),
+		(62,2,20,'2008-06-19'),(63,2,21,'2008-06-19'),(64,2,22,'2008-06-19'),(65,2,23,'2008-06-19'),(66,2,24,'2008-06-19'),(67,2,25,'2008-06-19'),
+		(68,2,26,'2008-06-19'),(69,2,27,'2008-06-19'),(70,3,21,'2008-06-19'),(71,3,22,'2008-06-19'),(72,3,25,'2008-06-19'),(73,3,26,'2008-06-19'),
+		(74,3,27,'2008-06-19'),(75,7,22,'2008-06-19'),(76,1,29,'2008-07-22'),(77,4,5,'2008-06-19'),(78,4,6,'2008-06-19'),(79,4,7,'2008-06-19'),
+		(80,4,23,'2008-06-19'),(81,11,5,'2008-06-19'),(82,11,6,'2008-06-19'),(83,11,7,'2008-06-19'),(84,11,23,'2008-06-19'),
+		(85,1,30,'2008-08-20'),(86,2,30,'2008-08-20');
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize csm_user_group">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_user_group</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_user_group` VALUES (1,1,1);
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize csm_user_group_role_pg">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_user_group_role_pg</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `csm_user_group_role_pg` 
+		VALUES 
+		(3,NULL,4,5,1,'2005-01-01'),(4,NULL,1,1,1,'2005-01-01'),(5,NULL,1,1,2,'2005-01-01'),(6,NULL,1,1,3,'2005-01-01'),
+		(20,NULL,1,1,17,'2005-01-01'),(21,NULL,1,1,18,'2005-01-01'),(22,NULL,1,1,19,'2005-01-01'),(23,NULL,1,1,20,'2005-01-01'),
+		(24,NULL,1,1,21,'2005-01-01'),(25,NULL,1,1,22,'2005-01-01'),(26,NULL,1,1,23,'2005-01-01'),(27,NULL,2,1,2,'2005-01-01'),
+		(28,NULL,2,1,3,'2005-01-01'),(33,NULL,2,1,22,'2005-01-01'),(34,NULL,2,1,23,'2005-01-01'),(35,NULL,2,2,1,'2005-01-01'),
+		(40,NULL,2,2,18,'2005-01-01'),(41,NULL,2,2,19,'2005-01-01'),(46,NULL,2,2,21,'2005-01-01'),(47,NULL,3,3,3,'2005-01-01'),
+		(50,NULL,3,3,19,'2005-01-01'),(51,NULL,3,5,1,'2005-01-01'),(52,NULL,3,5,2,'2005-01-01'),(56,NULL,3,5,21,'2005-01-01'),
+		(57,NULL,3,5,22,'2005-01-01'),(61,NULL,4,5,2,'2005-01-01'),(62,NULL,4,5,3,'2005-01-01'),(69,NULL,4,5,20,'2005-01-01'),
+		(70,NULL,1,1,24,'2005-08-24'),(71,NULL,2,2,24,'2005-08-24'),(72,NULL,3,3,24,'2005-08-24'),(73,NULL,4,9,24,'2005-08-24'),
+		(74,NULL,2,2,20,'2006-01-18'),(75,NULL,3,3,20,'2005-08-24'),(102,NULL,4,12,44,'2005-01-01');
+	</sql>
+ </changeSet>
+ <changeSet author="dpatil" id="initialize labelsql">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from labelsql</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `labelsql` 
+		VALUES 
+		(1,'HEADER',NULL),
+		(2,'NUM_REG_PARTICIPANTS','select count(catissue_coll_prot_reg.participant_id) from catissue_coll_prot_reg,catissue_collection_protocol where catissue_coll_prot_reg.collection_protocol_id=catissue_collection_protocol.identifier and catissue_collection_protocol.identifier =? and catissue_collection_protocol.activity_status=\'Active\' and catissue_coll_prot_reg.activity_status=\'Active\''),
+		(3,'NUM_MALE_PARTICIPANTS','select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_participant.gender=\'Male Gender\' and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(4,'NUM_FEMALE_PARTICIPANTS','select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_participant.gender=\'Female Gender\' and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(5,'NUM_ALIVE_PARTICIPANTS','select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_participant.vital_status=\'Alive\' and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(6,'NUM_DEAD_PARTICIPANTS','select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_participant.vital_status=\'Dead\'and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(7,'NUM_CONSENTED_PARTICIPANT','select count(DISTINCT catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_consent_tier_response where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.identifier=catissue_consent_tier_response.coll_prot_reg_id and catissue_participant.activity_status=\'Active\' and catissue_coll_prot_reg.activity_status=\'Active\' and catissue_consent_tier_response.response NOT IN (\'Not Specified\') and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(8,'NUM_WHITE_RACE_PARTICIPANTS','select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status=\'Active\' and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_race.race_name=\'White\'and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(9,'NUM_ASIAN_RACE_PARTICIPANTS','select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_race.race_name=\'Asian\'and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(10,'NUM_AME_IND_OR_ALASKA_NATIVE','select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_race.race_name=\'American Indian or Alaska Native\'and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(11,'NUM_BLACK_OR_AFRICAN_AMERICAN','select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_race.race_name=\'Black or African American\'and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(12,'NUM_NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER','select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_race.race_name=\'Native Hawaiian or Other Pacific Islander\'and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(13,'NUM_COMPLETE_SCG','select count(catissue_specimen_coll_group.identifier) from catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and  catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen_coll_group.ACTIVITY_STATUS=\'Active\' and catissue_coll_prot_reg.activity_status=\'Active\' and catissue_specimen_coll_group.collection_status=\'Complete\''),
+		(14,'NUM_PENDING_SCG','select count(catissue_specimen_coll_group.identifier) from catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen_coll_group.ACTIVITY_STATUS=\'Active\' and catissue_coll_prot_reg.activity_status=\'Active\' and catissue_specimen_coll_group.collection_status=\'Pending\''),
+		(15,'NUM_PENDING_SPECIMEN','select count(catissue_specimen.identifier)from catissue_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.collection_status=\'Pending\''),
+		(16,'NUM_CELL_SPECIMEN_COLLECTED','SELECT COUNT(DISTINCT catissue_specimen.identifier) FROM catissue_specimen JOIN catissue_specimen_coll_group ON catissue_specimen_coll_group.identifier=catissue_specimen.specimen_collection_group_id JOIN catissue_coll_prot_reg ON catissue_coll_prot_reg.identifier=catissue_specimen_coll_group.collection_protocol_reg_id AND catissue_specimen.activity_status=\'Active\' AND catissue_coll_prot_reg.activity_status=\'Active\' AND catissue_coll_prot_reg.collection_protocol_id=? AND catissue_specimen.collection_status=\'Collected\' AND catissue_specimen.SPECIMEN_CLASS=\'Cell\''),
+		(17,'NUM_TISSUE_SPECIMEN_COLLECTED','SELECT COUNT(DISTINCT catissue_specimen.identifier) FROM catissue_specimen JOIN catissue_specimen_coll_group ON catissue_specimen_coll_group.identifier=catissue_specimen.specimen_collection_group_id JOIN catissue_coll_prot_reg ON catissue_coll_prot_reg.identifier=catissue_specimen_coll_group.collection_protocol_reg_id AND catissue_specimen.activity_status=\'Active\' AND catissue_coll_prot_reg.activity_status=\'Active\' AND catissue_coll_prot_reg.collection_protocol_id=? AND catissue_specimen.collection_status=\'Collected\' AND catissue_specimen.SPECIMEN_CLASS=\'Tissue\''),
+		(18,'NUM_FLUID_SPECIMEN_COLLECTED','SELECT COUNT(DISTINCT catissue_specimen.identifier) FROM catissue_specimen JOIN catissue_specimen_coll_group ON catissue_specimen_coll_group.identifier=catissue_specimen.specimen_collection_group_id JOIN catissue_coll_prot_reg ON catissue_coll_prot_reg.identifier=catissue_specimen_coll_group.collection_protocol_reg_id AND catissue_specimen.activity_status=\'Active\' AND catissue_coll_prot_reg.activity_status=\'Active\' AND catissue_coll_prot_reg.collection_protocol_id=? AND catissue_specimen.collection_status=\'Collected\' AND catissue_specimen.SPECIMEN_CLASS=\'Fluid\''),
+		(19,'NUM_MOL_SPECIMEN_COLLECTED','SELECT COUNT(DISTINCT catissue_specimen.identifier) FROM catissue_specimen JOIN catissue_specimen_coll_group ON catissue_specimen_coll_group.identifier=catissue_specimen.specimen_collection_group_id JOIN catissue_coll_prot_reg ON catissue_coll_prot_reg.identifier=catissue_specimen_coll_group.collection_protocol_reg_id AND catissue_specimen.activity_status=\'Active\' AND catissue_coll_prot_reg.activity_status=\'Active\' AND catissue_coll_prot_reg.collection_protocol_id=? AND catissue_specimen.collection_status=\'Collected\' AND catissue_specimen.SPECIMEN_CLASS=\'Molecular\''),
+		(20,'NUM_MALIGNANT_COLL_SPECIMEN','select count(catissue_specimen.identifier)from catissue_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\' and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status=\'Malignant\' and catissue_specimen.collection_status=\'Collected\''),
+		(21,'NUM_AVAILABLE_SPECIMEN','select count(catissue_specimen.identifier)from catissue_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.available=1 and catissue_specimen.collection_status=\'Collected\''),
+		(22,'NUM_COLL_MLGNT_AVAILABLE_CELL_SPECIMEN','select count(catissue_specimen.identifier)from catissue_specimen,catissue_cell_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_cell_specimen.identifier and catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status=\'Malignant\'and catissue_specimen.available=1 and catissue_specimen.available_quantity > 0 and catissue_specimen.collection_status=\'Collected\''),
+		(23,'NUM_COLL_MLGNT_AVAILABLE_TISSUE_SPECIMEN','select count(catissue_specimen.identifier)from catissue_specimen,catissue_tissue_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_tissue_specimen.identifier and  catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status=\'Malignant\'and catissue_specimen.available=1 and catissue_specimen.available_quantity >0 and catissue_specimen.collection_status=\'Collected\''),
+		(24,'NUM_COLL_MLGNT_AVAI_FLUID_SPECIMEN','select count(catissue_specimen.identifier)from catissue_specimen,catissue_fluid_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_fluid_specimen.identifier and  catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status=\'Malignant\'and catissue_specimen.available=1 and catissue_specimen.available_quantity >0 and catissue_specimen.collection_status=\'Collected\''),
+		(25,'NUM_COLL_MLGNT_AVAI_MOL_SPECIMEN','select count(catissue_specimen.identifier)from catissue_specimen,catissue_molecular_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_molecular_specimen.identifier and  catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status=\'Active\'and catissue_coll_prot_reg.activity_status=\'Active\' and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status=\'Malignant\'and catissue_specimen.available=1 and catissue_specimen.available_quantity >0 and catissue_specimen.collection_status=\'Collected\''),
+		(26,'NUM_DISTRIBUTED_SPECIMENS','select count( distinct catissue_specimen.identifier)from catissue_specimen,catissue_distributed_item,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_distributed_item.specimen_id and catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_coll_prot_reg.collection_protocol_id=?'),
+		(27,'NUM_USERS','SELECT COUNT(*) FROM CATISSUE_USER A WHERE A.ACTIVITY_STATUS=\'Active\''),
+		(28,'NUM_USERS_ACCESSED_MONTH','SELECT (count(distinct(user_id))) FROM catissue_audit_event ae WHERE MONTH(ae.event_timestamp) = MONTH(now()) AND YEAR (ae.event_timestamp) = YEAR(now())'),
+		(29,'NUM_PENDING_USERS','SELECT COUNT(*) FROM CATISSUE_USER A WHERE A.ACTIVITY_STATUS = \'Pending\' or A.ACTIVITY_STATUS=\'New\''),
+		(30,'NUM_REPOSITORIES','SELECT COUNT(*) FROM CATISSUE_SITE A WHERE A.TYPE LIKE \'Repository\' AND A.ACTIVITY_STATUS=\'Active\''),
+		(31,'NUM_ACTIVE_CP','SELECT COUNT(*) FROM CATISSUE_COLLECTION_PROTOCOL B WHERE B.ACTIVITY_STATUS=\'Active\''),
+		(32,'NUM_ACTIVE_DP','SELECT COUNT(*) FROM CATISSUE_DISTRIBUTION_PROTOCOL B WHERE B.ACTIVITY_STATUS=\'Active\''),
+		(33,'NUM_REG_PARTICIPANTS_SYS','SELECT COUNT(*) FROM CATISSUE_PARTICIPANT A WHERE A.ACTIVITY_STATUS=\'Active\''),
+		(34,'NUM_COLLECTED_SPECIMEN_TOTAL','select count(*) from CATISSUE_SPECIMEN specimen where specimen.COLLECTION_STATUS = \'Collected\' and specimen.ACTIVITY_STATUS=\'Active\''),
+		(35,'NUM_COLLECTED_SPECIMEN_MONTH','select (count(distinct(cspe.identifier))) from catissue_specimen cspe inner join catissue_specimen_coll_group scg on scg.identifier = cspe.SPECIMEN_COLLECTION_GROUP_ID inner join catissue_coll_prot_reg cpr on cpr.identifier = scg.collection_protocol_reg_id where cspe.collection_status=\'Collected\' and cspe.ACTIVITY_STATUS=\'Active\' and MONTH(registration_date) = MONTH(now()) AND YEAR(registration_date) = YEAR(now())'),
+		(36,'NUM_SPECIMENS_BY_FLUID_CLASS_SYS','select count(*) from CATISSUE_SPECIMEN specimen where specimen.SPECIMEN_CLASS = \'Fluid\' and specimen.COLLECTION_STATUS = \'Collected\' and specimen.AVAILABLE=1 and specimen.ACTIVITY_STATUS=\'Active\''),
+		(37,'NUM_SPECIMENS_BY_TISSUE_CLASS_SYS','select count(*) from CATISSUE_SPECIMEN specimen where specimen.SPECIMEN_CLASS = \'Tissue\' and specimen.COLLECTION_STATUS = \'Collected\' and specimen.AVAILABLE=1 and specimen.ACTIVITY_STATUS=\'Active\''),
+		(38,'NUM_SPECIMENS_BY_MOLECULAR_CLASS_SYS','select count(*) from CATISSUE_SPECIMEN specimen where specimen.SPECIMEN_CLASS = \'Molecular\' and specimen.COLLECTION_STATUS = \'Collected\' and specimen.AVAILABLE=1 and specimen.ACTIVITY_STATUS=\'Active\''),
+		(39,'NUM_SPECIMENS_BY_CELL_CLASS_SYS','select count(*) from CATISSUE_SPECIMEN specimen where specimen.SPECIMEN_CLASS = \'Cell\' and specimen.COLLECTION_STATUS = \'Collected\' and specimen.AVAILABLE=1 and specimen.ACTIVITY_STATUS=\'Active\''),
+		(40,'NUM_PENDING_ORDERS','select count(*) from catissue_order where catissue_order.status=\'Pending\''),
+		(41,'NUM_PROCESSED_ORDER_MONTH','select count(*) from catissue_order where catissue_order.status=\'Completed\' and  MONTH(requested_date) = MONTH(now()) AND YEAR(requested_date) =YEAR(now())'),
+		(42,'NUM_SHIPMENT_REQUESTS_MONTH','select count(*) from catissue_shipment_request,catissue_base_shipment where catissue_shipment_request.identifier=catissue_base_shipment.identifier and catissue_base_shipment.activity_status=\'In Progress\' and MONTH(created_date) = MONTH(now()) AND YEAR(created_date) =YEAR(now())'),
+		(43,'NUM_SHIPMENT_PROCESSED_MONTH','select count(*) from catissue_base_shipment,catissue_shipment where catissue_shipment.identifier=catissue_base_shipment.identifier and catissue_base_shipment.activity_status=\'Received\' and MONTH(send_date) = MONTH(now()) AND YEAR(send_date) =YEAR(now())');
+	</sql>
+ </changeSet>
+  <changeSet author="dpatil" id="initialize os_department">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from os_department</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `os_department` VALUES (1,'d',1,'Active');
+	</sql>
+ </changeSet>
+  <changeSet author="dpatil" id="initialize os_user">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from os_user</sqlCheck>
+    </preConditions>
+	<sql>
+		INSERT INTO `os_user` VALUES (1,'admin@admin.com','Admin','Admin','admin@admin.com',NULL,'Active',1,1,1,1,1,NULL,1,NULL,'catissue');
+	</sql>
+ </changeSet>
+</databaseChangeLog> 
