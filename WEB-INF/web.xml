@@ -187,11 +187,12 @@ PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
 		<listener-class>edu.wustl.catissuecore.util.listener.CatissueCoreServletContextListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>edu.wustl.catissuecore.util.listener.CatissueCoreSessionListener</listener-class>
-	</listener>
-	<listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+	<listener>
+		<listener-class>edu.wustl.catissuecore.util.listener.CatissueCoreSessionListener</listener-class>
+	</listener>
+	
 <!-- listener definition starts -->
 <!-- servlet configuration starts -->
 	<servlet>

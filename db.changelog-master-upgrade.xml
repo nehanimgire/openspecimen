@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<include file="./SQL/liquibase_xml/DBUpgrade_v10.xml"/>  
+	<include file="./SQL/liquibase_xml/DBUpgrade_NCI.xml"/> 
+	<include file="./SQL/liquibase_xml/dashboard_scripts.xml"/>
+	<include file="./SQL/liquibase_xml/DBUpgrade_v20.xml"/>
+	<include file="./SQL/liquibase_xml/DBUpgrade_v21.xml"/>
+	<include file="./SQL/liquibase_xml/DBUpgrade_v30.xml"/>
+	<include file="./SQL/liquibase_xml/DBUpgrade_v31.xml"/>
+	<include file="./SQL/liquibase_xml/DBUpgrade_v32.xml"/>
+	<include file="./SQL/liquibase_xml/DBUpgrade_v33.xml"/>
+	<include file="./SQL/liquibase_xml/DBUpgrade_v40.xml"/>
+  
+</databaseChangeLog> 
