@@ -31,7 +31,7 @@ import edu.wustl.common.beans.SessionDataBean;
 @RequestMapping("/query-audit-logs")
 public class QueryAuditLogsController {
 
-	@Autowired
+/*	@Autowired
 	private HttpServletRequest httpServletRequest;
 
 	@Autowired
@@ -90,4 +90,4 @@ public class QueryAuditLogsController {
 		return (SessionDataBean) httpServletRequest.getSession().getAttribute(
 				Constants.SESSION_DATA);
 	}	
-}
+*/}

@@ -47,7 +47,7 @@ import edu.wustl.common.beans.SessionDataBean;
 @Controller
 @RequestMapping("/query-folders")
 public class QueryFoldersController {
-	
+	/*
 	@Autowired
 	private HttpServletRequest httpServletRequest;
 
@@ -206,4 +206,4 @@ public class QueryFoldersController {
 	private SessionDataBean getSession() {
 		return (SessionDataBean) httpServletRequest.getSession().getAttribute(Constants.SESSION_DATA);
 	}
-}
+*/}
