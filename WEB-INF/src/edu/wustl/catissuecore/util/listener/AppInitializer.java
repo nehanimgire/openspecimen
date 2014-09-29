@@ -84,7 +84,7 @@ private SpringLiquibase liquibase;
 		this.liquibase = liquibase;
 	}
 
-	private String isIntializable = "true";
+	private static String isInitializable = "true";
 
 	private static final Logger logger = Logger.getCommonLogger(AppInitializer.class);
 
@@ -92,12 +92,11 @@ private SpringLiquibase liquibase;
 
 	public void init() {
 		try {
-			if (liquibase != null && isIntializable.equals("true")) {
-				isIntializable = "false";
+			if (liquibase != null && isInitializable.equals("true")) {
+				isInitializable = "false";
 				ErrorKey.init("~");
 				AuditManager.init();
 				LoggerConfig.configureLogger(CommonServiceLocator.getInstance().getPropDirPath());
-				this.setGlobalVariable();
 				this.initCatissueParams();
 				logApplnInfo();
 				//DefaultValueManager.validateAndInitDefaultValueMap();
@@ -253,23 +252,6 @@ private SpringLiquibase liquibase;
 					"Exception occured while initialising " + "Report Scheduler" + e.getMessage(), e);
 			throw new RuntimeException(e.getLocalizedMessage(), e);
 		}
-	}
-
-	/**
-	 * Set Global variable.
-	 * @throws Exception Exception
-	 */
-	private void setGlobalVariable() throws Exception {
-		final String path = System.getProperty("app.propertiesFile");
-		XMLPropertyHandler.init(path);
-		new File(path);
-		final int maximumTreeNodeLimit = Integer.parseInt(XMLPropertyHandler.getValue(Constants.MAXIMUM_TREE_NODE_LIMIT));
-		Variables.maximumTreeNodeLimit = maximumTreeNodeLimit;
-		Variables.isToDisplayAdminEmail = Boolean.parseBoolean(XMLPropertyHandler
-				.getValue("display.admin.emails.onSummaryPage"));
-
-		HelpXMLPropertyHandler
-				.init(CommonServiceLocator.getInstance().getPropDirPath() + File.separator + "help_links.xml");
 	}
 
 	/**

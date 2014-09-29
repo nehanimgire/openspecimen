@@ -5,12 +5,18 @@
 
 package edu.wustl.catissuecore.util.listener;
 
+import java.io.File;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import edu.wustl.bulkoperator.util.BulkOperationUtility;
 import edu.wustl.catissuecore.cpSync.SyncCPThreadExecuterImpl;
+import edu.wustl.catissuecore.util.HelpXMLPropertyHandler;
+import edu.wustl.catissuecore.util.global.Variables;
+import edu.wustl.common.util.XMLPropertyHandler;
+import edu.wustl.catissuecore.util.global.Constants;
 import edu.wustl.common.util.global.ApplicationProperties;
 import edu.wustl.common.util.global.CommonServiceLocator;
 import edu.wustl.common.util.logger.Logger;
@@ -37,7 +43,7 @@ public class CatissueCoreServletContextListener implements ServletContextListene
 			logger.info("Initializing catissue application");
 			final ServletContext servletContext = sce.getServletContext();
 			ApplicationProperties.initBundle(servletContext.getInitParameter("resourcebundleclass"));
-
+			this.setGlobalVariable();
 			CommonServiceLocator.getInstance().setAppHome(sce.getServletContext().getRealPath(""));
 			logger.info(":::::::::::::Application home ::::::::::::" + CommonServiceLocator.getInstance().getAppHome());
 			
@@ -62,5 +68,21 @@ public class CatissueCoreServletContextListener implements ServletContextListene
 					+ "the Bulk Operation job status." + e.getMessage(), e);
 		}
 	}
+	/**
+	 * Set Global variable.
+	 * @throws Exception Exception
+	 */
+	private void setGlobalVariable() throws Exception {
+		final String path = System.getProperty("app.propertiesFile");
+		XMLPropertyHandler.init(path);
+		new File(path);
+		final int maximumTreeNodeLimit = Integer.parseInt(XMLPropertyHandler.getValue(Constants.MAXIMUM_TREE_NODE_LIMIT));
+		Variables.maximumTreeNodeLimit = maximumTreeNodeLimit;
+		Variables.isToDisplayAdminEmail = Boolean.parseBoolean(XMLPropertyHandler
+				.getValue("display.admin.emails.onSummaryPage"));
 
+		HelpXMLPropertyHandler
+				.init(CommonServiceLocator.getInstance().getPropDirPath() + File.separator + "help_links.xml");
+	}
+	
 }

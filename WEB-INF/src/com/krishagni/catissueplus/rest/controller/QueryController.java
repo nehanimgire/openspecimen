@@ -34,7 +34,7 @@ import edu.wustl.common.beans.SessionDataBean;
 @Controller
 @RequestMapping("/query")
 public class QueryController {
-	/*
+
 	@Autowired
 	private HttpServletRequest httpServletRequest;
 	
@@ -89,6 +89,6 @@ public class QueryController {
 	private SessionDataBean getSession() {
 		return (SessionDataBean) httpServletRequest.getSession().getAttribute(
 				Constants.SESSION_DATA);
-	}*/
+	}
 }
 																																																																																																																																						
