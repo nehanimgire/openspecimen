@@ -348,7 +348,7 @@
         <sql>SET FOREIGN_KEY_CHECKS=0;</sql>
     </changeSet>
 
-	<changeSet author="nitesh" id="9" failOnError="false">
+    <changeSet author="nitesh" id="9" failOnError="false">
 	     <addForeignKeyConstraint baseColumnNames="PARENT_SPECIMEN_ID"
 	               baseTableName="CATISSUE_CP_REQ_SPECIMEN"
 	               constraintName="FK_PARENT_CP_REQ_SPECIMEN"
@@ -366,22 +366,22 @@
                    referencedTableName="CATISSUE_USER"/>
     </changeSet>
     <changeSet author="nitesh" id="10" failOnError="false">
-	     <addForeignKeyConstraint baseColumnNames="PARENT_SPECIMEN_ID"
+	 <addForeignKeyConstraint baseColumnNames="PARENT_SPECIMEN_ID"
 	               baseTableName="CATISSUE_SPECIMEN"
 	               constraintName="FK_PARENT_SPECIMEN"
 	               referencedColumnNames="IDENTIFIER"
 	               referencedTableName="CATISSUE_SPECIMEN"/>
     </changeSet>
     
-	<changeSet author="nitesh" id="11" failOnError="false">
-	    <createIndex 
+    <changeSet author="nitesh" id="11" failOnError="false">
+         <createIndex 
 	            indexName="idx_specimen_class"
 	            tableName="CATISSUE_SPECIMEN"
 	            unique="false">
 	        <column name="SPECIMEN_CLASS" type="varchar(50)"/>
 	    </createIndex>
 	 </changeSet>
-	<changeSet author="nitesh" id="12" failOnError="false">
+    <changeSet author="nitesh" id="12" failOnError="false">
 	    <createIndex 
                 indexName="idx_specimen_type"
                 tableName="CATISSUE_SPECIMEN"
@@ -443,11 +443,11 @@
     </changeSet>
 
     <changeSet id="20" author="nitesh" runOnChange="false">
-		<preConditions  onFail="MARK_RAN">
-			<not>
-				<columnExists tableName="CATISSUE_COLL_EVENT_PARAM" columnName="EVENT_TIMESTAMP"  />
-			</not>			
-		</preConditions>
+	<preConditions  onFail="MARK_RAN">
+	    <not>
+		<columnExists tableName="CATISSUE_COLL_EVENT_PARAM" columnName="EVENT_TIMESTAMP"  />
+	    </not>			
+	</preConditions>
 
         <addColumn tableName="CATISSUE_COLL_EVENT_PARAM">
             <column name="EVENT_TIMESTAMP" type="${datetime.type}" />
@@ -645,10 +645,10 @@
         </addColumn>
     </changeSet>
 
-	<changeSet id="20.1" author="nitesh" runOnChange="false">
-		<preConditions  onFail="MARK_RAN">
-			<tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
-		</preConditions>
+    <changeSet id="20.1" author="nitesh" runOnChange="false">
+	<preConditions  onFail="MARK_RAN">
+	    <tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
+	</preConditions>
         
         <addColumn tableName="CATISSUE_DISTRI_EVENT_PARAM">
             <column name="EVENT_TIMESTAMP" type="${datetime.type}" />
@@ -1356,9 +1356,9 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
     </changeSet>
     
     <changeSet author="nitesh" id="adding FK for CATISSUE_DISTRI_EVENT_PARAM" failOnError="false">
-	  <preConditions  onFail="MARK_RAN">
-			<tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
-	  </preConditions>
+	<preConditions  onFail="MARK_RAN">
+	       <tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
+	</preConditions>
      	<!-- <addForeignKeyConstraint baseColumnNames="IDENTIFIER"
                baseTableName="CATISSUE_DISTRI_EVENT_PARAM"
                constraintName="FK_DISTRI_EVENT_TO_EV_MAPPING"
@@ -1395,15 +1395,15 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
     </changeSet>
 
     <changeSet author="vpawar" id="adding FK on form context to containers table" failOnError="true">
-		<preConditions onFail="MARK_RAN">
-			<tableExists tableName="DYEXTN_CONTAINERS" />
-		</preConditions>
-		<addForeignKeyConstraint 
-			constraintName="FK_FC_CNTR_ID_DC_IDENTIFIER"
-			baseTableName="CATISSUE_FORM_CONTEXT"
-			baseColumnNames="CONTAINER_ID"
-			referencedTableName="DYEXTN_CONTAINERS"
-			referencedColumnNames="IDENTIFIER"/>
+      <preConditions onFail="MARK_RAN">
+	<tableExists tableName="DYEXTN_CONTAINERS" />
+      </preConditions>
+      <addForeignKeyConstraint 
+	constraintName="FK_FC_CNTR_ID_DC_IDENTIFIER"
+	baseTableName="CATISSUE_FORM_CONTEXT"
+	baseColumnNames="CONTAINER_ID"
+	referencedTableName="DYEXTN_CONTAINERS"
+	referencedColumnNames="IDENTIFIER"/>
     </changeSet>
 
      <!-- changeSet author="vpawar" id="adding FK on form context to collection protocol table" failOnError="true">
@@ -3046,12 +3046,12 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
       
     </changeSet>
        
-	<changeSet author="ajaysamgir" id="adding dp sequence" failOnError="true" dbms="oracle">
-		 <createSequence 
-			sequenceName="OS_DISTRIBUTION_PROTOCOL_SEQ" 
-			startValue="1" 
-			incrementBy="1" 
-			ordered="true" />
+    <changeSet author="ajaysamgir" id="adding dp sequence" failOnError="true" dbms="oracle">
+	 <createSequence 
+		sequenceName="OS_DISTRIBUTION_PROTOCOL_SEQ" 
+		startValue="1" 
+		incrementBy="1" 
+		ordered="true" />
     </changeSet>
  
      <changeSet author="ajaysamgir" id="Migrate CATISSUE_D_P table data to OS_D_P table for mysql" failOnError="true" dbms="mysql">
@@ -3108,7 +3108,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 	</changeSet>
 
 	<changeSet author="dpatil" id="printrule" failOnError="true" dbms="oracle">
-		 <createSequence
+	 <createSequence
             sequenceName="OS_PRINT_RULE_SEQ"
             startValue="1"
             incrementBy="1"
