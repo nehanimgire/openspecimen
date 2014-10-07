@@ -13,5 +13,5 @@
   <include file="./SQL/liquibase_xml/db.seeddata-oracle-1.0.xml"/> 
   <include file="./SQL/liquibase_xml/db.pvseeddata-oracle-1.0.xml"/>
 	
-  <include file="de.dbchangelog-master.xml"/>   
+  <include file="./SQL/liquibase_xml/de.dbchangelog-master.xml"/>   
 </databaseChangeLog> 

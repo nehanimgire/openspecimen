@@ -646,9 +646,14 @@
     </changeSet>
 
     <changeSet id="20.1" author="nitesh" runOnChange="false">
-	<preConditions  onFail="MARK_RAN">
-	    <tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
-	</preConditions>
+		<preConditions  onFail="MARK_RAN">
+			<and>
+				<tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
+				<not>
+					<columnExists tableName="CATISSUE_DISTRI_EVENT_PARAM" columnName="EVENT_TIMESTAMP"/>
+				</not>
+			</and>
+		</preConditions>
         
         <addColumn tableName="CATISSUE_DISTRI_EVENT_PARAM">
             <column name="EVENT_TIMESTAMP" type="${datetime.type}" />
