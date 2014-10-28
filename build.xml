@@ -440,7 +440,6 @@
 				<include name="Applet/**" />
 				<include name="bootstrap.properties"/>
 				<include name="db.changelog-master-*.xml"/>
-				<include name="de.dbchangelog-master.xml"/>				
 			
 				<include name="ApplicationVersionInfo.txt" />
 				<include name="caTissue_Suite_User_Manual.pdf" />
@@ -469,9 +468,7 @@
 				<exclude name="**/*servlet.jar*" />
 
 				<exclude name="**/*hibernate2.jar*" />
-				<exclude name="**/*jta.jar*" />
 				<exclude name="**/CVS*" />
-				<exclude name="**/WEB-INF/lib/jta.jar" />
 				<!--exclude name="**/*build*"/>
 				<exclude name="**/*log4j.jar*" />
 				<exclude name="**/*WEB-INF*"/>
