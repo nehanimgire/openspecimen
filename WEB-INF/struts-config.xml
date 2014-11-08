@@ -1061,6 +1061,9 @@ PUBLIC
 			<forward name="success" path=".catissuecore.conflictViewDef" />
 			<forward name="access_denied" path="/ManageAdministrativeData.do" />
 		</action>
+		<action path="/SpecimenListGridAction" 
+			type="edu.wustl.catissuecore.action.SpecimenListGridAction" scope="request" validate="false">
+        	</action>
 
 		<action path="/ConflictDetails"
 			type="edu.wustl.catissuecore.action.ConflictDetailsAction" name="conflictDetailsForm"

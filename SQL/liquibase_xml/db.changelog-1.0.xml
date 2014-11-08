@@ -1977,6 +1977,41 @@
 		<addForeignKeyConstraint baseColumnNames="LAST_UPDATED_BY" baseTableName="catissue_saved_queries"  constraintName="FK_SAVED_QUERIES_UPDATED_BY" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="IDENTIFIER" referencedTableName="catissue_user"  referencesUniqueColumn="false"/>
 	</changeSet>
 
+	<changeSet author="krishagni (generated)"  id="1410511324488-113-hsqldb" dbms="hsqldb">
+		<preConditions  onFail="MARK_RAN">
+			<not>
+				<tableExists  tableName="catissue_saved_queries" />
+			</not>
+		</preConditions>
+		<createTable tableName="catissue_saved_queries">
+			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="TITLE" type="VARCHAR(128)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="CREATED_BY" type="BIGINT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="LAST_UPDATED_BY" type="BIGINT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueComputed="NOW" name="LAST_UPDATED_ON" type="TIMESTAMP">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValue="NOW" name="LAST_RUN_ON" type="TIMESTAMP">
+				<constraints nullable="false"/>
+			</column>
+			<column name="LAST_RUN_COUNT" type="BIGINT"/>
+			<column name="QUERY_DEF" type="TEXT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="DELETED_ON" type="TIMESTAMP"/>
+		</createTable>
+		<addForeignKeyConstraint baseColumnNames="CREATED_BY" baseTableName="catissue_saved_queries"  constraintName="FK_SAVED_QUERIES_CREATED_BY" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="IDENTIFIER" referencedTableName="catissue_user"  referencesUniqueColumn="false"/>
+		<addForeignKeyConstraint baseColumnNames="LAST_UPDATED_BY" baseTableName="catissue_saved_queries"  constraintName="FK_SAVED_QUERIES_UPDATED_BY" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="IDENTIFIER" referencedTableName="catissue_user"  referencesUniqueColumn="false"/>
+	</changeSet>
+
     <changeSet author="krishagni (generated)"  id="1410511324488-93">
         <preConditions  onFail="MARK_RAN">
 			<not>
@@ -3937,6 +3972,36 @@
         </createTable>
     </changeSet>
 
+	<changeSet author="krishagni (generated)"  id="1410511324488-192-hsqldb" dbms="hsqldb">
+        <preConditions  onFail="MARK_RAN">
+			<not>
+				<tableExists  tableName="report_job_details" />
+			</not>
+		</preConditions>
+        <createTable tableName="report_job_details">
+            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="SCHEDULE_ID" type="BIGINT"/>
+            <column name="USER_ID" type="BIGINT"/>
+            <column name="REPORT_ID" type="BIGINT"/>
+            <column name="FILE_NAME" type="VARCHAR(255)"/>
+            <column name="DOWNLOAD_COUNT" type="BIGINT"/>
+            <column name="CS_ID" type="BIGINT"/>
+            <column defaultValueComputed="NOW" name="EXEC_START" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NOW" name="EXEC_END" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EXEC_STATUS" type="VARCHAR(20)"/>
+            <column name="IS_EMAILED" type="BIT"/>
+            <column name="ERROR_DESC" type="VARCHAR(512)"/>
+            <column name="START_DATE" type="DATE"/>
+            <column name="END_DATE" type="DATE"/>
+        </createTable>
+    </changeSet>
+
     <changeSet author="krishagni (generated)"  id="1410511324488-193">
         <preConditions  onFail="MARK_RAN">
 			<not>
@@ -5040,7 +5105,7 @@
     <changeSet author="root (generated)" dbms="oracle" id="1410778429932-669">
         <createSequence sequenceName="CATISSUE_SPECIMEN_COLL_GRP_SEQ"/>
     </changeSet>
-    <changeSet author="root (generated)" dbms="oracle" id="1410778429932-670">
+    <changeSet author="root (generated)"  id="1410778429932-670">
         <createSequence sequenceName="CATISSUE_SPECIMEN_LIST_SEQ"/>
     </changeSet>
     <changeSet author="root (generated)" dbms="oracle" id="1410778429932-671">

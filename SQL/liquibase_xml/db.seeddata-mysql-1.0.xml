@@ -7,18 +7,28 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_address">
+  <changeSet author="dpatil"  id="initialize catissue_address">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_address</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_address</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
       INSERT INTO catissue_address VALUES (1,NULL,'Not Specified',NULL,'United States',NULL,NULL,NULL);
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_auth_providers">
+  <changeSet author="dpatil"  id="initialize catissue_auth_providers">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_auth_providers</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_auth_providers</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
       INSERT INTO catissue_auth_providers
@@ -26,9 +36,14 @@
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize csm_user">
+  <changeSet author="dpatil"  id="initialize csm_user">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_user</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from csm_user</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
       INSERT INTO csm_user 
@@ -36,54 +51,84 @@
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_cancer_research_group">
+  <changeSet author="dpatil"  id="initialize catissue_cancer_research_group">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_cancer_research_group</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_cancer_research_group</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
       INSERT INTO catissue_cancer_research_group VALUES  (1,'c');
     </sql>
   </changeSet>
  
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_department">
+  <changeSet author="dpatil"  id="initialize catissue_department">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_department</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_department</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
       INSERT INTO catissue_department VALUES  (1,'d');
     </sql>
   </changeSet>
 
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_institution">
+  <changeSet author="dpatil"  id="initialize catissue_institution">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_institution</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_institution</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
       INSERT INTO catissue_institution VALUES  (1,'i','Active');
     </sql>
   </changeSet>
 
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_user">
+  <changeSet author="dpatil"  id="initialize catissue_user">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_user</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_user</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
       INSERT INTO catissue_user VALUES (1,'admin@admin.com','Admin','Admin','admin@admin.com',NULL,'Active',1,1,1,1,1,NULL,1,NULL,'catissue');
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_capacity">
+  <changeSet author="dpatil"  id="initialize catissue_capacity">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_capacity</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_capacity</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
       INSERT INTO catissue_capacity VALUES  (1,100,1);
     </sql>
   </changeSet>
 
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_container_type">
+  <changeSet author="dpatil"  id="initialize catissue_container_type">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_container_type</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_container_type</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
     INSERT INTO catissue_container_type VALUES 
@@ -93,9 +138,14 @@
     </sql>
   </changeSet>
 
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_interface_column_data">
+  <changeSet author="dpatil"  id="initialize catissue_interface_column_data">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_interface_column_data</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_interface_column_data</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_interface_column_data VALUES 
@@ -200,9 +250,14 @@
     </sql>  
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_privileges">
+  <changeSet author="dpatil"  id="initialize catissue_privileges">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_privileges</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_privileges</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_privileges VALUES 
@@ -215,9 +270,14 @@
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_query_editlink_cols">
+  <changeSet author="dpatil"  id="initialize catissue_query_editlink_cols">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_query_editlink_cols</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_query_editlink_cols</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_query_editlink_cols VALUES 
@@ -225,9 +285,14 @@
 	(72,240),(72,243),(71,307),(35,320),(21,240),(1,307),(23,292),(23,293),(23,294),(27,60);
     </sql>
  </changeSet>
- <changeSet author="dpatil" dbms="mysql" id="initialize catissue_query_table_data">
+ <changeSet author="dpatil"  id="initialize catissue_query_table_data">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_query_table_data</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_query_table_data</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_query_table_data VALUES 
@@ -312,9 +377,14 @@
 	(101,'CATISSUE_SHIPMENT','Shipment','Shipment',2,NULL),(102,'CATISSUE_SHIPMENT_REQUEST','Shipment Request','ShipmentRequest',2,NULL);
     </sql>
   </changeSet>
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_related_tables_map">
+  <changeSet author="dpatil"  id="initialize catissue_related_tables_map">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_related_tables_map</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_related_tables_map</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_related_tables_map VALUES 
@@ -345,63 +415,98 @@
     </sql>
   </changeSet>
  
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_site">
+  <changeSet author="dpatil"  id="initialize catissue_site">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_site</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_site</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_site VALUES  (1,'In Transit','Repository','admin@admin.com',1,'Active',1,NULL);
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_site_coordinators">
+  <changeSet author="dpatil"  id="initialize catissue_site_coordinators">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_site_coordinators</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_site_coordinators</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_site_coordinators VALUES  (1,1);
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_specimen_array_type">
+  <changeSet author="dpatil"  id="initialize catissue_specimen_array_type">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_specimen_array_type</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_specimen_array_type</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_specimen_array_type VALUES  (2,NULL);
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_storage_type">
+  <changeSet author="dpatil"  id="initialize catissue_storage_type">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_storage_type</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_storage_type</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_storage_type VALUES  (1,NULL),(3,-80);
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_stor_type_holds_type">
+  <changeSet author="dpatil"  id="initialize catissue_stor_type_holds_type">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_stor_type_holds_type</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_stor_type_holds_type</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_stor_type_holds_type VALUES  (1,3);
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_stor_type_spec_class">
+  <changeSet author="dpatil"  id="initialize catissue_stor_type_spec_class">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_stor_type_spec_class</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_stor_type_spec_class</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
       	INSERT INTO catissue_stor_type_spec_class VALUES  (3,'Fluid'),(3,'Tissue'),(3,'Molecular'),(3,'Cell');
     </sql>
   </changeSet>
  
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_table_relation" context="legacy" >
+  <changeSet author="dpatil"  id="initialize catissue_table_relation" context="legacy" >
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_table_relation</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_table_relation</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_table_relation VALUES  (1,1,1,NULL),(2,6,6,NULL),(3,5,5,NULL),(4,7,7,NULL),(5,8,8,NULL),
@@ -425,25 +530,40 @@
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_password">
+  <changeSet author="dpatil"  id="initialize catissue_password">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_password</sqlCheck>
+	  <and>
+		<not>
+          <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_password</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO catissue_password VALUES  (1,'xxits++sTge8j2uyHEABIQ==','2014-09-12',1);
     </sql>
  </changeSet>
- <changeSet author="dpatil" dbms="mysql" id="initialize csm_application">
+ <changeSet author="dpatil"  id="initialize csm_application">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_application</sqlCheck>
+	  <and>
+		 <not>
+		    <dbms type="oracle" />
+		 </not>
+		<sqlCheck expectedResult="0">select count(*) from csm_application</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_application VALUES  (1,'catissuecore','caTISSUE Core',0,0,'2005-08-22',NULL,NULL,NULL,NULL,NULL);
     </sql>
  </changeSet>
- <changeSet author="dpatil" dbms="mysql" id="initialize csm_group">
+ <changeSet author="dpatil"  id="initialize csm_group">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_group</sqlCheck>
+	  <and>
+		<not>
+		  <dbms type="oracle" />
+		</not>
+		<sqlCheck expectedResult="0">select count(*) from csm_group</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_group 
@@ -455,9 +575,14 @@
     </sql>
   </changeSet>
  
-  <changeSet author="dpatil" dbms="mysql" id="initialize csm_privilege">
+  <changeSet author="dpatil"  id="initialize csm_privilege">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_privilege</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from csm_privilege</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_privilege
@@ -494,9 +619,14 @@
     </sql>
   </changeSet>
  
-  <changeSet author="dpatil" dbms="mysql" id="initialize csm_protection_element">
+  <changeSet author="dpatil"  id="initialize csm_protection_element">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_protection_element</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from csm_protection_element</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_protection_element 
@@ -587,15 +717,20 @@
     </sql>
   </changeSet>  
  
-  <changeSet author="dpatil" dbms="mysql" id="initialize csm_protection_group">
+  <changeSet author="dpatil"  id="initialize csm_protection_group">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_protection_group</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from csm_protection_group</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_protection_group 
 	VALUES 
 	(1,'ADMINISTRATOR_PROTECTION_GROUP','Protection elements for class names of objects that belong to Administrative data',1,0,'2005-01-01',NULL),
-	(2,'SUPERVISOR_PROTECTION_GROUP','Protection elements for class names of objects that belong to Supervisor\'s data',1,0,'2005-01-01',NULL),
+	(2,'SUPERVISOR_PROTECTION_GROUP','Protection elements for class names of objects that belong to Supervisors data',1,0,'2005-01-01',NULL),
 	(3,'TECHNICIAN_PROTECTION_GROUP','Protection elements for class names of objects that belong to Technician data',1,0,'2005-01-01',NULL),
 	(17,'SECURED_ADMINISTRATIVE_ACTIONS',NULL,1,0,'2005-01-01',NULL),
 	(18,'SECURED_SUPERVISORY_ACTIONS',NULL,1,0,'2005-01-01',NULL),
@@ -610,9 +745,14 @@
     </sql>
   </changeSet> 
  
-  <changeSet author="dpatil" dbms="mysql" id="initialize csm_pg_pe">
+  <changeSet author="dpatil"  id="initialize csm_pg_pe">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_pg_pe</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from csm_pg_pe</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_pg_pe
@@ -651,9 +791,14 @@
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize csm_role">
+  <changeSet author="dpatil"  id="initialize csm_role">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_role</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from csm_role</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_role
@@ -668,9 +813,14 @@
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize csm_role_privilege">
+  <changeSet author="dpatil"  id="initialize csm_role_privilege">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_role_privilege</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from csm_role_privilege</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_role_privilege
@@ -694,18 +844,28 @@
     </sql>
   </changeSet>
  
-  <changeSet author="dpatil" dbms="mysql" id="initialize csm_user_group">
+  <changeSet author="dpatil"  id="initialize csm_user_group">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_user_group</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from csm_user_group</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_user_group VALUES  (1,1,1);
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize csm_user_group_role_pg">
+  <changeSet author="dpatil"  id="initialize csm_user_group_role_pg">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from csm_user_group_role_pg</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from csm_user_group_role_pg</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO csm_user_group_role_pg 
@@ -722,20 +882,28 @@
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize pv_cde">
+  <changeSet author="dpatil"  id="initialize pv_cde">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_cde</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_cde</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 INSERT INTO catissue_cde  VALUES ('2003988','Clinical Status','Clinical status of the participant.','1.0',NULL),('2003989','Gender','Gender of the participant.','1.0',NULL),('2003990','Genotype','Genotype of the participant.','1.0',NULL),('2003991','Specimen','Specimen Class','1.0',NULL),('2003992','Tissue Side','Tissue Side','1.0',NULL),('2003993','Pathological Status','Pathological Status','1.0',NULL),('2003994','Received Quality','Received Quality','1.0',NULL),('2003995','Fixation Type','Fixation Type','1.0',NULL),('2003996','Collection Procedure','Collection Procedure','1.0',NULL),('2003997','Container','Container','1.0',NULL),('2003998','Method','Method','1.0',NULL),('2003999','Embedding Medium','Embedding Medium','1.0',NULL),('2004000','Biohazard','Biohazard','1.0',NULL),('2004001','VitalStatus','Vital status of the participant.','1.0',NULL),('2004100','Countries','List of Countries.','1.0',NULL),('2004200','States','List of States.','1.0',NULL),('2004300','Collection Status','Collection Status','1.0',NULL),('4284','Request Status','Statuses for the ordered requests','1.0',NULL),('4285','Requested Items Status','Statuses for the individual elements in the ordered request','1.0',NULL),('Clinical_Diagnosis_PID','Clinical Diagnosis','Clinical Diagnosis','1.0',NULL),('Ethnicity_PID','Ethnicity','Ethnicity','1.0',NULL),('Hist_Quality','Histological Quality','Histological Quality','1.0',NULL),('order_status','Order Status','Order Status','1.0',NULL),('Race_PID','Race','Race','1.0',NULL),('scg_collection_status','Collection Status','Collection Status','1.0',NULL),('shipping_activity_status','Shipping Activity Status','Shipping Activity Status','1.0',NULL),('Site_Type_PID','Site Type','Site Type','1.0',NULL),('Specimen_Type_PID','Specimen Type','Specimen Type','1.0',NULL),('Tissue_Site_PID','Tissue Site','Tissue Site','1.0',NULL);
-
-
     </sql>
   </changeSet>
   
   <changeSet author="dpatil" dbms="mysql" id="initialize labelsql">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from labelsql</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from labelsql</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO labelsql
@@ -786,27 +954,58 @@ INSERT INTO catissue_cde  VALUES ('2003988','Clinical Status','Clinical status o
     </sql>
   </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize os_department">
+  <changeSet author="dpatil"  id="initialize os_department">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from os_department</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from os_department</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO os_department VALUES  (1,'d',1,'Active');
     </sql>
   </changeSet>
 
-  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_search_display_data">
+  <changeSet author="dpatil"  id="initialize catissue_search_display_data">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from catissue_search_display_data</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from catissue_search_display_data</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
-		INSERT INTO `catissue_search_display_data` VALUES (6,185,'Name',1,1),(6,184,'Identifier',1,2),(6,186,'Type',1,3),(6,187,'Email Address',1,4),(7,2,'Street',1,5),(7,3,'City',1,6),(7,4,'State',1,7),(7,5,'Country',1,8),(7,6,'Zip Code',1,9),(7,7,'Phone Number',1,10),(7,8,'Fax Number',1,11),(2,101,'Name',1,1),(2,100,'Identifier',1,2),(3,68,'Name',1,1),(3,67,'Identifier',1,2),(4,29,'Name',1,1),(4,28,'Identifier',1,2),(5,25,'Name',1,1),(5,24,'Identifier',1,2),(5,26,'Comments',1,3),(5,27,'Type',1,4),(108,307,'Name',1,1),(1,258,'Identifier',1,2),(1,260,'Default Temperature',1,3),(108,261,'One Dimension Label',1,4),(108,262,'Two Dimension Label',1,5),(108,308,'Comments',0,6),(110,240,'Container Name',1,1),(8,239,'Identifier',1,2),(8,241,'Temperature',1,3),(9,252,'One Dimension Capacity',0,4),(9,253,'Two Dimension Capacity',0,5),(10,307,'Container Type',0,6),(10,261,'One Dimension Label',0,7),(10,262,'Two Dimension Label',0,8),(11,185,'Site Name',1,9),(110,242,'Is Container Full',1,10),(110,243,'Barcode',1,11),(110,247,'Parent Container Identifier',1,12),(110,310,'Comments',0,15),(112,307,'Name',1,1),(111,311,'Identifier',1,2),(111,312,'Specimen Class',1,3),(112,261,'One Dimension Label',1,4),(112,262,'Two Dimension Label',1,5),(112,308,'Comments',0,6),(114,240,'Array Label',1,1),(113,313,'Identifier',1,2),(114,242,'Is Container Full',1,3),(114,243,'Barcode',1,4),(114,247,'Parent Container Identifier',1,5),(114,310,'Comments',0,8),(115,252,'One Dimension Capacity',1,9),(115,253,'Two Dimension Capacity',1,10),(116,307,'Array Type',0,11),(129,312,'SpecimenClass',1,12),(12,224,'Title',1,1),(12,54,'Identifier',1,2),(42,292,'Protocol Coordinator Last Name',0,5),(42,293,'Protocol Coordinator First Name',0,6),(12,225,'Short Title',1,7),(12,226,'IRB Identifier',1,8),(12,227,'Start Date',1,9),(17,347,'Title',1,1),(17,79,'Identifier',1,2),(17,348,'Short Title',1,3),(17,349,'IRB Identifier',1,4),(17,350,'Start Date',1,5),(17,351,'End Date',1,6),(17,352,'Enrollment',1,7),(17,353,'Description URL',1,8),(20,233,'Specimen Type',0,9),(20,234,'Tissue Site',0,10),(20,235,'Pathological Status',0,11),(19,80,'Distribution Protocol Identifier',0,15),(21,293,'First Name',1,1),(21,292,'Last Name',1,2),(21,285,'Identifier',1,3),(21,294,'Login Name',1,4),(21,295,'Date',1,5),(23,2,'Street',1,6),(23,3,'City',1,7),(23,4,'State',1,8),(23,5,'Country',1,9),(23,6,'Zip Code',1,10),(23,7,'Phone Number',1,11),(23,8,'Fax Number',1,12),(25,101,'Institution Name',1,13),(24,68,'Department Name',1,14),(26,29,'Cancer Research Group Name',1,15),(27,118,'First Name',1,2),(27,117,'Last Name',1,1),(27,116,'Identifier',1,12),(27,119,'Middle Name',1,3),(27,120,'Birth Date',1,5),(27,303,'Death Date',1,11),(27,304,'Vital Status',1,10),(27,121,'Gender',1,6),(27,122,'Genotype',1,7),(27,124,'Ethnicity',1,8),(27,125,'Social Security Number',1,9),(28,128,'Medical Record Number',0,4),(29,59,'Identifier',1,8),(45,224,'Protocol Title',0,6),(29,60,'Participant Protocol Identifier',1,1),(29,61,'Registration Date',1,7),(46,117,'Participant Last Name',1,2),(46,118,'Participant First Name',1,3),(46,119,'Participant Middle Name',1,4),(46,120,'Participant Birth Date',1,5),(30,320,'Name',1,1),(30,209,'Identifier',1,12),(30,210,'Clinical Diagnosis',1,7),(30,211,'Clinical Status',1,8),(48,224,'Collection Protocol Title',0,11),(31,57,'Study Calendar Event Point',1,9),(31,329,'Collection Point Label',0,9),(32,185,'Site Name',1,10),(33,60,'Protocol Participant Identifier',1,2),(47,45,'Surgical Pathology Number',1,6),(47,46,'Medical Record Number',1,5),(54,117,'Participant Last Name',1,3),(54,118,'Participant First Name',1,4),(34,323,'Label',1,2),(34,191,'Identifier',1,20),(34,102,'Class',1,6),(34,201,'Specimen Collection Group Identifier',1,5),(34,199,'Parent Specimen Identifier',1,9),(34,192,'Type',1,7),(34,208,'Pathological Status',1,12),(34,193,'Is Available',1,16),(34,196,'Barcode',1,1),(34,103,'Initial Quantity',1,13),(34,104,'Available Quantity',1,14),(34,322,'Lineage',1,8),(34,328,'Created On',1,19),(34,206,'Tissue Site',1,11),(34,207,'Tissue Side',1,10),(50,85,'External Identifier Name',1,3),(50,86,'External Identifier Value',1,4),(36,75,'Identifier',1,1),(36,298,'Distribution Date',1,2),(36,302,'Distribution Time',1,3),(37,72,'Distributed Quantity',1,4),(52,337,'Distributed Specimen Identifier',1,5),(52,192,'Distributed Specimen Type',1,6),(55,206,'Distributed Specimen Tissue Site',1,7),(55,207,'Distributed Specimen Tissue Side',1,8),(52,208,'Distributed Specimen Pathological Status',1,9),(57,39,'Identifier',1,NULL),(58,218,'Specimen Identifier',0,NULL),(58,219,'Event Timestamp',0,NULL),(58,221,'Comments',0,NULL),(59,292,'User Last Name',0,NULL),(59,293,'User First Name',0,NULL),(57,40,'Neoplastic Cellularity Percentage',0,NULL),(57,41,'Viable Cell Percentage',0,NULL),(60,42,'Identifier',1,NULL),(61,218,'Specimen Identifier',0,NULL),(61,219,'Event Timestamp',0,NULL),(61,221,'Comments',0,NULL),(62,292,'User Last Name',0,NULL),(62,293,'User First Name',0,NULL),(60,43,'Storage Status',1,NULL),(63,51,'Identifier',1,NULL),(64,218,'Specimen Identifier',0,NULL),(64,219,'Event Timestamp',0,NULL),(64,221,'Comments',0,NULL),(65,292,'User Last Name',0,NULL),(65,293,'User First Name',0,NULL),(63,52,'Collection Procedure',1,NULL),(63,53,'Container',1,NULL),(66,69,'Identifier',1,NULL),(67,218,'Specimen Identifier',0,NULL),(67,219,'Event Timestamp',0,NULL),(67,221,'Comments',0,NULL),(68,292,'User Last Name',0,NULL),(68,293,'User First Name',0,NULL),(66,70,'Reason',1,NULL),(69,82,'Identifier',1,NULL),(70,218,'Specimen Identifier',0,NULL),(70,219,'Event Timestamp',0,NULL),(70,221,'Comments',0,NULL),(71,292,'User Last Name',0,NULL),(71,293,'User First Name',0,NULL),(69,83,'Embedding Medium',1,NULL),(72,88,'Identifier',1,NULL),(73,218,'Specimen Identifier',0,NULL),(73,219,'Event Timestamp',0,NULL),(73,221,'Comments',0,NULL),(74,292,'User Last Name',0,NULL),(74,293,'User First Name',0,NULL),(72,89,'Fixation Type',1,NULL),(72,90,'Duration In Minutes',1,NULL),(75,96,'Identifier',1,NULL),(76,218,'Specimen Identifier',0,NULL),(76,219,'Event Timestamp',0,NULL),(76,221,'Comments',0,NULL),(77,292,'User Last Name',0,NULL),(77,293,'User First Name',0,NULL),(75,97,'Cell Count',1,NULL),(78,98,'Identifier',1,NULL),(79,218,'Specimen Identifier',0,NULL),(79,219,'Event Timestamp',0,NULL),(79,221,'Comments',0,NULL),(80,292,'User Last Name',0,NULL),(80,293,'User First Name',0,NULL),(78,99,'Method',1,NULL),(81,108,'Identifier',1,NULL),(82,218,'Specimen Identifier',0,NULL),(82,219,'Event Timestamp',0,NULL),(82,221,'Comments',0,NULL),(83,292,'User Last Name',0,NULL),(83,293,'User First Name',0,NULL),(81,109,'Gel Image URL',1,NULL),(81,110,'Quality Index',1,NULL),(81,111,'Lane Number',1,NULL),(81,112,'Gel Number',1,NULL),(81,113,'Absorbance At 260',1,NULL),(81,114,'Absorbance At 280',1,NULL),(81,115,'Ratio 28S to 18S',1,NULL),(84,138,'Identifier',1,NULL),(85,218,'Specimen Identifier',0,NULL),(85,219,'Event Timestamp',0,NULL),(85,221,'Comments',0,NULL),(86,292,'User Last Name',0,NULL),(86,293,'User First Name',0,NULL),(84,139,'URL',1,NULL),(84,140,'Name',1,NULL),(87,150,'Identifier',1,NULL),(88,218,'Specimen Identifier',0,NULL),(88,219,'Event Timestamp',0,NULL),(88,221,'Comments',0,NULL),(89,292,'User Last Name',0,NULL),(89,293,'User First Name',0,NULL),(87,151,'Received Quality',1,NULL),(90,236,'Identifier',1,NULL),(91,218,'Specimen Identifier',0,NULL),(91,219,'Event Timestamp',0,NULL),(91,221,'Comments',0,NULL),(92,292,'User Last Name',0,NULL),(92,293,'User First Name',0,NULL),(91,237,'GForce',0,NULL),(91,238,'Duration In Minutes',0,NULL),(93,266,'Identifier',1,NULL),(94,218,'Specimen Identifier',0,NULL),(94,219,'Event Timestamp',0,NULL),(94,221,'Comments',0,NULL),(95,292,'User Last Name',0,NULL),(95,293,'User First Name',0,NULL),(96,272,'Identifier',1,NULL),(97,218,'Specimen Identifier',0,NULL),(97,219,'Event Timestamp',0,NULL),(97,221,'Comments',0,NULL),(98,292,'User Last Name',0,NULL),(98,293,'User First Name',0,NULL),(96,273,'Neo Plastic Cellularity Percentage',1,NULL),(96,274,'Necrosis Percentage',1,NULL),(96,275,'Lymphocytic Percentage',1,NULL),(96,276,'Total Cellularity Percentage',1,NULL),(96,277,'Histological Quality',1,NULL),(99,278,'Identifier',1,NULL),(100,218,'Specimen Identifier',0,NULL),(100,219,'Event Timestamp',0,NULL),(100,221,'Comments',0,NULL),(101,292,'User Last Name',0,NULL),(101,293,'User First Name',0,NULL),(99,284,'From Storage Container Identifier',1,NULL),(99,283,'To Storage Container Identifier',1,NULL),(99,279,'From Position Dimension One',1,NULL),(99,280,'From Position Dimension Two',1,NULL),(99,281,'To Position Dimension One',1,NULL),(99,282,'To Position Dimension Two',1,NULL),(102,156,'Identifier',1,1),(102,157,'Affiliation',1,2),(102,158,'Name of reporter',1,3),(102,159,'Reporters email id',1,4),(102,160,'Message Body',1,5),(102,161,'Subject',1,6),(102,162,'Reported Date',1,7),(102,163,'Activity Status',1,8),(105,24,'Identifier',0,1),(105,25,'Name',0,2),(105,26,'Comments',0,3),(105,27,'Type',0,4),(53,224,'Distribution Protocol Title',0,1),(122,327,'Distribution Id',1,1),(121,315,'Specimen Array Type Id',1,2),(122,325,'Distribution Date',1,3),(122,326,'Distribution Time',1,4),(123,185,'Site Name',1,5),(124,224,'Distribution Protocol Title',1,6),(127,240,'SpecimenArray Name',1,7),(125,307,'SpecimenArrayType Name',1,8),(130,260,'Default Temperature In Centigrade',0,9),(131,72,'Distributed Quantity',0,10),(138,249,'Position Dimension One',1,1),(138,250,'Position Dimension Two',1,2),(139,249,'Position Dimension One',1,1),(139,250,'Position Dimension Two',1,2),(34,249,'Position Dimension One',1,1),(34,250,'Position Dimension Two',1,2),(140,249,'Position Dimension One',1,1),(140,250,'Position Dimension Two',1,2),(141,249,'Position Dimension One',1,1),(141,250,'Position Dimension Two',1,2),(142,249,'Position Dimension One',1,1),(142,250,'Position Dimension Two',1,2),(110,249,'Position Dimension One',1,1),(110,250,'Position Dimension Two',1,2),(114,249,'Position Dimension One',1,1),(114,250,'Position Dimension Two',1,2),(144,247,'Parent Container Id',1,3),(143,333,'Parent Container Id',1,3),(30,338,'Barcode',0,2),(29,339,'Barcode',0,7),(19,340,'Specimen Type',0,12),(19,341,'Specimen Class',0,13),(19,342,'Tissue Site',0,14),(19,343,'Pathology status',0,15),(19,344,'Quantity',0,16),(34,345,'Concentration',0,2);
+		INSERT INTO catissue_search_display_data VALUES (6,185,'Name',1,1),(6,184,'Identifier',1,2),(6,186,'Type',1,3),(6,187,'Email Address',1,4),(7,2,'Street',1,5),(7,3,'City',1,6),(7,4,'State',1,7),(7,5,'Country',1,8),(7,6,'Zip Code',1,9),(7,7,'Phone Number',1,10),(7,8,'Fax Number',1,11),(2,101,'Name',1,1),(2,100,'Identifier',1,2),(3,68,'Name',1,1),(3,67,'Identifier',1,2),(4,29,'Name',1,1),(4,28,'Identifier',1,2),(5,25,'Name',1,1),(5,24,'Identifier',1,2),(5,26,'Comments',1,3),(5,27,'Type',1,4),(108,307,'Name',1,1),(1,258,'Identifier',1,2),(1,260,'Default Temperature',1,3),(108,261,'One Dimension Label',1,4),(108,262,'Two Dimension Label',1,5),(108,308,'Comments',0,6),(110,240,'Container Name',1,1),(8,239,'Identifier',1,2),(8,241,'Temperature',1,3),(9,252,'One Dimension Capacity',0,4),(9,253,'Two Dimension Capacity',0,5),(10,307,'Container Type',0,6),(10,261,'One Dimension Label',0,7),(10,262,'Two Dimension Label',0,8),(11,185,'Site Name',1,9),(110,242,'Is Container Full',1,10),(110,243,'Barcode',1,11),(110,247,'Parent Container Identifier',1,12),(110,310,'Comments',0,15),(112,307,'Name',1,1),(111,311,'Identifier',1,2),(111,312,'Specimen Class',1,3),(112,261,'One Dimension Label',1,4),(112,262,'Two Dimension Label',1,5),(112,308,'Comments',0,6),(114,240,'Array Label',1,1),(113,313,'Identifier',1,2),(114,242,'Is Container Full',1,3),(114,243,'Barcode',1,4),(114,247,'Parent Container Identifier',1,5),(114,310,'Comments',0,8),(115,252,'One Dimension Capacity',1,9),(115,253,'Two Dimension Capacity',1,10),(116,307,'Array Type',0,11),(129,312,'SpecimenClass',1,12),(12,224,'Title',1,1),(12,54,'Identifier',1,2),(42,292,'Protocol Coordinator Last Name',0,5),(42,293,'Protocol Coordinator First Name',0,6),(12,225,'Short Title',1,7),(12,226,'IRB Identifier',1,8),(12,227,'Start Date',1,9),(17,347,'Title',1,1),(17,79,'Identifier',1,2),(17,348,'Short Title',1,3),(17,349,'IRB Identifier',1,4),(17,350,'Start Date',1,5),(17,351,'End Date',1,6),(17,352,'Enrollment',1,7),(17,353,'Description URL',1,8),(20,233,'Specimen Type',0,9),(20,234,'Tissue Site',0,10),(20,235,'Pathological Status',0,11),(19,80,'Distribution Protocol Identifier',0,15),(21,293,'First Name',1,1),(21,292,'Last Name',1,2),(21,285,'Identifier',1,3),(21,294,'Login Name',1,4),(21,295,'Date',1,5),(23,2,'Street',1,6),(23,3,'City',1,7),(23,4,'State',1,8),(23,5,'Country',1,9),(23,6,'Zip Code',1,10),(23,7,'Phone Number',1,11),(23,8,'Fax Number',1,12),(25,101,'Institution Name',1,13),(24,68,'Department Name',1,14),(26,29,'Cancer Research Group Name',1,15),(27,118,'First Name',1,2),(27,117,'Last Name',1,1),(27,116,'Identifier',1,12),(27,119,'Middle Name',1,3),(27,120,'Birth Date',1,5),(27,303,'Death Date',1,11),(27,304,'Vital Status',1,10),(27,121,'Gender',1,6),(27,122,'Genotype',1,7),(27,124,'Ethnicity',1,8),(27,125,'Social Security Number',1,9),(28,128,'Medical Record Number',0,4),(29,59,'Identifier',1,8),(45,224,'Protocol Title',0,6),(29,60,'Participant Protocol Identifier',1,1),(29,61,'Registration Date',1,7),(46,117,'Participant Last Name',1,2),(46,118,'Participant First Name',1,3),(46,119,'Participant Middle Name',1,4),(46,120,'Participant Birth Date',1,5),(30,320,'Name',1,1),(30,209,'Identifier',1,12),(30,210,'Clinical Diagnosis',1,7),(30,211,'Clinical Status',1,8),(48,224,'Collection Protocol Title',0,11),(31,57,'Study Calendar Event Point',1,9),(31,329,'Collection Point Label',0,9),(32,185,'Site Name',1,10),(33,60,'Protocol Participant Identifier',1,2),(47,45,'Surgical Pathology Number',1,6),(47,46,'Medical Record Number',1,5),(54,117,'Participant Last Name',1,3),(54,118,'Participant First Name',1,4),(34,323,'Label',1,2),(34,191,'Identifier',1,20),(34,102,'Class',1,6),(34,201,'Specimen Collection Group Identifier',1,5),(34,199,'Parent Specimen Identifier',1,9),(34,192,'Type',1,7),(34,208,'Pathological Status',1,12),(34,193,'Is Available',1,16),(34,196,'Barcode',1,1),(34,103,'Initial Quantity',1,13),(34,104,'Available Quantity',1,14),(34,322,'Lineage',1,8),(34,328,'Created On',1,19),(34,206,'Tissue Site',1,11),(34,207,'Tissue Side',1,10),(50,85,'External Identifier Name',1,3),(50,86,'External Identifier Value',1,4),(36,75,'Identifier',1,1),(36,298,'Distribution Date',1,2),(36,302,'Distribution Time',1,3),(37,72,'Distributed Quantity',1,4),(52,337,'Distributed Specimen Identifier',1,5),(52,192,'Distributed Specimen Type',1,6),(55,206,'Distributed Specimen Tissue Site',1,7),(55,207,'Distributed Specimen Tissue Side',1,8),(52,208,'Distributed Specimen Pathological Status',1,9),(57,39,'Identifier',1,NULL),(58,218,'Specimen Identifier',0,NULL),(58,219,'Event Timestamp',0,NULL),(58,221,'Comments',0,NULL),(59,292,'User Last Name',0,NULL),(59,293,'User First Name',0,NULL),(57,40,'Neoplastic Cellularity Percentage',0,NULL),(57,41,'Viable Cell Percentage',0,NULL),(60,42,'Identifier',1,NULL),(61,218,'Specimen Identifier',0,NULL),(61,219,'Event Timestamp',0,NULL),(61,221,'Comments',0,NULL),(62,292,'User Last Name',0,NULL),(62,293,'User First Name',0,NULL),(60,43,'Storage Status',1,NULL),(63,51,'Identifier',1,NULL),(64,218,'Specimen Identifier',0,NULL),(64,219,'Event Timestamp',0,NULL),(64,221,'Comments',0,NULL),(65,292,'User Last Name',0,NULL),(65,293,'User First Name',0,NULL),(63,52,'Collection Procedure',1,NULL),(63,53,'Container',1,NULL),(66,69,'Identifier',1,NULL),(67,218,'Specimen Identifier',0,NULL),(67,219,'Event Timestamp',0,NULL),(67,221,'Comments',0,NULL),(68,292,'User Last Name',0,NULL),(68,293,'User First Name',0,NULL),(66,70,'Reason',1,NULL),(69,82,'Identifier',1,NULL),(70,218,'Specimen Identifier',0,NULL),(70,219,'Event Timestamp',0,NULL),(70,221,'Comments',0,NULL),(71,292,'User Last Name',0,NULL),(71,293,'User First Name',0,NULL),(69,83,'Embedding Medium',1,NULL),(72,88,'Identifier',1,NULL),(73,218,'Specimen Identifier',0,NULL),(73,219,'Event Timestamp',0,NULL),(73,221,'Comments',0,NULL),(74,292,'User Last Name',0,NULL),(74,293,'User First Name',0,NULL),(72,89,'Fixation Type',1,NULL),(72,90,'Duration In Minutes',1,NULL),(75,96,'Identifier',1,NULL),(76,218,'Specimen Identifier',0,NULL),(76,219,'Event Timestamp',0,NULL),(76,221,'Comments',0,NULL),(77,292,'User Last Name',0,NULL),(77,293,'User First Name',0,NULL),(75,97,'Cell Count',1,NULL),(78,98,'Identifier',1,NULL),(79,218,'Specimen Identifier',0,NULL),(79,219,'Event Timestamp',0,NULL),(79,221,'Comments',0,NULL),(80,292,'User Last Name',0,NULL),(80,293,'User First Name',0,NULL),(78,99,'Method',1,NULL),(81,108,'Identifier',1,NULL),(82,218,'Specimen Identifier',0,NULL),(82,219,'Event Timestamp',0,NULL),(82,221,'Comments',0,NULL),(83,292,'User Last Name',0,NULL),(83,293,'User First Name',0,NULL),(81,109,'Gel Image URL',1,NULL),(81,110,'Quality Index',1,NULL),(81,111,'Lane Number',1,NULL),(81,112,'Gel Number',1,NULL),(81,113,'Absorbance At 260',1,NULL),(81,114,'Absorbance At 280',1,NULL),(81,115,'Ratio 28S to 18S',1,NULL),(84,138,'Identifier',1,NULL),(85,218,'Specimen Identifier',0,NULL),(85,219,'Event Timestamp',0,NULL),(85,221,'Comments',0,NULL),(86,292,'User Last Name',0,NULL),(86,293,'User First Name',0,NULL),(84,139,'URL',1,NULL),(84,140,'Name',1,NULL),(87,150,'Identifier',1,NULL),(88,218,'Specimen Identifier',0,NULL),(88,219,'Event Timestamp',0,NULL),(88,221,'Comments',0,NULL),(89,292,'User Last Name',0,NULL),(89,293,'User First Name',0,NULL),(87,151,'Received Quality',1,NULL),(90,236,'Identifier',1,NULL),(91,218,'Specimen Identifier',0,NULL),(91,219,'Event Timestamp',0,NULL),(91,221,'Comments',0,NULL),(92,292,'User Last Name',0,NULL),(92,293,'User First Name',0,NULL),(91,237,'GForce',0,NULL),(91,238,'Duration In Minutes',0,NULL),(93,266,'Identifier',1,NULL),(94,218,'Specimen Identifier',0,NULL),(94,219,'Event Timestamp',0,NULL),(94,221,'Comments',0,NULL),(95,292,'User Last Name',0,NULL),(95,293,'User First Name',0,NULL),(96,272,'Identifier',1,NULL),(97,218,'Specimen Identifier',0,NULL),(97,219,'Event Timestamp',0,NULL),(97,221,'Comments',0,NULL),(98,292,'User Last Name',0,NULL),(98,293,'User First Name',0,NULL),(96,273,'Neo Plastic Cellularity Percentage',1,NULL),(96,274,'Necrosis Percentage',1,NULL),(96,275,'Lymphocytic Percentage',1,NULL),(96,276,'Total Cellularity Percentage',1,NULL),(96,277,'Histological Quality',1,NULL),(99,278,'Identifier',1,NULL),(100,218,'Specimen Identifier',0,NULL),(100,219,'Event Timestamp',0,NULL),(100,221,'Comments',0,NULL),(101,292,'User Last Name',0,NULL),(101,293,'User First Name',0,NULL),(99,284,'From Storage Container Identifier',1,NULL),(99,283,'To Storage Container Identifier',1,NULL),(99,279,'From Position Dimension One',1,NULL),(99,280,'From Position Dimension Two',1,NULL),(99,281,'To Position Dimension One',1,NULL),(99,282,'To Position Dimension Two',1,NULL),(102,156,'Identifier',1,1),(102,157,'Affiliation',1,2),(102,158,'Name of reporter',1,3),(102,159,'Reporters email id',1,4),(102,160,'Message Body',1,5),(102,161,'Subject',1,6),(102,162,'Reported Date',1,7),(102,163,'Activity Status',1,8),(105,24,'Identifier',0,1),(105,25,'Name',0,2),(105,26,'Comments',0,3),(105,27,'Type',0,4),(53,224,'Distribution Protocol Title',0,1),(122,327,'Distribution Id',1,1),(121,315,'Specimen Array Type Id',1,2),(122,325,'Distribution Date',1,3),(122,326,'Distribution Time',1,4),(123,185,'Site Name',1,5),(124,224,'Distribution Protocol Title',1,6),(127,240,'SpecimenArray Name',1,7),(125,307,'SpecimenArrayType Name',1,8),(130,260,'Default Temperature In Centigrade',0,9),(131,72,'Distributed Quantity',0,10),(138,249,'Position Dimension One',1,1),(138,250,'Position Dimension Two',1,2),(139,249,'Position Dimension One',1,1),(139,250,'Position Dimension Two',1,2),(34,249,'Position Dimension One',1,1),(34,250,'Position Dimension Two',1,2),(140,249,'Position Dimension One',1,1),(140,250,'Position Dimension Two',1,2),(141,249,'Position Dimension One',1,1),(141,250,'Position Dimension Two',1,2),(142,249,'Position Dimension One',1,1),(142,250,'Position Dimension Two',1,2),(110,249,'Position Dimension One',1,1),(110,250,'Position Dimension Two',1,2),(114,249,'Position Dimension One',1,1),(114,250,'Position Dimension Two',1,2),(144,247,'Parent Container Id',1,3),(143,333,'Parent Container Id',1,3),(30,338,'Barcode',0,2),(29,339,'Barcode',0,7),(19,340,'Specimen Type',0,12),(19,341,'Specimen Class',0,13),(19,342,'Tissue Site',0,14),(19,343,'Pathology status',0,15),(19,344,'Quantity',0,16),(34,345,'Concentration',0,2);
     </sql>
   </changeSet>
+
+  <changeSet author="dpatil" id="initilize labelsql_values" dbms="hsqldb">
+ 	<preConditions  onFail="MARK_RAN">
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from LABELSQL</sqlCheck>
+	  </and>
+	</preConditions>
+    <loadUpdateData encoding="UTF-8"
+      file="./SQL/liquibase_xml/labelsqldata.csv"
+      primaryKey="IDENTIFIER"
+      tableName="LABELSQL">
+    </loadUpdateData>
+  </changeSet>
   
-  <changeSet author="dpatil" dbms="mysql" id="initialize os_user">
+  <changeSet author="dpatil"  id="initialize os_user">
     <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">select count(*) from os_user</sqlCheck>
+	  <and>
+		<not>
+         <dbms type="oracle" />
+        </not>
+        <sqlCheck expectedResult="0">select count(*) from os_user</sqlCheck>
+	  </and>
     </preConditions>
     <sql>
 	INSERT INTO os_user VALUES  (1,'admin@admin.com','Admin','Admin','admin@admin.com',NULL,'Active',1,1,1,1,1,NULL,1,NULL,'catissue');

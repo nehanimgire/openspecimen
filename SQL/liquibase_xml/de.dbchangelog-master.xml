@@ -6,13 +6,13 @@
   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-	
-  <changeSet author="krishagni (generated)" id="1410511324488-1">
-	<preConditions  onFail="MARK_RAN">
- 	    <not>
-		<tableExists  tableName="dyextn_containers" />
-            </not>
-	</preConditions>
+
+	<changeSet author="krishagni (generated)" id="1410511324488-1">
+		<preConditions  onFail="MARK_RAN">
+			<not>
+				<tableExists  tableName="dyextn_containers" />
+			</not>
+		</preConditions>
         <createTable tableName="dyextn_containers">
             <column name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
@@ -31,30 +31,14 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-  </changeSet>
-	
-  <changeSet author="krishagni (generated)" id="1410511324488-1s">
-	<preConditions  onFail="MARK_RAN">
-	    <not>
-		<tableExists  tableName="dyextn_id_seq" />
-	    </not>
-	</preConditions>
-        <createTable tableName="dyextn_id_seq">
-            <column name="TABLE_NAME" type="VARCHAR(64)">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="LAST_ID" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
     </changeSet>
-	
-    <changeSet author="krishagni (generated)"  id="1410511324488-2">
+
+	<changeSet author="krishagni (generated)"  id="1410511324488-2">
         <preConditions  onFail="MARK_RAN">
-	    <not>
-		<tableExists  tableName="catissue_form_context" />
-	    </not>
-	</preConditions>
+			<not>
+				<tableExists  tableName="catissue_form_context" />
+			</not>
+		</preConditions>
         <createTable tableName="catissue_form_context">
             <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
@@ -76,10 +60,10 @@
 
     <changeSet author="krishagni (generated)"  id="1410511324488-3">
         <preConditions  onFail="MARK_RAN">
-	    <not>
-		<tableExists  tableName="catissue_form_record_entry" />
-            </not>
-	</preConditions>
+			<not>
+				<tableExists  tableName="catissue_form_record_entry" />
+			</not>
+		</preConditions>
         <createTable tableName="catissue_form_record_entry">
             <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
@@ -107,7 +91,7 @@
 		<addForeignKeyConstraint baseColumnNames="UPDATED_BY" baseTableName="catissue_form_record_entry"  constraintName="FK_RE_UPDATED_BY_USERS_ID" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="IDENTIFIER" referencedTableName="catissue_user"  referencesUniqueColumn="false"/>
     </changeSet>
    
-    <changeSet author="krishagni (generated)"  id="1410511324488-4">
+    <changeSet author="krishagni (generated)"  id="1410511324488-4" dbms="mysql">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="cpr_extension_records_view" />
@@ -116,7 +100,7 @@
 		<createView viewName="cpr_extension_records_view">(select `re`.`OBJECT_ID` AS `cpr_id`,`re`.`RECORD_ID` AS `record_id` from (`catissue_form_record_entry` `re` join `catissue_form_context` `fc` on((`re`.`FORM_CTXT_ID` = `fc`.`IDENTIFIER`))) where ((`fc`.`ENTITY_TYPE` = 'Participant') and (`re`.`ACTIVITY_STATUS` = 'ACTIVE')))</createView>
     </changeSet>
 
-	<changeSet author="krishagni (generated)"  id="1410511324488-5">
+	<changeSet author="krishagni (generated)"  id="1410511324488-5" dbms="mysql">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="scg_extn_records_view" />
@@ -125,7 +109,7 @@
 		<createView viewName="scg_extn_records_view">(select `re`.`OBJECT_ID` AS `scg_id`,`re`.`RECORD_ID` AS `record_id` from (`catissue_form_record_entry` `re` join `catissue_form_context` `fc` on((`fc`.`IDENTIFIER` = `re`.`FORM_CTXT_ID`))) where ((`fc`.`ENTITY_TYPE` = 'SpecimenCollectionGroup') and (`re`.`ACTIVITY_STATUS` = 'ACTIVE')))</createView>
     </changeSet>
 
-	<changeSet author="krishagni (generated)"  id="1410511324488-6">
+	<changeSet author="krishagni (generated)"  id="1410511324488-6" dbms="mysql">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="specimen_extn_records_view" />
@@ -133,4 +117,45 @@
 		</preConditions>
 		<createView viewName="specimen_extn_records_view">(select `re`.`OBJECT_ID` AS `specimen_id`,`re`.`RECORD_ID` AS `record_id` from (`catissue_form_record_entry` `re` join `catissue_form_context` `fc` on((`fc`.`IDENTIFIER` = `re`.`FORM_CTXT_ID`))) where ((`fc`.`ENTITY_TYPE` = 'Specimen') and (`re`.`ACTIVITY_STATUS` = 'ACTIVE')))</createView>
     </changeSet>
+
+	<changeSet author="krishagni (generated)" id="1410511324488-7">
+		<preConditions  onFail="MARK_RAN">
+			<not>
+				<viewExists viewName="dyextn_id_seq" />
+			</not>
+		</preConditions>
+        <createTable tableName="dyextn_id_seq">
+            <column name="TABLE_NAME" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="LAST_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>  
+
+	<changeSet author="krishagni (generated)" id="1410511324488-8">
+		<preConditions onFail="MARK_RAN">
+			<and>
+				<not>
+					<dbms type="oracle" />
+				</not>
+				<sqlCheck expectedResult="0">select count(*) from dyextn_id_seq</sqlCheck>
+			</and>
+		</preConditions>
+        <sql>
+			INSERT INTO dyextn_id_seq VALUES ('DE_E_TNAMES',11000),('RECORD_ID_SEQ',1);
+        </sql>
+    </changeSet>  
+	
+	<changeSet author="krishagni (generated)" id="1410511324488-8-ora" dbms="oracle">
+		<preConditions onFail="MARK_RAN">
+        	<sqlCheck expectedResult="0">select count(*) from dyextn_id_seq</sqlCheck>
+    	</preConditions>
+        <sql>
+			INSERT INTO dyextn_id_seq VALUES ('DE_E_TNAMES',11000),
+			INSERT INTO dyextn_id_seq VALUES ('RECORD_ID_SEQ',1);
+        </sql>
+    </changeSet>  
+
 </databaseChangeLog> 
