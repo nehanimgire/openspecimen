@@ -76,7 +76,7 @@ import edu.wustl.simplequery.bizlogic.QueryBizLogic;
 
 public class AppInitializer {
 
-private SpringLiquibase liquibase;
+  private SpringLiquibase liquibase;
 	
 	private ParticipantManagerUtility participantManagerUtility = new ParticipantManagerUtility();
 
@@ -88,7 +88,7 @@ private SpringLiquibase liquibase;
 
 	private static final Logger logger = Logger.getCommonLogger(AppInitializer.class);
 
-	private final String JNDI_NAME = "java:/catissuecore";
+	private final String JNDI_NAME = "java:/comp/env/jdbc/catissuecore";//"java:/catissuecore";
 
 	public void init() {
 		try {
