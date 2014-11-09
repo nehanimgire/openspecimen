@@ -632,13 +632,13 @@
 				<exclude name="**/*build*" />
 				<exclude name="**/*WEB-INF*" />
 				<exclude name="**/*servlet.jar*" />
-				<exclude name="**/*jta.jar*" />
+				<!--exclude name="**/*jta.jar*" /-->
 				<exclude name="**/WEB-INF/lib/log4j-1.2.9.jar*" />
 				<exclude name="**/*hibernate2.jar*" />
 				<exclude name="**/.*" />
 				<exclude name="**/*.sql" />
 				<exclude name="**/CVS*" />
-				<exclude name="**/jta.jar" />
+				<!--exclude name="**/jta.jar" /-->
 				<exclude name="**/pages/subMenu/**" />
 				<!--excluded for jboss-5.1.0.GA upgrade-->				
 								<exclude name="**/WEB-INF/lib/xalan.jar" />
@@ -649,7 +649,7 @@
 								<exclude name="**/WEB-INF/lib/xmlrpc-2.0.jar" />
 								<exclude name="**/WEB-INF/lib/scrubber-runtime.jar" />
 								<exclude name="**/WEB-INF/lib/jax-qname.jar" />
-								<exclude name="**/WEB-INF/lib/dom4j-1.6.jar" />
+								<!--exclude name="**/WEB-INF/lib/dom4j-1.6.jar" /-->
 								<exclude name="**/WEB-INF/lib/jce-jdk13-125.jar" />
 								<exclude name="**/WEB-INF/lib/jaas.jar" />
 								<exclude name="**/WEB-INF/lib/jsr173_api.jar" />

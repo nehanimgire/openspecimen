@@ -1,51 +1,51 @@
-		<?xml version="1.0" encoding="ISO-8859-1" ?>
-		<!DOCTYPE web-app
-		PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-		"http://java.sun.com/dtd/web-app_2_3.dtd">
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE web-app
+PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/dtd/web-app_2_3.dtd">
 
-		<web-app>
-			<display-name>caTISSUE Core</display-name>
+<web-app>
+	<display-name>caTISSUE Core</display-name>
 
-			<description>
+	<description>
 
-		    </description>
-		    <context-param>
-				<param-name>applicationproperties</param-name>
-				<param-value>ApplicationResources.properties</param-value>
-			</context-param>
-			<!--  caCore like system entries -->
-			<context-param>
-				<param-name>cacoreBeans.Properties</param-name>
-				<param-value>cacoreBeans.properties,evsBeans.properties</param-value>
-			</context-param>
-			<context-param>
-				<param-name>cacoreFormat.xsl</param-name>
-				<param-value>xslt/cacoreFormat.xsl</param-value>
-			</context-param>
-			<context-param>
-				<param-name>evsFormat.xsl</param-name>
-				<param-value>xslt/evsFormat.xsl</param-value>
-			</context-param>
-			<context-param>
-				<param-name>rowCounter</param-name>
-				<param-value>200</param-value>
-			</context-param>
-			<context-param>
-				<param-name>contextConfigLocation</param-name>
-				<param-value>/WEB-INF/applicationContext.xml,/WEB-INF/restApiContext.xml</param-value>
-			</context-param>
+    </description>
+    <context-param>
+		<param-name>applicationproperties</param-name>
+		<param-value>ApplicationResources.properties</param-value>
+	</context-param>
+	<!--  caCore like system entries -->
+	<context-param>
+		<param-name>cacoreBeans.Properties</param-name>
+		<param-value>cacoreBeans.properties,evsBeans.properties</param-value>
+	</context-param>
+	<context-param>
+		<param-name>cacoreFormat.xsl</param-name>
+		<param-value>xslt/cacoreFormat.xsl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>evsFormat.xsl</param-name>
+		<param-value>xslt/evsFormat.xsl</param-value>
+	</context-param>
+	<context-param>
+		<param-name>rowCounter</param-name>
+		<param-value>200</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
 
-			<!-- FLEX Configuration START-->
-			<context-param>
-				<param-name>flex.class.path</param-name>
-				<param-value>/WEB-INF/flex/hotfixes,/WEB-INF/flex/jars</param-value>
-			</context-param>
-			<!-- base class for Application Resource bundle -->
-			<context-param>
-				<param-name>resourcebundleclass</param-name>
-				<param-value>ApplicationResources</param-value>
-			</context-param>
-			<!-- filter definition -->
+	<!-- FLEX Configuration START-->
+	<context-param>
+		<param-name>flex.class.path</param-name>
+		<param-value>/WEB-INF/flex/hotfixes,/WEB-INF/flex/jars</param-value>
+	</context-param>
+	<!-- base class for Application Resource bundle -->
+	<context-param>
+		<param-name>resourcebundleclass</param-name>
+		<param-value>ApplicationResources</param-value>
+	</context-param>
+	<!-- filter definition -->
 	<filter>
 		<filter-name>FlexComponentFilter</filter-name>
 		<filter-class>edu.wustl.catissuecore.filter.FlexComponentFilter</filter-class>
@@ -75,7 +75,8 @@
 		<filter-class>edu.wustl.catissuecore.util.global.BulkEMPIFilter</filter-class>
 	</filter>
 	<filter>
-		<filter-class>krishagni.catissueplu.rest.RestApiAuthFilter</filter-class>
+		<filter-name>RestApiAuthFilter</filter-name>
+		<filter-class>krishagni.catissueplus.rest.RestApiAuthFilter</filter-class>
 	</filter>
 	<filter>
          <filter-name>ThrottlingFilter</filter-name>
@@ -186,12 +187,11 @@
 		<listener-class>edu.wustl.catissuecore.util.listener.CatissueCoreServletContextListener</listener-class>
 	</listener>
 	<listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-	<listener>
 		<listener-class>edu.wustl.catissuecore.util.listener.CatissueCoreSessionListener</listener-class>
 	</listener>
-	
+	<listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 <!-- listener definition starts -->
 <!-- servlet configuration starts -->
 	<servlet>
@@ -205,7 +205,7 @@
 		<init-param>
 			<param-name>debug</param-name>
 			<param-value>3</param-value>
-			</init-param>
+		</init-param>
 		<init-param>
 			<param-name>detail</param-name>
 			<param-value>2</param-value>
@@ -303,11 +303,11 @@
 		<servlet-class>flex.messaging.MessageBrokerServlet</servlet-class>
 		<init-param>
 			<param-name>services.configuration.file</param-name>
-				<param-value>/WEB-INF/flex/services-config.xml</param-value>
-			</init-param>
-			<init-param>
-				<param-name>flex.write.path</param-name>
-				<param-value>/WEB-INF/flex</param-value>
+			<param-value>/WEB-INF/flex/services-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>flex.write.path</param-name>
+			<param-value>/WEB-INF/flex</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -401,10 +401,10 @@
 <servlet>
 <servlet-name>caTissue REST Service</servlet-name>
 <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-<!--init-param>
+<init-param>
 <param-name>com.sun.jersey.config.property.packages</param-name>
 <param-value>krishagni.catissueplus.rest</param-value>
-</init-param-->
+</init-param>
 <init-param>
         <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
         <param-value>true</param-value>
@@ -414,7 +414,7 @@
 <param-name>com.sun.jersey.spi.container.ResourceFilters</param-name>
 <param-value>krishagni.catissueplus.rest.imaging.RestAuthFilterFactory</param-value>
 </init-param>
---
+-->
 <load-on-startup>1</load-on-startup>
 </servlet>
 	
@@ -621,11 +621,11 @@
 	<taglib>
 		<taglib-uri>/WEB-INF/twoColDetailsTag.tld</taglib-uri>
 		<taglib-location>/WEB-INF/twoColDetailsTag.tld</taglib-location>
+	</taglib>
 	<taglib>
-	<!--taglib>
 		<taglib-uri>FlexTagLib</taglib-uri>
 		<taglib-location>/WEB-INF/lib/flex-bootstrap-jsp.jar</taglib-location>
-	</taglib-->
+	</taglib>
 <!-- tag library configuration ends -->
 <!-- env entry starts -->
 <env-entry>

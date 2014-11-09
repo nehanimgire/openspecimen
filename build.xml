@@ -519,7 +519,7 @@
 				<exclude name="**/WEB-INF/lib/csmapi.jar"/>
 				<exclude name="**/WEB-INF/lib/datafile.jar"/>
 				<exclude name="**/WEB-INF/lib/db2java.jar"/>
-				<exclude name="**/WEB-INF/lib/dom4j-1.6.1.jar"/>
+				<!--exclude name="**/WEB-INF/lib/dom4j-1.6.1.jar"/-->
 				<exclude name="**/WEB-INF/lib/dtsrpcclient.jar"/>
 				<exclude name="**/WEB-INF/lib/freemarker.jar"/>
 				<exclude name="**/WEB-INF/lib/freemarker-2.3.4.jar"/>
