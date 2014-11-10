@@ -415,7 +415,7 @@
 		</replace>
 		<war destfile="catissuecore.war" webxml="WEB-INF/web.xml"
 			duplicate="preserve" manifest="${base.dir}/MANIFEST.MF" >
-
+			
 			<fileset dir="${base.dir}">
 				<!--include name="Applet/**" / -->
 				<include name="ngweb/**"/>
@@ -432,11 +432,15 @@
 				<include name="flexclient/**" />
 				<include name="runtime/**" />
 				<include name="WEB-INF/**" />
+				<include name="SQL/liquibase_xml/**" />
 				<!--include name="WEB-INF/lib/antlr-4.1-complete.jar" /-->
 				<include name="CDEConfig.xml" />
 				<include name="CDEConfig.xsd" />
 				<include name="client-config.wsdd" />
 				<include name="Applet/**" />
+				<include name="bootstrap.properties"/>
+				<include name="db.changelog-master-*.xml"/>
+			
 				<include name="ApplicationVersionInfo.txt" />
 				<include name="caTissue_Suite_User_Manual.pdf" />
 				<include name="caTissue_Suite_User_Manual.doc" />
@@ -462,9 +466,7 @@
 				<exclude name="**/*servlet.jar*" />
 				
 				<exclude name="**/*hibernate2.jar*" />
-				<exclude name="**/*jta.jar*" />
 				<exclude name="**/CVS*" />
-				<exclude name="**/WEB-INF/lib/jta.jar" />
 				<!--exclude name="**/*build*"/>
 				<exclude name="**/*log4j.jar*" />
 				<exclude name="**/*WEB-INF*"/>
@@ -476,6 +478,9 @@
 				<exclude name="**/caTissue_Core_Installable/**"/>
 				<exclude name="**/caTISSUECore caCORE Client/**"/-->
 			</fileset>
+
+			
+
 			<!-- Excluding unwanted jars -->
 
 			<!-- change for csm related war -->
@@ -512,7 +517,7 @@
 				<exclude name="**/WEB-INF/lib/csmapi.jar"/>
 				<exclude name="**/WEB-INF/lib/datafile.jar"/>
 				<exclude name="**/WEB-INF/lib/db2java.jar"/>
-				<exclude name="**/WEB-INF/lib/dom4j-1.6.1.jar"/>
+				<!--exclude name="**/WEB-INF/lib/dom4j-1.6.1.jar"/-->
 				<exclude name="**/WEB-INF/lib/dtsrpcclient.jar"/>
 				<exclude name="**/WEB-INF/lib/freemarker.jar"/>
 				<exclude name="**/WEB-INF/lib/freemarker-2.3.4.jar"/>

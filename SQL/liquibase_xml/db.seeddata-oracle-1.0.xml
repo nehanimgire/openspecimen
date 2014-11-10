@@ -1,0 +1,1749 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_address">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_address</sqlCheck>
+    </preConditions>
+    <sql>
+      INSERT INTO catissue_address VALUES (1,NULL,'Not Specified',NULL,'United States',NULL,NULL,NULL);
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_user for oracle">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_user</sqlCheck>
+    </preConditions>
+    <sql>
+      INSERT INTO csm_user 
+	   VALUES (1,'admin@admin.com','Admin','Admin',NULL,'1',NULL,NULL,'xxits++sTge8j2uyHEABIQ==','admin@admin.com',NULL,NULL,'15-NOV-2005');
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_cancer_research_group">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_cancer_research_group</sqlCheck>
+    </preConditions>
+    <sql>
+      INSERT INTO catissue_cancer_research_group VALUES  (1,'c');
+    </sql>
+  </changeSet>
+ 
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_department">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_department</sqlCheck>
+    </preConditions>
+    <sql>
+      INSERT INTO catissue_department VALUES  (1,'d');
+    </sql>
+  </changeSet>
+
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_institution">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_institution</sqlCheck>
+    </preConditions>
+    <sql>
+      INSERT INTO catissue_institution VALUES  (1,'i','Active');
+    </sql>
+  </changeSet>
+
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_user">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_user</sqlCheck>
+    </preConditions>
+    <sql>
+      INSERT INTO catissue_user VALUES (1,'admin@admin.com','Admin','Admin','admin@admin.com',NULL,'Active',1,1,1,1,1,NULL,1,NULL,'catissue');
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_capacity">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_capacity</sqlCheck>
+    </preConditions>
+    <sql>
+      INSERT INTO catissue_capacity VALUES  (1,100,1);
+    </sql>
+  </changeSet>
+
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_container_type">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_container_type</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO catissue_container_type VALUES (1,NULL,'All',NULL,NULL,NULL,'Disabled','Numbers','Numbers');
+		INSERT INTO catissue_container_type VALUES 	(2,NULL,'Any',NULL,NULL,NULL,'Disabled','Numbers','Numbers');
+		INSERT INTO catissue_container_type VALUES 	(3,1,'Shipment Container','X','Y',NULL,'Active','Numbers','Numbers');
+    </sql>
+  </changeSet>
+
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_interface_column_data">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_interface_column_data</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO catissue_interface_column_data VALUES (1,4,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (2,4,'STREET','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (3,4,'CITY','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (4,4,'STATE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (5,4,'COUNTRY','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (6,4,'ZIPCODE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (7,4,'PHONE_NUMBER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (8,4,'FAX_NUMBER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (9,39,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (10,39,'IP_ADDRESS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (11,39,'EVENT_TIMESTAMP','timestamp');
+		INSERT INTO catissue_interface_column_data VALUES (12,39,'USER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (13,39,'COMMENTS','text');
+		INSERT INTO catissue_interface_column_data VALUES (14,40,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (15,40,'ELEMENT_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (16,40,'PREVIOUS_VALUE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (17,40,'CURRENT_VALUE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (18,40,'AUDIT_EVENT_LOG_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (19,41,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (20,41,'OBJECT_IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (21,41,'OBJECT_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (22,41,'EVENT_TYPE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (23,41,'AUDIT_EVENT_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (24,8,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (25,8,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (26,8,'COMMENTS','text');
+		INSERT INTO catissue_interface_column_data VALUES (27,8,'TYPE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (28,7,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (29,7,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (30,42,'PUBLIC_ID','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (31,42,'LONG_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (32,42,'DEFINITION','text');
+		INSERT INTO catissue_interface_column_data VALUES (33,42,'VERSION','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (37,12,'QUANTITY_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (38,12,'SPECIMEN_CLASS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (39,43,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (40,43,'NEOPLASTIC_CELLULARITY_PER','double');
+		INSERT INTO catissue_interface_column_data VALUES (41,43,'VIABLE_CELL_PERCENTAGE','double');
+		INSERT INTO catissue_interface_column_data VALUES (42,44,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (43,44,'STORAGE_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (47,17,'COLLECTION_PROTOCOL_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (48,17,'USER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (49,45,'COLLECTION_PROTOCOL_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (50,45,'DISTRIBUTION_PROTOCOL_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (51,46,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (52,46,'COLLECTION_PROCEDURE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (53,46,'CONTAINER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (54,10,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (55,11,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (56,11,'CLINICAL_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (57,11,'STUDY_CALENDAR_EVENT_POINT','double');
+		INSERT INTO catissue_interface_column_data VALUES (58,11,'COLLECTION_PROTOCOL_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (59,27,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (60,27,'PROTOCOL_PARTICIPANT_ID','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (61,27,'REGISTRATION_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (62,27,'PARTICIPANT_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (63,27,'COLLECTION_PROTOCOL_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (64,27,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (65,18,'COLLECTION_PROTOCOL_EVENT_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (66,18,'SPECIMEN_REQUIREMENT_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (67,5,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (68,5,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (69,47,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (70,47,'REASON','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (71,37,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (72,37,'QUANTITY','double');
+		INSERT INTO catissue_interface_column_data VALUES (73,37,'SPECIMEN_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (74,37,'DISTRIBUTION_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (75,38,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (76,38,'TO_SITE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (78,38,'DISTRIBUTION_PROTOCOL_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (79,19,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (80,20,'DISTRIBUTION_PROTOCOL_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (82,48,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (83,48,'EMBEDDING_MEDIUM','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (84,28,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (85,28,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (86,28,'VALUE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (87,28,'SPECIMEN_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (88,49,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (89,49,'FIXATION_TYPE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (90,49,'DURATION_IN_MINUTES','integer');
+		INSERT INTO catissue_interface_column_data VALUES (96,50,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (97,50,'CELL_COUNT','double');
+		INSERT INTO catissue_interface_column_data VALUES (98,51,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (99,51,'METHOD','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (100,6,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (101,6,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (102,33,'SPECIMEN_CLASS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (103,33,'INITIAL_QUANTITY','double');
+		INSERT INTO catissue_interface_column_data VALUES (104,33,'AVAILABLE_QUANTITY','double');
+		INSERT INTO catissue_interface_column_data VALUES (108,52,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (109,52,'GEL_IMAGE_URL','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (110,52,'QUALITY_INDEX','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (111,52,'LANE_NUMBER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (112,52,'GEL_NUMBER','integer');
+		INSERT INTO catissue_interface_column_data VALUES (113,52,'ABSORBANCE_AT_260','double');
+		INSERT INTO catissue_interface_column_data VALUES (114,52,'ABSORBANCE_AT_280','double');
+		INSERT INTO catissue_interface_column_data VALUES (115,52,'RATIO_28S_TO_18S','double');
+		INSERT INTO catissue_interface_column_data VALUES (116,31,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (117,31,'LAST_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (118,31,'FIRST_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (119,31,'MIDDLE_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (120,31,'BIRTH_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (121,31,'GENDER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (122,31,'GENOTYPE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (124,31,'ETHNICITY','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (125,31,'SOCIAL_SECURITY_NUMBER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (126,31,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (127,32,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (128,32,'MEDICAL_RECORD_NUMBER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (129,32,'SITE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (130,32,'PARTICIPANT_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (131,53,'IDENTIFIER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (132,53,'CONCEPT_CODE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (133,53,'DEFINITION','text');
+		INSERT INTO catissue_interface_column_data VALUES (134,53,'EVS_CODE','text');
+		INSERT INTO catissue_interface_column_data VALUES (135,53,'PARENT_IDENTIFIER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (136,53,'VALUE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (137,53,'PUBLIC_ID','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (138,54,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (139,54,'URL','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (140,54,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (141,55,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (142,55,'TABLE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (143,55,'COLUMN_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (144,55,'DISPLAY_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (145,55,'ATTRIBUTE_TYPE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (146,56,'TABLE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (147,56,'DISPLAY_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (148,56,'TABLE_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (149,56,'ALIAS_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (150,57,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (151,57,'RECEIVED_QUALITY','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (152,58,'FIRST_TABLE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (153,58,'SECOND_TABLE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (154,58,'FIRST_TABLE_JOIN_COLUMN','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (155,58,'SECOND_TABLE_JOIN_COLUMN','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (156,59,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (157,59,'AFFILIATION','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (158,59,'NAME_OF_REPORTER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (159,59,'REPORTERS_EMAIL_ID','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (160,59,'MESSAGE_BODY','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (161,59,'SUBJECT','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (162,59,'REPORTED_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (163,59,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (164,59,'COMMENTS','text');
+		INSERT INTO catissue_interface_column_data VALUES (165,60,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (166,61,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (167,61,'FIRST_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (168,61,'LAST_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (169,61,'LOGIN_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (170,61,'EMAIL_ADDRESS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (171,61,'START_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (172,61,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (173,61,'DEPARTMENT_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (174,61,'STREET','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (175,61,'CITY','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (176,61,'STATE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (177,61,'COUNTRY','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (178,61,'ZIPCODE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (179,61,'PHONE_NUMBER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (180,61,'FAX_NUMBER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (181,61,'CANCER_RESEARCH_GROUP_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (182,61,'INSTITUTION_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (183,61,'STATUS_COMMENT','text');
+		INSERT INTO catissue_interface_column_data VALUES (184,3,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (185,3,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (186,3,'TYPE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (187,3,'EMAIL_ADDRESS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (188,3,'USER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (189,3,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (190,3,'ADDRESS_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (191,33,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (192,33,'SPECIMEN_TYPE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (193,33,'AVAILABLE','tinyint');
+		INSERT INTO catissue_interface_column_data VALUES (196,33,'BARCODE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (197,33,'COMMENTS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (198,33,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (199,33,'PARENT_SPECIMEN_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (200,94,'STORAGE_CONTAINER_IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (201,33,'SPECIMEN_COLLECTION_GROUP_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (202,33,'SPECIMEN_CHARACTERISTICS_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (203,62,'BIOHAZARD_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (204,62,'SPECIMEN_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (205,33,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (206,33,'TISSUE_SITE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (207,33,'TISSUE_SIDE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (208,33,'PATHOLOGICAL_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (209,35,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (210,35,'CLINICAL_DIAGNOSIS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (211,35,'CLINICAL_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (212,35,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (213,35,'SITE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (214,35,'COLLECTION_PROTOCOL_EVENT_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (215,35,'SURGICAL_PATHOLOGY_NUMBER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (216,35,'COLLECTION_PROTOCOL_REG_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (217,63,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (218,63,'SPECIMEN_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (219,63,'EVENT_TIMESTAMP','timestamptime');
+		INSERT INTO catissue_interface_column_data VALUES (220,63,'USER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (221,63,'COMMENTS','text');
+		INSERT INTO catissue_interface_column_data VALUES (222,10,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (223,10,'PRINCIPAL_INVESTIGATOR_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (224,10,'TITLE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (225,10,'SHORT_TITLE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (226,10,'IRB_IDENTIFIER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (227,10,'START_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (228,10,'END_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (229,10,'ENROLLMENT','integer');
+		INSERT INTO catissue_interface_column_data VALUES (230,10,'DESCRIPTION_URL','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (231,10,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (232,12,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (233,12,'SPECIMEN_TYPE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (234,12,'TISSUE_SITE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (235,12,'PATHOLOGY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (236,64,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (237,64,'GFORCE','double');
+		INSERT INTO catissue_interface_column_data VALUES (238,64,'DURATION_IN_MINUTES','integer');
+		INSERT INTO catissue_interface_column_data VALUES (239,21,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (240,70,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (241,21,'TEMPERATURE','double');
+		INSERT INTO catissue_interface_column_data VALUES (242,70,'CONT_FULL','tinyint');
+		INSERT INTO catissue_interface_column_data VALUES (243,70,'BARCODE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (244,70,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (245,21,'STORAGE_TYPE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (246,21,'SITE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (247,95,'PARENT_CONTAINER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (248,70,'CAPACITY_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (249,93,'POSITION_DIMENSION_ONE','integer');
+		INSERT INTO catissue_interface_column_data VALUES (250,93,'POSITION_DIMENSION_TWO','integer');
+		INSERT INTO catissue_interface_column_data VALUES (251,2,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (252,2,'ONE_DIMENSION_CAPACITY','integer');
+		INSERT INTO catissue_interface_column_data VALUES (253,2,'TWO_DIMENSION_CAPACITY','integer');
+		INSERT INTO catissue_interface_column_data VALUES (258,1,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (260,1,'DEFAULT_TEMPERATURE','double');
+		INSERT INTO catissue_interface_column_data VALUES (261,69,'ONE_DIMENSION_LABEL','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (262,69,'TWO_DIMENSION_LABEL','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (263,69,'CAPACITY_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (264,65,'PARENT_TABLE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (265,65,'CHILD_TABLE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (266,66,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (272,67,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (273,67,'NEOPLASTIC_CELLULARITY_PER','double');
+		INSERT INTO catissue_interface_column_data VALUES (274,67,'NECROSIS_PERCENTAGE','double');
+		INSERT INTO catissue_interface_column_data VALUES (275,67,'LYMPHOCYTIC_PERCENTAGE','double');
+		INSERT INTO catissue_interface_column_data VALUES (276,67,'TOTAL_CELLULARITY_PERCENTAGE','double');
+		INSERT INTO catissue_interface_column_data VALUES (277,67,'HISTOLOGICAL_QUALITY','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (278,68,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (279,68,'FROM_POSITION_DIMENSION_ONE','integer');
+		INSERT INTO catissue_interface_column_data VALUES (280,68,'FROM_POSITION_DIMENSION_TWO','integer');
+		INSERT INTO catissue_interface_column_data VALUES (281,68,'TO_POSITION_DIMENSION_ONE','integer');
+		INSERT INTO catissue_interface_column_data VALUES (282,68,'TO_POSITION_DIMENSION_TWO','integer');
+		INSERT INTO catissue_interface_column_data VALUES (283,68,'TO_STORAGE_CONTAINER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (284,68,'FROM_STORAGE_CONTAINER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (285,23,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (286,23,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (287,23,'DEPARTMENT_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (288,23,'CANCER_RESEARCH_GROUP_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (289,23,'INSTITUTION_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (290,23,'ADDRESS_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (291,23,'STATUS_COMMENT','text');
+		INSERT INTO catissue_interface_column_data VALUES (292,23,'LAST_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (293,23,'FIRST_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (294,23,'LOGIN_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (295,23,'START_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (296,63,'EVENT_TIMESTAMP','timestampdate');
+		INSERT INTO catissue_interface_column_data VALUES (297,38,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (298,38,'EVENT_TIMESTAMP','timestampdate');
+		INSERT INTO catissue_interface_column_data VALUES (299,38,'USER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (300,38,'COMMENTS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (301,38,'SPECIMEN_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (302,38,'EVENT_TIMESTAMP','timestamptime');
+		INSERT INTO catissue_interface_column_data VALUES (303,31,'DEATH_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (304,31,'VITAL_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (305,1,'ACTIVITY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (306,69,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (307,69,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (308,69,'COMMENTS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (309,70,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (310,70,'COMMENTS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (311,71,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (312,71,'SPECIMEN_CLASS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (313,72,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (314,72,'CREATED_BY_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (315,72,'SPECIMEN_ARRAY_TYPE_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (316,73,'PARTICIPANT_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (317,73,'RACE_NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (320,35,'NAME','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (321,72,'DISTRIBUTION_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (322,33,'LINEAGE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (323,33,'LABEL','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (324,72,'AVAILABLE','tinyint');
+		INSERT INTO catissue_interface_column_data VALUES (325,75,'EVENT_TIMESTAMP','timestampdate');
+		INSERT INTO catissue_interface_column_data VALUES (326,75,'EVENT_TIMESTAMP','timestamptime');
+		INSERT INTO catissue_interface_column_data VALUES (327,75,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (328,33,'CREATED_ON_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (329,11,'COLLECTION_POINT_LABEL','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (330,35,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (331,94,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (332,94,'SPECIMEN_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (333,94,'CONTAINER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (334,95,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (335,95,'CONTAINER_ID','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (336,93,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (337,33,'IDENTIFIER','bigint');
+		INSERT INTO catissue_interface_column_data VALUES (338,35,'BARCODE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (339,27,'BARCODE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (340,20,'SPECIMEN_TYPE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (341,20,'SPECIMEN_CLASS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (342,20,'TISSUE_SITE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (343,20,'PATHOLOGY_STATUS','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (344,20,'QUANTITY','double');
+		INSERT INTO catissue_interface_column_data VALUES (345,33,'CONCENTRATION','double');
+		INSERT INTO catissue_interface_column_data VALUES (347,19,'TITLE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (348,19,'SHORT_TITLE','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (349,19,'IRB_IDENTIFIER','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (350,19,'START_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (351,19,'END_DATE','date');
+		INSERT INTO catissue_interface_column_data VALUES (352,19,'ENROLLMENT','integer');
+		INSERT INTO catissue_interface_column_data VALUES (353,19,'DESCRIPTION_URL','varchar');
+		INSERT INTO catissue_interface_column_data VALUES (354,19,'ACTIVITY_STATUS','varchar');
+    </sql>  
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_privileges">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_privileges</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO catissue_privileges VALUES (1,'ACCESS');
+		INSERT INTO catissue_privileges VALUES (2,'ASSIGN_READ');
+		INSERT INTO catissue_privileges VALUES (3,'ASSIGN_USE');
+		INSERT INTO catissue_privileges VALUES (4,'CREATE');
+		INSERT INTO catissue_privileges VALUES (5,'DEFINE_ANNOTATION');
+		INSERT INTO catissue_privileges VALUES (6,'DELETE');
+		INSERT INTO catissue_privileges VALUES (9,'DISTRIBUTION');
+		INSERT INTO catissue_privileges VALUES (7,'EXECUTE');
+		INSERT INTO catissue_privileges VALUES (8,'GENERAL_ADMINISTRATION');
+		INSERT INTO catissue_privileges VALUES (10,'GENERAL_SITE_ADMINISTRATION');
+		INSERT INTO catissue_privileges VALUES (11,'IDENTIFIED_DATA_ACCESS');
+		INSERT INTO catissue_privileges VALUES (12,'PARTICIPANT_SCG_ANNOTATION');
+		INSERT INTO catissue_privileges VALUES (13,'PHI_ACCESS');
+		INSERT INTO catissue_privileges VALUES (14,'PROTOCOL_ADMINISTRATION');
+		INSERT INTO catissue_privileges VALUES (15,'QUERY');
+		INSERT INTO catissue_privileges VALUES (16,'READ');
+		INSERT INTO catissue_privileges VALUES (17,'READ_DENIED');
+		INSERT INTO catissue_privileges VALUES (18,'REGISTRATION');
+		INSERT INTO catissue_privileges VALUES (19,'REPOSITORY_ADMINISTRATION');
+		INSERT INTO catissue_privileges VALUES (20,'SHIPMENT_PROCESSING');
+		INSERT INTO catissue_privileges VALUES (21,'SPECIMEN_ACCESSION');
+		INSERT INTO catissue_privileges VALUES (22,'SPECIMEN_ANNOTATION');
+		INSERT INTO catissue_privileges VALUES (23,'SPECIMEN_PROCESSING');
+		INSERT INTO catissue_privileges VALUES (24,'SPECIMEN_STORAGE');
+		INSERT INTO catissue_privileges VALUES (25,'STORAGE_ADMINISTRATION');
+		INSERT INTO catissue_privileges VALUES (26,'UPDATE');
+		INSERT INTO catissue_privileges VALUES (27,'USE');
+		INSERT INTO catissue_privileges VALUES (28,'USER_PROVISIONING');
+		INSERT INTO catissue_privileges VALUES (29,'WRITE');
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_query_editlink_cols">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_query_editlink_cols</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO catissue_query_editlink_cols VALUES (8,25);
+		INSERT INTO catissue_query_editlink_cols VALUES (7,29);
+		INSERT INTO catissue_query_editlink_cols VALUES (10,225);
+		INSERT INTO catissue_query_editlink_cols VALUES (10,224);
+		INSERT INTO catissue_query_editlink_cols VALUES (27,59);
+		INSERT INTO catissue_query_editlink_cols VALUES (5,68);
+		INSERT INTO catissue_query_editlink_cols VALUES (38,75);
+		INSERT INTO catissue_query_editlink_cols VALUES (19,224);
+		INSERT INTO catissue_query_editlink_cols VALUES (19,225);
+		INSERT INTO catissue_query_editlink_cols VALUES (75,327);
+		INSERT INTO catissue_query_editlink_cols VALUES (6,101);
+		INSERT INTO catissue_query_editlink_cols VALUES (3,185);
+		INSERT INTO catissue_query_editlink_cols VALUES (33,196);
+		INSERT INTO catissue_query_editlink_cols VALUES (33,323);
+		INSERT INTO catissue_query_editlink_cols VALUES (72,240);
+		INSERT INTO catissue_query_editlink_cols VALUES (72,243);
+		INSERT INTO catissue_query_editlink_cols VALUES (71,307);
+		INSERT INTO catissue_query_editlink_cols VALUES (35,320);
+		INSERT INTO catissue_query_editlink_cols VALUES (21,240);
+		INSERT INTO catissue_query_editlink_cols VALUES (1,307);
+		INSERT INTO catissue_query_editlink_cols VALUES (23,292);
+		INSERT INTO catissue_query_editlink_cols VALUES (23,293);
+		INSERT INTO catissue_query_editlink_cols VALUES (23,294);
+		INSERT INTO catissue_query_editlink_cols VALUES (27,60);
+    </sql>
+ </changeSet>
+ <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_query_table_data">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_query_table_data</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO catissue_query_table_data VALUES (1,'CATISSUE_STORAGE_TYPE','Storage Type','StorageType',1,1);
+		INSERT INTO catissue_query_table_data VALUES (2,'CATISSUE_CAPACITY','Storage Container Capacity','StorageContainerCapacity',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (3,'CATISSUE_SITE','Site','Site',2,1);
+		INSERT INTO catissue_query_table_data VALUES (4,'CATISSUE_ADDRESS','Address','Address',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (5,'CATISSUE_DEPARTMENT','Department','Department',1,1);
+		INSERT INTO catissue_query_table_data VALUES (6,'CATISSUE_INSTITUTION','Institution','Institution',1,1);
+		INSERT INTO catissue_query_table_data VALUES (7,'CATISSUE_CANCER_RESEARCH_GROUP','Cancer Research Group','CancerResearchGroup',1,1);
+		INSERT INTO catissue_query_table_data VALUES (8,'CATISSUE_BIOHAZARD','Biohazard','Biohazard',1,1);
+		INSERT INTO catissue_query_table_data VALUES (10,'CATISSUE_COLLECTION_PROTOCOL','Collection Protocol','CollectionProtocol',2,1);
+		INSERT INTO catissue_query_table_data VALUES (11,'CATISSUE_COLL_PROT_EVENT','Collection Protocol Event','CollectionProtocolEvent',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (12,'CATISSUE_SPECIMEN_REQUIREMENT','Specimen Requirement','SpecimenRequirement',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (17,'CATISSUE_COLL_COORDINATORS','Collection Coordinators','CollectionCoordinators',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (18,'CATISSUE_CP_REQ_SPECIMEN','Collection Specimen Requirement','CollectionSpecReq',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (19,'CATISSUE_DISTRIBUTION_PROTOCOL','Distribution Protocol','DistributionProtocol',2,1);
+		INSERT INTO catissue_query_table_data VALUES (20,'CATISSUE_DISTRIBUTION_SPEC_REQ','Distribution Specimen Requirement','DistributionSpecReq',1,NULL);
+		INSERT INTO catissue_query_table_data VALUES (21,'CATISSUE_STORAGE_CONTAINER','Storage Container','StorageContainer',2,1);
+		INSERT INTO catissue_query_table_data VALUES (23,'CATISSUE_USER','User','User',2,1);
+		INSERT INTO catissue_query_table_data VALUES (27,'CATISSUE_COLL_PROT_REG','Collection Protocol Registration','CollectionProtReg',2,1);
+		INSERT INTO catissue_query_table_data VALUES (28,'CATISSUE_EXTERNAL_IDENTIFIER','External Identifier','ExternalIdentifier',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (31,'CATISSUE_PARTICIPANT','Participant','Participant',2,1);
+		INSERT INTO catissue_query_table_data VALUES (32,'CATISSUE_PART_MEDICAL_ID','Participant Medical Identifier','ParticipantMedicalId',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (33,'CATISSUE_SPECIMEN','Specimen','Specimen',2,1);
+		INSERT INTO catissue_query_table_data VALUES (34,'CATISSUE_SPECIMEN_CHAR','Specimen Characteristics','SpecimenCharacteristics',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (35,'CATISSUE_SPECIMEN_COLL_GROUP','Specimen Collection Group','SpecimenCollectionGroup',2,1);
+		INSERT INTO catissue_query_table_data VALUES (37,'CATISSUE_DISTRIBUTED_ITEM','Distributed Item','DistributedItem',1,NULL);
+		INSERT INTO catissue_query_table_data VALUES (38,'CATISSUE_DISTRIBUTION','Distribution','Distribution',2,1);
+		INSERT INTO catissue_query_table_data VALUES (39,'CATISSUE_AUDIT_EVENT','Audit Event','AuditEvent',1,NULL);
+		INSERT INTO catissue_query_table_data VALUES (40,'CATISSUE_AUDIT_EVENT_DETAILS','Audit Event Details','AuditEventDetails',1,NULL);
+		INSERT INTO catissue_query_table_data VALUES (41,'CATISSUE_AUDIT_EVENT_LOG','Audit Event Log','AuditEventLog',1,NULL);
+		INSERT INTO catissue_query_table_data VALUES (42,'CATISSUE_CDE','Cde','Cde',0,NULL);
+		INSERT INTO catissue_query_table_data VALUES (43,'CATISSUE_CELL_SPE_REVIEW_PARAM','Cell Specimen Review Parameters','CellSpecimenParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (44,'CATISSUE_IN_OUT_EVENT_PARAM','Checkin Checkout Event Parameter','CheckinoutEventParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (45,'CATISSUE_COLL_DISTRIBUTION_REL','Collection Distribution Relation','CollectionDistributionRel',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (46,'CATISSUE_COLL_EVENT_PARAM','Collection Event Parameters','CollectionEventParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (47,'CATISSUE_DISPOSAL_EVENT_PARAM','Disposal Event Parameters','DisposalEventParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (48,'CATISSUE_EMBEDDED_EVENT_PARAM','Embedded Event Parameters','EmbeddedEventParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (49,'CATISSUE_FIXED_EVENT_PARAM','Fixed Event Parameters','FixedEventParameters',2,1);
+		INSERT INTO catissue_query_table_data VALUES (50,'CATISSUE_FLUID_SPE_EVENT_PARAM','Fluid Specimen Review Event Parameters','FluidSpecEventParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (51,'CATISSUE_FROZEN_EVENT_PARAM','Frozen Event Parameters','FrozenEventParameters',2,1);
+		INSERT INTO catissue_query_table_data VALUES (52,'CATISSUE_MOL_SPE_REVIEW_PARAM','Molecular Specimen Review Parameters','MolecularSpecParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (53,'CATISSUE_PERMISSIBLE_VALUE','Permissible Value','PermissibleValue',0,NULL);
+		INSERT INTO catissue_query_table_data VALUES (54,'CATISSUE_PROCEDURE_EVENT_PARAM','Procedure Event Parameters','ProcedureEventParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (55,'CATISSUE_INTERFACE_COLUMN_DATA','Query Interface Column Data','QueryInterfaceColumnData',0,NULL);
+		INSERT INTO catissue_query_table_data VALUES (56,'CATISSUE_QUERY_TABLE_DATA','Query Interface Table Data','QueryInterfaceTableData',0,NULL);
+		INSERT INTO catissue_query_table_data VALUES (57,'CATISSUE_RECEIVED_EVENT_PARAM','Received Event Parameters','ReceivedEventParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (58,'CATISSUE_RELATED_TABLES_MAP','Related Tables Map','RelatedTablesMap',0,NULL);
+		INSERT INTO catissue_query_table_data VALUES (59,'CATISSUE_REPORTED_PROBLEM','Reported Problem','ReportedProblem',1,1);
+		INSERT INTO catissue_query_table_data VALUES (60,'CATISSUE_EVENT_PARAM','Review Event Parameters','ReviewEventParameters',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (61,'CATISSUE_SIGNUP_USER','Signup User','SignupUser',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (62,'CATISSUE_SPECIMEN_BIOHZ_REL','Biohazard','SpecimenBiohazardRel',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (63,'CATISSUE_SPECIMEN_EVENT_PARAM','Specimen Event Parameters','SpecimenEventParameters',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (64,'CATISSUE_SPUN_EVENT_PARAMETERS','Spun Event Parameters','SpunEventParameters',2,1);
+		INSERT INTO catissue_query_table_data VALUES (65,'CATISSUE_TABLE_RELATION','Table Relation','TableRelation',0,NULL);
+		INSERT INTO catissue_query_table_data VALUES (66,'CATISSUE_THAW_EVENT_PARAMETERS','Thaw Event Parameters','ThawEventParameters',2,1);
+		INSERT INTO catissue_query_table_data VALUES (67,'CATISSUE_TIS_SPE_EVENT_PARAM','Tissue Specimen Review Event Parameters','TissueSpecEventParam',2,1);
+		INSERT INTO catissue_query_table_data VALUES (68,'CATISSUE_TRANSFER_EVENT_PARAM','Transfer Event Parameter','TransferEventParameter',2,1);
+		INSERT INTO catissue_query_table_data VALUES (69,'CATISSUE_CONTAINER_TYPE','Container Type','ContainerType',0,NULL);
+		INSERT INTO catissue_query_table_data VALUES (70,'CATISSUE_CONTAINER','Container','Container',0,NULL);
+		INSERT INTO catissue_query_table_data VALUES (71,'CATISSUE_SPECIMEN_ARRAY_TYPE','Specimen Array Type','SpecimenArrayType',2,1);
+		INSERT INTO catissue_query_table_data VALUES (72,'CATISSUE_SPECIMEN_ARRAY','Specimen Array','SpecimenArray',2,1);
+		INSERT INTO catissue_query_table_data VALUES (73,'CATISSUE_RACE','Race','Race',0,NULL);
+		INSERT INTO catissue_query_table_data VALUES (75,'CATISSUE_DISTRIBUTION','Distribution_array','Distribution_array',2,1);
+		INSERT INTO catissue_query_table_data VALUES (76,'CATISSUE_ORDER','Order','OrderDetails',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (77,'CATISSUE_REPORT_QUEUE','Report Queue','ReportQueue',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (78,'CATISSUE_PATHOLOGY_REPORT','Surgical Pathology Report','SurgicalPathologyReport',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (79,'CATISSUE_IDENTIFIED_REPORT','Identified Surgical Pathology Report','IdentifiedSurgicalPathologyReport',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (80,'CATISSUE_DEIDENTIFIED_REPORT','Deidentified Surgical Pathology Report','DeidentifiedSurgicalPathologyReport',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (81,'CATISSUE_REPORT_CONTENT','Report Content','ReportContent',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (82,'CATISSUE_REPORT_TEXTCONTENT','Text Content','TextContent',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (83,'CATISSUE_REPORT_BICONTENT','Binary Content','BinaryContent',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (84,'CATISSUE_REPORT_SECTION','Report Section','ReportSection',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (85,'CATISSUE_CONCEPT','Concept','Concept',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (87,'CATISSUE_CONCEPT_REFERENT','Concept Referent','ConceptReferent',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (88,'CATISSUE_CONCEPT_CLASSIFICATN','Concept Referent Classification','ConceptReferentClassification',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (89,'CATISSUE_SEMANTIC_TYPE','Semantic Type','SemanticType',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (90,'CATISSUE_REVIEW_PARAMS','Pathology Report Review Parameter','PathologyReportReviewParameter',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (91,'CATISSUE_QUARANTINE_PARAMS','Quarantine Event Parameter','QuarantineEventParameter',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (92,'CATISSUE_ABS_SPECI_COLL_GROUP','Abstract Specimen Coll Group','AbstractScg',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (93,'CATISSUE_ABSTRACT_POSITION','Abstract Position','AbstractPosition',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (94,'CATISSUE_SPECIMEN_POSITION','Specimen Position','SpecimenPosition',2,1);
+		INSERT INTO catissue_query_table_data VALUES (95,'CATISSUE_CONTAINER_POSITION','Container Position','ContainerPosition',2,1);
+		INSERT INTO catissue_query_table_data VALUES (96,'catissue_tissue_specimen','Tissue Specimen','Tissue Specimen',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (97,'catissue_cell_specimen','Cell Specimen','Cell Specimen',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (98,'catissue_fluid_specimen','Fluid Specimen','Fluid Specimen',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (99,'catissue_molecular_specimen','Molecular Specimen','MolecularSpecimen',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (100,'CATISSUE_ABSTRACT_SPECIMEN','Abstract Specimen','AbstractSpecimen',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (101,'CATISSUE_SHIPMENT','Shipment','Shipment',2,NULL);
+		INSERT INTO catissue_query_table_data VALUES (102,'CATISSUE_SHIPMENT_REQUEST','Shipment Request','ShipmentRequest',2,NULL);
+
+    </sql>
+  </changeSet>
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_related_tables_map">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_related_tables_map</sqlCheck>
+    </preConditions>
+    <sql>
+			INSERT INTO catissue_related_tables_map VALUES(10,11,'IDENTIFIER','COLLECTION_PROTOCOL_ID');
+		INSERT INTO catissue_related_tables_map VALUES(5,23,'IDENTIFIER','DEPARTMENT_ID');
+		INSERT INTO catissue_related_tables_map VALUES(6,23,'IDENTIFIER','INSTITUTION_ID');
+		INSERT INTO catissue_related_tables_map VALUES(7,23,'IDENTIFIER','CANCER_RESEARCH_GROUP_ID');
+		INSERT INTO catissue_related_tables_map VALUES(4,23,'IDENTIFIER','ADDRESS_ID');
+		INSERT INTO catissue_related_tables_map VALUES(4,3,'IDENTIFIER','ADDRESS_ID');
+		INSERT INTO catissue_related_tables_map VALUES(9,10,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(23,9,'IDENTIFIER','PRINCIPAL_INVESTIGATOR_ID');
+		INSERT INTO catissue_related_tables_map VALUES(23,17,'IDENTIFIER','USER_ID');
+		INSERT INTO catissue_related_tables_map VALUES(10,17,'IDENTIFIER','COLLECTION_PROTOCOL_ID');
+		INSERT INTO catissue_related_tables_map VALUES(12,18,'IDENTIFIER','SPECIMEN_REQUIREMENT_ID');
+		INSERT INTO catissue_related_tables_map VALUES(11,18,'IDENTIFIER','COLLECTION_PROTOCOL_EVENT_ID');
+		INSERT INTO catissue_related_tables_map VALUES(9,19,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(19,20,'IDENTIFIER','DISTRIBUTION_PROTOCOL_ID');
+		INSERT INTO catissue_related_tables_map VALUES(23,24,'IDENTIFIER','USER_ID');
+		INSERT INTO catissue_related_tables_map VALUES(31,32,'IDENTIFIER','PARTICIPANT_ID');
+		INSERT INTO catissue_related_tables_map VALUES(31,73,'IDENTIFIER','PARTICIPANT_ID');
+		INSERT INTO catissue_related_tables_map VALUES(10,27,'IDENTIFIER','COLLECTION_PROTOCOL_ID');
+		INSERT INTO catissue_related_tables_map VALUES(31,27,'IDENTIFIER','PARTICIPANT_ID');
+		INSERT INTO catissue_related_tables_map VALUES(3,92,'IDENTIFIER','SITE_ID');
+		INSERT INTO catissue_related_tables_map VALUES(11,35,'IDENTIFIER','COLLECTION_PROTOCOL_EVENT_ID');
+		INSERT INTO catissue_related_tables_map VALUES(27,35,'IDENTIFIER','COLLECTION_PROTOCOL_REG_ID');
+		INSERT INTO catissue_related_tables_map VALUES(35,33,'IDENTIFIER','SPECIMEN_COLLECTION_GROUP_ID');
+		INSERT INTO catissue_related_tables_map VALUES(34,100,'IDENTIFIER','SPECIMEN_CHARACTERISTICS_ID');
+		INSERT INTO catissue_related_tables_map VALUES(100,100,'IDENTIFIER','PARENT_SPECIMEN_ID');
+		INSERT INTO catissue_related_tables_map VALUES(33,37,'IDENTIFIER','SPECIMEN_ID');
+		INSERT INTO catissue_related_tables_map VALUES(38,37,'IDENTIFIER','DISTRIBUTION_ID');
+		INSERT INTO catissue_related_tables_map VALUES(33,62,'IDENTIFIER','SPECIMEN_ID');
+		INSERT INTO catissue_related_tables_map VALUES(8,62,'IDENTIFIER','BIOHAZARD_ID');
+		INSERT INTO catissue_related_tables_map VALUES(33,28,'IDENTIFIER','SPECIMEN_ID');
+		INSERT INTO catissue_related_tables_map VALUES(33,63,'IDENTIFIER','SPECIMEN_ID');
+		INSERT INTO catissue_related_tables_map VALUES(1,69,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(3,21,'IDENTIFIER','SITE_ID');
+		INSERT INTO catissue_related_tables_map VALUES(2,70,'IDENTIFIER','CAPACITY_ID');
+		INSERT INTO catissue_related_tables_map VALUES(1,21,'IDENTIFIER','STORAGE_TYPE_ID');
+		INSERT INTO catissue_related_tables_map VALUES(70,21,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(71,69,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(72,71,'SPECIMEN_ARRAY_TYPE_ID','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(72,70,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(75,37,'IDENTIFIER','DISTRIBUTION_ID');
+		INSERT INTO catissue_related_tables_map VALUES(72,37,'IDENTIFIER','SPECIMEN_ARRAY_ID');
+		INSERT INTO catissue_related_tables_map VALUES(63,43,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,44,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,46,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,47,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,48,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,49,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,50,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,51,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,52,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,54,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,57,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,64,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,66,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,67,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(63,68,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(23,63,'IDENTIFIER','USER_ID');
+		INSERT INTO catissue_related_tables_map VALUES(38,9,'DISTRIBUTION_PROTOCOL_ID','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(75,3,'TO_SITE_ID','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(75,9,'DISTRIBUTION_PROTOCOL_ID','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(92,35,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(93,94,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(93,95,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(33,94,'IDENTIFIER','SPECIMEN_ID');
+		INSERT INTO catissue_related_tables_map VALUES(72,95,'IDENTIFIER','CONTAINER_ID');
+		INSERT INTO catissue_related_tables_map VALUES(21,94,'IDENTIFIER','CONTAINER_ID');
+		INSERT INTO catissue_related_tables_map VALUES(21,95,'IDENTIFIER','CONTAINER_ID');
+		INSERT INTO catissue_related_tables_map VALUES(100,33,'IDENTIFIER','IDENTIFIER');
+		INSERT INTO catissue_related_tables_map VALUES(33,99,'IDENTIFIER','IDENTIFIER');
+    </sql>
+  </changeSet>
+ 
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_site">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_site</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO catissue_site VALUES  (1,'In Transit','Repository','admin@admin.com',1,'Active',1,NULL);
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_site_coordinators">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_site_coordinators</sqlCheck>
+    </preConditions>
+    <sql>
+	INSERT INTO catissue_site_coordinators VALUES  (1,1);
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_specimen_array_type">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_specimen_array_type</sqlCheck>
+    </preConditions>
+    <sql>
+	INSERT INTO catissue_specimen_array_type VALUES  (2,NULL);
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_storage_type">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_storage_type</sqlCheck>
+    </preConditions>
+    <sql>
+	INSERT INTO catissue_storage_type VALUES (1,NULL);
+	INSERT INTO catissue_storage_type VALUES (3,-80);
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_stor_type_holds_type">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_stor_type_holds_type</sqlCheck>
+    </preConditions>
+    <sql>
+	INSERT INTO catissue_stor_type_holds_type VALUES  (1,3);
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_stor_type_spec_class">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_stor_type_spec_class</sqlCheck>
+    </preConditions>
+    <sql>
+      	INSERT INTO catissue_stor_type_spec_class VALUES  (3,'Fluid');
+		INSERT INTO catissue_stor_type_spec_class VALUES (3,'Tissue'); 
+		INSERT INTO catissue_stor_type_spec_class VALUES (3,'Molecular'); 
+		INSERT INTO catissue_stor_type_spec_class VALUES (3,'Cell');
+    </sql>
+  </changeSet>
+ 
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize catissue_table_relation" context="legacy" >
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_table_relation</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO catissue_table_relation VALUES  (1,1,1,NULL);
+		INSERT INTO catissue_table_relation VALUES  (2,6,6,NULL);
+		INSERT INTO catissue_table_relation VALUES  (3,5,5,NULL);
+		INSERT INTO catissue_table_relation VALUES  (4,7,7,NULL);
+		INSERT INTO catissue_table_relation VALUES  (5,8,8,NULL);
+		INSERT INTO catissue_table_relation VALUES  (6,3,3,NULL);
+		INSERT INTO catissue_table_relation VALUES  (7,3,4,NULL);
+		INSERT INTO catissue_table_relation VALUES  (8,21,21,NULL);
+		INSERT INTO catissue_table_relation VALUES  (9,21,2,'70');
+		INSERT INTO catissue_table_relation VALUES  (10,21,69,'1');
+		INSERT INTO catissue_table_relation VALUES  (11,21,3,NULL);
+		INSERT INTO catissue_table_relation VALUES  (12,10,10,NULL);
+		INSERT INTO catissue_table_relation VALUES  (14,10,11,NULL);
+		INSERT INTO catissue_table_relation VALUES  (15,10,12,'11:18');
+		INSERT INTO catissue_table_relation VALUES  (16,10,18,'11');
+		INSERT INTO catissue_table_relation VALUES  (17,19,19,NULL);
+		INSERT INTO catissue_table_relation VALUES  (18,19,9,NULL);
+		INSERT INTO catissue_table_relation VALUES  (19,19,20,NULL);
+		INSERT INTO catissue_table_relation VALUES  (21,23,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (23,23,4,NULL);
+		INSERT INTO catissue_table_relation VALUES  (24,23,5,NULL);
+		INSERT INTO catissue_table_relation VALUES  (25,23,6,NULL);
+		INSERT INTO catissue_table_relation VALUES  (26,23,7,NULL);
+		INSERT INTO catissue_table_relation VALUES  (27,31,31,NULL);
+		INSERT INTO catissue_table_relation VALUES  (28,31,32,NULL);
+		INSERT INTO catissue_table_relation VALUES  (29,27,27,NULL);
+		INSERT INTO catissue_table_relation VALUES  (30,35,35,NULL);
+		INSERT INTO catissue_table_relation VALUES  (31,35,11,NULL);
+		INSERT INTO catissue_table_relation VALUES  (32,35,3,NULL);
+		INSERT INTO catissue_table_relation VALUES  (33,35,27,NULL);
+		INSERT INTO catissue_table_relation VALUES  (34,33,33,NULL);
+		INSERT INTO catissue_table_relation VALUES  (36,38,38,NULL);
+		INSERT INTO catissue_table_relation VALUES  (37,38,37,NULL);
+		INSERT INTO catissue_table_relation VALUES  (41,10,17,NULL);
+		INSERT INTO catissue_table_relation VALUES  (44,31,3,'32');
+		INSERT INTO catissue_table_relation VALUES  (45,27,9,'10');
+		INSERT INTO catissue_table_relation VALUES  (46,27,31,NULL);
+		INSERT INTO catissue_table_relation VALUES  (47,35,26,NULL);
+		INSERT INTO catissue_table_relation VALUES  (48,35,9,'27:10');
+		INSERT INTO catissue_table_relation VALUES  (50,33,28,NULL);
+		INSERT INTO catissue_table_relation VALUES  (52,38,100,'37');
+		INSERT INTO catissue_table_relation VALUES  (53,38,9,NULL);
+		INSERT INTO catissue_table_relation VALUES  (54,35,31,'27');
+		INSERT INTO catissue_table_relation VALUES  (55,38,34,'37:33');
+		INSERT INTO catissue_table_relation VALUES  (57,43,43,NULL);
+		INSERT INTO catissue_table_relation VALUES  (58,43,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (59,43,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (60,44,44,NULL);
+		INSERT INTO catissue_table_relation VALUES  (61,44,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (62,44,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (63,46,46,NULL);
+		INSERT INTO catissue_table_relation VALUES  (64,46,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (65,46,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (66,47,47,NULL);
+		INSERT INTO catissue_table_relation VALUES  (67,47,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (68,47,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (69,48,48,NULL);
+		INSERT INTO catissue_table_relation VALUES  (70,48,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (71,48,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (72,49,49,NULL);
+		INSERT INTO catissue_table_relation VALUES  (73,49,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (74,49,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (75,50,50,NULL);
+		INSERT INTO catissue_table_relation VALUES  (76,50,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (77,50,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (78,51,51,NULL);
+		INSERT INTO catissue_table_relation VALUES  (79,51,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (80,51,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (81,52,52,NULL);
+		INSERT INTO catissue_table_relation VALUES  (82,52,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (83,52,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (84,54,54,NULL);
+		INSERT INTO catissue_table_relation VALUES  (85,54,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (86,54,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (87,57,57,NULL);
+		INSERT INTO catissue_table_relation VALUES  (88,57,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (89,57,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (90,64,64,NULL);
+		INSERT INTO catissue_table_relation VALUES  (91,64,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (92,64,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (93,66,66,NULL);
+		INSERT INTO catissue_table_relation VALUES  (94,66,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (95,66,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (96,67,67,NULL);
+		INSERT INTO catissue_table_relation VALUES  (97,67,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (98,67,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (99,68,68,NULL);
+		INSERT INTO catissue_table_relation VALUES  (100,68,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (101,68,23,NULL);
+		INSERT INTO catissue_table_relation VALUES  (102,59,59,NULL);
+		INSERT INTO catissue_table_relation VALUES  (103,31,10,'27');
+		INSERT INTO catissue_table_relation VALUES  (104,10,35,'27');
+		INSERT INTO catissue_table_relation VALUES  (105,62,8,NULL);
+		INSERT INTO catissue_table_relation VALUES  (106,33,8,'62');
+		INSERT INTO catissue_table_relation VALUES  (107,23,63,NULL);
+		INSERT INTO catissue_table_relation VALUES  (108,1,69,NULL);
+		INSERT INTO catissue_table_relation VALUES  (110,21,70,NULL);
+		INSERT INTO catissue_table_relation VALUES  (111,71,71,NULL);
+		INSERT INTO catissue_table_relation VALUES  (112,71,69,NULL);
+		INSERT INTO catissue_table_relation VALUES  (113,72,72,NULL);
+		INSERT INTO catissue_table_relation VALUES  (114,72,70,NULL);
+		INSERT INTO catissue_table_relation VALUES  (115,72,2,'70');
+		INSERT INTO catissue_table_relation VALUES  (116,72,69,'71');
+		INSERT INTO catissue_table_relation VALUES  (121,75,72,'37');
+		INSERT INTO catissue_table_relation VALUES  (122,75,75,NULL);
+		INSERT INTO catissue_table_relation VALUES  (123,75,3,NULL);
+		INSERT INTO catissue_table_relation VALUES  (124,75,9,NULL);
+		INSERT INTO catissue_table_relation VALUES  (125,75,69,'37:72:71');
+		INSERT INTO catissue_table_relation VALUES  (127,75,70,'37:72');
+		INSERT INTO catissue_table_relation VALUES  (129,72,71,NULL);
+		INSERT INTO catissue_table_relation VALUES  (130,21,1,NULL);
+		INSERT INTO catissue_table_relation VALUES  (131,75,37,NULL);
+		INSERT INTO catissue_table_relation VALUES  (132,78,79,NULL);
+		INSERT INTO catissue_table_relation VALUES  (133,78,80,NULL);
+		INSERT INTO catissue_table_relation VALUES  (134,81,82,NULL);
+		INSERT INTO catissue_table_relation VALUES  (135,81,83,NULL);
+		INSERT INTO catissue_table_relation VALUES  (136,81,84,NULL);
+		INSERT INTO catissue_table_relation VALUES  (138,94,93,NULL);
+		INSERT INTO catissue_table_relation VALUES  (139,95,93,NULL);
+		INSERT INTO catissue_table_relation VALUES  (140,33,94,NULL);
+		INSERT INTO catissue_table_relation VALUES  (141,72,95,'70');
+		INSERT INTO catissue_table_relation VALUES  (142,21,95,'70');
+		INSERT INTO catissue_table_relation VALUES  (143,94,94,NULL);
+		INSERT INTO catissue_table_relation VALUES  (144,95,95,NULL);
+		INSERT INTO catissue_table_relation VALUES  (145,21,94,NULL);
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil" dbms="oracle" id="initialize catissue_password oracle">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_password</sqlCheck>
+    </preConditions>
+    <sql>
+	INSERT INTO catissue_password VALUES  (1,'xxits++sTge8j2uyHEABIQ==','12-FEB-2014',1);
+    </sql>
+ </changeSet>
+ <changeSet author="dpatil" dbms="oracle" id="initialize csm_application for oracle">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_application</sqlCheck>
+    </preConditions>
+    <sql>
+	INSERT INTO csm_application VALUES  (1,'catissuecore','caTISSUE Core',0,0,'22-FEB-2005',NULL,NULL,NULL,NULL,NULL);
+    </sql>
+ </changeSet>
+ <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_group for oracle">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_group</sqlCheck>
+    </preConditions>
+    <sql>
+	INSERT INTO csm_group VALUES (1,'ADMINISTRATOR_GROUP','Group of Administrators','01-JAN-2005',1);
+	INSERT INTO csm_group VALUES (2,'SUPERVISOR_GROUP','Group of Supervisors','01-JAN-2005',1);
+	INSERT INTO csm_group VALUES (3,'TECHNICIAN_GROUP','Group of Technicians','01-JAN-2005',1);
+	INSERT INTO csm_group VALUES (4,'PUBLIC_GROUP','Group of Public Users','01-JAN-2005',1);
+    </sql>
+  </changeSet>
+ 
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_privilege">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_privilege</sqlCheck>
+    </preConditions>
+    <sql>		
+		INSERT INTO csm_privilege VALUES (1,'CREATE','This privilege grants permission to a user to create an entity. This entity can be an object, a database entry, or a resource such as a network connection','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (2,'ACCESS','This privilege allows a user to access a particular resource.  Examples of resources include a network or database connection, socket, module of the application, or even the application itself','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (3,'READ','This privilege permits the user to read data from a file, URL, database, an object, etc. This can be used at an entity level signifying that the user is allowed to read data about a particular entry','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (4,'WRITE','This privilege allows a user to write data to a file, URL, database, an object, etc. This can be used at an entity level signifying that the user is allowed to write data about a particular entity','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (5,'UPDATE','This privilege grants permission at an entity level and signifies that the user is allowed to update data for a particular entity. Entities may include an object, object attribute, database row etc','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (6,'DELETE','This privilege permits a user to delete a logical entity. This entity can be an object, a database entry, a resource such as a network connection, etc','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (7,'EXECUTE','This privilege allows a user to execute a particular resource. The resource can be a method, function, behavior of the application, URL, button etc','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (8,'USE','This privilege allows a user to use a particular resource','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (9,'ASSIGN_READ','This privilege allows a user to assign a read privilege to others','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (10,'ASSIGN_USE','This privilege allows a user to assign a use privilege to others','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (11,'IDENTIFIED_DATA_ACCESS','This privilege allows a user to view identified data of an object','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (12,'READ_DENIED','This privilege doesnt permit the user to read data','22-JUN-2005');
+		INSERT INTO csm_privilege VALUES (13,'USER_PROVISIONING','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR USER CREATION AND ASSIGNING PRIVILEGES TO THAT USER','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (14,'REPOSITORY_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT SITES','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (15,'STORAGE_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT STORAGE TYPES AND CONTAINERS','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (16,'PROTOCOL_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT COLLECTION AS WELL AS DISTRIBUTION PROTOCOLS','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (17,'DEFINE_ANNOTATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT ANNOTATIONS','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (18,'REGISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR REGISTERING PARTICIPANT AND CONSENTS','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (20,'SPECIMEN_ACCESSION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT SPECIMEN,SPECIMEN COLLECTION GROUP AND CONSENTS','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (21,'DISTRIBUTION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR DISTRIBUTION','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (22,'QUERY','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR QUERY','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (23,'PHI_ACCESS','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR VIEWING PHI DATA','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (24,'PARTICIPANT_SCG_ANNOTATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT ANNOTATION TO PARTICIPANT OR SCG','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (25,'SPECIMEN_ANNOTATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR FOR ADD EDIT SPECIMEN ANNOTATION','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (26,'SPECIMEN_PROCESSING','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT ALIQUOT, DERIVATIVE, EVENTS','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (27,'SPECIMEN_STORAGE','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT STORAGE AND TRANSFER EVENTS','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (28,'GENERAL_SITE_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT SITES','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (29,'GENERAL_ADMINISTRATION','THIS PRIVILEGE GRANTS PERMISSION TO A USER FOR ADD EDIT DEPARTMENT,INSTITUTION,CANCER RESEARCH GROUP','19-JUN-2008');
+		INSERT INTO csm_privilege VALUES (30,'SHIPMENT_PROCESSING','THIS PRIVILEGE GRANTS PERMISSION TO A USER TO PROCESS SHIPMENTS','20-JUN-2008');
+    </sql>
+  </changeSet>
+ 
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_protection_element">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_protection_element</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO csm_protection_element VALUES (9,'edu.wustl.catissuecore.domain.User_1','User class','edu.wustl.catissuecore.domain.User_1',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (10,'Participant','Participant class','edu.wustl.catissuecore.domain.Participant',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (11,'ParticipantMedicalIdentifier','ParticipantMedicalIdentifier class','edu.wustl.catissuecore.domain.ParticipantMedicalIdentifier',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (12,'ClinicalReport','ClinicalReport class','edu.wustl.catissuecore.domain.ClinicalReport',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (13,'SpecimenCollectionGroup','SpecimenCollectionGroup class','edu.wustl.catissuecore.domain.SpecimenCollectionGroup',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (14,'CollectionProtocolRegistration','CollectionProtocolRegistration class','edu.wustl.catissuecore.domain.CollectionProtocolRegistration',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (15,'SpecimenCharacteristics','SpecimenCharacteristics class','edu.wustl.catissuecore.domain.SpecimenCharacteristics',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (16,'FluidSpecimen','FluidSpecimen class','edu.wustl.catissuecore.domain.FluidSpecimen',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (17,'TissueSpecimen','TissueSpecimen class','edu.wustl.catissuecore.domain.TissueSpecimen',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (18,'CellSpecimen','CellSpecimen class','edu.wustl.catissuecore.domain.CellSpecimen',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (19,'MolecularSpecimen','MolecularSpecimen class','edu.wustl.catissuecore.domain.MolecularSpecimen',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (20,'Biohazard','Biohazard class','edu.wustl.catissuecore.domain.Biohazard',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (21,'Specimen','Specimen class','edu.wustl.catissuecore.domain.Specimen',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (22,'ExternalIdentifier','ExternalIdentifier class','edu.wustl.catissuecore.domain.ExternalIdentifier',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (23,'EventParameters','EventParameters class','edu.wustl.catissuecore.domain.EventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (24,'FluidSpecimenReviewEventParameters','FluidSpecimenReviewEventParameters class','edu.wustl.catissuecore.domain.FluidSpecimenReviewEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (25,'CellSpecimenReviewParameters','CellSpecimenReviewParameters class','edu.wustl.catissuecore.domain.CellSpecimenReviewParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (26,'TissueSpecimenReviewEventParameters','TissueSpecimenReviewEventParameters class','edu.wustl.catissuecore.domain.TissueSpecimenReviewEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (27,'MolecularSpecimenReviewParameters','MolecularSpecimenReviewParameters class','edu.wustl.catissuecore.domain.MolecularSpecimenReviewParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (28,'CheckInCheckOutEventParameter','CheckInCheckOutEventParameter class','edu.wustl.catissuecore.domain.CheckInCheckOutEventParameter',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (29,'FrozenEventParameters','FrozenEventParameters class','edu.wustl.catissuecore.domain.FrozenEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (30,'EmbeddedEventParameters','EmbeddedEventParameters class','edu.wustl.catissuecore.domain.EmbeddedEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (31,'ReviewEventParameters','ReviewEventParameters class','edu.wustl.catissuecore.domain.ReviewEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (32,'SpunEventParameters','SpunEventParameters class','edu.wustl.catissuecore.domain.SpunEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (33,'ThawEventParameters','ThawEventParameters class','edu.wustl.catissuecore.domain.ThawEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (34,'SpecimenEventParameters','SpecimenEventParameters class','edu.wustl.catissuecore.domain.SpecimenEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (35,'ReceivedEventParameters','ReceivedEventParameters class','edu.wustl.catissuecore.domain.ReceivedEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (36,'DisposalEventParameters','DisposalEventParameters class','edu.wustl.catissuecore.domain.DisposalEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (37,'FixedEventParameters','FixedEventParameters class','edu.wustl.catissuecore.domain.FixedEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (38,'ProcedureEventParameters','ProcedureEventParameters class','edu.wustl.catissuecore.domain.ProcedureEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (39,'TransferEventParameters','TransferEventParameters class','edu.wustl.catissuecore.domain.TransferEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (40,'CollectionEventParameters','CollectionEventParameters class','edu.wustl.catissuecore.domain.CollectionEventParameters',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (41,'Site','Site class','edu.wustl.catissuecore.domain.Site',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (42,'StorageContainer','StorageContainer class','edu.wustl.catissuecore.domain.StorageContainer',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (43,'StorageContainerDetails','StorageContainerDetails class','edu.wustl.catissuecore.domain.StorageContainerDetails',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (44,'Capacity','Capacity class','edu.wustl.catissuecore.domain.Capacity',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (45,'StorageType','StorageType class','edu.wustl.catissuecore.domain.StorageType',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (46,'User','User class','edu.wustl.catissuecore.domain.User',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (47,'Address','Address class','edu.wustl.catissuecore.domain.Address',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (48,'CancerResearchGroup','CancerResearchGroup class','edu.wustl.catissuecore.domain.CancerResearchGroup',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (50,'Department','Department class','edu.wustl.catissuecore.domain.Department',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (51,'Institution','Institution class','edu.wustl.catissuecore.domain.Institution',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (52,'Distribution','Distribution class','edu.wustl.catissuecore.domain.Distribution',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (53,'DistributedItem','DistributedItem class','edu.wustl.catissuecore.domain.DistributedItem',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (54,'CollectionProtocolEvent','CollectionProtocolEvent class','edu.wustl.catissuecore.domain.CollectionProtocolEvent',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (55,'CollectionProtocol','CollectionProtocol class','edu.wustl.catissuecore.domain.CollectionProtocol',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (56,'DistributionProtocol','DistributionProtocol class','edu.wustl.catissuecore.domain.DistributionProtocol',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (57,'SpecimenProtocol','SpecimenProtocol class','edu.wustl.catissuecore.domain.SpecimenProtocol',NULL,NULL,1,'1-JAN-2005');
+		INSERT INTO csm_protection_element VALUES (269,'edu.wustl.catissuecore.domain.ReportedProblem','edu.wustl.catissuecore.domain.ReportedProblem','edu.wustl.catissuecore.domain.ReportedProblem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (272,'edu.wustl.catissuecore.domain.SignUpUser','edu.wustl.catissuecore.domain.SignUpUser','edu.wustl.catissuecore.domain.SignUpUser',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (276,'SpecimenArrayType','SpecimenArrayType Class','edu.wustl.catissuecore.domain.SpecimenArrayType',NULL,NULL,1,'31-AUG-2006');
+		INSERT INTO csm_protection_element VALUES (281,'SpecimenArray','SpecimenArray Class','edu.wustl.catissuecore.domain.SpecimenArray',NULL,NULL,1,'31-AUG-2006');
+		INSERT INTO csm_protection_element VALUES (294,'Local Extensions','Local Extensions class','edu.common.dynamicextensions.domain.integration.EntityMap',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (300,'Consent Tier','ConsentTier Object','edu.wustl.catissuecore.domain.ConsentTier',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (301,'Consent Tier Response','Consent Tier Response Object','edu.wustl.catissuecore.domain.ConsentTierResponse',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (302,'Consent Tier Status','Consent Tier Status Object','edu.wustl.catissuecore.domain.ConsentTierStatus',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (303,'ReturnEventParameters','ReturnEventParameters Class','edu.wustl.catissuecore.domain.ReturnEventParameters',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (304,'Order','Order Object','edu.wustl.catissuecore.domain.OrderDetails',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (305,'OrderItem','OrderItem Object','edu.wustl.catissuecore.domain.OrderItem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (306,'Derived Specimen Order Item','Derived Specimen Order Item Object','edu.wustl.catissuecore.domain.DerivedSpecimenOrderItem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (307,'Existing Specimen Array Order Item','Existing Specimen Array Order Item Object','edu.wustl.catissuecore.domain.ExistingSpecimenArrayOrderItem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (308,'Existing Specimen Order Item','Existing Specimen Order Item Object','edu.wustl.catissuecore.domain.ExistingSpecimenOrderItem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (309,'New Specimen Array Order Item','New Specimen Array Order Item Object','edu.wustl.catissuecore.domain.NewSpecimenArrayOrderItem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (310,'New Specimen Order Item','New Specimen Order Item Object','edu.wustl.catissuecore.domain.NewSpecimenOrderItem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (311,'Pathological Case Order Item','Pathological Case Order Item Object','edu.wustl.catissuecore.domain.PathologicalCaseOrderItem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (312,'Specimen Array Order Item','Specimen Array Order Item Object','edu.wustl.catissuecore.domain.SpecimenArrayOrderItem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (313,'Specimen Order Item','Specimen Order Item Object','edu.wustl.catissuecore.domain.SpecimenOrderItem',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (315,'IdentifiedSurgicalPathologyReport','IdentifiedSurgicalPathologyReport Object','edu.wustl.catissuecore.domain.pathology.IdentifiedSurgicalPathologyReport',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (316,'DeidentifiedSurgicalPathologyReport','DeidentifiedSurgicalPathologyReport Object','edu.wustl.catissuecore.domain.pathology.DeidentifiedSurgicalPathologyReport',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (317,'ReportLoaderQueue','ReportLoaderQueue Object','edu.wustl.catissuecore.domain.pathology.ReportLoaderQueue',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (318,'Review Comments','PathologyReportReviewParameter Object','edu.wustl.catissuecore.domain.pathology.PathologyReportReviewParameter',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (319,'Quarantine Comments','QuarantineEventParameter Object','edu.wustl.catissuecore.domain.pathology.QuarantineEventParameter',NULL,NULL,1,'27-NOV-2006');
+		INSERT INTO csm_protection_element VALUES (326,'AbstractPosition','AbstractPosition Object','edu.wustl.catissuecore.domain.AbstractPosition',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (327,'SpecimenPosition','SpecimenPosition Object','edu.wustl.catissuecore.domain.SpecimenPosition',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (328,'ContainerPosition','ContainerPosition Object','edu.wustl.catissuecore.domain.ContainerPosition',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (329,'AbstractSpecimen','AbstractSpecimen Object','edu.wustl.catissuecore.domain.AbstractSpecimen',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (330,'SpecimenRequirement','SpecimenRequirement Object','edu.wustl.catissuecore.domain.SpecimenRequirement',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (331,'MolecularSpecimenRequirement','MolecularSpecimenRequirement Object','edu.wustl.catissuecore.domain.MolecularSpecimenRequirement',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (332,'FluidSpecimenRequirement','FluidSpecimenRequirement Object','edu.wustl.catissuecore.domain.FluidSpecimenRequirement',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (333,'CellSpecimenRequirement','CellSpecimenRequirement Object','edu.wustl.catissuecore.domain.CellSpecimenRequirement',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (334,'TissueSpecimenRequirement','TissueSpecimenRequirement Object','edu.wustl.catissuecore.domain.TissueSpecimenRequirement',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (335,'DistributionSpecimenRequirement','DistributionSpecimenRequirement Object','edu.wustl.catissuecore.domain.DistributionSpecimenRequirement',NULL,NULL,1,'28-MAY-2008');
+		INSERT INTO csm_protection_element VALUES (336,'ADMIN_PROTECTION_ELEMENT','ADMIN_PROTECTION_ELEMENT Object','ADMIN_PROTECTION_ELEMENT',NULL,NULL,1,'22-JUN-2008');	
+    </sql>
+  </changeSet>  
+ 
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_protection_group">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_protection_group</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO csm_protection_group VALUES (1,'ADMINISTRATOR_PROTECTION_GROUP','Protection elements for class names of objects that belong to Administrative data',1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (2,'SUPERVISOR_PROTECTION_GROUP','Protection elements for class names of objects that belong to Supervisors data',1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (3,'TECHNICIAN_PROTECTION_GROUP','Protection elements for class names of objects that belong to Technician data',1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (17,'SECURED_ADMINISTRATIVE_ACTIONS',NULL,1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (18,'SECURED_SUPERVISORY_ACTIONS',NULL,1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (19,'SECURED_TECHNICIAN_ACTIONS',NULL,1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (20,'PUBLIC_DATA_GROUP',NULL,1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (21,'ADMINISTRATORS_DATA_GROUP',NULL,1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (22,'SUPERVISORS_DATA_GROUP',NULL,1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (23,'TECHNICIANS_DATA_GROUP',NULL,1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (24,'SECURED_PUBLIC_ACTIONS',NULL,1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (44,'SCIENTIST_PROTECTION_GROUP',NULL,1,0,'1-JAN-2005',NULL);
+		INSERT INTO csm_protection_group VALUES (45,'PUBLIC_QUERY_PROTECTION_GROUP',NULL,1,0,'06-JAN-2009',NULL);
+    </sql>
+  </changeSet> 
+ 
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_pg_pe">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_pg_pe</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO csm_pg_pe VALUES (16,21,9,NULL);
+		INSERT INTO csm_pg_pe VALUES (17,2,10,NULL);
+		INSERT INTO csm_pg_pe VALUES (19,2,11,NULL);
+		INSERT INTO csm_pg_pe VALUES (20,2,12,NULL);
+		INSERT INTO csm_pg_pe VALUES (21,2,13,NULL);
+		INSERT INTO csm_pg_pe VALUES (22,2,14,NULL);
+		INSERT INTO csm_pg_pe VALUES (23,3,15,NULL);
+		INSERT INTO csm_pg_pe VALUES (24,3,16,NULL);
+		INSERT INTO csm_pg_pe VALUES (25,3,17,NULL);
+		INSERT INTO csm_pg_pe VALUES (26,3,18,NULL);
+		INSERT INTO csm_pg_pe VALUES (27,3,19,NULL);
+		INSERT INTO csm_pg_pe VALUES (28,1,20,NULL);
+		INSERT INTO csm_pg_pe VALUES (29,3,21,NULL);
+		INSERT INTO csm_pg_pe VALUES (30,3,22,NULL);
+		INSERT INTO csm_pg_pe VALUES (31,3,23,NULL);
+		INSERT INTO csm_pg_pe VALUES (32,3,24,NULL);
+		INSERT INTO csm_pg_pe VALUES (33,3,25,NULL);
+		INSERT INTO csm_pg_pe VALUES (34,3,26,NULL);
+		INSERT INTO csm_pg_pe VALUES (35,3,27,NULL);
+		INSERT INTO csm_pg_pe VALUES (36,3,28,NULL);
+		INSERT INTO csm_pg_pe VALUES (37,3,29,NULL);
+		INSERT INTO csm_pg_pe VALUES (38,3,30,NULL);
+		INSERT INTO csm_pg_pe VALUES (39,3,31,NULL);
+		INSERT INTO csm_pg_pe VALUES (40,3,32,NULL);
+		INSERT INTO csm_pg_pe VALUES (41,3,33,NULL);
+		INSERT INTO csm_pg_pe VALUES (42,3,34,NULL);
+		INSERT INTO csm_pg_pe VALUES (43,3,35,NULL);
+		INSERT INTO csm_pg_pe VALUES (44,3,36,NULL);
+		INSERT INTO csm_pg_pe VALUES (45,3,37,NULL);
+		INSERT INTO csm_pg_pe VALUES (46,3,38,NULL);
+		INSERT INTO csm_pg_pe VALUES (47,3,39,NULL);
+		INSERT INTO csm_pg_pe VALUES (48,3,40,NULL);
+		INSERT INTO csm_pg_pe VALUES (49,1,41,NULL);
+		INSERT INTO csm_pg_pe VALUES (50,1,42,NULL);
+		INSERT INTO csm_pg_pe VALUES (51,1,43,NULL);
+		INSERT INTO csm_pg_pe VALUES (52,1,44,NULL);
+		INSERT INTO csm_pg_pe VALUES (53,1,45,NULL);
+		INSERT INTO csm_pg_pe VALUES (54,1,46,NULL);
+		INSERT INTO csm_pg_pe VALUES (55,1,47,NULL);
+		INSERT INTO csm_pg_pe VALUES (56,1,48,NULL);
+		INSERT INTO csm_pg_pe VALUES (58,1,50,NULL);
+		INSERT INTO csm_pg_pe VALUES (59,1,51,NULL);
+		INSERT INTO csm_pg_pe VALUES (60,3,52,NULL);
+		INSERT INTO csm_pg_pe VALUES (61,3,53,NULL);
+		INSERT INTO csm_pg_pe VALUES (299,1,269,NULL);
+		INSERT INTO csm_pg_pe VALUES (302,1,272,NULL);
+		INSERT INTO csm_pg_pe VALUES (306,1,276,NULL);
+		INSERT INTO csm_pg_pe VALUES (312,3,281,NULL);
+		INSERT INTO csm_pg_pe VALUES (330,1,54,NULL);
+		INSERT INTO csm_pg_pe VALUES (331,1,55,NULL);
+		INSERT INTO csm_pg_pe VALUES (332,1,56,NULL);
+		INSERT INTO csm_pg_pe VALUES (335,44,304,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (336,44,305,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (337,44,306,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (338,44,307,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (339,44,308,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (340,44,309,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (341,44,310,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (342,44,311,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (343,44,312,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (344,44,313,'04-JAN-2007');
+		INSERT INTO csm_pg_pe VALUES (348,1,304,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (349,2,304,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (350,3,304,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (351,1,305,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (352,2,305,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (353,3,305,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (354,1,306,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (355,2,306,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (356,3,306,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (357,1,307,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (358,2,307,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (359,3,307,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (360,1,308,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (361,2,308,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (362,3,308,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (363,1,309,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (364,2,309,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (365,3,309,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (366,1,310,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (367,2,310,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (368,3,310,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (369,1,311,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (370,2,311,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (371,3,311,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (372,1,312,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (373,2,312,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (374,3,312,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (375,1,313,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (376,2,313,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (377,3,313,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (378,1,300,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (379,2,300,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (380,3,300,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (381,1,301,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (382,2,301,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (383,3,301,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (384,1,302,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (385,2,302,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (386,3,302,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (387,3,303,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (388,1,315,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (389,1,316,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (390,1,317,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (391,1,318,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (392,1,319,'27-NOV-2006');
+		INSERT INTO csm_pg_pe VALUES (399,1,326,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (400,1,327,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (401,1,328,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (402,1,329,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (403,1,330,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (404,1,331,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (405,1,332,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (406,1,333,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (407,1,334,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (408,1,335,'28-MAY-2008');
+		INSERT INTO csm_pg_pe VALUES (409,1,336,'28-MAY-2008');
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_role">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_role</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO csm_role VALUES (1,'Administrator','Role for Administrator',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (2,'Supervisor','Role for Supervisor',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (3,'Technician','Role for Technician',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (4,'PI','Role for Principal Investigator',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (5,'READ_ONLY','Read Only Role',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (6,'USE_ONLY','Use Only Role',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (7,'Scientist','Role for Public',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (8,'UPDATE_ONLY','Update Only Role',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (9,'EXECUTE_ONLY','Execute Only Role',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (10,'READ_DENIED','Read Denied Role',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (11,'Coordinator','Role for Coordinator',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (12,'CREATE_ONLY','Create only role',1,0,'04-JAN-2005');
+		INSERT INTO csm_role VALUES (13,'SUPERADMINISTRATOR','SUPER ADMINISTRATOR ROLE',1,0,'19-JUN-2009');
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_role_privilege">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_role_privilege</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO csm_role_privilege VALUES (1,1,1,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (2,1,3,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (3,1,5,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (4,1,7,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (5,1,8,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (6,1,9,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (7,1,10,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (8,2,3,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (9,2,7,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (11,3,1,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (12,3,3,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (13,3,5,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (14,3,7,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (16,4,3,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (17,4,9,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (18,5,3,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (19,6,8,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (20,8,5,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (21,9,7,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (22,6,3,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (23,8,3,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (24,1,11,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (25,2,11,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (26,4,11,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (27,10,12,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (28,11,3,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (29,11,11,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (30,12,1,'04-JAN-2005');
+		INSERT INTO csm_role_privilege VALUES (31,13,13,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (32,13,17,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (33,13,14,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (34,13,15,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (35,13,16,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (36,13,18,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (37,13,20,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (38,13,21,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (39,13,22,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (40,13,23,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (41,13,24,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (42,13,25,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (43,13,26,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (44,13,27,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (45,13,28,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (46,13,29,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (47,1,13,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (48,1,14,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (49,1,15,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (50,1,16,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (51,1,18,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (52,1,20,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (53,1,21,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (54,1,22,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (55,1,23,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (56,1,24,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (57,1,25,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (58,1,26,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (59,1,27,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (60,1,28,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (61,2,18,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (62,2,20,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (63,2,21,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (64,2,22,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (65,2,23,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (66,2,24,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (67,2,25,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (68,2,26,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (69,2,27,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (70,3,21,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (71,3,22,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (72,3,25,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (73,3,26,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (74,3,27,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (75,7,22,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (76,1,29,'22-MAY-2007');
+		INSERT INTO csm_role_privilege VALUES (77,4,5,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (78,4,6,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (79,4,7,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (80,4,23,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (81,11,5,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (82,11,6,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (83,11,7,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (84,11,23,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (85,1,30,'28-MAY-2008');
+		INSERT INTO csm_role_privilege VALUES (86,2,30,'28-MAY-2008');
+    </sql>
+  </changeSet>
+ 
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_user_group">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_user_group</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO csm_user_group VALUES  (1,1,1);
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize csm_user_group_role_pg">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from csm_user_group_role_pg</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO csm_user_group_role_pg VALUES(3,NULL,4,5,1,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(4,NULL,1,1,1,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(5,NULL,1,1,2,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(6,NULL,1,1,3,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(20,NULL,1,1,17,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(21,NULL,1,1,18,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(22,NULL,1,1,19,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(23,NULL,1,1,20,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(24,NULL,1,1,21,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(25,NULL,1,1,22,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(26,NULL,1,1,23,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(27,NULL,2,1,2,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(28,NULL,2,1,3,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(33,NULL,2,1,22,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(34,NULL,2,1,23,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(35,NULL,2,2,1,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(40,NULL,2,2,18,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(41,NULL,2,2,19,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(46,NULL,2,2,21,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(47,NULL,3,3,3,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(50,NULL,3,3,19,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(51,NULL,3,5,1,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(52,NULL,3,5,2,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(56,NULL,3,5,21,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(57,NULL,3,5,22,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(61,NULL,4,5,2,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(62,NULL,4,5,3,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(69,NULL,4,5,20,'04-JAN-2005');
+		INSERT INTO csm_user_group_role_pg VALUES(70,NULL,1,1,24,'28-MAY-2008');
+		INSERT INTO csm_user_group_role_pg VALUES(71,NULL,2,2,24,'28-MAY-2008');
+		INSERT INTO csm_user_group_role_pg VALUES(72,NULL,3,3,24,'28-MAY-2008');
+		INSERT INTO csm_user_group_role_pg VALUES(73,NULL,4,9,24,'28-MAY-2008');
+		INSERT INTO csm_user_group_role_pg VALUES(74,NULL,2,2,20,'18-JAN-2006');
+		INSERT INTO csm_user_group_role_pg VALUES(75,NULL,3,3,20,'28-MAY-2008');
+		INSERT INTO csm_user_group_role_pg VALUES(102,NULL,4,12,44,'04-JAN-2005');
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize pv_cde">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_cde</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO catissue_cde  VALUES('2003988','Clinical Status','Clinical status of the participant.','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003989','Gender','Gender of the participant.','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003990','Genotype','Genotype of the participant.','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003991','Specimen','Specimen Class','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003992','Tissue Side','Tissue Side','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003993','Pathological Status','Pathological Status','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003994','Received Quality','Received Quality','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003995','Fixation Type','Fixation Type','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003996','Collection Procedure','Collection Procedure','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003997','Container','Container','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003998','Method','Method','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2003999','Embedding Medium','Embedding Medium','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2004000','Biohazard','Biohazard','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2004001','VitalStatus','Vital status of the participant.','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2004100','Countries','List of Countries.','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2004200','States','List of States.','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('2004300','Collection Status','Collection Status','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('4284','Request Status','Statuses for the ordered requests','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('4285','Requested Items Status','Statuses for the individual elements in the ordered request','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('Clinical_Diagnosis_PID','Clinical Diagnosis','Clinical Diagnosis','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('Ethnicity_PID','Ethnicity','Ethnicity','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('Hist_Quality','Histological Quality','Histological Quality','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('order_status','Order Status','Order Status','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('Race_PID','Race','Race','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('scg_collection_status','Collection Status','Collection Status','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('shipping_activity_status','Shipping Activity Status','Shipping Activity Status','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('Site_Type_PID','Site Type','Site Type','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('Specimen_Type_PID','Specimen Type','Specimen Type','1.0',NULL);
+		INSERT INTO catissue_cde  VALUES('Tissue_Site_PID','Tissue Site','Tissue Site','1.0',NULL);
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize labelsql">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from labelsql</sqlCheck>
+    </preConditions>
+    <sql>
+				INSERT INTO labelsql VALUES (1,'HEADER',NULL);
+		INSERT INTO labelsql VALUES (2,'NUM_REG_PARTICIPANTS',(select count(catissue_coll_prot_reg.participant_id) from catissue_coll_prot_reg,catissue_collection_protocol where catissue_coll_prot_reg.collection_protocol_id=catissue_collection_protocol.identifier and catissue_collection_protocol.identifier =? and catissue_collection_protocol.activity_status='Active' and catissue_coll_prot_reg.activity_status='Active'));
+		INSERT INTO labelsql VALUES (3,'NUM_MALE_PARTICIPANTS',(select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_participant.gender='Male Gender' and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (4,'NUM_FEMALE_PARTICIPANTS',(select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_participant.gender='Female Gender' and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (5,'NUM_ALIVE_PARTICIPANTS',(select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_participant.vital_status='Alive' and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (6,'NUM_DEAD_PARTICIPANTS',(select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_participant.vital_status='Dead'and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (7,'NUM_CONSENTED_PARTICIPANT',(select count(DISTINCT catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_consent_tier_response where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.identifier=catissue_consent_tier_response.coll_prot_reg_id and catissue_participant.activity_status='Active' and catissue_coll_prot_reg.activity_status='Active' and catissue_consent_tier_response.response NOT IN ('Not Specified') and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (8,'NUM_WHITE_RACE_PARTICIPANTS',(select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status='Active' and catissue_coll_prot_reg.activity_status='Active'and catissue_race.race_name='White'and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (9,'NUM_ASIAN_RACE_PARTICIPANTS',(select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active'and catissue_race.race_name='Asian'and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (10,'NUM_AME_IND_OR_ALASKA_NATIVE',(select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active'and catissue_race.race_name='American Indian or Alaska Native'and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (11,'NUM_BLACK_OR_AFRICAN_AMERICAN',(select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active'and catissue_race.race_name='Black or African American'and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (12,'NUM_NATIVE_HAWAIIAN_OR_PACIFIC_ISLANDER',(select count(catissue_participant.identifier)from catissue_participant,catissue_coll_prot_reg,catissue_race where catissue_participant.identifier=catissue_coll_prot_reg.participant_id and catissue_coll_prot_reg.participant_id=catissue_race.participant_id and catissue_participant.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active'and catissue_race.race_name='Native Hawaiian or Other Pacific Islander'and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (13,'NUM_COMPLETE_SCG',(select count(catissue_specimen_coll_group.identifier) from catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and  catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen_coll_group.ACTIVITY_STATUS='Active' and catissue_coll_prot_reg.activity_status='Active' and catissue_specimen_coll_group.collection_status='Complete'));
+		INSERT INTO labelsql VALUES (14,'NUM_PENDING_SCG',(select count(catissue_specimen_coll_group.identifier) from catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen_coll_group.ACTIVITY_STATUS='Active' and catissue_coll_prot_reg.activity_status='Active' and catissue_specimen_coll_group.collection_status='Pending'));
+		INSERT INTO labelsql VALUES (15,'NUM_PENDING_SPECIMEN',(select count(catissue_specimen.identifier)from catissue_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.collection_status='Pending'));
+		INSERT INTO labelsql VALUES (16,'NUM_CELL_SPECIMEN_COLLECTED',(select count(DISTINCT catissue_specimen.identifier) FROM catissue_specimen JOIN catissue_specimen_coll_group ON catissue_specimen_coll_group.identifier=catissue_specimen.specimen_collection_group_id JOIN catissue_coll_prot_reg ON catissue_coll_prot_reg.identifier=catissue_specimen_coll_group.collection_protocol_reg_id AND catissue_specimen.activity_status='Active' AND catissue_coll_prot_reg.activity_status='Active' AND catissue_coll_prot_reg.collection_protocol_id=? AND catissue_specimen.collection_status='Collected' AND catissue_specimen.SPECIMEN_CLASS='Cell'));
+		INSERT INTO labelsql VALUES (17,'NUM_TISSUE_SPECIMEN_COLLECTED',(select count(DISTINCT catissue_specimen.identifier) FROM catissue_specimen JOIN catissue_specimen_coll_group ON catissue_specimen_coll_group.identifier=catissue_specimen.specimen_collection_group_id JOIN catissue_coll_prot_reg ON catissue_coll_prot_reg.identifier=catissue_specimen_coll_group.collection_protocol_reg_id AND catissue_specimen.activity_status='Active' AND catissue_coll_prot_reg.activity_status='Active' AND catissue_coll_prot_reg.collection_protocol_id=? AND catissue_specimen.collection_status='Collected' AND catissue_specimen.SPECIMEN_CLASS='Tissue'));
+		INSERT INTO labelsql VALUES (18,'NUM_FLUID_SPECIMEN_COLLECTED',(select count(DISTINCT catissue_specimen.identifier) FROM catissue_specimen JOIN catissue_specimen_coll_group ON catissue_specimen_coll_group.identifier=catissue_specimen.specimen_collection_group_id JOIN catissue_coll_prot_reg ON catissue_coll_prot_reg.identifier=catissue_specimen_coll_group.collection_protocol_reg_id AND catissue_specimen.activity_status='Active' AND catissue_coll_prot_reg.activity_status='Active' AND catissue_coll_prot_reg.collection_protocol_id=? AND catissue_specimen.collection_status='Collected' AND catissue_specimen.SPECIMEN_CLASS='Fluid'));
+		INSERT INTO labelsql VALUES (19,'NUM_MOL_SPECIMEN_COLLECTED',(select count(DISTINCT catissue_specimen.identifier) FROM catissue_specimen JOIN catissue_specimen_coll_group ON catissue_specimen_coll_group.identifier=catissue_specimen.specimen_collection_group_id JOIN catissue_coll_prot_reg ON catissue_coll_prot_reg.identifier=catissue_specimen_coll_group.collection_protocol_reg_id AND catissue_specimen.activity_status='Active' AND catissue_coll_prot_reg.activity_status='Active' AND catissue_coll_prot_reg.collection_protocol_id=? AND catissue_specimen.collection_status='Collected' AND catissue_specimen.SPECIMEN_CLASS='Molecular'));
+		INSERT INTO labelsql VALUES (20,'NUM_MALIGNANT_COLL_SPECIMEN',(select count(catissue_specimen.identifier)from catissue_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active' and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status='Malignant' and catissue_specimen.collection_status='Collected'));
+		INSERT INTO labelsql VALUES (21,'NUM_AVAILABLE_SPECIMEN',(select count(catissue_specimen.identifier)from catissue_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.available=1 and catissue_specimen.collection_status='Collected'));
+		INSERT INTO labelsql VALUES (22,'NUM_COLL_MLGNT_AVAILABLE_CELL_SPECIMEN',(select count(catissue_specimen.identifier)from catissue_specimen,catissue_cell_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_cell_specimen.identifier and catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status='Malignant'and catissue_specimen.available=1 and catissue_specimen.available_quantity > 0 and catissue_specimen.collection_status='Collected'));
+		INSERT INTO labelsql VALUES (23,'NUM_COLL_MLGNT_AVAILABLE_TISSUE_SPECIMEN',(select count(catissue_specimen.identifier)from catissue_specimen,catissue_tissue_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_tissue_specimen.identifier and  catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status='Malignant'and catissue_specimen.available=1 and catissue_specimen.available_quantity >0 and catissue_specimen.collection_status='Collected'));
+		INSERT INTO labelsql VALUES (24,'NUM_COLL_MLGNT_AVAI_FLUID_SPECIMEN',(select count(catissue_specimen.identifier)from catissue_specimen,catissue_fluid_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_fluid_specimen.identifier and  catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active'and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status='Malignant'and catissue_specimen.available=1 and catissue_specimen.available_quantity >0 and catissue_specimen.collection_status='Collected'));
+		INSERT INTO labelsql VALUES (25,'NUM_COLL_MLGNT_AVAI_MOL_SPECIMEN',(select count(catissue_specimen.identifier)from catissue_specimen,catissue_molecular_specimen,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_molecular_specimen.identifier and  catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_specimen.activity_status='Active'and catissue_coll_prot_reg.activity_status='Active' and catissue_coll_prot_reg.collection_protocol_id=? and catissue_specimen.pathological_status='Malignant'and catissue_specimen.available=1 and catissue_specimen.available_quantity >0 and catissue_specimen.collection_status='Collected'));
+		INSERT INTO labelsql VALUES (26,'NUM_DISTRIBUTED_SPECIMENS',(select count( distinct catissue_specimen.identifier)from catissue_specimen,catissue_distributed_item,catissue_specimen_coll_group,catissue_coll_prot_reg where catissue_specimen.identifier=catissue_distributed_item.specimen_id and catissue_specimen.specimen_collection_group_id=catissue_specimen_coll_group.identifier and catissue_specimen_coll_group.collection_protocol_reg_id=catissue_coll_prot_reg.identifier and catissue_coll_prot_reg.collection_protocol_id=?));
+		INSERT INTO labelsql VALUES (27,'NUM_USERS',(select count(*) FROM CATISSUE_USER A WHERE A.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (28,'NUM_USERS_ACCESSED_MONTH','SELECT (count(distinct(user_id))) FROM catissue_audit_event ae WHERE MONTH(ae.event_timestamp) = MONTH(now()) AND YEAR (ae.event_timestamp) = YEAR(now())));
+		INSERT INTO labelsql VALUES (29,'NUM_PENDING_USERS',(select count(*) FROM CATISSUE_USER A WHERE A.ACTIVITY_STATUS = 'Pending' or A.ACTIVITY_STATUS='New'));
+		INSERT INTO labelsql VALUES (30,'NUM_REPOSITORIES',(select count(*) FROM CATISSUE_SITE A WHERE A.TYPE LIKE 'Repository' AND A.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (31,'NUM_ACTIVE_CP',(select count(*) FROM CATISSUE_COLLECTION_PROTOCOL B WHERE B.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (32,'NUM_ACTIVE_DP',(select count(*) FROM CATISSUE_DISTRIBUTION_PROTOCOL B WHERE B.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (33,'NUM_REG_PARTICIPANTS_SYS',(select count(*) FROM CATISSUE_PARTICIPANT A WHERE A.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (34,'NUM_COLLECTED_SPECIMEN_TOTAL',(select count(*) from CATISSUE_SPECIMEN specimen where specimen.COLLECTION_STATUS = 'Collected' and specimen.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (35,'NUM_COLLECTED_SPECIMEN_MONTH','select (count(distinct(cspe.identifier))) from catissue_specimen cspe inner join catissue_specimen_coll_group scg on scg.identifier = cspe.SPECIMEN_COLLECTION_GROUP_ID inner join catissue_coll_prot_reg cpr on cpr.identifier = scg.collection_protocol_reg_id where cspe.collection_status='Collected' and cspe.ACTIVITY_STATUS='Active' and MONTH(registration_date) = MONTH(now()) AND YEAR(registration_date) = YEAR(now())));
+		INSERT INTO labelsql VALUES (36,'NUM_SPECIMENS_BY_FLUID_CLASS_SYS',(select count(*) from CATISSUE_SPECIMEN specimen where specimen.SPECIMEN_CLASS = 'Fluid' and specimen.COLLECTION_STATUS = 'Collected' and specimen.AVAILABLE=1 and specimen.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (37,'NUM_SPECIMENS_BY_TISSUE_CLASS_SYS',(select count(*) from CATISSUE_SPECIMEN specimen where specimen.SPECIMEN_CLASS = 'Tissue' and specimen.COLLECTION_STATUS = 'Collected' and specimen.AVAILABLE=1 and specimen.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (38,'NUM_SPECIMENS_BY_MOLECULAR_CLASS_SYS',(select count(*) from CATISSUE_SPECIMEN specimen where specimen.SPECIMEN_CLASS = 'Molecular' and specimen.COLLECTION_STATUS = 'Collected' and specimen.AVAILABLE=1 and specimen.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (39,'NUM_SPECIMENS_BY_CELL_CLASS_SYS',(select count(*) from CATISSUE_SPECIMEN specimen where specimen.SPECIMEN_CLASS = 'Cell' and specimen.COLLECTION_STATUS = 'Collected' and specimen.AVAILABLE=1 and specimen.ACTIVITY_STATUS='Active'));
+		INSERT INTO labelsql VALUES (40,'NUM_PENDING_ORDERS',(select count(*) from catissue_order where catissue_order.status='Pending'));
+		INSERT INTO labelsql VALUES (41,'NUM_PROCESSED_ORDER_MONTH',(select count(*) from catissue_order where catissue_order.status='Completed' and  MONTH(requested_date) = MONTH(now()) AND YEAR(requested_date) =YEAR(now())));
+		INSERT INTO labelsql VALUES (42,'NUM_SHIPMENT_REQUESTS_MONTH',(select count(*) from catissue_shipment_request,catissue_base_shipment where catissue_shipment_request.identifier=catissue_base_shipment.identifier and catissue_base_shipment.activity_status='In Progres' and MONTH(created_date) = MONTH(now()) AND YEAR(created_date) =YEAR(now())));
+		INSERT INTO labelsql VALUES (43,'NUM_SHIPMENT_PROCESSED_MONTH',(select count(*) from catissue_base_shipment,catissue_shipment where catissue_shipment.identifier=catissue_base_shipment.identifier and catissue_base_shipment.activity_status='Received' and MONTH(send_date) = MONTH(now()) AND YEAR(send_date) =YEAR(now())));
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize os_department">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from os_department</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO os_department VALUES  (1,'d',1,'Active');
+    </sql>
+  </changeSet>
+
+  <changeSet author="dpatil" dbms="mysql" id="initialize catissue_search_display_data">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from catissue_search_display_data</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO  catissue_search_display_data  VALUES (6,185,'Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (6,184,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (6,186,'Type',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (6,187,'Email Address',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (7,2,'Street',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (7,3,'City',1,6);
+		INSERT INTO  catissue_search_display_data  VALUES (7,4,'State',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (7,5,'Country',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (7,6,'Zip Code',1,9);
+		INSERT INTO  catissue_search_display_data  VALUES (7,7,'Phone Number',1,10);
+		INSERT INTO  catissue_search_display_data  VALUES (7,8,'Fax Number',1,11);
+		INSERT INTO  catissue_search_display_data  VALUES (2,101,'Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (2,100,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (3,68,'Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (3,67,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (4,29,'Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (4,28,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (5,25,'Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (5,24,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (5,26,'Comments',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (5,27,'Type',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (108,307,'Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (1,258,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (1,260,'Default Temperature',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (108,261,'One Dimension Label',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (108,262,'Two Dimension Label',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (108,308,'Comments',0,6);
+		INSERT INTO  catissue_search_display_data  VALUES (110,240,'Container Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (8,239,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (8,241,'Temperature',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (9,252,'One Dimension Capacity',0,4);
+		INSERT INTO  catissue_search_display_data  VALUES (9,253,'Two Dimension Capacity',0,5);
+		INSERT INTO  catissue_search_display_data  VALUES (10,307,'Container Type',0,6);
+		INSERT INTO  catissue_search_display_data  VALUES (10,261,'One Dimension Label',0,7);
+		INSERT INTO  catissue_search_display_data  VALUES (10,262,'Two Dimension Label',0,8);
+		INSERT INTO  catissue_search_display_data  VALUES (11,185,'Site Name',1,9);
+		INSERT INTO  catissue_search_display_data  VALUES (110,242,'Is Container Full',1,10);
+		INSERT INTO  catissue_search_display_data  VALUES (110,243,'Barcode',1,11);
+		INSERT INTO  catissue_search_display_data  VALUES (110,247,'Parent Container Identifier',1,12);
+		INSERT INTO  catissue_search_display_data  VALUES (110,310,'Comments',0,15);
+		INSERT INTO  catissue_search_display_data  VALUES (112,307,'Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (111,311,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (111,312,'Specimen Class',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (112,261,'One Dimension Label',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (112,262,'Two Dimension Label',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (112,308,'Comments',0,6);
+		INSERT INTO  catissue_search_display_data  VALUES (114,240,'Array Label',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (113,313,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (114,242,'Is Container Full',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (114,243,'Barcode',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (114,247,'Parent Container Identifier',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (114,310,'Comments',0,8);
+		INSERT INTO  catissue_search_display_data  VALUES (115,252,'One Dimension Capacity',1,9);
+		INSERT INTO  catissue_search_display_data  VALUES (115,253,'Two Dimension Capacity',1,10);
+		INSERT INTO  catissue_search_display_data  VALUES (116,307,'Array Type',0,11);
+		INSERT INTO  catissue_search_display_data  VALUES (129,312,'SpecimenClass',1,12);
+		INSERT INTO  catissue_search_display_data  VALUES (12,224,'Title',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (12,54,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (42,292,'Protocol Coordinator Last Name',0,5);
+		INSERT INTO  catissue_search_display_data  VALUES (42,293,'Protocol Coordinator First Name',0,6);
+		INSERT INTO  catissue_search_display_data  VALUES (12,225,'Short Title',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (12,226,'IRB Identifier',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (12,227,'Start Date',1,9);
+		INSERT INTO  catissue_search_display_data  VALUES (17,347,'Title',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (17,79,'Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (17,348,'Short Title',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (17,349,'IRB Identifier',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (17,350,'Start Date',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (17,351,'End Date',1,6);
+		INSERT INTO  catissue_search_display_data  VALUES (17,352,'Enrollment',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (17,353,'Description URL',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (20,233,'Specimen Type',0,9);
+		INSERT INTO  catissue_search_display_data  VALUES (20,234,'Tissue Site',0,10);
+		INSERT INTO  catissue_search_display_data  VALUES (20,235,'Pathological Status',0,11);
+		INSERT INTO  catissue_search_display_data  VALUES (19,80,'Distribution Protocol Identifier',0,15);
+		INSERT INTO  catissue_search_display_data  VALUES (21,293,'First Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (21,292,'Last Name',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (21,285,'Identifier',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (21,294,'Login Name',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (21,295,'Date',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (23,2,'Street',1,6);
+		INSERT INTO  catissue_search_display_data  VALUES (23,3,'City',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (23,4,'State',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (23,5,'Country',1,9);
+		INSERT INTO  catissue_search_display_data  VALUES (23,6,'Zip Code',1,10);
+		INSERT INTO  catissue_search_display_data  VALUES (23,7,'Phone Number',1,11);
+		INSERT INTO  catissue_search_display_data  VALUES (23,8,'Fax Number',1,12);
+		INSERT INTO  catissue_search_display_data  VALUES (25,101,'Institution Name',1,13);
+		INSERT INTO  catissue_search_display_data  VALUES (24,68,'Department Name',1,14);
+		INSERT INTO  catissue_search_display_data  VALUES (26,29,'Cancer Research Group Name',1,15);
+		INSERT INTO  catissue_search_display_data  VALUES (27,118,'First Name',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (27,117,'Last Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (27,116,'Identifier',1,12);
+		INSERT INTO  catissue_search_display_data  VALUES (27,119,'Middle Name',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (27,120,'Birth Date',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (27,303,'Death Date',1,11);
+		INSERT INTO  catissue_search_display_data  VALUES (27,304,'Vital Status',1,10);
+		INSERT INTO  catissue_search_display_data  VALUES (27,121,'Gender',1,6);
+		INSERT INTO  catissue_search_display_data  VALUES (27,122,'Genotype',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (27,124,'Ethnicity',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (27,125,'Social Security Number',1,9);
+		INSERT INTO  catissue_search_display_data  VALUES (28,128,'Medical Record Number',0,4);
+		INSERT INTO  catissue_search_display_data  VALUES (29,59,'Identifier',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (45,224,'Protocol Title',0,6);
+		INSERT INTO  catissue_search_display_data  VALUES (29,60,'Participant Protocol Identifier',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (29,61,'Registration Date',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (46,117,'Participant Last Name',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (46,118,'Participant First Name',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (46,119,'Participant Middle Name',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (46,120,'Participant Birth Date',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (30,320,'Name',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (30,209,'Identifier',1,12);
+		INSERT INTO  catissue_search_display_data  VALUES (30,210,'Clinical Diagnosis',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (30,211,'Clinical Status',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (48,224,'Collection Protocol Title',0,11);
+		INSERT INTO  catissue_search_display_data  VALUES (31,57,'Study Calendar Event Point',1,9);
+		INSERT INTO  catissue_search_display_data  VALUES (31,329,'Collection Point Label',0,9);
+		INSERT INTO  catissue_search_display_data  VALUES (32,185,'Site Name',1,10);
+		INSERT INTO  catissue_search_display_data  VALUES (33,60,'Protocol Participant Identifier',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (47,45,'Surgical Pathology Number',1,6);
+		INSERT INTO  catissue_search_display_data  VALUES (47,46,'Medical Record Number',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (54,117,'Participant Last Name',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (54,118,'Participant First Name',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (34,323,'Label',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (34,191,'Identifier',1,20);
+		INSERT INTO  catissue_search_display_data  VALUES (34,102,'Class',1,6);
+		INSERT INTO  catissue_search_display_data  VALUES (34,201,'Specimen Collection Group Identifier',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (34,199,'Parent Specimen Identifier',1,9);
+		INSERT INTO  catissue_search_display_data  VALUES (34,192,'Type',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (34,208,'Pathological Status',1,12);
+		INSERT INTO  catissue_search_display_data  VALUES (34,193,'Is Available',1,16);
+		INSERT INTO  catissue_search_display_data  VALUES (34,196,'Barcode',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (34,103,'Initial Quantity',1,13);
+		INSERT INTO  catissue_search_display_data  VALUES (34,104,'Available Quantity',1,14);
+		INSERT INTO  catissue_search_display_data  VALUES (34,322,'Lineage',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (34,328,'Created On',1,19);
+		INSERT INTO  catissue_search_display_data  VALUES (34,206,'Tissue Site',1,11);
+		INSERT INTO  catissue_search_display_data  VALUES (34,207,'Tissue Side',1,10);
+		INSERT INTO  catissue_search_display_data  VALUES (50,85,'External Identifier Name',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (50,86,'External Identifier Value',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (36,75,'Identifier',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (36,298,'Distribution Date',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (36,302,'Distribution Time',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (37,72,'Distributed Quantity',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (52,337,'Distributed Specimen Identifier',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (52,192,'Distributed Specimen Type',1,6);
+		INSERT INTO  catissue_search_display_data  VALUES (55,206,'Distributed Specimen Tissue Site',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (55,207,'Distributed Specimen Tissue Side',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (52,208,'Distributed Specimen Pathological Status',1,9);
+		INSERT INTO  catissue_search_display_data  VALUES (57,39,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (58,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (58,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (58,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (59,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (59,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (57,40,'Neoplastic Cellularity Percentage',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (57,41,'Viable Cell Percentage',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (60,42,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (61,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (61,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (61,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (62,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (62,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (60,43,'Storage Status',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (63,51,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (64,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (64,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (64,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (65,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (65,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (63,52,'Collection Procedure',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (63,53,'Container',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (66,69,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (67,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (67,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (67,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (68,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (68,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (66,70,'Reason',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (69,82,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (70,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (70,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (70,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (71,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (71,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (69,83,'Embedding Medium',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (72,88,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (73,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (73,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (73,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (74,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (74,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (72,89,'Fixation Type',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (72,90,'Duration In Minutes',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (75,96,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (76,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (76,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (76,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (77,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (77,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (75,97,'Cell Count',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (78,98,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (79,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (79,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (79,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (80,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (80,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (78,99,'Method',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (81,108,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (82,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (82,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (82,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (83,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (83,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (81,109,'Gel Image URL',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (81,110,'Quality Index',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (81,111,'Lane Number',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (81,112,'Gel Number',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (81,113,'Absorbance At 260',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (81,114,'Absorbance At 280',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (81,115,'Ratio 28S to 18S',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (84,138,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (85,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (85,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (85,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (86,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (86,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (84,139,'URL',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (84,140,'Name',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (87,150,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (88,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (88,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (88,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (89,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (89,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (87,151,'Received Quality',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (90,236,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (91,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (91,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (91,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (92,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (92,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (91,237,'GForce',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (91,238,'Duration In Minutes',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (93,266,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (94,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (94,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (94,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (95,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (95,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (96,272,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (97,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (97,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (97,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (98,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (98,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (96,273,'Neo Plastic Cellularity Percentage',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (96,274,'Necrosis Percentage',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (96,275,'Lymphocytic Percentage',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (96,276,'Total Cellularity Percentage',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (96,277,'Histological Quality',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (99,278,'Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (100,218,'Specimen Identifier',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (100,219,'Event Timestamp',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (100,221,'Comments',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (101,292,'User Last Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (101,293,'User First Name',0,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (99,284,'From Storage Container Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (99,283,'To Storage Container Identifier',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (99,279,'From Position Dimension One',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (99,280,'From Position Dimension Two',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (99,281,'To Position Dimension One',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (99,282,'To Position Dimension Two',1,NULL);
+		INSERT INTO  catissue_search_display_data  VALUES (102,156,'Identifier',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (102,157,'Affiliation',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (102,158,'Name of reporter',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (102,159,'Reporters email id',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (102,160,'Message Body',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (102,161,'Subject',1,6);
+		INSERT INTO  catissue_search_display_data  VALUES (102,162,'Reported Date',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (102,163,'Activity Status',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (105,24,'Identifier',0,1);
+		INSERT INTO  catissue_search_display_data  VALUES (105,25,'Name',0,2);
+		INSERT INTO  catissue_search_display_data  VALUES (105,26,'Comments',0,3);
+		INSERT INTO  catissue_search_display_data  VALUES (105,27,'Type',0,4);
+		INSERT INTO  catissue_search_display_data  VALUES (53,224,'Distribution Protocol Title',0,1);
+		INSERT INTO  catissue_search_display_data  VALUES (122,327,'Distribution Id',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (121,315,'Specimen Array Type Id',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (122,325,'Distribution Date',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (122,326,'Distribution Time',1,4);
+		INSERT INTO  catissue_search_display_data  VALUES (123,185,'Site Name',1,5);
+		INSERT INTO  catissue_search_display_data  VALUES (124,224,'Distribution Protocol Title',1,6);
+		INSERT INTO  catissue_search_display_data  VALUES (127,240,'SpecimenArray Name',1,7);
+		INSERT INTO  catissue_search_display_data  VALUES (125,307,'SpecimenArrayType Name',1,8);
+		INSERT INTO  catissue_search_display_data  VALUES (130,260,'Default Temperature In Centigrade',0,9);
+		INSERT INTO  catissue_search_display_data  VALUES (131,72,'Distributed Quantity',0,10);
+		INSERT INTO  catissue_search_display_data  VALUES (138,249,'Position Dimension One',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (138,250,'Position Dimension Two',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (139,249,'Position Dimension One',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (139,250,'Position Dimension Two',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (34,249,'Position Dimension One',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (34,250,'Position Dimension Two',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (140,249,'Position Dimension One',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (140,250,'Position Dimension Two',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (141,249,'Position Dimension One',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (141,250,'Position Dimension Two',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (142,249,'Position Dimension One',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (142,250,'Position Dimension Two',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (110,249,'Position Dimension One',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (110,250,'Position Dimension Two',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (114,249,'Position Dimension One',1,1);
+		INSERT INTO  catissue_search_display_data  VALUES (114,250,'Position Dimension Two',1,2);
+		INSERT INTO  catissue_search_display_data  VALUES (144,247,'Parent Container Id',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (143,333,'Parent Container Id',1,3);
+		INSERT INTO  catissue_search_display_data  VALUES (30,338,'Barcode',0,2);
+		INSERT INTO  catissue_search_display_data  VALUES (29,339,'Barcode',0,7);
+		INSERT INTO  catissue_search_display_data  VALUES (19,340,'Specimen Type',0,12);
+		INSERT INTO  catissue_search_display_data  VALUES (19,341,'Specimen Class',0,13);
+		INSERT INTO  catissue_search_display_data  VALUES (19,342,'Tissue Site',0,14);
+		INSERT INTO  catissue_search_display_data  VALUES (19,343,'Pathology status',0,15);
+		INSERT INTO  catissue_search_display_data  VALUES (19,344,'Quantity',0,16);
+		INSERT INTO  catissue_search_display_data  VALUES (34,345,'Concentration',0,2);	
+    </sql>
+  </changeSet>
+  
+  <changeSet author="dpatil"  dbms="oracle"   id="initialize os_user">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">select count(*) from os_user</sqlCheck>
+    </preConditions>
+    <sql>
+		INSERT INTO os_user VALUES  (1,'admin@admin.com','Admin','Admin','admin@admin.com',NULL,'Active',1,1,1,1,1,NULL,1,NULL,'catissue');
+    </sql>
+  </changeSet>
+</databaseChangeLog> 

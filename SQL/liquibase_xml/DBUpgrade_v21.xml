@@ -104,8 +104,7 @@
 
 
 		<!-- CREATE SEQUENCE FOR REPORT_DETAILS_SEQ -->
-		<createSequence sequenceName="REPORT_DETAILS_SEQ"
-			startValue="1" incrementBy="1" minValue="1" ordered="false" />
+		
        
 
 		<!-- FOREIGN KEY -->
@@ -117,6 +116,15 @@
 			columnName="CP_ID" /> -->
 	</changeSet>
 
+	<changeSet author="catissuecore" id="inserting report sequence" failOnError="true" dbms="oracle">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<sequenceExists sequenceName="REPORT_DETAILS_SEQ" />
+			</not>
+		</preConditions>
+		<createSequence sequenceName="REPORT_DETAILS_SEQ" 
+			startValue="1" incrementBy="1" minValue="1" ordered="true" />
+	</changeSet>  
 
 	<changeSet id="2" author="catissuecore" dbms="oracle">
 		<!-- CREATE SEQUENCE FOR REPORT_GENERATED_FILES_IDENTIFIER_SEQ -->

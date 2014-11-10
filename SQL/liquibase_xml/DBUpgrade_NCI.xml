@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+	<property name="text.type" value="varchar" dbms="mysql" />
+	<property name="text.type" value="varchar2" dbms="oracle" />
+
+	<property name="boolean.type" value="bit(1)" dbms="mysql" />
+	<property name="boolean.type" value="number(1,0)" dbms="oracle" />
+
+	<property name="int.type" value="bigint(20)" dbms="mysql" />
+	<property name="int.type" value="number(19,0)" dbms="oracle" />
+
+	<!-- ALTER TABLE CATISSUE_COLL_PROT_EVENT -->
+	
+	<changeSet id="1" author="catissuecore" runOnChange="true">
+		<preConditions  onFail="MARK_RAN">
+			<not>
+				<columnExists tableName="catissue_collection_protocol" columnName="IS_EMPI_ENABLE"  />
+			</not>
+		</preConditions>
+		<addColumn tableName="catissue_collection_protocol">
+			<column name="IS_EMPI_ENABLE" type="${boolean.type}"/>
+		</addColumn>
+		<rollback></rollback>
+	</changeSet>
+
+	<changeSet id="2" author="catissuecore" runOnChange="true">
+		<preConditions  onFail="MARK_RAN">
+			<not>
+				<columnExists tableName="catissue_participant" columnName="EMPI_ID_STATUS"  />
+			</not>
+		</preConditions>
+		<addColumn tableName="catissue_participant">
+			<column name="EMPI_ID_STATUS" type="${text.type}(50)"/>
+		</addColumn>
+		<rollback></rollback>
+	</changeSet>
+
+	<changeSet id="3" author="catissuecore" runOnChange="true">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="PARTICIPANT_EMPI_ID_MAPPING" />
+			</not>
+		</preConditions>
+		<createTable tableName="PARTICIPANT_EMPI_ID_MAPPING">
+			<column name="PERMANENT_PARTICIPANT_ID" type="${text.type}(255)"/>
+			<column name="TEMPARARY_PARTICIPANT_ID" type="${text.type}(255)"/>
+			<column name="OLD_EMPI_ID" type="${text.type}(255)"/>
+		</createTable>
+    </changeSet>
+
+	<changeSet id="4" author="catissuecore" runOnChange="true">
+		<preConditions  onFail="MARK_RAN">
+			<not>
+				<columnExists tableName="CATISSUE_PERMISSIBLE_VALUE" columnName="SORTORDER"  />
+			</not>
+		</preConditions>
+		<addColumn tableName="CATISSUE_PERMISSIBLE_VALUE">
+			<column name="SORTORDER" type="${int.type}"/>
+		</addColumn>
+		<rollback></rollback>
+	</changeSet>
+	
+	<!-- ALTER TABLE CATISSUE_ABSTRACT_POSITION -->
+	<changeSet id="5" author="catissuecore" runOnChange="true">
+		<sql>
+			update CATISSUE_PERMISSIBLE_VALUE set SORTORDER = 1 where VALUE='White' and PUBLIC_ID='Race_PID';
+
+			update CATISSUE_PERMISSIBLE_VALUE set SORTORDER = 2 where VALUE='Black or African American' and PUBLIC_ID='Race_PID';
+
+			update CATISSUE_PERMISSIBLE_VALUE set SORTORDER = 3 where VALUE='American Indian or Alaska Native' and PUBLIC_ID='Race_PID';
+
+			update CATISSUE_PERMISSIBLE_VALUE set SORTORDER = 4 where VALUE='Asian' and PUBLIC_ID='Race_PID';
+
+			update CATISSUE_PERMISSIBLE_VALUE set SORTORDER = 5 where VALUE='Native Hawaiian or Other Pacific Islander' and PUBLIC_ID='Race_PID';
+
+			update CATISSUE_PERMISSIBLE_VALUE set SORTORDER = 6 where VALUE='Not Reported' and PUBLIC_ID='Race_PID';
+
+			update CATISSUE_PERMISSIBLE_VALUE set SORTORDER = 7 where VALUE='Other' and PUBLIC_ID='Race_PID';
+
+			update CATISSUE_PERMISSIBLE_VALUE set SORTORDER = 8 where VALUE='Unknown' and PUBLIC_ID='Race_PID';
+		</sql>
+	</changeSet>
+
+</databaseChangeLog>         

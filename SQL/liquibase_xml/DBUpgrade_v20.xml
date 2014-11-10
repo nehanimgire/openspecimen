@@ -31,6 +31,12 @@
 	
 	<changeSet id="2" author="catissue" runOnChange="true">
 
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="catissue_specimenlist_tags" />
+			</not>
+		</preConditions>
+
 		<createTable tableName="catissue_specimenlist_tags">
 			<column name="IDENTIFIER" type="${int.type}">
 				<constraints primaryKey="true" nullable="false" />
@@ -42,9 +48,6 @@
 				<constraints nullable="false" />
 			</column>
 		</createTable>
-
-
-
 
 		<createTable tableName="catissue_spec_tag_items">
 			<column name="IDENTIFIER" type="${int.type}">
@@ -58,16 +61,19 @@
 			</column>
 		</createTable>
 
-<addForeignKeyConstraint constraintName="FK_SPECLIST_TAGITEM_TAG_ID"
+		<addForeignKeyConstraint constraintName="FK_SPECLIST_TAGITEM_TAG_ID"
 			baseTableName="catissue_spec_tag_items" baseColumnNames="TAG_ID"
-			referencedTableName="catissue_specimenlist_tags" referencedColumnNames="IDENTIFIER" />
+			referencedTableName="catissue_specimenlist_tags" 
+			referencedColumnNames="IDENTIFIER" />
 
 		<addForeignKeyConstraint constraintName="FK_SPECLIST_USER_ID"
-			baseTableName="catissue_specimenlist_tags" baseColumnNames="USER_ID" 					referencedTableName="CATISSUE_USER"
+			baseTableName="catissue_specimenlist_tags" baseColumnNames="USER_ID" 
+			referencedTableName="CATISSUE_USER"
 			referencedColumnNames="IDENTIFIER" />
 
 	        <addForeignKeyConstraint constraintName="FK_SPECLIST_OBJ_ID"
-			baseTableName="catissue_spec_tag_items" baseColumnNames="OBJ_ID" 					referencedTableName="catissue_abstract_specimen"
+			baseTableName="catissue_spec_tag_items" baseColumnNames="OBJ_ID" 
+			referencedTableName="catissue_abstract_specimen"
 			referencedColumnNames="IDENTIFIER" />
 
 		<addUniqueConstraint constraintName="SPECLIST_TAGID_UNIQUE_KEY"
@@ -94,7 +100,12 @@
 	</changeSet>
 	
 	<changeSet id="5" author="catissuecore" runOnChange="true">
-	<createTable tableName="catissue_synch_cp_audit">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="catissue_synch_cp_audit" />
+			</not>
+		</preConditions>	
+		<createTable tableName="catissue_synch_cp_audit">
 			<column name="IDENTIFIER" type="${int.type}" autoIncrement="true" >
 				<constraints primaryKey="true" nullable="false" />
 			</column>
@@ -111,12 +122,29 @@
 			<column name="USER_ID" type="${int.type}">
 				<constraints nullable="false" />
 			</column>
-	</createTable>
-	<createSequence sequenceName="synch_cp_id"/>
-	</changeSet>	
-	
+		</createTable>
+	</changeSet>
+
+	<changeSet author="dpatil" id="inserting privilege sequence" failOnError="true" dbms="oracle">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<sequenceExists sequenceName="synch_cp_id" />
+			</not>
+		</preConditions>
+		<createSequence
+			sequenceName="synch_cp_id"
+			startValue="1"
+			incrementBy="1"
+			ordered="true" />
+	</changeSet>  
 	<!-- Darpan's changes for queryfolder -->
 	<changeSet id="6" author="catissue" runOnChange="true">
+
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="QUERY_TAGS" />
+			</not>
+		</preConditions>
 
 		<createTable tableName="QUERY_TAGS">
 			<column name="IDENTIFIER" type="${int.type}">
@@ -149,7 +177,7 @@
 			referencedTableName="QUERY_TAGS" referencedColumnNames="IDENTIFIER" />
 
 		<addForeignKeyConstraint constraintName="FK_QUERYTAG_USER_ID"
-			baseTableName="QUERY_TAGS" baseColumnNames="USER_ID" 					referencedTableName="CATISSUE_USER"
+			baseTableName="QUERY_TAGS" baseColumnNames="USER_ID" referencedTableName="CATISSUE_USER"
 			referencedColumnNames="IDENTIFIER" />
 
 

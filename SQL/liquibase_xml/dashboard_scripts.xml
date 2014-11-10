@@ -18,7 +18,11 @@
 	<property name="smallint.type" value="number(5,0)" dbms="oracle" />
 	
 	<changeSet id="1" author="catissue">
-
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="LABELSQL" />
+			</not>
+		</preConditions>
 
 		<!-- CREATE TABLE LABELSQL -->
 		<createTable tableName="LABELSQL">

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<rows>
+	#foreach($ls in $list)
+	<row id='1415280030298_$ls.get(2)'>
+		<cell><![CDATA[$ls.get(0)]]></cell>
+		<cell><![CDATA[$ls.get(1)]]></cell>
+		<cell><![CDATA[$ls.get(2)]]></cell>
+		<cell><![CDATA[$ls.get(3)]]></cell>
+		<cell><![CDATA[$ls.get(5)]]></cell>
+		<cell><![CDATA[$ls.get(6)($ls.get(7))]]></cell>
+		<cell><![CDATA[$ls.get(7)]]></cell>
+		<cell><![CDATA[$ls.get(8)]]></cell>
+		<cell><![CDATA[$ls.get(9)]]></cell>
+		<cell><![CDATA[$ls.get(10)]]></cell>
+		<cell><![CDATA[$ls.get(10)]]></cell>
+	</row>
+	#end
+</rows>

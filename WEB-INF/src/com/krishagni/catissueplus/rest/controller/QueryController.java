@@ -34,7 +34,7 @@ import edu.wustl.common.beans.SessionDataBean;
 @Controller
 @RequestMapping("/query")
 public class QueryController {
-	
+
 	@Autowired
 	private HttpServletRequest httpServletRequest;
 	

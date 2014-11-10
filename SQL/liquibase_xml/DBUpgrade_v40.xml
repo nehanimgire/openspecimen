@@ -348,7 +348,7 @@
         <sql>SET FOREIGN_KEY_CHECKS=0;</sql>
     </changeSet>
 
-	<changeSet author="nitesh" id="9" failOnError="false">
+    <changeSet author="nitesh" id="9" failOnError="false">
 	     <addForeignKeyConstraint baseColumnNames="PARENT_SPECIMEN_ID"
 	               baseTableName="CATISSUE_CP_REQ_SPECIMEN"
 	               constraintName="FK_PARENT_CP_REQ_SPECIMEN"
@@ -366,22 +366,22 @@
                    referencedTableName="CATISSUE_USER"/>
     </changeSet>
     <changeSet author="nitesh" id="10" failOnError="false">
-	     <addForeignKeyConstraint baseColumnNames="PARENT_SPECIMEN_ID"
+	 <addForeignKeyConstraint baseColumnNames="PARENT_SPECIMEN_ID"
 	               baseTableName="CATISSUE_SPECIMEN"
 	               constraintName="FK_PARENT_SPECIMEN"
 	               referencedColumnNames="IDENTIFIER"
 	               referencedTableName="CATISSUE_SPECIMEN"/>
     </changeSet>
     
-	<changeSet author="nitesh" id="11" failOnError="false">
-	    <createIndex 
+    <changeSet author="nitesh" id="11" failOnError="false">
+         <createIndex 
 	            indexName="idx_specimen_class"
 	            tableName="CATISSUE_SPECIMEN"
 	            unique="false">
 	        <column name="SPECIMEN_CLASS" type="varchar(50)"/>
 	    </createIndex>
 	 </changeSet>
-	<changeSet author="nitesh" id="12" failOnError="false">
+    <changeSet author="nitesh" id="12" failOnError="false">
 	    <createIndex 
                 indexName="idx_specimen_type"
                 tableName="CATISSUE_SPECIMEN"
@@ -442,7 +442,13 @@
         <sql>SET FOREIGN_KEY_CHECKS=1;</sql>
     </changeSet>
 
-        <changeSet id="20" author="nitesh" runOnChange="true">
+    <changeSet id="20" author="nitesh" runOnChange="false">
+	<preConditions  onFail="MARK_RAN">
+	    <not>
+		<columnExists tableName="CATISSUE_COLL_EVENT_PARAM" columnName="EVENT_TIMESTAMP"  />
+	    </not>			
+	</preConditions>
+
         <addColumn tableName="CATISSUE_COLL_EVENT_PARAM">
             <column name="EVENT_TIMESTAMP" type="${datetime.type}" />
         </addColumn>
@@ -637,6 +643,17 @@
         <addColumn tableName="CATISSUE_DISPOSAL_EVENT_PARAM">
             <column name="COMMENTS" type="${text.type}(500)" />
         </addColumn>
+    </changeSet>
+
+    <changeSet id="20.1" author="nitesh" runOnChange="false">
+		<preConditions  onFail="MARK_RAN">
+			<and>
+				<tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
+				<not>
+					<columnExists tableName="CATISSUE_DISTRI_EVENT_PARAM" columnName="EVENT_TIMESTAMP"/>
+				</not>
+			</and>
+		</preConditions>
         
         <addColumn tableName="CATISSUE_DISTRI_EVENT_PARAM">
             <column name="EVENT_TIMESTAMP" type="${datetime.type}" />
@@ -722,7 +739,7 @@
     <sql>call migrate_events_data('CATISSUE_FLUID_SPE_EVENT_PARAM');</sql>
     <sql>call migrate_events_data('CATISSUE_MOL_SPE_REVIEW_PARAM');</sql>
     <sql>call migrate_events_data('CATISSUE_DISPOSAL_EVENT_PARAM');</sql>
-    <sql>call migrate_events_data('CATISSUE_DISTRI_EVENT_PARAM');</sql>
+    <!--sql>call migrate_events_data('CATISSUE_DISTRI_EVENT_PARAM');</sql-->
     <sql>commit;</sql>
     </changeSet>
     
@@ -1419,12 +1436,19 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
     </changeSet>
     
     <changeSet author="nitesh" id="adding FK for CATISSUE_DISTRI_EVENT_PARAM" failOnError="false">
-     <!-- <addForeignKeyConstraint baseColumnNames="IDENTIFIER"
+	<preConditions  onFail="MARK_RAN">
+	       <tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
+	</preConditions>
+     	<!-- <addForeignKeyConstraint baseColumnNames="IDENTIFIER"
                baseTableName="CATISSUE_DISTRI_EVENT_PARAM"
                constraintName="FK_DISTRI_EVENT_TO_EV_MAPPING"
                referencedColumnNames="IDENTIFIER"
                referencedTableName="CATISSUE_SPEC_EVENT_MAPPING"/> -->
+<<<<<<< HEAD
      	<addForeignKeyConstraint baseColumnNames="USER_ID"
+=======
+       <addForeignKeyConstraint baseColumnNames="USER_ID"
+>>>>>>> origin/os_hsqldb
                baseTableName="CATISSUE_DISTRI_EVENT_PARAM"
                constraintName="FK_USER_DISTRI_EVENT"
                referencedColumnNames="IDENTIFIER"
@@ -1455,17 +1479,20 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
         </column>
  
         <column name="SORT_ORDER" type="${smallint.type}"/>
-        <column name="IS_MULTIRECORD" type="${boolean.type}" defaultValueBoolean="${boolean.false}"/>
+        <column name="IS_MULTIRECORD" type="${boolean.type}" defaultValue="0"/>
       </createTable>
     </changeSet>
 
     <changeSet author="vpawar" id="adding FK on form context to containers table" failOnError="true">
+      <preConditions onFail="MARK_RAN">
+	<tableExists tableName="DYEXTN_CONTAINERS" />
+      </preConditions>
       <addForeignKeyConstraint 
-        constraintName="FK_FC_CNTR_ID_DC_IDENTIFIER"
-        baseTableName="CATISSUE_FORM_CONTEXT"
-        baseColumnNames="CONTAINER_ID"
-        referencedTableName="DYEXTN_CONTAINERS"
-        referencedColumnNames="IDENTIFIER"/>
+	constraintName="FK_FC_CNTR_ID_DC_IDENTIFIER"
+	baseTableName="CATISSUE_FORM_CONTEXT"
+	baseColumnNames="CONTAINER_ID"
+	referencedTableName="DYEXTN_CONTAINERS"
+	referencedColumnNames="IDENTIFIER"/>
     </changeSet>
 
      <!-- changeSet author="vpawar" id="adding FK on form context to collection protocol table" failOnError="true">
@@ -1772,7 +1799,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 		</createTable>
 	</changeSet>
 
-	<changeSet author="vinod" id="adding Sequence CATISSUE_NEXTGEN_AUDIT_DETAILS_SEQ" failOnError="true">
+	<changeSet author="vinod" id="adding Sequence CATISSUE_NEXTGEN_AUDIT_DETAILS_SEQ" failOnError="true" dbms="oracle">
 		<createSequence 
 			sequenceName="CATISSUE_NEXTGEN_AUDIT_SEQ" 
 			startValue="1" 
@@ -1831,7 +1858,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 		</createTable>
 	</changeSet>
 
-	<changeSet author="vinod" id="adding Sequence CAT_EXTERNAL_APP_SEQ" failOnError="true">
+	<changeSet author="vinod" id="adding Sequence CAT_EXTERNAL_APP_SEQ" failOnError="true" dbms="oracle">
 		<createSequence sequenceName="CAT_EXTERNAL_APP_SEQ"
 			startValue="1" incrementBy="1" ordered="true" />
 	</changeSet>
@@ -1871,7 +1898,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 
 	</changeSet>
 
-	<changeSet author="vinod" id="adding Sequence CATISSUE_CP_EXTAPP_STUDY_REL_SEQ" failOnError="true">
+	<changeSet author="vinod" id="adding Sequence CATISSUE_CP_EXTAPP_STUDY_REL_SEQ" failOnError="true" dbms="oracle">
 		<createSequence 
 			sequenceName="CAT_CP_EXTAPP_STUDY_REL_SEQ"
 			startValue="1" 
@@ -1981,7 +2008,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
         </createTable>
     </changeSet>  	  
 
-    <changeSet author="dpatil" id="inserting auth domain sequence" failOnError="true">
+    <changeSet author="dpatil" id="inserting auth domain sequence" failOnError="true" dbms="oracle">
         <createSequence
             sequenceName="CATISSUE_AUTH_DOMAIN_SEQ"
             startValue="1"
@@ -2082,7 +2109,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 			referencedTableName="CATISSUE_AUTH_PROVIDERS"
                         referencedColumnNames="auth_type" /> 
 	</changeSet>
-	<changeSet author="dpatil" id="inserting auth PROVIDER sequence" failOnError="true">
+	<changeSet author="dpatil" id="inserting auth PROVIDER sequence" failOnError="true" dbms="oracle">
         <createSequence
             sequenceName="CATISSUE_AUTH_PROVIDER_SEQ"
             startValue="1"
@@ -2167,7 +2194,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
         referencedTableName="CATISSUE_USER" referencedColumnNames="IDENTIFIER"/>
     </changeSet>
     
-    <changeSet author="ka" id="adding Sequence CATISSUE_FORM_CONTEXT" failOnError="true">
+    <changeSet author="ka" id="adding Sequence CATISSUE_FORM_CONTEXT" failOnError="true" dbms="oracle">
 	  <createSequence 
         sequenceName="CATISSUE_FORM_CONTEXT_SEQ" 
         startValue="1" 
@@ -2175,7 +2202,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
         ordered="true" />
     </changeSet>
     
-     <changeSet author="ka" id="adding Sequence CATISSUE_FORM_REC_ENTRY_SEQ" failOnError="true">
+     <changeSet author="ka" id="adding Sequence CATISSUE_FORM_REC_ENTRY_SEQ" failOnError="true" dbms="oracle">
 	  <createSequence 
         sequenceName="CATISSUE_FORM_REC_ENTRY_SEQ" 
         startValue="1" 
@@ -2377,7 +2404,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 		referencedColumnNames="IDENTIFIER" />
     </changeSet>
 
-    <changeSet author="dpatil" id="inserting user cp role sequence" failOnError="true">
+    <changeSet author="dpatil" id="inserting user cp role sequence" failOnError="true" dbms="oracle">
         <createSequence
             sequenceName="CATISSUE_USER_CP_ROLE_SEQ"
             startValue="1"
@@ -2385,7 +2412,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
             ordered="true" />
     </changeSet> 
 
-    <changeSet author="dpatil" id="inserting cp site role sequence" failOnError="true">
+    <changeSet author="dpatil" id="inserting cp site role sequence" failOnError="true" dbms="oracle">
         <createSequence
             sequenceName="CATISSUE_CP_SITE_ROLE_SEQ"
             startValue="1"
@@ -2393,7 +2420,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
             ordered="true" />
     </changeSet>
 
-    <changeSet author="dpatil" id="inserting role sequence" failOnError="true">
+    <changeSet author="dpatil" id="inserting role sequence" failOnError="true" dbms="oracle">
         <createSequence
             sequenceName="CATISSUE_ROLE_SEQ"
             startValue="1"
@@ -2401,7 +2428,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
             ordered="true" />
     </changeSet> 
 
-    <changeSet author="dpatil" id="inserting privilege sequence" failOnError="true">
+    <changeSet author="dpatil" id="inserting privilege sequence" failOnError="true" dbms="oracle">
         <createSequence
             sequenceName="CATISSUE_PRIVILEGE_SEQ"
             startValue="1"
@@ -2456,7 +2483,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
         <renameColumn columnDataType="${int.type}" newColumnName="KEY_SEQUENCE_ID" oldColumnName="KEY_SEQUENCE_ID_TMP" tableName="key_seq_generator"/>
     </changeSet>
 
-    <changeSet author="vpawar" id="adding saved queries sequence" failOnError="true">
+    <changeSet author="vpawar" id="adding saved queries sequence" failOnError="true" dbms="oracle">
       <createSequence 
         sequenceName="CATISSUE_SAVED_QUERIES_SEQ" 
         startValue="1" 
@@ -2464,7 +2491,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
         ordered="true"/>
     </changeSet>
 
-    <changeSet author="vpawar" id="adding query folders sequence" failOnError="true">
+    <changeSet author="vpawar" id="adding query folders sequence" failOnError="true" dbms="oracle">
       <createSequence 
         sequenceName="CATISSUE_QUERY_FOLDERS_SEQ" 
         startValue="1" 
@@ -2472,7 +2499,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
         ordered="true"/>
     </changeSet>
 
-    <changeSet author="vpawar" id="query audit logs sequence" failOnError="true">
+    <changeSet author="vpawar" id="query audit logs sequence" failOnError="true" dbms="oracle">
       <createSequence 
         sequenceName="CATISSUE_QUERY_AUDIT_LOGS_SEQ" 
         startValue="1" 
@@ -2864,7 +2891,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
       </createTable>
     </changeSet>
 
-    <changeSet id="CREATE SPECIMEN HIERARCHY MYSQL" author="mibrahim" runOnChange="true" dbms="mysql">
+    <!--changeSet id="CREATE SPECIMEN HIERARCHY MYSQL" author="mibrahim" runOnChange="true" dbms="mysql">
       <sqlFile 
         encoding="utf8"
         path="create_specimen_hierarchy_mysql.sql"
@@ -2890,7 +2917,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
       <sql>call migrate()</sql>
 
       <sql>commit;</sql>
-    </changeSet>
+    </changeSet-->
 
     <changeSet id="CREATE SPECIMEN HIERARCHY CONSTRAINTS ORACLE" author="mibrahim" runOnChange="true" dbms="oracle">
       <addForeignKeyConstraint 
@@ -3105,13 +3132,17 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
                baseColumnNames="PRINCIPAL_INVESTIGATOR_ID"
                referencedTableName="CATISSUE_USER"
                referencedColumnNames="IDENTIFIER" />
-       <createSequence 
-			sequenceName="OS_DISTRIBUTION_PROTOCOL_SEQ" 
-			startValue="1" 
-			incrementBy="1" 
-			ordered="true" />
+      
     </changeSet>
-        
+       
+    <changeSet author="ajaysamgir" id="adding dp sequence" failOnError="true" dbms="oracle">
+	 <createSequence 
+		sequenceName="OS_DISTRIBUTION_PROTOCOL_SEQ" 
+		startValue="1" 
+		incrementBy="1" 
+		ordered="true" />
+    </changeSet>
+ 
      <changeSet author="ajaysamgir" id="Migrate CATISSUE_D_P table data to OS_D_P table for mysql" failOnError="true" dbms="mysql">
          <sql> insert into OS_DISTRIBUTION_PROTOCOL(PRINCIPAL_INVESTIGATOR_ID, TITLE, SHORT_TITLE, IRB_IDENTIFIER, START_DATE, DESCRIPTION_URL, ACTIVITY_STATUS) 
          select PRINCIPAL_INVESTIGATOR_ID, TITLE, SHORT_TITLE, IRB_IDENTIFIER, START_DATE, DESCRIPTION_URL, ACTIVITY_STATUS from CATISSUE_DISTRIBUTION_PROTOCOL 
@@ -3163,13 +3194,16 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 	   <!--  <addUniqueConstraint constraintName="SPEC_CLASS_TYPE_ID_UNIQUE_KEY"
 			tableName="OS_SPECIMEN_PRINT_RULE" columnNames="SPECIMEN_CLASS,SPECIMEN_TYPE,WORKSTATION_IP,LOGIN_NAME,CP_SHORT_TITLE" />-->
 	   
-	   <createSequence
+	</changeSet>
+
+	<changeSet author="dpatil" id="printrule" failOnError="true" dbms="oracle">
+	 <createSequence
             sequenceName="OS_PRINT_RULE_SEQ"
             startValue="1"
             incrementBy="1"
             ordered="true" />
 	</changeSet>
-
+	
 	 <changeSet author="ajaysamgir" id="Create table CATISSUE_SPECIMEN_PRINT_DATA " failOnError="true">
       <createTable tableName="CATISSUE_SPECIMEN_PRINT_DATA">
         <column name="PRINT_RULE_ID" type="${int.type}">
@@ -3498,7 +3532,10 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
     </addColumn>	   
    </changeSet>
    
-     <changeSet id="add foreign key constraint in catissue_distri_event_param" author="nitesh" failOnError="false">
+   <changeSet id="add foreign key constraint in catissue_distri_event_param" author="nitesh" failOnError="false">
+		<preConditions  onFail="MARK_RAN">
+			<tableExists  tableName="catissue_distri_event_param" />
+		</preConditions>
         <addForeignKeyConstraint
             constraintName="FK_SP_DISTRI_SP_EVENT"
             baseTableName="CATISSUE_DISTRI_EVENT_PARAM"
@@ -3514,6 +3551,9 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
   </changeSet>    
   
   <changeSet id="migrating distribution event data" author="nitesh" dbms="mysql">
+		<preConditions  onFail="MARK_RAN">
+			<tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
+		</preConditions>
         <sql>DROP PROCEDURE IF EXISTS  migrateDistriData;</sql>
         <sql splitStatements="false">
             CREATE PROCEDURE migrateDistriData()
@@ -3554,6 +3594,9 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
   </changeSet>
   
   <changeSet id="migrating distribution event data" author="nitesh" runOnChange="true" dbms="oracle">
+			<preConditions  onFail="MARK_RAN">
+				<tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
+			</preConditions>
             <sql splitStatements="false" endDelimiter="$">
             create or replace  PROCEDURE migrateDistriData
                          IS
@@ -3676,12 +3719,6 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 			</column>
 		</createTable>
 		
-		<createSequence 
-			sequenceName="CAT_EQP_SEQ" 
-			startValue="1" 
-			incrementBy="1" 
-			ordered="true" />
-			
 		<addForeignKeyConstraint 
 			constraintName="FK_EQUPT_SITE_ID"
 			baseTableName="CATISSUE_EQUIPMENT" 
@@ -3694,6 +3731,14 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 			columnNames="EQUIPMENT_ID" />
 
 	</changeSet>
+
+	<changeSet author="ajaysamgir" id="adding equipament sequence" failOnError="true" dbms="oracle">
+		<createSequence 
+			sequenceName="CAT_EQP_SEQ" 
+			startValue="1" 
+			incrementBy="1" 
+			ordered="true" />
+    </changeSet>
 	
 	<changeSet author="ajaysamgir" id="alter CATISSUE_EQUIPMENT table"	failOnError="false">
 		<addColumn tableName="CATISSUE_EQUIPMENT">
@@ -3762,11 +3807,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 
 		</createTable>
 		
-		<createSequence 
-			sequenceName="CAT_IMG_SEQ" 
-			startValue="1" 
-			incrementBy="1" 
-			ordered="true" />
+		
 			
 		<addForeignKeyConstraint 
 			constraintName="FK_CAT_IMGE_SPECIMEN_ID"
@@ -3788,6 +3829,13 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
 			columnNames="EQUIPMENT_ID,EQP_IMAGE_ID" />
 	</changeSet>
 
+	<changeSet author="ajaysamgir" id="adding image sequence" failOnError="true" dbms="oracle">
+		<createSequence 
+			sequenceName="CAT_IMG_SEQ" 
+			startValue="1" 
+			incrementBy="1" 
+			ordered="true" />
+    </changeSet>
 
    <changeSet author="vpawar" id="Table to track changes in default imported queries">
      <createTable tableName="CATISSUE_IMPORT_QUERIES_LOG">
