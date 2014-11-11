@@ -1436,28 +1436,24 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
     </changeSet>
     
     <changeSet author="nitesh" id="adding FK for CATISSUE_DISTRI_EVENT_PARAM" failOnError="false">
-	<preConditions  onFail="MARK_RAN">
-	       <tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
-	</preConditions>
+		<preConditions  onFail="MARK_RAN">
+		       <tableExists  tableName="CATISSUE_DISTRI_EVENT_PARAM" />
+		</preConditions>
      	<!-- <addForeignKeyConstraint baseColumnNames="IDENTIFIER"
                baseTableName="CATISSUE_DISTRI_EVENT_PARAM"
                constraintName="FK_DISTRI_EVENT_TO_EV_MAPPING"
                referencedColumnNames="IDENTIFIER"
                referencedTableName="CATISSUE_SPEC_EVENT_MAPPING"/> -->
-<<<<<<< HEAD
-     	<addForeignKeyConstraint baseColumnNames="USER_ID"
-=======
-       <addForeignKeyConstraint baseColumnNames="USER_ID"
->>>>>>> origin/os_hsqldb
+        <addForeignKeyConstraint baseColumnNames="USER_ID"
                baseTableName="CATISSUE_DISTRI_EVENT_PARAM"
                constraintName="FK_USER_DISTRI_EVENT"
                referencedColumnNames="IDENTIFIER"
                referencedTableName="CATISSUE_USER"/>
         <addForeignKeyConstraint baseColumnNames="SPECIMEN_ID"
-	               baseTableName="CATISSUE_DISTRI_EVENT_PARAM"
-	               constraintName="FK_SPEC_DISTRI_EVENT"
-	               referencedColumnNames="IDENTIFIER"
-	               referencedTableName="CATISSUE_SPECIMEN"/>
+               baseTableName="CATISSUE_DISTRI_EVENT_PARAM"
+               constraintName="FK_SPEC_DISTRI_EVENT"
+               referencedColumnNames="IDENTIFIER"
+               referencedTableName="CATISSUE_SPECIMEN"/>
     </changeSet>
 
     <changeSet author="vpawar" id="adding new form context table" failOnError="true">
@@ -2014,7 +2010,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
             startValue="1"
             incrementBy="1"
             ordered="true" />
-    </changeSet>  	    
+	</changeSet>  	    
 
     <changeSet author="dpatil" id="inserting CATISSUE_LDAP_DETAILS table" failOnError="true">
         <createTable tableName="CATISSUE_LDAP_DETAILS">
@@ -2115,8 +2111,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
             startValue="1"
             incrementBy="1"
             ordered="true" />
-	
-    </changeSet>  	  	   
+	</changeSet>  	  	   
 
     <changeSet author="vpawar" id="table for query folders" failOnError="true">
       <createTable tableName="CATISSUE_QUERY_FOLDERS">
@@ -2200,9 +2195,9 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
         startValue="1" 
         incrementBy="1" 
         ordered="true" />
-    </changeSet>
+	</changeSet>
     
-     <changeSet author="ka" id="adding Sequence CATISSUE_FORM_REC_ENTRY_SEQ" failOnError="true" dbms="oracle">
+    <changeSet author="ka" id="adding Sequence CATISSUE_FORM_REC_ENTRY_SEQ" failOnError="true" dbms="oracle">
 	  <createSequence 
         sequenceName="CATISSUE_FORM_REC_ENTRY_SEQ" 
         startValue="1" 
@@ -2410,7 +2405,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
             startValue="1"
             incrementBy="1"
             ordered="true" />
-    </changeSet> 
+	</changeSet> 
 
     <changeSet author="dpatil" id="inserting cp site role sequence" failOnError="true" dbms="oracle">
         <createSequence
@@ -2891,7 +2886,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
       </createTable>
     </changeSet>
 
-    <!--changeSet id="CREATE SPECIMEN HIERARCHY MYSQL" author="mibrahim" runOnChange="true" dbms="mysql">
+    <changeSet id="CREATE SPECIMEN HIERARCHY MYSQL" author="mibrahim" runOnChange="true" dbms="mysql">
       <sqlFile 
         encoding="utf8"
         path="create_specimen_hierarchy_mysql.sql"
@@ -2917,7 +2912,7 @@ PROCEDURE DEL_DUP_SCG_REC_EVENTS
       <sql>call migrate()</sql>
 
       <sql>commit;</sql>
-    </changeSet-->
+    </changeSet>
 
     <changeSet id="CREATE SPECIMEN HIERARCHY CONSTRAINTS ORACLE" author="mibrahim" runOnChange="true" dbms="oracle">
       <addForeignKeyConstraint 

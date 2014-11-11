@@ -23,7 +23,10 @@ import org.apache.commons.io.FilenameUtils;
 import titli.model.util.TitliResultGroup;
 import au.com.bytecode.opencsv.CSVReader;
 
+import com.krishagni.catissueplus.core.de.ui.StorageContainerControlFactory;
+import com.krishagni.catissueplus.core.de.ui.StorageContainerMapper;
 import com.krishagni.catissueplus.core.de.ui.UserControlFactory;
+import com.krishagni.catissueplus.core.de.ui.UserFieldMapper;
 
 import edu.common.dynamicextensions.domain.nui.factory.ControlManager;
 import edu.common.dynamicextensions.nutility.BOUtil;
@@ -70,6 +73,7 @@ import edu.wustl.common.util.global.CommonServiceLocator;
 import edu.wustl.common.util.logger.Logger;
 import edu.wustl.common.util.logger.LoggerConfig;
 import edu.wustl.dao.exception.DAOException;
+import edu.wustl.dynamicextensions.formdesigner.mapper.ControlMapper;
 import edu.wustl.dynamicextensions.formdesigner.usercontext.CSDProperties;
 import edu.wustl.simplequery.bizlogic.QueryBizLogic;
 
@@ -99,7 +103,7 @@ public class AppInitializer {
 				LoggerConfig.configureLogger(CommonServiceLocator.getInstance().getPropDirPath());
 				this.initCatissueParams();
 				logApplnInfo();
-				//DefaultValueManager.validateAndInitDefaultValueMap();
+				DefaultValueManager.validateAndInitDefaultValueMap();
 				BulkOperationUtility.changeBulkOperationStatusToFailed();
 				//QueryCoreServletContextListenerUtil.contextInitialized(sce, "java:/query");
 				if (XMLPropertyHandler.getValue(Constants.EMPI_ENABLED).equalsIgnoreCase("true"))
@@ -122,6 +126,9 @@ public class AppInitializer {
 				
 	            QuartzSchedulerJobUtil.scheduleQuartzSchedulerJob();
 	            //QueryDataExportService.initialize();
+	            
+//	            ExternalAppNotificationSchedular.scheduleExtAppNotifSchedulerJob();
+//	            ExternalAppFailNotificationSchedular.scheduleExtAppFailNotifSchedulerJob();
 
 				CSDProperties.getInstance().setUserContextProvider(new CatissueUserContextProviderImpl());
 				
@@ -132,6 +139,7 @@ public class AppInitializer {
 	            InitialContext ic = new InitialContext();
 				DataSource ds = (DataSource)ic.lookup(JNDI_NAME);
 				String dateFomat = CommonServiceLocator.getInstance().getDatePattern();
+				String timeFormat = CommonServiceLocator.getInstance().getTimePattern(); 
 				
 				String dir = new StringBuilder(XMLPropertyHandler.getValue("appserver.home.dir")).append(File.separator)
 						.append("os-data").append(File.separator)
@@ -144,8 +152,9 @@ public class AppInitializer {
 					}
 				}
 							
-				DEApp.init(ds, dir, dateFomat);
-				initQueryPathsConfig();            
+				DEApp.init(ds, dir, dateFomat,timeFormat);
+				initQueryPathsConfig();
+				initFancyControls();
 				ControlManager.getInstance().registerFactory(UserControlFactory.getInstance());
 				logger.info("Initialization complete");									
 
@@ -162,6 +171,16 @@ public class AppInitializer {
 		String path = System.getProperty("app.propertiesDir") + File.separatorChar + "paths.xml";
 		PathConfig.intialize(path);
 	}
+	
+	private void initFancyControls() {
+ 		ControlManager ctrlMgr = ControlManager.getInstance();
+		ctrlMgr.registerFactory(UserControlFactory.getInstance());
+		ctrlMgr.registerFactory(StorageContainerControlFactory.getInstance());
+		
+		ControlMapper ctrlMapper = ControlMapper.getInstance();
+		ctrlMapper.registerControlMapper("userField", new UserFieldMapper());
+		ctrlMapper.registerControlMapper("storageContainer", new StorageContainerMapper());
+ 	}
 
 	/**
 	 * Inite mpi.

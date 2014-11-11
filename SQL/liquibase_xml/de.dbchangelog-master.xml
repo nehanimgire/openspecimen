@@ -30,6 +30,7 @@
             <column name="XML" type="LONGBLOB">
                 <constraints nullable="false"/>
             </column>
+			<column name="DELETED_ON" type="TIMESTAMP"/>
         </createTable>
     </changeSet>
 
@@ -40,7 +41,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_form_context">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CONTAINER_ID" type="BIGINT">
@@ -65,7 +66,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_form_record_entry">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="FORM_CTXT_ID" type="BIGINT">

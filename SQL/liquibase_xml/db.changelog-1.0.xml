@@ -33,7 +33,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_institution">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(255)">
@@ -50,7 +50,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_user">
-            <column autoIncrement="true" name="USER_ID" type="BIGINT">
+            <column  autoIncrement="true" name="USER_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValue="" name="LOGIN_NAME" type="VARCHAR(100)">
@@ -84,7 +84,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_department">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(255)">
@@ -112,7 +112,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_abstract_position">
-            	<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            	<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 	<constraints nullable="false" primaryKey="true"/>
             	</column>
             	<column name="POSITION_DIMENSION_ONE" type="BIGINT">
@@ -137,7 +137,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_address">
-        	<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+        	<column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
             	<constraints nullable="false" primaryKey="true"/>
         	</column>
 			<column name="STREET" type="VARCHAR(255)"/>
@@ -157,7 +157,7 @@
 		</not>
 	</preConditions>
 		<createTable tableName="catissue_cancer_research_group">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="NAME" type="VARCHAR(255)">
@@ -173,7 +173,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_user">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="EMAIL_ADDRESS" type="VARCHAR(255)"/>
@@ -207,7 +207,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_audit_event">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 			<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="IP_ADDRESS" type="VARCHAR(20)"/>
@@ -225,7 +225,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_audit_event_details">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="ELEMENT_NAME" type="VARCHAR(150)"/>
@@ -242,7 +242,7 @@
 		</not>
 	</preConditions>
         <createTable tableName="catissue_audit_event_log">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="AUDIT_EVENT_ID" type="BIGINT"/>
@@ -256,7 +256,7 @@
 		</not>
 	</preConditions>
         <createTable tableName="catissue_audit_event_query_log">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="QUERY_DETAILS" type="LONGTEXT"/>
@@ -277,7 +277,7 @@
 		</not>
 	</preConditions>
         <createTable tableName="catissue_auth_domains">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="DOMAIN_NAME" type="VARCHAR(255)">
@@ -294,7 +294,7 @@
 		</not>
 	</preConditions>
         <createTable tableName="catissue_auth_providers">
-            	<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            	<column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 	<constraints nullable="false" primaryKey="true"/>
             	</column>
             	<column name="AUTH_TYPE" type="VARCHAR(255)">
@@ -313,7 +313,7 @@
 		</not>
 	</preConditions>
         <createTable tableName="catissue_biohazard">
-		<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+		<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 			<constraints nullable="false" primaryKey="true"/>
 		</column>
 		<column name="NAME" type="VARCHAR(255)">
@@ -332,7 +332,7 @@
 		</not>
 	</preConditions>
         <createTable tableName="catissue_bulk_operation">
-		<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+		<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 			<constraints nullable="false" primaryKey="true"/>
 		</column>
 		<column name="OPERATION" type="VARCHAR(255)"/>
@@ -353,7 +353,7 @@
 		</not>
 	</preConditions>
         <createTable tableName="catissue_capacity">
-		<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+		<column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
 			<constraints nullable="false" primaryKey="true"/>
 		</column>
 		<column name="ONE_DIMENSION_CAPACITY" type="INT"/>
@@ -407,7 +407,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_collection_protocol">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="UNSIGNED_CONSENT_DOC_URL" type="TEXT"/>
@@ -442,7 +442,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_clinical_diagnosis">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CLINICAL_DIAGNOSIS" type="VARCHAR(255)"/>
@@ -476,7 +476,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_distribution_protocol">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="PRINCIPAL_INVESTIGATOR_ID" type="BIGINT"/>
@@ -537,7 +537,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_site">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(255)">
@@ -562,7 +562,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_coll_prot_event">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="CLINICAL_STATUS" type="VARCHAR(50)"/>
@@ -586,7 +586,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_participant">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="LAST_NAME" type="VARCHAR(255)"/>
@@ -613,7 +613,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_coll_prot_reg">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="PROTOCOL_PARTICIPANT_ID" type="VARCHAR(255)"/>
@@ -640,7 +640,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_semantic_type">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="LABEL" type="TEXT"/>
@@ -654,7 +654,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_concept">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="CONCEPT_UNIQUE_ID" type="VARCHAR(30)"/>
@@ -671,7 +671,7 @@
 		</not>
 	</preConditions>
         <createTable tableName="catissue_concept_classificatn">
-		<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+		<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 			<constraints nullable="false" primaryKey="true"/>
 		</column>
 		<column name="NAME" type="TEXT"/>
@@ -685,7 +685,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_specimen_coll_group">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(255)"/>
@@ -727,7 +727,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_pathology_report">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="ACTIVITY_STATUS" type="VARCHAR(100)"/>
@@ -763,7 +763,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_concept_referent">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="CONCEPT_ID" type="BIGINT"/>
@@ -786,7 +786,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_consent_tier">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="STATEMENT" type="TEXT"/>
@@ -802,7 +802,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_consent_tier_response">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="RESPONSE" type="VARCHAR(255)"/>
@@ -820,7 +820,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_consent_tier_status">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="CONSENT_TIER_ID" type="BIGINT"/>
@@ -838,7 +838,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_container">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="ACTIVITY_STATUS" type="VARCHAR(50)"/>
@@ -860,7 +860,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_container_type">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CAPACITY_ID" type="BIGINT"/>
@@ -951,7 +951,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_container_position">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="PARENT_CONTAINER_ID" type="BIGINT"/>
@@ -969,7 +969,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_cp_req_specimen">
-		    <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+		    <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 		        <constraints nullable="false" primaryKey="true"/>
 		    </column>
 		    <column defaultValue="" name="STORAGE_TYPE" type="VARCHAR(255)">
@@ -1030,7 +1030,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_order">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="COMMENTS" type="TEXT"/>
@@ -1051,7 +1051,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_specimen">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="LABEL" type="VARCHAR(255)"/>
@@ -1086,7 +1086,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_distribution">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="TO_SITE_ID" type="BIGINT"/>
@@ -1155,7 +1155,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_distributed_item">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="QUANTITY" type="DOUBLE"/>
@@ -1175,7 +1175,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_distribution_spec_req">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="SPECIMEN_CLASS" type="VARCHAR(255)">
@@ -1216,7 +1216,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_equipment">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="DEVICE_NAME" type="VARCHAR(255)">
@@ -1244,7 +1244,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_specimen_event_param">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="SPECIMEN_ID" type="BIGINT"/>
@@ -1278,7 +1278,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_external_application">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="APP_NAME" type="VARCHAR(100)">
@@ -1297,7 +1297,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_cp_extapp_study_rel">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CP_ID" type="BIGINT">
@@ -1321,7 +1321,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_external_identifier">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(255)"/>
@@ -1360,7 +1360,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_fluid_req_specimen">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
         </createTable>
@@ -1393,7 +1393,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_fluid_specimen">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
         </createTable>
@@ -1407,7 +1407,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_form_context">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CONTAINER_ID" type="BIGINT">
@@ -1432,7 +1432,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_form_record_entry">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="FORM_CTXT_ID" type="BIGINT">
@@ -1502,7 +1502,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_image">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="DESCRIPTION" type="VARCHAR(1000)"/>
@@ -1585,7 +1585,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_interface_column_data">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="TABLE_ID" type="BIGINT">
@@ -1642,7 +1642,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_login_audit_event_log">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="LOGIN_TIMESTAMP" type="DATETIME"/>
@@ -1660,7 +1660,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_mol_req_specimen">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CONCENTRATION" type="DOUBLE"/>
@@ -1700,7 +1700,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_molecular_specimen">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CONCENTRATION" type="DOUBLE"/>
@@ -1715,7 +1715,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_nextgen_audit_details">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="OBJECT_TYPE" type="VARCHAR(50)">
@@ -1776,7 +1776,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_order_item">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="DESCRIPTION" type="TEXT"/>
@@ -1797,7 +1797,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_part_medical_id">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="MEDICAL_RECORD_NUMBER" type="VARCHAR(255)"/>
@@ -1815,7 +1815,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_password">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="PASSWORD" type="VARCHAR(255)"/>
@@ -1832,7 +1832,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_permissible_value">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CONCEPT_CODE" type="VARCHAR(40)"/>
@@ -1853,7 +1853,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_privileges">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="PRIVILEGE" type="VARCHAR(64)">
@@ -1893,7 +1893,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_quarantine_params">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="DEID_REPORT_ID" type="BIGINT"/>
@@ -1914,7 +1914,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_saved_queries">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="TITLE" type="VARCHAR(128)">
@@ -1949,7 +1949,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_saved_queries">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="TITLE" type="VARCHAR(128)">
@@ -1984,7 +1984,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_saved_queries">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="TITLE" type="VARCHAR(128)">
@@ -2019,7 +2019,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_query_audit_logs">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="QUERY_ID" type="BIGINT"/>
@@ -2067,7 +2067,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_query_folders">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(64)">
@@ -2106,7 +2106,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_query_table_data">
-            <column autoIncrement="true" name="TABLE_ID" type="BIGINT">
+            <column  autoIncrement="true" name="TABLE_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="TABLE_NAME" type="VARCHAR(50)"/>
@@ -2124,7 +2124,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_race">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="RACE_NAME" type="VARCHAR(50)"/>
@@ -2173,7 +2173,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_report_content">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="REPORT_DATA" type="TEXT"/>
@@ -2203,7 +2203,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_report_filecontent">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="REPORT_ID" type="BIGINT">
@@ -2231,7 +2231,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_report_queue">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="STATUS" type="VARCHAR(50)"/>
@@ -2253,7 +2253,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_report_section">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="DOCUMENT_FRAGMENT" type="TEXT"/>
@@ -2303,7 +2303,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_reported_problem">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="AFFILIATION" type="VARCHAR(255)">
@@ -2332,7 +2332,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_review_params">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="REVIEWER_ROLE" type="VARCHAR(100)"/>
@@ -2353,7 +2353,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_roles">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(64)">
@@ -2407,7 +2407,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_base_shipment">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 	                <constraints nullable="false" primaryKey="true"/>
 	       	</column>
 			<column name="LABEL" type="VARCHAR(50)"/>
@@ -2548,7 +2548,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_specimenlist_tags">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="TAG_LABEL" type="VARCHAR(255)">
@@ -2587,7 +2587,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_speci_array_content">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CONC_IN_MICROGM_PER_MICROLTR" type="DOUBLE"/>
@@ -2706,7 +2706,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_specimen_position">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="SPECIMEN_ID" type="BIGINT"/>
@@ -2724,7 +2724,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="os_specimen_print_rule">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(255)">
@@ -2764,7 +2764,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_specimen_requirement">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="SPECIMEN_CLASS" type="VARCHAR(255)">
@@ -2965,7 +2965,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_storage_containers">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(64)">
@@ -3030,7 +3030,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_synch_cp_audit">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CP_ID" type="BIGINT">
@@ -3055,7 +3055,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_table_relation">
-            <column autoIncrement="true" name="RELATIONSHIP_ID" type="BIGINT">
+            <column  autoIncrement="true" name="RELATIONSHIP_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="PARENT_TABLE_ID" type="BIGINT"/>
@@ -3112,7 +3112,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_tissue_req_specimen">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
         </createTable>
@@ -3126,7 +3126,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_tissue_specimen">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
         </createTable>
@@ -3198,7 +3198,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_application">
-            <column autoIncrement="true" name="APPLICATION_ID" type="BIGINT">
+            <column  autoIncrement="true" name="APPLICATION_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValue="" name="APPLICATION_NAME" type="VARCHAR(255)">
@@ -3314,7 +3314,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_group">
-            <column autoIncrement="true" name="GROUP_ID" type="BIGINT">
+            <column  autoIncrement="true" name="GROUP_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValue="" name="GROUP_NAME" type="VARCHAR(255)">
@@ -3354,7 +3354,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_privilege">
-            <column autoIncrement="true" name="PRIVILEGE_ID" type="BIGINT">
+            <column  autoIncrement="true" name="PRIVILEGE_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValue="" name="PRIVILEGE_NAME" type="VARCHAR(100)">
@@ -3374,7 +3374,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_protection_element">
-            <column autoIncrement="true" name="PROTECTION_ELEMENT_ID" type="BIGINT">
+            <column  autoIncrement="true" name="PROTECTION_ELEMENT_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValue="" name="PROTECTION_ELEMENT_NAME" type="VARCHAR(100)">
@@ -3403,7 +3403,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_cp_site_roles">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CP_ID" type="BIGINT"/>
@@ -3422,7 +3422,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_cp_user_roles">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CP_ID" type="BIGINT"/>
@@ -3441,7 +3441,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_data_audit_event_log">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="OBJECT_IDENTIFIER" type="BIGINT"/>
@@ -3460,7 +3460,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_protection_group">
-            <column autoIncrement="true" name="PROTECTION_GROUP_ID" type="BIGINT">
+            <column  autoIncrement="true" name="PROTECTION_GROUP_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValue="" name="PROTECTION_GROUP_NAME" type="VARCHAR(100)">
@@ -3489,7 +3489,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_pg_pe">
-            <column autoIncrement="true" name="PG_PE_ID" type="BIGINT">
+            <column  autoIncrement="true" name="PG_PE_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValueNumeric="0" name="PROTECTION_GROUP_ID" type="BIGINT">
@@ -3511,7 +3511,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_role">
-            <column autoIncrement="true" name="ROLE_ID" type="BIGINT">
+            <column  autoIncrement="true" name="ROLE_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValue="" name="ROLE_NAME" type="VARCHAR(100)">
@@ -3538,7 +3538,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_role_privilege">
-            <column autoIncrement="true" name="ROLE_PRIVILEGE_ID" type="BIGINT">
+            <column  autoIncrement="true" name="ROLE_PRIVILEGE_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValueNumeric="0" name="ROLE_ID" type="BIGINT">
@@ -3562,7 +3562,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_user_group">
-            <column autoIncrement="true" name="USER_GROUP_ID" type="BIGINT">
+            <column  autoIncrement="true" name="USER_GROUP_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValueNumeric="0" name="USER_ID" type="BIGINT">
@@ -3583,7 +3583,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_user_group_role_pg">
-            <column autoIncrement="true" name="USER_GROUP_ROLE_PG_ID" type="BIGINT">
+            <column  autoIncrement="true" name="USER_GROUP_ROLE_PG_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="USER_ID" type="BIGINT"/>
@@ -3611,7 +3611,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="csm_user_pe">
-            <column autoIncrement="true" name="USER_PROTECTION_ELEMENT_ID" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="USER_PROTECTION_ELEMENT_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column defaultValueNumeric="0" name="PROTECTION_ELEMENT_ID" type="BIGINT">
@@ -3635,7 +3635,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="job_details">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="JOB_NAME" type="VARCHAR(255)"/>
@@ -3658,7 +3658,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="key_seq_generator">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="KEY_VALUE" type="VARCHAR(50)">
@@ -3678,7 +3678,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="labelsql">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="LABEL" type="VARCHAR(255)"/>
@@ -3693,7 +3693,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="labelsqlassoc">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CPID" type="BIGINT"/>
@@ -3712,7 +3712,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="os_department">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(255)">
@@ -3731,7 +3731,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="os_distribution_protocol">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="PRINCIPAL_INVESTIGATOR_ID" type="BIGINT"/>
@@ -3753,7 +3753,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_cell_req_specimen">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
         </createTable>
@@ -3767,7 +3767,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="os_user">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="EMAIL_ADDRESS" type="VARCHAR(255)"/>
@@ -3799,7 +3799,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_cell_specimen">
-			<column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
         </createTable>
@@ -3894,7 +3894,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="report_details">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CS_ID" type="BIGINT"/>
@@ -3919,7 +3919,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="report_job_details">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="SCHEDULE_ID" type="BIGINT"/>
@@ -3949,7 +3949,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="report_job_details">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="SCHEDULE_ID" type="BIGINT"/>
@@ -3979,7 +3979,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="report_job_details">
-            <column autoIncrement="true" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="SCHEDULE_ID" type="BIGINT"/>
@@ -5329,4 +5329,5 @@
 		</preConditions>
 		<createView viewName="user_view">(select `u`.`IDENTIFIER` AS `IDENTIFIER`,`u`.`FIRST_NAME` AS `FIRST_NAME`,`u`.`LAST_NAME` AS `LAST_NAME`,`u`.`EMAIL_ADDRESS` AS `EMAIL_ADDRESS`,`d`.`NAME` AS `DEPARTMENT_NAME` from (`catissue_user` `u` join `catissue_department` `d` on((`u`.`DEPARTMENT_ID` = `d`.`IDENTIFIER`))))</createView>
     </changeSet>
+
 </databaseChangeLog>

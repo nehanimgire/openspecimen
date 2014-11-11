@@ -18,8 +18,6 @@
            http://www.springframework.org/schema/context/spring-context-3.2.xsd
            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-<<<<<<< HEAD
-=======
   <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="location" value="classpath:../../bootstrap.properties"/>
   </bean>  
@@ -38,7 +36,6 @@
     <property name="liquibase" ref="liquibase"/>
   </bean>
   
->>>>>>> origin/os_hsqldb
   <bean class="com.krishagni.catissueplus.core.common.RestErrorController" /> 
 
   <!-- Beans for caCORE starts -->
@@ -324,112 +321,6 @@
     <property name="daoFactory" ref="biospecimenDaoFactory"/>       
   </bean>
     
-<<<<<<< HEAD
-	<bean id="siteService" class="com.krishagni.catissueplus.core.administrative.services.impl.SiteServiceImpl">
-        <property name="daoFactory" ref="biospecimenDaoFactory"/>
-        <property name="siteFactory" ref="siteFactory" />
-	</bean>
-	
-	<bean id="biohazardFactory" class="com.krishagni.catissueplus.core.administrative.domain.factory.impl.BiohazardFactoryImpl">
-	</bean>
-	<bean id="biohazardService" class="com.krishagni.catissueplus.core.administrative.services.impl.BiohazardServiceImpl">
-        <property name="daoFactory" ref="biospecimenDaoFactory"/>
-        <property name="biohazardFactory" ref="biohazardFactory" />
-	</bean>
-	
-	<bean id="containerLabelGenerator" class="com.krishagni.catissueplus.core.labelgenerator.impl.StorageContainerLabelGenerator">
-		<property name="tokenFactory" ref="tokenFactory" />
-	</bean>
-	
-	<bean id="containerBarcodeGenerator" class="com.krishagni.catissueplus.core.barcodegenerator.impl.StorageContainerBarcodeGenerator">
-		<property name="tokenFactory" ref="tokenFactory" />
-	</bean>
-	
-	<bean id="storageContainerFact" class="com.krishagni.catissueplus.core.administrative.domain.factory.impl.StorageContainerFactoryImpl">
-		<property name="daoFactory" ref="biospecimenDaoFactory"/>
-	</bean>
-
-	<bean id="storageContainerSvc" class="com.krishagni.catissueplus.core.administrative.services.impl.StorageContainerServiceImpl">
-		<property name="daoFactory" ref="biospecimenDaoFactory"/>
-	</bean>
-	
-	<bean id="bucketPool" class="com.krishagni.catissueplus.core.common.util.BucketPool">
-		<property name="daoFactory" ref="biospecimenDaoFactory"/>
- 	</bean>
- 	
-	<bean id="tokenFactory" class="com.krishagni.catissueplus.core.tokens.factory.TokenFactory">
- 	</bean>
-
-	<bean id="distributionProtocolFactory" class="com.krishagni.catissueplus.core.administrative.domain.factory.impl.DistributionProtocolFactoryImpl">
-	<property name="daoFactory" ref="biospecimenDaoFactory"/>
-	</bean>
-
-	<bean id="distributionProtocolService" class="com.krishagni.catissueplus.core.administrative.services.impl.DistributionProtocolServiceImpl">
-        <property name="daoFactory" ref="biospecimenDaoFactory"/>
-        <property name="distributionProtocolFactory" ref="distributionProtocolFactory" />
-	</bean>
-	
-	<bean id="specimenPrintRuleFactory" class="com.krishagni.catissueplus.core.printer.printRule.domain.factory.impl.SpecimenPrintRuleFactoryImpl">
-		<property name="daoFactory" ref="biospecimenDaoFactory"/>
-	</bean>
-	
-	<bean id="specimenLabelPrinterFact" class="com.krishagni.catissueplus.core.printer.printService.factory.impl.SpecimenLabelPrinterFactoryImpl">
-		<property name="daoFactory" ref="biospecimenDaoFactory"/>
-		<property name="tokenFactory" ref="tokenFactory"></property>
-	</bean>
-
-	<bean id="specimenPrinterSvc" class="com.krishagni.catissueplus.core.printer.printService.services.impl.SpecimenLabelPrinterService">
-		<property name="daoFactory" ref="biospecimenDaoFactory"/>
-		<property name="specLabelPrinterFact" ref="specimenLabelPrinterFact"/>
-	</bean>
-	
-	
-	<bean id="specimenPrintRuleSvc" class="com.krishagni.catissueplus.core.printer.printRule.services.impl.SpecimenPrintRuleServiceImpl">
-		<property name="daoFactory" ref="biospecimenDaoFactory"/>
-		<property name="specimenPrintRuleFactory" ref="specimenPrintRuleFactory"/>
-	</bean>
-	
-	
-	<bean id="equipmentFactory" class="com.krishagni.catissueplus.core.administrative.domain.factory.impl.EquipmentFactoryImpl">
-		<property name="daoFactory" ref="biospecimenDaoFactory"/>
-	</bean>
-
-	<bean id="equipmentService" class="com.krishagni.catissueplus.core.administrative.services.impl.EquipmentServiceImpl">
-        <property name="daoFactory" ref="biospecimenDaoFactory"/>
-        <property name="equipmentFactory" ref="equipmentFactory" />
-	</bean>
-	
-	<bean id="imageFactory" class="com.krishagni.catissueplus.core.administrative.domain.factory.impl.ImageFactoryImpl">
-		<property name="daoFactory" ref="biospecimenDaoFactory"/>
-	</bean>
-
-	<bean id="imageService" class="com.krishagni.catissueplus.core.administrative.services.impl.ImageServiceImpl">
-        <property name="daoFactory" ref="biospecimenDaoFactory"/>
-        <property name="imageFactory" ref="imageFactory" />
-	</bean>
-	
-	<bean id="permissibleValueFact" class="com.krishagni.catissueplus.core.administrative.domain.factory.impl.PermissibleValueFactoryImpl">
-               <property name="daoFactory" ref="biospecimenDaoFactory"/>
-       </bean>
-       
-       <bean id="permissibleValueSvc" class="com.krishagni.catissueplus.core.administrative.services.impl.PermissibleValueServiceImpl">
-               <property name="daoFactory" ref="biospecimenDaoFactory"/>
-               <property name="pvFactory" ref="permissibleValueFact"/>
-    </bean>
-       
-    <bean id="pvMangeerSvc" class="com.krishagni.catissueplus.core.common.PermissibleValuesManagerImpl">
-       <property name="permissibleValueSvc" ref="permissibleValueSvc"/>
-       </bean>
-       
-       <bean id="commonValidatorSvc" class="com.krishagni.catissueplus.core.common.CommonValidator">
-       <property name="pvManager" ref="pvMangeerSvc"/>
-  </bean>
-
-  <bean id="appCtxProvider" class="com.krishagni.catissueplus.core.common.OpenSpecimenAppCtxProvider">
-  </bean>
-
- </beans>
-=======
   <bean id="siteService" class="com.krishagni.catissueplus.core.administrative.services.impl.SiteServiceImpl">
     <property name="daoFactory" ref="biospecimenDaoFactory"/>
     <property name="siteFactory" ref="siteFactory" />
@@ -456,10 +347,7 @@
   </bean>
 
   <bean id="storageContainerSvc" class="com.krishagni.catissueplus.core.administrative.services.impl.StorageContainerServiceImpl">
-    <property name="daoFactory" ref="biospecimenDaoFactory"/>
-    <property name="storageContainerFactory" ref="storageContainerFact"/>
-    <property name="containerLabelGenerator" ref="containerLabelGenerator"/>
-    <property name="containerBarcodeGenerator" ref="containerBarcodeGenerator"/>
+	<property name="daoFactory" ref="biospecimenDaoFactory"/>
   </bean>
 
   <bean id="bucketPool" class="com.krishagni.catissueplus.core.common.util.BucketPool">
@@ -532,4 +420,3 @@
     <property name="pvManager" ref="pvMangeerSvc"/>
   </bean>
 </beans>
->>>>>>> origin/os_hsqldb
