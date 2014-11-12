@@ -98,7 +98,7 @@ public final class CatissueLoginProcessor extends LoginProcessor
         }
         finally
         {
-            manageLoginHistory(loginResult, request);
+         // manageLoginHistory(loginResult, request); //Commented for hsqldb issue
         }
         return loginResult;
     }

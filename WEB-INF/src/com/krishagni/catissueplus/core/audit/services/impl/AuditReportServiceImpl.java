@@ -63,7 +63,7 @@ public class AuditReportServiceImpl implements AuditReportService {
 	private static final String WHERE_CLAUSE = ("WHERE  dataLogEvent.identifier = auditEventLog.identifier AND auditEventLog.audit_event_id = auditEvent.identifier "
 			+ "AND usr.identifier = auditEvent.user_id  AND dataLogEvent.PARENT_LOG_ID is null ");
 
-	private static final String GROUP_BY_CLAUSE = "GROUP BY dataLogEvent.object_name, auditEvent.event_type, usr.first_name, usr.last_name, usr.login_name ";
+	private static final String GROUP_BY_CLAUSE = "GROUP BY dataLogEvent.object_name, auditEvent.event_type, usr.first_name, usr.last_name, usr.login_name, usr.identifier ";
 
 	private static final String GROUP_BY_CLAUSE_ORCL = "GROUP BY usr.identifier,dataLogEvent.object_name,auditEvent.event_type,usr.first_name,usr.last_name,usr.login_name ";
 
