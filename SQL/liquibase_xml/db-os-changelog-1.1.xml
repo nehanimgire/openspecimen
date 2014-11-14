@@ -54,9 +54,9 @@
     </loadUpdateData>
   </changeSet> -->
 
-  <changeSet id="User view for use in AQ" author="vpawar" runOnChange="true" dbms="mysql">
+  <changeSet id="User view for use in AQ" author="vpawar" runOnChange="true">
     <sql>
-      create or replace view USER_VIEW as (
+      create view USER_VIEW as (
         select 
           u.IDENTIFIER as IDENTIFIER, u.FIRST_NAME as FIRST_NAME, u.LAST_NAME AS LAST_NAME, 
           u.EMAIL_ADDRESS AS EMAIL_ADDRESS, concat(u.LAST_NAME, ', ', u.FIRST_NAME) as NAME,

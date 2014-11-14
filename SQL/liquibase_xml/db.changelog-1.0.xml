@@ -2002,9 +2002,7 @@
 			<column defaultValueComputed="NOW" name="LAST_UPDATED_ON" type="TIMESTAMP">
 				<constraints nullable="false"/>
 			</column>
-			<column defaultValue="NOW" name="LAST_RUN_ON" type="TIMESTAMP">
-				<constraints nullable="false"/>
-			</column>
+			<column defaultValue="NOW" name="LAST_RUN_ON" type="TIMESTAMP"/>
 			<column name="LAST_RUN_COUNT" type="BIGINT"/>
 			<column name="QUERY_DEF" type="TEXT">
 				<constraints nullable="false"/>
@@ -5326,13 +5324,13 @@
 		</preConditions>
 		<createView viewName="specimen_shipment_view">(select csrr.SPECIMEN_ID AS SPECIMEN_ID,csrr.SHIPMENT_REQ_ID AS SHIPMENT_ID from catissue_speci_shipmnt_req_rel csrr) union (select csp.SPECIMEN_ID AS SPECIMEN_ID,cscr.BASE_SHIPMENT_ID AS SHIPMENT_ID from ((catissue_container ctr join catissue_specimen_position csp on((ctr.IDENTIFIER = csp.CONTAINER_ID))) join catissue_shipment_containr_rel cscr on((ctr.IDENTIFIER = cscr.CONTAINER_ID))))</createView>
     </changeSet>
-    <changeSet author="krishagni (generated)" id="1410511324488-513">
+    <!-- changeSet author="krishagni (generated)" id="1410511324488-513">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="user_view" />
 			</not>
 		</preConditions>
 		<createView viewName="user_view">(select u.IDENTIFIER AS IDENTIFIER,u.FIRST_NAME AS FIRST_NAME,u.LAST_NAME AS LAST_NAME,u.EMAIL_ADDRESS AS EMAIL_ADDRESS,d.NAME AS DEPARTMENT_NAME from (catissue_user u join catissue_department d on((u.DEPARTMENT_ID = d.IDENTIFIER))))</createView>
-    </changeSet>
+    </changeSet -->
 
 </databaseChangeLog>
