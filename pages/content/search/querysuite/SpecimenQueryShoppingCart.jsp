@@ -120,7 +120,8 @@ function reloadGrid(obj)
 //alert(obj.value);
 
     mygrid.clearAll(); 
-    mygrid.loadXML("LoadGridServlet?reqParam="+obj.value);  
+    //mygrid.loadXML("LoadGridServlet?reqParam="+obj.value);  
+	mygrid.loadXML("SpecimenListGridAction.do?reqParam="+obj.value); 
 }
 function updateHiddenFields()
     {
@@ -529,7 +530,8 @@ function loadSpecimenGrid()
     //mygrid.addRow(2,",3_1/24,,3,1.0,Tissue(Fixed Tissue),Not Specified,Not Specified,New,2.0,Collected,2142",2);
     var tagVal = document.getElementById('tagName').value;
     //alert(tagVal);
-    mygrid.loadXML("LoadGridServlet?reqParam="+tagVal); 
+    //mygrid.loadXML("LoadGridServlet?reqParam="+tagVal); 
+	mygrid.loadXML("SpecimenListGridAction.do?reqParam="+tagVal); 
     mygrid.setColumnHidden(3,true);
     mygrid.setColumnHidden(6,true);
     mygrid.setColumnHidden(9,true);
