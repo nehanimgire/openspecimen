@@ -355,7 +355,7 @@ public class Constants
 
 	//Constants added for Catissuecore V1.2
 	/** The Constant MYSQL_NUM_TO_STR_FUNCTION_NAME_FOR_LABEL_GENRATION. */
-	public static final String MYSQL_NUM_TO_STR_FUNCTION_NAME_FOR_LABEL_GENRATION = "cast(label as signed)";
+	public static final String MYSQL_NUM_TO_STR_FUNCTION_NAME_FOR_LABEL_GENRATION = "cast(label as bigint)";
 
 	/** The Constant ORACLE_NUM_TO_STR_FUNCTION_NAME_FOR_LABEL_GENRATION. */
 	public static final String ORACLE_NUM_TO_STR_FUNCTION_NAME_FOR_LABEL_GENRATION = "catissue_label_to_num(label)";
@@ -364,7 +364,7 @@ public class Constants
 	public static final String ORACLE_MAX_BARCODE_COL = "catissue_label_to_num(barcode)";
 
 	/** The Constant MYSQL_MAX_BARCODE_COL. */
-	public static final String MYSQL_MAX_BARCODE_COL = "cast(barcode as signed)";
+	public static final String MYSQL_MAX_BARCODE_COL = "cast(barcode as bigint)";
 	// Query Module Interface UI constants
 	/** The Constant ViewSearchResultsAction. */
 	public static final String ViewSearchResultsAction = "ViewSearchResultsAction.do";

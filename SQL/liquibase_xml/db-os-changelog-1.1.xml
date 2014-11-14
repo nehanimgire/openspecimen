@@ -7,12 +7,14 @@
 
   <property name="boolean.type" value="boolean" dbms="mysql" />
   <property name="boolean.type" value="number(1,0)" dbms="oracle" />
+  <property name="boolean.type" value="boolean" dbms="hsqldb"/>
   <property name="text.type" value="varchar" dbms="mysql" />
   <property name="text.type" value="varchar2" dbms="oracle" />
+  <property name="text.type" value="varchar" dbms="hsqldb"/>
 
   <changeSet id="specimen extension records - de + events" author="vpawar" failOnError="true" runOnChange="true">
     <sql>
-      create or replace view SPECIMEN_EXTN_RECORDS_VIEW as (
+      create view SPECIMEN_EXTN_RECORDS_VIEW as (
         select
           re.OBJECT_ID as SPECIMEN_ID, re.RECORD_ID as RECORD_ID
         from
@@ -42,26 +44,6 @@
     </sql>
   </changeSet> 
 
-  <changeSet id="create triggers for static specimen de events" author="vpawar" runOnChange="true" failOnError="true" dbms="mysql">
-    <sqlFile 
-      encoding="utf8"
-      path="static_specimen_events_de_records_mysql.sql"
-      relativeToChangelogFile="true"
-      endDelimiter="//"
-      splitStatements="true"
-      stripComments="true"/>
-  </changeSet>
-
-  <changeSet id="create triggers for static specimen de events" author="vpawar" runOnChange="true" failOnError="true" dbms="oracle">
-    <sqlFile 
-      encoding="utf8"
-      path="static_specimen_events_de_records_oracle.sql"
-      relativeToChangelogFile="true"
-      endDelimiter="//"
-      splitStatements="true"
-      stripComments="true"/>
-  </changeSet>
-  
   <!-- Commenting for now, will uncomment once get the updated PV file from QA -->
   <!-- <changeSet id="Permissible_values csv file upload" author="asamgir">
     <loadUpdateData encoding="UTF-8"
@@ -151,4 +133,35 @@
       commit;
     </sql>
   </changeSet>
+
+  <changeSet id="create triggers for static specimen de events" author="vpawar" runOnChange="true" failOnError="true" dbms="mysql">
+    <sqlFile 
+      encoding="utf8"
+      path="static_specimen_events_de_records_mysql.sql"
+      relativeToChangelogFile="true"
+      endDelimiter="//"
+      splitStatements="true"
+      stripComments="true"/>
+  </changeSet>
+
+  <changeSet id="create triggers for static specimen de events" author="vpawar" runOnChange="true" failOnError="true" dbms="hsqldb">
+    <sqlFile 
+      encoding="utf8"
+      path="static_specimen_events_de_records_hsqldb.sql"
+      relativeToChangelogFile="true"
+      endDelimiter="//"
+      splitStatements="true"
+      stripComments="true"/>
+  </changeSet>
+
+  <changeSet id="create triggers for static specimen de events" author="vpawar" runOnChange="true" failOnError="true" dbms="oracle">
+    <sqlFile 
+      encoding="utf8"
+      path="static_specimen_events_de_records_oracle.sql"
+      relativeToChangelogFile="true"
+      endDelimiter="//"
+      splitStatements="true"
+      stripComments="true"/>
+  </changeSet>
+  
 </databaseChangeLog>

@@ -517,9 +517,10 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_coll_event_param">
-			<column name="IDENTIFIER" type="BIGINT">
-				<constraints nullable="false" primaryKey="true"/>
-			</column>
+                        <column name="IDENTIFIER" type="BIGINT"/>
+                        <column name="SPE_ID" type="BIGINT">
+                          <constraints nullable="false" primaryKey="true"/>
+                        </column>
 			<column name="COLLECTION_PROCEDURE" type="VARCHAR(50)"/>
 			<column name="CONTAINER" type="VARCHAR(50)"/>
 			<column name="EVENT_TIMESTAMP" type="DATETIME"/>
@@ -1011,8 +1012,9 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_disposal_event_param">
-            <column name="IDENTIFIER" type="BIGINT">
-                <constraints nullable="false" primaryKey="true"/>
+            <column name="IDENTIFIER" type="BIGINT"/>
+            <column name="SPE_ID" type="BIGINT">
+              <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="REASON" type="VARCHAR(255)"/>
             <column name="EVENT_TIMESTAMP" type="DATETIME"/>
@@ -1112,8 +1114,9 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_distri_event_param">
-            <column name="IDENTIFIER" type="BIGINT">
-                <constraints nullable="false" primaryKey="true"/>
+            <column name="IDENTIFIER" type="BIGINT"/>
+            <column name="SPE_ID" type="BIGINT">
+              <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="DISTRIBUTED_QUANTITY" type="DOUBLE"/>
             <column name="DISTRIBUTION_ID" type="BIGINT"/>
@@ -1244,7 +1247,7 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_specimen_event_param">
-            <column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
+            <column  autoIncrement="true" startWith="1" name="SPE_ID" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="SPECIMEN_ID" type="BIGINT"/>
@@ -1268,7 +1271,7 @@
                 <constraints nullable="false" primaryKey="true"/>
             </column>
         </createTable>
-		<addForeignKeyConstraint baseColumnNames="IDENTIFIER" baseTableName="catissue_event_param"  constraintName="FK90C79AECBC7298A9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="IDENTIFIER" referencedTableName="catissue_specimen_event_param"  referencesUniqueColumn="false"/>
+		<addForeignKeyConstraint baseColumnNames="IDENTIFIER" baseTableName="catissue_event_param"  constraintName="FK90C79AECBC7298A9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="SPE_ID" referencedTableName="catissue_specimen_event_param"  referencesUniqueColumn="false"/>
     </changeSet>
 
     <changeSet author="krishagni (generated)"  id="1410511324488-57">
@@ -2140,8 +2143,9 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_received_event_param">
-            <column name="IDENTIFIER" type="BIGINT">
-                <constraints nullable="false" primaryKey="true"/>
+            <column name="IDENTIFIER" type="BIGINT"/>
+            <column name="SPE_ID" type="BIGINT">
+              <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="RECEIVED_QUALITY" type="VARCHAR(255)"/>
             <column name="EVENT_TIMESTAMP" type="DATETIME"/>
@@ -3140,8 +3144,9 @@
 			</not>
 		</preConditions>
         <createTable tableName="catissue_transfer_event_param">
-            <column name="IDENTIFIER" type="BIGINT">
-                <constraints nullable="false" primaryKey="true"/>
+            <column name="IDENTIFIER" type="BIGINT"/>
+            <column name="SPE_ID" type="BIGINT">
+              <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="FROM_POSITION_DIMENSION_ONE" type="INT"/>
             <column name="FROM_POSITION_DIMENSION_TWO" type="INT"/>
@@ -5217,117 +5222,117 @@
         <createSequence sequenceName="SYNCH_CP_ID"/>
     </changeSet>
 	
-	    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-500">
+	    <changeSet author="krishagni (generated)" id="1410511324488-500">
 		<preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="consent_tier_view" />
 			</not>
 		</preConditions>
-		<createView viewName="consent_tier_view">(select `cnsstmt`.`IDENTIFIER` AS `IDENTIFIER`,`cnsrsp`.`COLL_PROT_REG_ID` AS `CPR_ID`,`cnsstmt`.`STATEMENT` AS `STATEMENT`,`cnsrsp`.`RESPONSE` AS `RESPONSE` from (`catissue_consent_tier` `cnsstmt` join `catissue_consent_tier_response` `cnsrsp` on((`cnsstmt`.`IDENTIFIER` = `cnsrsp`.`CONSENT_TIER_ID`))) where (`cnsrsp`.`COLL_PROT_REG_ID` is not null))</createView>
+		<createView viewName="consent_tier_view">select cnsstmt.IDENTIFIER AS IDENTIFIER,cnsrsp.COLL_PROT_REG_ID AS CPR_ID,cnsstmt.STATEMENT AS STATEMENT,cnsrsp.RESPONSE AS RESPONSE from (catissue_consent_tier cnsstmt join catissue_consent_tier_response cnsrsp on((cnsstmt.IDENTIFIER = cnsrsp.CONSENT_TIER_ID))) where (cnsrsp.COLL_PROT_REG_ID is not null)</createView>
     </changeSet>
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-501">
+    <changeSet author="krishagni (generated)" id="1410511324488-501">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="cp_coord_view" />
 			</not>
 		</preConditions>
-		<createView viewName="cp_coord_view">(select `u`.`IDENTIFIER` AS `IDENTIFIER`,`u`.`FIRST_NAME` AS `FIRST_NAME`,`u`.`LAST_NAME` AS `LAST_NAME`,`u`.`EMAIL_ADDRESS` AS `EMAIL_ADDRESS`,`cpcrd`.`COLLECTION_PROTOCOL_ID` AS `CP_ID`,`d`.`NAME` AS `DEPARTMENT_NAME` from ((`catissue_coll_coordinators` `cpcrd` join `catissue_user` `u` on((`cpcrd`.`USER_ID` = `u`.`IDENTIFIER`))) join `catissue_department` `d` on((`u`.`DEPARTMENT_ID` = `d`.`IDENTIFIER`))))</createView>
+		<createView viewName="cp_coord_view">select u.IDENTIFIER AS IDENTIFIER,u.FIRST_NAME AS FIRST_NAME,u.LAST_NAME AS LAST_NAME,u.EMAIL_ADDRESS AS EMAIL_ADDRESS,cpcrd.COLLECTION_PROTOCOL_ID AS CP_ID,d.NAME AS DEPARTMENT_NAME from ((catissue_coll_coordinators cpcrd join catissue_user u on((cpcrd.USER_ID = u.IDENTIFIER))) join catissue_department d on((u.DEPARTMENT_ID = d.IDENTIFIER)))</createView>
     </changeSet>
-    <!--changeSet author="krishagni (generated)"  id="1410511324488-502">
+    <!-- changeSet author="krishagni (generated)"  id="1410511324488-502">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="cpr_extension_records_view" />
 			</not>
 		</preConditions>
-		<createView viewName="cpr_extension_records_view">(select `re`.`OBJECT_ID` AS `cpr_id`,`re`.`RECORD_ID` AS `record_id` from (`catissue_form_record_entry` `re` join `catissue_form_context` `fc` on((`re`.`FORM_CTXT_ID` = `fc`.`IDENTIFIER`))) where ((`fc`.`ENTITY_TYPE` = 'Participant') and (`re`.`ACTIVITY_STATUS` = 'ACTIVE')))</createView>
-    </changeSet-->
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-503">
+		<createView viewName="cpr_extension_records_view">(select re.OBJECT_ID AS cpr_id,re.RECORD_ID AS record_id from (catissue_form_record_entry re join catissue_form_context fc on((re.FORM_CTXT_ID = fc.IDENTIFIER))) where ((fc.ENTITY_TYPE = 'Participant') and (re.ACTIVITY_STATUS = 'ACTIVE')))</createView>
+    </changeSet -->
+    <changeSet author="krishagni (generated)" id="1410511324488-503">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="cpr_view" />
 			</not>
 		</preConditions>
-		<createView viewName="cpr_view">(select `cpr`.`IDENTIFIER` AS `CPR_ID`,`cpr`.`COLLECTION_PROTOCOL_ID` AS `CP_ID`,`cpr`.`PARTICIPANT_ID` AS `PARTICIPANT_ID`,`p`.`FIRST_NAME` AS `FIRST_NAME`,`p`.`MIDDLE_NAME` AS `MIDDLE_NAME`,`p`.`LAST_NAME` AS `LAST_NAME`,`p`.`BIRTH_DATE` AS `DOB`,`p`.`SOCIAL_SECURITY_NUMBER` AS `SSN`,`cpr`.`ACTIVITY_STATUS` AS `ACTIVITY_STATUS`,`p`.`GENDER` AS `GENDER`,`p`.`GENOTYPE` AS `GENOTYPE`,`cpr`.`REGISTRATION_DATE` AS `REGISTRATION_DATE`,`cpr`.`PROTOCOL_PARTICIPANT_ID` AS `PPID`,`p`.`VITAL_STATUS` AS `VITAL_STATUS`,`p`.`DEATH_DATE` AS `DEATH_DATE`,`p`.`ETHNICITY` AS `ETHNICITY`,`cpr`.`BARCODE` AS `BARCODE`,`cpr`.`CONSENT_SIGN_DATE` AS `CONSENT_SIGN_DATE`,`cpr`.`CONSENT_WITNESS` AS `CONSENT_WITNESS`,`cpr`.`CONSENT_DOC_URL` AS `CONSENT_DOC_URL` from (`catissue_coll_prot_reg` `cpr` join `catissue_participant` `p` on((`cpr`.`PARTICIPANT_ID` = `p`.`IDENTIFIER`))))</createView>
+		<createView viewName="cpr_view">(select cpr.IDENTIFIER AS CPR_ID,cpr.COLLECTION_PROTOCOL_ID AS CP_ID,cpr.PARTICIPANT_ID AS PARTICIPANT_ID,p.FIRST_NAME AS FIRST_NAME,p.MIDDLE_NAME AS MIDDLE_NAME,p.LAST_NAME AS LAST_NAME,p.BIRTH_DATE AS DOB,p.SOCIAL_SECURITY_NUMBER AS SSN,cpr.ACTIVITY_STATUS AS ACTIVITY_STATUS,p.GENDER AS GENDER,p.GENOTYPE AS GENOTYPE,cpr.REGISTRATION_DATE AS REGISTRATION_DATE,cpr.PROTOCOL_PARTICIPANT_ID AS PPID,p.VITAL_STATUS AS VITAL_STATUS,p.DEATH_DATE AS DEATH_DATE,p.ETHNICITY AS ETHNICITY,cpr.BARCODE AS BARCODE,cpr.CONSENT_SIGN_DATE AS CONSENT_SIGN_DATE,cpr.CONSENT_WITNESS AS CONSENT_WITNESS,cpr.CONSENT_DOC_URL AS CONSENT_DOC_URL from (catissue_coll_prot_reg cpr join catissue_participant p on((cpr.PARTICIPANT_ID = p.IDENTIFIER))))</createView>
     </changeSet>
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-504">
+    <changeSet author="krishagni (generated)" id="1410511324488-504">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="order_site_view" />
 			</not>
 		</preConditions>
-		<createView viewName="order_site_view">(select `distb`.`IDENTIFIER` AS `IDENTIFIER`,`site`.`NAME` AS `SITE_NAME`,`distb`.`ORDER_ID` AS `ORDER_ID` from (`catissue_distribution` `distb` join `catissue_site` `site` on((`distb`.`TO_SITE_ID` = `site`.`IDENTIFIER`))) where (`distb`.`ORDER_ID` is not null))</createView>
+		<createView viewName="order_site_view">(select distb.IDENTIFIER AS IDENTIFIER,site.NAME AS SITE_NAME,distb.ORDER_ID AS ORDER_ID from (catissue_distribution distb join catissue_site site on((distb.TO_SITE_ID = site.IDENTIFIER))) where (distb.ORDER_ID is not null))</createView>
     </changeSet>
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-505">
+    <changeSet author="krishagni (generated)" id="1410511324488-505">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="part_med_rec_view" />
 			</not>
 		</preConditions>
-		<createView viewName="part_med_rec_view">(select `partmedid`.`IDENTIFIER` AS `IDENTIFIER`,`site`.`NAME` AS `SITE_NAME`,`partmedid`.`PARTICIPANT_ID` AS `PARTICIPANT_ID`,`partmedid`.`MEDICAL_RECORD_NUMBER` AS `MEDICAL_RECORD_NUMBER` from (`catissue_part_medical_id` `partmedid` join `catissue_site` `site` on((`partmedid`.`SITE_ID` = `site`.`IDENTIFIER`))))</createView>
+		<createView viewName="part_med_rec_view">(select partmedid.IDENTIFIER AS IDENTIFIER,site.NAME AS SITE_NAME,partmedid.PARTICIPANT_ID AS PARTICIPANT_ID,partmedid.MEDICAL_RECORD_NUMBER AS MEDICAL_RECORD_NUMBER from (catissue_part_medical_id partmedid join catissue_site site on((partmedid.SITE_ID = site.IDENTIFIER))))</createView>
     </changeSet>
-    <!--changeSet author="krishagni (generated)"  id="1410511324488-506">
+    <!-- changeSet author="krishagni (generated)"  id="1410511324488-506">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="scg_extn_records_view" />
 			</not>
 		</preConditions>
-		<createView viewName="scg_extn_records_view">(select `re`.`OBJECT_ID` AS `scg_id`,`re`.`RECORD_ID` AS `record_id` from (`catissue_form_record_entry` `re` join `catissue_form_context` `fc` on((`fc`.`IDENTIFIER` = `re`.`FORM_CTXT_ID`))) where ((`fc`.`ENTITY_TYPE` = 'SpecimenCollectionGroup') and (`re`.`ACTIVITY_STATUS` = 'ACTIVE')))</createView>
-    </changeSet-->
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-507">
+		<createView viewName="scg_extn_records_view">(select re.OBJECT_ID AS scg_id,re.RECORD_ID AS record_id from (catissue_form_record_entry re join catissue_form_context fc on((fc.IDENTIFIER = re.FORM_CTXT_ID))) where ((fc.ENTITY_TYPE = 'SpecimenCollectionGroup') and (re.ACTIVITY_STATUS = 'ACTIVE')))</createView>
+    </changeSet -->
+    <changeSet author="krishagni (generated)" id="1410511324488-507">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="shipment_base_view" />
 			</not>
 		</preConditions>
-		<createView viewName="shipment_base_view">(select `bshp`.`IDENTIFIER` AS `IDENTIFIER`,`bshp`.`LABEL` AS `LABEL`,`bshp`.`SENDER_SITE_ID` AS `SENDER_SITE_ID`,`bshp`.`SENDER_USER_ID` AS `SENDER_USER_ID`,`bshp`.`SEND_DATE` AS `SEND_DATE`,`bshp`.`SENDER_COMMENTS` AS `SENDER_COMMENTS`,`bshp`.`RECEIVER_COMMENTS` AS `RECEIVER_COMMENTS`,`bshp`.`ACTIVITY_STATUS` AS `ACTIVITY_STATUS`,`shp`.`BARCODE` AS `BARCODE`,`bshp`.`RECEIVER_SITE_ID` AS `RECEIVER_SITE_ID` from (`catissue_base_shipment` `bshp` left join `catissue_shipment` `shp` on((`bshp`.`IDENTIFIER` = `shp`.`IDENTIFIER`))))</createView>
+		<createView viewName="shipment_base_view">(select bshp.IDENTIFIER AS IDENTIFIER,bshp.LABEL AS LABEL,bshp.SENDER_SITE_ID AS SENDER_SITE_ID,bshp.SENDER_USER_ID AS SENDER_USER_ID,bshp.SEND_DATE AS SEND_DATE,bshp.SENDER_COMMENTS AS SENDER_COMMENTS,bshp.RECEIVER_COMMENTS AS RECEIVER_COMMENTS,bshp.ACTIVITY_STATUS AS ACTIVITY_STATUS,shp.BARCODE AS BARCODE,bshp.RECEIVER_SITE_ID AS RECEIVER_SITE_ID from (catissue_base_shipment bshp left join catissue_shipment shp on((bshp.IDENTIFIER = shp.IDENTIFIER))))</createView>
     </changeSet>
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-508">
+    <changeSet author="krishagni (generated)" id="1410511324488-508">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="specimen_biohazard_view" />
 			</not>
 		</preConditions>
-		<createView viewName="specimen_biohazard_view">(select `bhz`.`IDENTIFIER` AS `IDENTIFIER`,`bhzrel`.`SPECIMEN_ID` AS `SPECIMEN_ID`,`bhz`.`NAME` AS `BIOHAZARD_NAME`,`bhz`.`TYPE` AS `BIOHAZARD_TYPE` from (`catissue_specimen_biohz_rel` `bhzrel` join `catissue_biohazard` `bhz` on((`bhzrel`.`BIOHAZARD_ID` = `bhz`.`IDENTIFIER`))))</createView>
+		<createView viewName="specimen_biohazard_view">(select bhz.IDENTIFIER AS IDENTIFIER,bhzrel.SPECIMEN_ID AS SPECIMEN_ID,bhz.NAME AS BIOHAZARD_NAME,bhz.TYPE AS BIOHAZARD_TYPE from (catissue_specimen_biohz_rel bhzrel join catissue_biohazard bhz on((bhzrel.BIOHAZARD_ID = bhz.IDENTIFIER))))</createView>
     </changeSet>
-    <!--changeSet author="krishagni (generated)"  id="1410511324488-509">
+    <!-- changeSet author="krishagni (generated)"  id="1410511324488-509">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="specimen_extn_records_view" />
 			</not>
 		</preConditions>
-		<createView viewName="specimen_extn_records_view">(select `re`.`OBJECT_ID` AS `specimen_id`,`re`.`RECORD_ID` AS `record_id` from (`catissue_form_record_entry` `re` join `catissue_form_context` `fc` on((`fc`.`IDENTIFIER` = `re`.`FORM_CTXT_ID`))) where ((`fc`.`ENTITY_TYPE` = 'Specimen') and (`re`.`ACTIVITY_STATUS` = 'ACTIVE')))</createView>
-    </changeSet-->
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-510">
+		<createView viewName="specimen_extn_records_view">(select re.OBJECT_ID AS specimen_id,re.RECORD_ID AS record_id from (catissue_form_record_entry re join catissue_form_context fc on((fc.IDENTIFIER = re.FORM_CTXT_ID))) where ((fc.ENTITY_TYPE = 'Specimen') and (re.ACTIVITY_STATUS = 'ACTIVE')))</createView>
+    </changeSet -->
+    <changeSet author="krishagni (generated)" id="1410511324488-510">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="specimen_order_view" />
 			</not>
 		</preConditions>
-		<createView viewName="specimen_order_view">(select `sporditm`.`SPECIMEN_ID` AS `SPECIMEN_ID`,`orditm`.`ORDER_ID` AS `ORDER_ID` from (`catissue_existing_sp_ord_item` `sporditm` join `catissue_order_item` `orditm` on((`sporditm`.`IDENTIFIER` = `orditm`.`IDENTIFIER`)))) union (select `sparrycnt`.`SPECIMEN_ID` AS `SPECIMEN_ID`,`orditm`.`ORDER_ID` AS `ORDER_ID` from (((`catissue_exist_sp_ar_ord_item` `sparorditm` join `catissue_specimen_array` `sparray` on((`sparorditm`.`SPECIMEN_ARRAY_ID` = `sparray`.`IDENTIFIER`))) join `catissue_speci_array_content` `sparrycnt` on((`sparray`.`IDENTIFIER` = `sparrycnt`.`SPECIMEN_ARRAY_ID`))) join `catissue_order_item` `orditm` on((`sparorditm`.`IDENTIFIER` = `orditm`.`IDENTIFIER`))))</createView>
+		<createView viewName="specimen_order_view">(select sporditm.SPECIMEN_ID AS SPECIMEN_ID,orditm.ORDER_ID AS ORDER_ID from (catissue_existing_sp_ord_item sporditm join catissue_order_item orditm on((sporditm.IDENTIFIER = orditm.IDENTIFIER)))) union (select sparrycnt.SPECIMEN_ID AS SPECIMEN_ID,orditm.ORDER_ID AS ORDER_ID from (((catissue_exist_sp_ar_ord_item sparorditm join catissue_specimen_array sparray on((sparorditm.SPECIMEN_ARRAY_ID = sparray.IDENTIFIER))) join catissue_speci_array_content sparrycnt on((sparray.IDENTIFIER = sparrycnt.SPECIMEN_ARRAY_ID))) join catissue_order_item orditm on((sparorditm.IDENTIFIER = orditm.IDENTIFIER))))</createView>
     </changeSet>
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-511">
+    <changeSet author="krishagni (generated)" id="1410511324488-511">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="specimen_pos_view" />
 			</not>
 		</preConditions>
-		<createView viewName="specimen_pos_view">(select `sppos`.`IDENTIFIER` AS `IDENTIFIER`,`sppos`.`SPECIMEN_ID` AS `SPECIMEN_ID`,`container`.`NAME` AS `CONTAINER_NAME`,`abp`.`POSITION_DIMENSION_ONE_STRING` AS `POSITION_DIMENSION_ONE_STRING`,`abp`.`POSITION_DIMENSION_TWO_STRING` AS `POSITION_DIMENSION_TWO_STRING` from ((`catissue_specimen_position` `sppos` join `catissue_container` `container` on((`sppos`.`CONTAINER_ID` = `container`.`IDENTIFIER`))) join `catissue_abstract_position` `abp` on((`sppos`.`IDENTIFIER` = `abp`.`IDENTIFIER`))))</createView>
+		<createView viewName="specimen_pos_view">(select sppos.IDENTIFIER AS IDENTIFIER,sppos.SPECIMEN_ID AS SPECIMEN_ID,container.NAME AS CONTAINER_NAME,abp.POSITION_DIMENSION_ONE_STRING AS POSITION_DIMENSION_ONE_STRING,abp.POSITION_DIMENSION_TWO_STRING AS POSITION_DIMENSION_TWO_STRING from ((catissue_specimen_position sppos join catissue_container container on((sppos.CONTAINER_ID = container.IDENTIFIER))) join catissue_abstract_position abp on((sppos.IDENTIFIER = abp.IDENTIFIER))))</createView>
     </changeSet>
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-512">
+    <changeSet author="krishagni (generated)" id="1410511324488-512">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="specimen_shipment_view" />
 			</not>
 		</preConditions>
-		<createView viewName="specimen_shipment_view">(select `csrr`.`SPECIMEN_ID` AS `SPECIMEN_ID`,`csrr`.`SHIPMENT_REQ_ID` AS `SHIPMENT_ID` from `catissue_speci_shipmnt_req_rel` `csrr`) union (select `csp`.`SPECIMEN_ID` AS `SPECIMEN_ID`,`cscr`.`BASE_SHIPMENT_ID` AS `SHIPMENT_ID` from ((`catissue_container` `ctr` join `catissue_specimen_position` `csp` on((`ctr`.`IDENTIFIER` = `csp`.`CONTAINER_ID`))) join `catissue_shipment_containr_rel` `cscr` on((`ctr`.`IDENTIFIER` = `cscr`.`CONTAINER_ID`))))</createView>
+		<createView viewName="specimen_shipment_view">(select csrr.SPECIMEN_ID AS SPECIMEN_ID,csrr.SHIPMENT_REQ_ID AS SHIPMENT_ID from catissue_speci_shipmnt_req_rel csrr) union (select csp.SPECIMEN_ID AS SPECIMEN_ID,cscr.BASE_SHIPMENT_ID AS SHIPMENT_ID from ((catissue_container ctr join catissue_specimen_position csp on((ctr.IDENTIFIER = csp.CONTAINER_ID))) join catissue_shipment_containr_rel cscr on((ctr.IDENTIFIER = cscr.CONTAINER_ID))))</createView>
     </changeSet>
-    <changeSet author="krishagni (generated)" dbms="mysql" id="1410511324488-513">
+    <changeSet author="krishagni (generated)" id="1410511324488-513">
         <preConditions  onFail="MARK_RAN">
 			<not>
 				<viewExists viewName="user_view" />
 			</not>
 		</preConditions>
-		<createView viewName="user_view">(select `u`.`IDENTIFIER` AS `IDENTIFIER`,`u`.`FIRST_NAME` AS `FIRST_NAME`,`u`.`LAST_NAME` AS `LAST_NAME`,`u`.`EMAIL_ADDRESS` AS `EMAIL_ADDRESS`,`d`.`NAME` AS `DEPARTMENT_NAME` from (`catissue_user` `u` join `catissue_department` `d` on((`u`.`DEPARTMENT_ID` = `d`.`IDENTIFIER`))))</createView>
+		<createView viewName="user_view">(select u.IDENTIFIER AS IDENTIFIER,u.FIRST_NAME AS FIRST_NAME,u.LAST_NAME AS LAST_NAME,u.EMAIL_ADDRESS AS EMAIL_ADDRESS,d.NAME AS DEPARTMENT_NAME from (catissue_user u join catissue_department d on((u.DEPARTMENT_ID = d.IDENTIFIER))))</createView>
     </changeSet>
 
 </databaseChangeLog>

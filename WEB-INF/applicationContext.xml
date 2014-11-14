@@ -31,11 +31,6 @@
     <property name="changeLog" value="./db.changelog-master-${deployType}.xml" />
   </bean>
   
-  <bean id="appContexListener" 
-  class="edu.wustl.catissuecore.util.listener.AppInitializer" init-method="init">
-    <property name="liquibase" ref="liquibase"/>
-  </bean>
-  
   <bean class="com.krishagni.catissueplus.core.common.RestErrorController" /> 
 
   <!-- Beans for caCORE starts -->
@@ -419,4 +414,13 @@
   <bean id="commonValidatorSvc" class="com.krishagni.catissueplus.core.common.CommonValidator">
     <property name="pvManager" ref="pvMangeerSvc"/>
   </bean>
+
+  <bean id="osAppCtxProvider" class="com.krishagni.catissueplus.core.common.OpenSpecimenAppCtxProvider">
+  </bean>
+
+  <bean id="appContexListener" 
+  class="edu.wustl.catissuecore.util.listener.AppInitializer" init-method="init">
+    <property name="liquibase" ref="liquibase"/>
+  </bean>
+  
 </beans>

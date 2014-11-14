@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class OpenSpecimenAppCtxProvider implements ApplicationContextAware {
-
+	
 	private static ApplicationContext context;
 
 	public static ApplicationContext getAppCtx() {
@@ -24,7 +24,7 @@ public class OpenSpecimenAppCtxProvider implements ApplicationContextAware {
 	@Override
 	public void setApplicationContext(ApplicationContext ctx)
 	throws BeansException {
-		context = ctx;		
+		context = ctx;
 	}
 	
 	

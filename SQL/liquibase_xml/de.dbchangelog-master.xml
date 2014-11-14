@@ -98,7 +98,7 @@
 				<viewExists viewName="cpr_extension_records_view" />
 			</not>
 		</preConditions>
-		<createView viewName="cpr_extension_records_view">(select `re`.`OBJECT_ID` AS `cpr_id`,`re`.`RECORD_ID` AS `record_id` from (`catissue_form_record_entry` `re` join `catissue_form_context` `fc` on((`re`.`FORM_CTXT_ID` = `fc`.`IDENTIFIER`))) where ((`fc`.`ENTITY_TYPE` = 'Participant') and (`re`.`ACTIVITY_STATUS` = 'ACTIVE')))</createView>
+		<createView viewName="cpr_extension_records_view">(select re.OBJECT_ID AS cpr_id,re.RECORD_ID AS record_id from (catissue_form_record_entry re join catissue_form_context fc on((re.FORM_CTXT_ID = fc.IDENTIFIER))) where ((fc.ENTITY_TYPE = 'Participant') and (re.ACTIVITY_STATUS = 'ACTIVE')))</createView>
     </changeSet>
 
 	<changeSet author="krishagni (generated)"  id="1410511324488-5" dbms="mysql">
@@ -107,7 +107,7 @@
 				<viewExists viewName="scg_extn_records_view" />
 			</not>
 		</preConditions>
-		<createView viewName="scg_extn_records_view">(select `re`.`OBJECT_ID` AS `scg_id`,`re`.`RECORD_ID` AS `record_id` from (`catissue_form_record_entry` `re` join `catissue_form_context` `fc` on((`fc`.`IDENTIFIER` = `re`.`FORM_CTXT_ID`))) where ((`fc`.`ENTITY_TYPE` = 'SpecimenCollectionGroup') and (`re`.`ACTIVITY_STATUS` = 'ACTIVE')))</createView>
+		<createView viewName="scg_extn_records_view">(select re.OBJECT_ID AS scg_id,re.RECORD_ID AS record_id from (catissue_form_record_entry re join catissue_form_context fc on((fc.IDENTIFIER = re.FORM_CTXT_ID))) where ((fc.ENTITY_TYPE = 'SpecimenCollectionGroup') and (re.ACTIVITY_STATUS = 'ACTIVE')))</createView>
     </changeSet>
 
 	<changeSet author="krishagni (generated)"  id="1410511324488-6" dbms="mysql">
@@ -116,7 +116,7 @@
 				<viewExists viewName="specimen_extn_records_view" />
 			</not>
 		</preConditions>
-		<createView viewName="specimen_extn_records_view">(select `re`.`OBJECT_ID` AS `specimen_id`,`re`.`RECORD_ID` AS `record_id` from (`catissue_form_record_entry` `re` join `catissue_form_context` `fc` on((`fc`.`IDENTIFIER` = `re`.`FORM_CTXT_ID`))) where ((`fc`.`ENTITY_TYPE` = 'Specimen') and (`re`.`ACTIVITY_STATUS` = 'ACTIVE')))</createView>
+		<createView viewName="specimen_extn_records_view">(select re.OBJECT_ID AS specimen_id,re.RECORD_ID AS record_id from (catissue_form_record_entry re join catissue_form_context fc on((fc.IDENTIFIER = re.FORM_CTXT_ID))) where ((fc.ENTITY_TYPE = 'Specimen') and (re.ACTIVITY_STATUS = 'ACTIVE')))</createView>
     </changeSet>
 
 	<changeSet author="krishagni (generated)" id="1410511324488-7">

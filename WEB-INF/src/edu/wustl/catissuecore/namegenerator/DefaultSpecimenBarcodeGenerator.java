@@ -69,6 +69,7 @@ public class DefaultSpecimenBarcodeGenerator implements BarcodeGenerator
 		{
 			sql.append(Constants.MSSQLSERVER_QRY_DT_CONVERSION_FOR_BARCODE_APPEND_STR);
 		}
+
 		this.currentBarcode = AppUtility.getLastAvailableValue(sql.toString());
 
 	}

@@ -11,7 +11,7 @@
 
         <id
             name="id"
-            column="IDENTIFIER"
+            column="SPE_ID"
             type="long"
             length="30"
             unsaved-value="null"

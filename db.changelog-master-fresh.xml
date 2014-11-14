@@ -12,6 +12,6 @@
   <include file="./SQL/liquibase_xml/db.pvseeddata-mysql-1.0.xml"/>
   <include file="./SQL/liquibase_xml/db.seeddata-oracle-1.0.xml"/> 
   <include file="./SQL/liquibase_xml/db.pvseeddata-oracle-1.0.xml"/>
-	
   <include file="./SQL/liquibase_xml/de.dbchangelog-master.xml"/>   
+  <include file="./SQL/liquibase_xml/db-os-changelog-1.1.xml"/>
 </databaseChangeLog> 

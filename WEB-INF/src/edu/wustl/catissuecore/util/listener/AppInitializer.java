@@ -10,10 +10,11 @@ import java.util.Map;
 
 import javax.mail.MessagingException;
 import javax.naming.InitialContext;
-import javax.servlet.ServletContextEvent;
 import javax.sql.DataSource;
 
 import krishagni.catissueplus.csd.CatissueUserContextProviderImpl;
+import krishagni.catissueplus.upgrade.ImportQueryForms;
+import krishagni.catissueplus.upgrade.ImportSpecimenEvents;
 import krishagni.catissueplus.util.FormProcessor;
 import krishagni.catissueplus.util.QuartzSchedulerJobUtil;
 import liquibase.integration.spring.SpringLiquibase;
@@ -50,7 +51,6 @@ import edu.wustl.catissuecore.domain.StorageContainer;
 import edu.wustl.catissuecore.domain.User;
 import edu.wustl.catissuecore.namegenerator.LabelAndBarcodeGeneratorInitializer;
 import edu.wustl.catissuecore.util.EmailHandler;
-import edu.wustl.catissuecore.util.HelpXMLPropertyHandler;
 import edu.wustl.catissuecore.util.ParticipantAttributeDisplayInfoUtility;
 import edu.wustl.catissuecore.util.ProtectionGroups;
 import edu.wustl.catissuecore.util.global.AppUtility;
@@ -155,10 +155,16 @@ public class AppInitializer {
 				DEApp.init(ds, dir, dateFomat,timeFormat);
 				initQueryPathsConfig();
 				initFancyControls();
-				ControlManager.getInstance().registerFactory(UserControlFactory.getInstance());
 				logger.info("Initialization complete");									
 
 				DefaultValueManager.validateAndInitDefaultValueMap();
+				
+				
+				String propDir = System.getProperty("app.propertiesDir") + File.separator;
+				String user = "admin@admin.com";
+				
+				ImportSpecimenEvents.importForms(user, propDir + "spe-forms/events-cfg.json");
+				ImportQueryForms.importForms(user, propDir + File.separator + "aq-forms");
 			}
 		}
 		catch (final Exception e) {

@@ -451,14 +451,14 @@
 			</then>
 		</if>
 		
-		<if>
+		<!-- if>
 			<not>
 				<equals arg1="" arg2="${institute.logo.path}" />
 			</not>
 			<then>
 				<copy file="${institute.logo.path}" todir="${temp.dir}/catissuecore/images" overwrite="true" />
 			</then>
-		</if>
+		</if -->
 		
 		
 		
@@ -641,7 +641,7 @@
 				<exclude name="**/WEB-INF/lib/log4j-1.2.9.jar*" />
 				<exclude name="**/*hibernate2.jar*" />
 				<exclude name="**/.*" />
-				<exclude name="**/*.sql" />
+				<!-- exclude name="**/*.sql" / -->
 				<exclude name="**/CVS*" />
 				<!--exclude name="**/jta.jar" /-->
 				<exclude name="**/pages/subMenu/**" />
