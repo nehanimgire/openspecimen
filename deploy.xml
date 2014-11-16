@@ -26,6 +26,7 @@
 	<property name="mssqlserver.sql.dir" value="${base.dir}/SQL/MsSqlServer" />
 	<property name="oracle.dialect.string" value="org.hibernate.dialect.Oracle9Dialect" />
 	<property name="mysql.dialect.string" value="edu.wustl.catissuecore.hibernate.dialect.MySqlCustomDialect" />
+	
 	<property name="catissue.datasource" value="java:/catissuecore" />
 	<property name="dynamicextensions.datasource" value="java:/dynamicextensions" />
 	<property name="oracle.dialect.h3.string" value="org.hibernate.dialect.Oracle9Dialect" />
@@ -147,7 +148,10 @@
 				<fail message="The property 'jboss.server.name' can not be empty" />
 			</then>
 		</if>
+		<antcall target="assert_other_properties" />
+	</target>
 
+	<target name="assert_other_properties" description="Check for other required properties">
 		<if>
 			<or>
 				<equals arg1="mysql" arg2="${database.type}" />
@@ -161,7 +165,7 @@
 
 		<!-- Validation for ORACLE_HOME ,tns name and sqlldr if database is oracle-->
 		<if>
-		<equals arg1="oracle" arg2="${database.type}" />
+			<equals arg1="oracle" arg2="${database.type}" />
 			<then>
 				<available file="${oracle_home}" type="dir" property="IsOracleHomeBlank" />
 				<if>
@@ -314,37 +318,35 @@
 			<equals arg1="true" arg2="${cider.integration.enabled}" casesensitive="false" />
 			<then>
 				<if>
-							<equals arg1="" arg2="${cider.outbound.queue}" />
-							<then>
-								<fail message="The property 'cider.outbound.queue' can not be empty" />
-							</then>
-						</if>
-						<if>
-							<equals arg1="" arg2="${cider.wmq.channel}" />
-							<then>
-								<fail message="The property 'cider.wmq.channel' can not be empty" />
-							</then>
-						</if>
-
-						<if>
-							<equals arg1="" arg2="${cider.wmq.mgr.name}" />
-							<then>
-								<fail message="The property 'cider.wmq.mgr.name' can not be empty" />
-							</then>
-						</if>
-						<if>
-							<equals arg1="" arg2="${cider.wmq.port}" />
-							<then>
-								<fail message="The property 'cider.wmq.port' can not be empty" />
-							</then>
-						</if>
-						<if>
-							<equals arg1="" arg2="${cider.wmq.server.name}" />
-							<then>
-								<fail message="The property 'cider.wmq.server.name' can not be empty" />
-							</then>
-						</if>
-				
+					<equals arg1="" arg2="${cider.outbound.queue}" />
+					<then>
+						<fail message="The property 'cider.outbound.queue' can not be empty" />
+					</then>
+				</if>
+				<if>
+					<equals arg1="" arg2="${cider.wmq.channel}" />
+					<then>
+						<fail message="The property 'cider.wmq.channel' can not be empty" />
+					</then>
+				</if>
+				<if>
+					<equals arg1="" arg2="${cider.wmq.mgr.name}" />
+					<then>
+						<fail message="The property 'cider.wmq.mgr.name' can not be empty" />
+					</then>
+				</if>
+				<if>
+					<equals arg1="" arg2="${cider.wmq.port}" />
+					<then>
+						<fail message="The property 'cider.wmq.port' can not be empty" />
+					</then>
+				</if>
+				<if>
+					<equals arg1="" arg2="${cider.wmq.server.name}" />
+					<then>
+						<fail message="The property 'cider.wmq.server.name' can not be empty" />
+					</then>
+				</if>
 			</then>
 		</if>
 		<if>
@@ -354,7 +356,6 @@
 			</then>
 		</if>
 	</target>
-
 	<!--Target for validation of connection parameters-->
 	<target name="validate_database_connection" description="Target for validation of connection parameters">
 		<!-- validation for database connection -->
@@ -404,14 +405,13 @@
 	<!--Extrct WAR and copy Configuration files to temp directory-->
 	<target name="init" description="Extrct WAR and copy Configuration files to temp directory">
 		<echo message="Initializing installation..." />
-
 		<unwar src="${base.dir}/catissuecore.war" dest="${temp.dir}/catissuecore" />
 		<unwar src="${base.dir}/caTissuePrintWebService.war" dest="${temp.dir}/caTissuePrintWebService" />
 		<unjar src="${temp.dir}/catissuecore/WEB-INF/lib/DynamicExtensions.jar" dest="${temp.dir}/dynamicExtensionsjar" />
 		<unzip src="${base.dir}/dynamicextensions.zip" dest="${temp.dir}/dynamicextensions" overwrite="true" />
 		<copy todir="${temp.dir}/catissuecore-properties" overwrite="true">
 			<fileset dir="${base.dir}/catissuecore-properties" />
-		</copy>
+		</copy>		
 		<echo message="Copying email-templates to WEB-INF/classes" />	
 		<copy todir="${temp.dir}/catissuecore/WEB-INF/classes/email-templates">
 			<fileset dir="${temp.dir}/catissuecore-properties/email-templates"/>
@@ -450,18 +450,14 @@
 				<copy file="${theam.css.path}" tofile="${temp.dir}/catissuecore/css/login-theam.css" overwrite="true" />
 			</then>
 		</if>
-		
 		<!-- if>
-			<not>
-				<equals arg1="" arg2="${institute.logo.path}" />
-			</not>
-			<then>
-				<copy file="${institute.logo.path}" todir="${temp.dir}/catissuecore/images" overwrite="true" />
-			</then>
+		   <not>
+				   <equals arg1="" arg2="${institute.logo.path}" />
+		   </not>
+		   <then>
+				   <copy file="${institute.logo.path}" todir="${temp.dir}/catissuecore/images" overwrite="true" />
+		   </then>
 		</if -->
-		
-		
-		
 		
 	</target>
 	<target name="configure_appResources" description="Configure ApplicationResources.properties">
@@ -539,8 +535,8 @@
 		</replace>
 
 		<replace file="${temp.dir}/catissuecore/WEB-INF/classes/ApplicationDAOProperties.xml">
-					<replacefilter token="${oracle.dao.datasource.prop.filename}" value="${mysql.dao.datasource.prop.filename}" />
-				</replace>
+			<replacefilter token="${oracle.dao.datasource.prop.filename}" value="${mysql.dao.datasource.prop.filename}" />
+		</replace>
 	</target>
 
 	<!--Modify Configuration For Oracle-->
@@ -1164,8 +1160,8 @@
 
 				</then>
 			</elseif>
-
 		</if>
+
 		<if>
 			<equals arg1="${idp.enabled}" arg2="true" />
 			<then>
@@ -4629,6 +4625,8 @@
 		 	<antcall target="jboss_configuration" />
 		</target>
 
+		
+
 
 		 <target name="mysql_csm_config_with_idp" >
 		  	<copy file="${base.dir}/idp/idp_catissuecore-ds.xml" tofile="${temp.dir}/catissuecore-ds.xml" overwrite="true"/>
@@ -4727,6 +4725,7 @@
 			</fileset>
 		</delete>
 		<unwar src="${base.dir}/catissuecore.war" dest="${temp.dir}/catissuecore" />
+		
 		<antcall target="replace_app_dao_prop_file"/>
 		<unzip src="dynamicextensions.zip" dest="${temp.dir}/dynamicextensions" overwrite="true" />
 		<copy file="${base.dir}/DE_conf/hibernate.cfg.xml" todir="${temp.dir}/catissuecore/WEB-INF/classes" overwrite="true" />
@@ -5241,6 +5240,87 @@
 	</target>
 
 	<target name="post_upgrade">
-          <antcall target="aq_form"/>
+        <antcall target="aq_form"/>
 	</target>
+	
+
+	<target name="deploy_app_tomcat" depends="deploy_app_catissue_tomcat">	
+		<property name="help.desk.number" value="${contact.number}" />
+		<if>
+			<equals arg1="" arg2="${contact.number}" />
+			<then>
+				<var name="help.desk.number" unset="true"/>
+				<property name="help.desk.number" value="" />
+			</then>
+		</if>
+		<copy todir="${tomcat.home.dir}/webapps" overwrite="true">
+			<fileset dir="${temp.dir}"/>
+				<globmapper from="catissuecore.war" to="openspecimen.war"/>
+		</copy>
+	</target>
+	
+	<target name="deploy_app_catissue_tomcat" description="Target for fresh deployment of caTissue application">
+		<antcall target="pre_initialization_tomcat" />
+		<!--antcall target="db_configuration" /-->
+		<antcall target="integrate_bulk_operations"/>
+	
+		<antcall target="app_configuration"/>
+		<antcall target="de_integrate_app" />
+		<antcall target="build_war" />
+		<!--antcall target="copyMailjar"/>
+		<antcall target="send_mail" /-->
+	</target>
+
+	<target name="pre_initialization_tomcat" description="initialisation prior to deploying application">
+		<antcall target="clean_tomcat_server" />
+		<antcall target="assert_tomcat" />
+		<delete dir="${temp.dir}" />
+		<antcall target="init" />
+		<antcall target="configure_war" />
+		<antcall target="adopter_configuration" />
+	</target>
+
+	<target name="assert_tomcat" description="Check for required properties">
+		<if>
+			<equals arg1="" arg2="${tomcat.home.dir}" />
+			<then>
+				<fail message="The property 'tomcat.home.dir' can not be empty" />
+			</then>
+			<else>
+				<available file="${tomcat.home.dir}/lib/catalina.jar" property="isTomcatValid"/>
+				<if>
+					<not>
+						<equals arg1="true" arg2="${isTomcatValid}" />
+					</not>
+					<then>
+						<fail message="'${tomcat.home.dir}' is not valid tomcat home. Please set valid path for tomcat server." />
+					</then>
+				</if>
+			</else>
+		</if>
+		<antcall target="assert_other_properties" />
+	</target>
+	<target name="clean_tomcat_server" description="deletes the WAR file and cache from server, clean-up the server ">
+		<delete file="${tomcat.home.dir}/webapps/openspecimen.war" />
+		<mkdir dir="${tomcat.home.dir}/work"/>
+		<mkdir dir="${tomcat.home.dir}/tmp"/>
+		<!--mkdir dir="${tomcat.home.dir}/webapps/openspecimen"/-->
+		<mkdir dir="${tomcat.home.dir}/logs"/>
+		<delete includeemptydirs="true">
+			<fileset dir="${tomcat.home.dir}/work">
+				<include name="**/*" />
+			</fileset>
+		</delete>
+		<delete includeemptydirs="true">
+			<fileset dir="${tomcat.home.dir}/tmp">
+				<include name="**/*" />
+			</fileset>
+		</delete>
+		<delete includeemptydirs="true">
+			<fileset dir="${tomcat.home.dir}/logs">
+				<include name="**/*" />
+			</fileset>
+		</delete>
+	</target>
+	
 </project>
