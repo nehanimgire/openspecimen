@@ -72,7 +72,7 @@ public class ImportQueries {
 		return userId;
 	}
 	
-	private static void importQueries(Long userId, String queriesDir, String folderName) 
+	public static void importQueries(Long userId, String queriesDir, String folderName) 
 	throws Exception { 
 		Long folderId = setupQueryFolder(userId, folderName);
 		if (folderId == null) {
@@ -236,7 +236,7 @@ public class ImportQueries {
 			 //
 			 // Step 2: Save query
 			 //
-			 String sql = DbUtil.isOracle() ? INSERT_QUERY_ORA_SQL : (DbUtil.isMySQL() ? INSERT_QUERY_MY_SQL : null);
+			 String sql = DbUtil.isOracle() ? INSERT_QUERY_ORA_SQL : INSERT_QUERY_MY_SQL; 
 			 Number id = jdbcDao.executeUpdateAndGetKey(sql, params, "IDENTIFIER");
 			 if (id == null) {
 				 logger.error("Error saving query definition from file: " + filename);

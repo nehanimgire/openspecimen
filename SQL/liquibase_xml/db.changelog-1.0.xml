@@ -332,7 +332,7 @@
 		</not>
 	</preConditions>
         <createTable tableName="catissue_bulk_operation">
-		<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
+		<column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
 			<constraints nullable="false" primaryKey="true"/>
 		</column>
 		<column name="OPERATION" type="VARCHAR(255)"/>
@@ -1917,7 +1917,7 @@
 			</not>
 		</preConditions>
 		<createTable tableName="catissue_saved_queries">
-			<column  autoIncrement="true" startWith="1" name="IDENTIFIER" type="BIGINT">
+			<column  autoIncrement="true" name="IDENTIFIER" type="BIGINT">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="TITLE" type="VARCHAR(128)">
@@ -5108,7 +5108,7 @@
     <changeSet author="root (generated)" dbms="oracle" id="1410778429932-669">
         <createSequence sequenceName="CATISSUE_SPECIMEN_COLL_GRP_SEQ"/>
     </changeSet>
-    <changeSet author="root (generated)"  id="1410778429932-670">
+    <changeSet author="root (generated)" dbms="oracle" id="1410778429932-670">
         <createSequence sequenceName="CATISSUE_SPECIMEN_LIST_SEQ"/>
     </changeSet>
     <changeSet author="root (generated)" dbms="oracle" id="1410778429932-671">

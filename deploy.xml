@@ -5253,10 +5253,12 @@
 				<property name="help.desk.number" value="" />
 			</then>
 		</if>
+		
 		<copy todir="${tomcat.home.dir}/webapps" overwrite="true">
 			<fileset dir="${temp.dir}"/>
 				<globmapper from="catissuecore.war" to="openspecimen.war"/>
 		</copy>
+		<delete dir="${tomcat.home.dir}/webapps/openspecimen" />		
 	</target>
 	
 	<target name="deploy_app_catissue_tomcat" description="Target for fresh deployment of caTissue application">

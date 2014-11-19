@@ -163,5 +163,14 @@
       splitStatements="true"
       stripComments="true"/>
   </changeSet>
+
+  <changeSet id="upload bulk operation template" author="dpatil" runOnChange="true" failOnError="true" dbms="hsqldb">
+    <sqlFile 
+      encoding="utf8"
+      path="bo_templates.sql"
+      relativeToChangelogFile="true"
+      splitStatements="true"
+      stripComments="true"/>
+  </changeSet>
   
 </databaseChangeLog>

@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import krishagni.catissueplus.csd.CatissueUserContextProviderImpl;
+import krishagni.catissueplus.upgrade.ImportQueries;
 import krishagni.catissueplus.upgrade.ImportQueryForms;
 import krishagni.catissueplus.upgrade.ImportSpecimenEvents;
 import krishagni.catissueplus.util.FormProcessor;
@@ -165,6 +166,7 @@ public class AppInitializer {
 				
 				ImportSpecimenEvents.importForms(user, propDir + "spe-forms/events-cfg.json");
 				ImportQueryForms.importForms(user, propDir + File.separator + "aq-forms");
+				ImportQueries.importQueries(1l, propDir + "aq-queries", "Default Queries");
 			}
 		}
 		catch (final Exception e) {
