@@ -54,7 +54,7 @@ function selectTab(operation,pageOf)
 	if(pageOf == "pageOfTreeSCLink")
     {
 		var cellViewImage="<td valign=bottom><a href=# onclick=switchToViewMapTab()><img src=images/uIEnhancementImages/view_map.gif alt=View Map width=76 height=22 border=0 /></a></td>";
-		alert("hello");
+		
 		//tableDiv.innerHTML=addTable+addRow+cellSpace+cellViewImage+addCell+endRow+endTable;
 		tableDiv.innerHTML="";
 	}
