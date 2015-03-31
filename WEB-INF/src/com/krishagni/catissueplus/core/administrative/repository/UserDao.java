@@ -20,10 +20,6 @@ public interface UserDao extends Dao<User> {
 	
 	public User getUserByEmailAddress(String emailAddress);
 	
-	public Boolean isUniqueLoginName(String loginName, String domainName);
-	
-	public Boolean isUniqueEmailAddress(String emailAddress);
-	
 	public List<DependentEntityDetail> getDependentEntities(Long userId);
 	
 	public ForgotPasswordToken getFpToken(String token);

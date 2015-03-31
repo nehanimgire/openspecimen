@@ -21,7 +21,6 @@ import com.krishagni.catissueplus.core.administrative.repository.UserListCriteri
 import com.krishagni.catissueplus.core.common.events.DependentEntityDetail;
 import com.krishagni.catissueplus.core.common.events.UserSummary;
 import com.krishagni.catissueplus.core.common.repository.AbstractDao;
-import com.krishagni.catissueplus.core.common.util.Status;
 
 public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 	
@@ -34,7 +33,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 	public List<UserSummary> getUsers(UserListCriteria userCriteria) {
 		Criteria criteria = sessionFactory.getCurrentSession()
 				.createCriteria(User.class, "u")
-				.add(Restrictions.ne("u.activityStatus", Status.ACTIVITY_STATUS_DISABLED.getStatus()))
 				.setProjection(Projections.countDistinct("u.id"))
 				.setFirstResult(userCriteria.startAt())
 				.setMaxResults(userCriteria.maxResults())
@@ -55,9 +53,14 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 				.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	public User getUser(String loginName, String domainName) {
-		String hql = String.format(GET_USER_BY_LOGIN_NAME_HQL, " and activityStatus != 'Disabled'");
-		List<User> users = executeGetUserByLoginNameHql(hql, loginName, domainName);
+		List<User> users = sessionFactory.getCurrentSession()
+				.getNamedQuery(GET_USER_BY_LOGIN_NAME)
+				.setString("loginName", loginName)
+				.setString("domainName", domainName)
+				.list();
+		
 		return users.isEmpty() ? null : users.get(0);
 	}
 	
@@ -66,23 +69,14 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 		return getUser(User.SYS_USER, "openspecimen");
 	}
 	
+	@SuppressWarnings("unchecked")
 	public User getUserByEmailAddress(String emailAddress) {
-		String hql = String.format(GET_USER_BY_EMAIL_HQL, " and activityStatus != 'Disabled'");
-		List<User> users = executeGetUserByEmailAddressHql(hql, emailAddress);
-		return users.isEmpty() ? null : users.get(0);
-	}
-	
-	public Boolean isUniqueLoginName(String loginName, String domainName) {
-		String hql = String.format(GET_USER_BY_LOGIN_NAME_HQL, "");
-		List<User> users = executeGetUserByLoginNameHql(hql, loginName, domainName);
-		return users.isEmpty();
-	}
-	
-	public Boolean isUniqueEmailAddress(String emailAddress) {
-		String hql = String.format(GET_USER_BY_EMAIL_HQL, "");
-		List<User> users = executeGetUserByEmailAddressHql(hql, emailAddress);
+		List<User> users = sessionFactory.getCurrentSession()
+				.getNamedQuery(GET_USER_BY_EMAIL_ADDRESS)
+				.setString("emailAddress", emailAddress)
+				.list();
 		
-		return users.isEmpty();
+		return users.isEmpty() ? null : users.get(0);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -141,23 +135,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 		userSummary.setLastName((String)row[2]);
 		userSummary.setLoginName((String)row[3]);
 		return userSummary;		
-	}
-	
-	@SuppressWarnings("unchecked")
-	private List<User> executeGetUserByLoginNameHql(String hql, String loginName, String domainName) {
-		return sessionFactory.getCurrentSession()
-				.createQuery(hql)
-				.setString("loginName", loginName)
-				.setString("domainName", domainName)
-				.list();
-	}
-	
-	@SuppressWarnings("unchecked")
-	private List<User> executeGetUserByEmailAddressHql(String hql, String emailAddress) {
-		return sessionFactory.getCurrentSession()
-				.createQuery(hql)
-				.setString("emailAddress", emailAddress)
-				.list();
 	}
 	
 	private void addSearchConditions(Criteria criteria, UserListCriteria userCriteria) {
@@ -229,15 +206,13 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 		return dependentEntities;
  	}
 	
-	private static final String GET_USER_BY_LOGIN_NAME_HQL = 
-			"from com.krishagni.catissueplus.core.administrative.domain.User where loginName = :loginName and authDomain.name = :domainName  %s";
-	
-	private static final String GET_USER_BY_EMAIL_HQL = 
-			"from com.krishagni.catissueplus.core.administrative.domain.User where emailAddress = :emailAddress %s";
-	
 	private static final String FQN = User.class.getName();
 
 	private static final String GET_USERS_BY_IDS = FQN + ".getUsersByIds";
+	
+	private static final String GET_USER_BY_LOGIN_NAME = FQN + ".getUserByLoginName";
+
+	private static final String GET_USER_BY_EMAIL_ADDRESS = FQN + ".getUserByEmailAddress";
 	
 	private static final String GET_DEPENDENT_ENTITIES = FQN + ".getDependentEntities"; 
 	

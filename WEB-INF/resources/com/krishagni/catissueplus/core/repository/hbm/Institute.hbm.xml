@@ -30,7 +30,10 @@
     <set name="sites" inverse="false" cascade="none">
       <key column="INSTITUTE_ID"/>
       <one-to-many class="com.krishagni.catissueplus.core.administrative.domain.Site"/>
+      <filter name="notDisabledSites" condition="activity_status != 'Disabled'"/>
     </set>
+    
+    <filter name="notDisabledInstitutes" condition="activity_status != 'Disabled'"/>
 
     <query name="getInstituteByName">
       from
@@ -40,4 +43,6 @@
     </query>
     
   </class>
+  
+  <filter-def name="notDisabledInstitutes"/>
 </hibernate-mapping>

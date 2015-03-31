@@ -1,6 +1,7 @@
 
 package com.krishagni.catissueplus.core.biospecimen.repository.impl;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.krishagni.catissueplus.core.administrative.repository.DistributionOrderDao;
@@ -47,6 +48,14 @@ import com.krishagni.catissueplus.core.notification.repository.impl.ExternalAppl
 public class DaoFactoryImpl implements DaoFactory {
 
 	private SessionFactory sessionFactory;
+	
+	private String[] filters = new String[] {
+			"notDisabledUsers", "notDisabledSites", "notDisabledInstitutes",
+			"notDisabledStorageContainers", "notDisabledDistributionProtocols",
+			"notDisabledCollectionProtocols", "notDisabledDistributionOrders",
+			"notDisabledVisits", "notDisabledCpEvents", "notDisabledCpRegistrations",
+			"notDisabledSpecimen", "notDisabledParticipants"
+		};
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
@@ -58,6 +67,7 @@ public class DaoFactoryImpl implements DaoFactory {
 
 	public void setSessionFactory(AbstractDao<?> dao) {
 		dao.setSessionFactory(sessionFactory);
+		enableFilters();
 	}
 
 	@Override
@@ -219,5 +229,12 @@ public class DaoFactoryImpl implements DaoFactory {
 		SpecimenLabelPrintJobDaoImpl dao = new SpecimenLabelPrintJobDaoImpl();
 		setSessionFactory(dao);
 		return dao;
+	}
+	
+	private void enableFilters() {
+		Session session = sessionFactory.getCurrentSession();
+		for (String filter: filters) {
+			session.enableFilter(filter);
+		}
 	}
 }

@@ -31,7 +31,10 @@
     <set name="distributionOrders" inverse="false" cascade="none">
       <key column="DISTRIBUTION_PROTOCOL_ID"/>
       <one-to-many class="com.krishagni.catissueplus.core.administrative.domain.DistributionOrder"/>
+      <filter name="notDisabledDistributionOrders" condition="activity_status != 'Disabled'"/>
     </set>
+    
+    <filter name="notDisabledDistributionProtocols" condition="activity_status != 'Disabled'"/>
       
     <query name="getDistributionProtocolByTitle">
       from 
@@ -55,4 +58,6 @@
       order by title 
     </query>
   </class>
+  
+  <filter-def name="notDisabledDistributionProtocols"/>
 </hibernate-mapping>

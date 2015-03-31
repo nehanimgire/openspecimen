@@ -271,7 +271,7 @@ public class RbacServiceImpl implements RbacService {
 	@PlusTransactional
 	public ResponseEvent<RoleDetail> getRole(RequestEvent<Long> req) {
 		try {
-			Role role = daoFactory.getRoleDao().getById(req.getPayload(), null);
+			Role role = daoFactory.getRoleDao().getById(req.getPayload());
 			if (role == null) {
 				return ResponseEvent.userError(RbacErrorCode.ROLE_NOT_FOUND);
 			}
@@ -309,7 +309,7 @@ public class RbacServiceImpl implements RbacService {
 		try {
 			RoleDetail detail = request.getPayload();
 		
-			Role existing = daoFactory.getRoleDao().getById(detail.getId(), null);
+			Role existing = daoFactory.getRoleDao().getById(detail.getId());
 			if (existing == null) {
 				return ResponseEvent.userError(RbacErrorCode.ROLE_NOT_FOUND);
 			}
@@ -569,7 +569,7 @@ public class RbacServiceImpl implements RbacService {
 		Map<Long, RoleAccessControl> racMap = new HashMap<Long, RoleAccessControl>();
 		
 		if (detail.getId() != null) {
-			Role existingRole  = daoFactory.getRoleDao().getById(detail.getId(), null);
+			Role existingRole  = daoFactory.getRoleDao().getById(detail.getId());
 			for (RoleAccessControl rac : existingRole.getAcl()) {
 				racMap.put(rac.getId(), rac);
 			}
