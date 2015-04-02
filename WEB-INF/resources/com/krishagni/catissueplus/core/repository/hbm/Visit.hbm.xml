@@ -52,7 +52,7 @@
       <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.Specimen" />
     </set>
     
-    <filter name="notDisabledVisits" condition="activity_status != 'Disabled'"/>
+    <filter name="activeVisits" condition="activity_status != 'Disabled'"/>
 
     <query name="getVisitByName">
       from 
@@ -134,5 +134,5 @@
     </sql-query>
   </class>
   
-  <filter-def name="notDisabledVisits"/>
+  <filter-def name="activeVisits"/>
 </hibernate-mapping>

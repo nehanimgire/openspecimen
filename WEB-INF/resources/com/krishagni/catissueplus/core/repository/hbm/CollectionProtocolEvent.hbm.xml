@@ -87,10 +87,10 @@
       <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.Visit"/>
     </set>
     
-    <filter name="notDisabledCpEvents" condition="activity_status != 'Disabled'"/>
+    <filter name="activeCpEvents" condition="activity_status != 'Disabled'"/>
   </class>
   
-  <filter-def name="notDisabledCpEvents"/>
+  <filter-def name="activeCpEvents"/>
 </hibernate-mapping>
 
 

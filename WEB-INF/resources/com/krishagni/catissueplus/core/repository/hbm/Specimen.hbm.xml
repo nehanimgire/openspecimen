@@ -69,7 +69,7 @@
       <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.ExternalIdentifier" />
     </set>
     
-    <filter name="notDisabledSpecimen" condition="activity_status != 'Disabled'"/>
+    <filter name="activeSpecimen" condition="activity_status != 'Disabled'"/>
 
     <query name="getByLabel">
       from 
@@ -136,5 +136,5 @@
     </query>
   </class>
   
-  <filter-def name="notDisabledSpecimen"/>
+  <filter-def name="activeSpecimen"/>
 </hibernate-mapping>

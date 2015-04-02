@@ -50,11 +50,11 @@ public class DaoFactoryImpl implements DaoFactory {
 	private SessionFactory sessionFactory;
 	
 	private String[] filters = new String[] {
-			"notDisabledUsers", "notDisabledSites", "notDisabledInstitutes",
-			"notDisabledStorageContainers", "notDisabledDistributionProtocols",
-			"notDisabledCollectionProtocols", "notDisabledDistributionOrders",
-			"notDisabledVisits", "notDisabledCpEvents", "notDisabledCpRegistrations",
-			"notDisabledSpecimen", "notDisabledParticipants"
+			"activeUsers", "activeSites", "activeInstitutes",
+			"activeStorageContainers", "activeDistributionProtocols",
+			"activeCollectionProtocols", "activeDistributionOrders",
+			"activeVisits", "activeCpEvents", "activeCpRegistrations",
+			"activeSpecimen", "activeParticipants"
 		};
 
 	public SessionFactory getSessionFactory() {

@@ -63,7 +63,7 @@
       class="com.krishagni.catissueplus.core.administrative.domain.User"
       column="DISTRIBUTOR_ID"/>
     
-    <filter name="notDisabledDistributionOrders" condition="activity_status != 'Disabled'"/>
+    <filter name="activeDistributionOrders" condition="activity_status != 'Disabled'"/>
     
     <query name="getDistributionOrderByName">
       from 
@@ -73,5 +73,5 @@
     </query>
   </class>
   
-  <filter-def name="notDisabledDistributionOrders"/>
+  <filter-def name="activeDistributionOrders"/>
 </hibernate-mapping>

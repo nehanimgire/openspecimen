@@ -52,7 +52,7 @@
       <element column="RACE_NAME" type="string" />
     </set>
     
-    <filter name="notDisabledParticipants" condition="activity_status != 'Disabled'"/>
+    <filter name="activeParticipants" condition="activity_status != 'Disabled'"/>
 
     <query name="getBySsn">
       from 
@@ -95,5 +95,5 @@
     </query>
   </class>
   
-  <filter-def name="notDisabledParticipants"/>
+  <filter-def name="activeParticipants"/>
 </hibernate-mapping>

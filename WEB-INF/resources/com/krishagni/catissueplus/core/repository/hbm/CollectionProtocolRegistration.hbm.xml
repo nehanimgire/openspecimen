@@ -51,7 +51,7 @@
       <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.Visit" />
     </set>
     
-    <filter name="notDisabledCpRegistrations" condition="activity_status != 'Disabled'"/>
+    <filter name="activeCpRegistrations" condition="activity_status != 'Disabled'"/>
 
     <query name="getCprByCpIdAndPpid">
       select 
@@ -76,6 +76,6 @@
     </sql-query>
   </class>
   
-  <filter-def name="notDisabledCpRegistrations"/>
+  <filter-def name="activeCpRegistrations"/>
 </hibernate-mapping>
 

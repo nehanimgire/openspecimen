@@ -46,7 +46,7 @@
  
     <property name="admin" column="IS_ADMIN"/>
     
-    <filter name="notDisabledUsers" condition="activity_status != 'Disabled'"/>
+    <filter name="activeUsers" condition="activity_status != 'Disabled'"/>
     
     <query name="getUsersByIds">
       from 
@@ -116,5 +116,5 @@
     </sql-query>
   </class>
   
-  <filter-def name="notDisabledUsers"/>
+  <filter-def name="activeUsers"/>
 </hibernate-mapping>
