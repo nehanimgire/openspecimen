@@ -51,6 +51,8 @@
       <key column="PARTICIPANT_ID" />
       <element column="RACE_NAME" type="string" />
     </set>
+    
+    <filter name="activeParticipants" condition="activity_status != 'Disabled'"/>
 
     <query name="getBySsn">
       from 
@@ -92,4 +94,6 @@
         pmi.medicalRecordNumber = :mrn
     </query>
   </class>
+  
+  <filter-def name="activeParticipants"/>
 </hibernate-mapping>

@@ -50,6 +50,8 @@
       <key column="COLLECTION_PROTOCOL_REG_ID" />
       <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.Visit" />
     </set>
+    
+    <filter name="activeCpRegistrations" condition="activity_status != 'Disabled'"/>
 
     <query name="getCprByCpIdAndPpid">
       select 
@@ -71,4 +73,6 @@
         cpr.participant.id = :participantId 
     </query>
   </class>
+  
+  <filter-def name="activeCpRegistrations"/>
 </hibernate-mapping>

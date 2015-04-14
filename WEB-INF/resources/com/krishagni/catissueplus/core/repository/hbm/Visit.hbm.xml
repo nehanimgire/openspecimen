@@ -51,6 +51,8 @@
       <key column="SPECIMEN_COLLECTION_GROUP_ID"></key>
       <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.Specimen" />
     </set>
+    
+    <filter name="activeVisits" condition="activity_status != 'Disabled'"/>
 
     <query name="getVisitByName">
       from 
@@ -131,4 +133,6 @@
         scg.identifier, cpe.identifier
     </sql-query>
   </class>
+  
+  <filter-def name="activeVisits"/>
 </hibernate-mapping>

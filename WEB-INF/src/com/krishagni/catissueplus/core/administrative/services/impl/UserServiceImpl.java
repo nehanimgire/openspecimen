@@ -389,14 +389,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	private void ensureUniqueEmailAddress(String emailAddress, OpenSpecimenException ose) {
-		if (!daoFactory.getUserDao().isUniqueEmailAddress(emailAddress)) {
+		User user = daoFactory.getUserDao().getUserByEmailAddress(emailAddress);
+		if (user != null) {
 			ose.addError(UserErrorCode.DUP_EMAIL);
 		}
 	}
 
 	private void ensureUniqueLoginNameInDomain(String loginName, String domainName,
 			OpenSpecimenException ose) {
-		if (!daoFactory.getUserDao().isUniqueLoginName(loginName, domainName)) {
+		User user = daoFactory.getUserDao().getUser(loginName, domainName);
+		if (user != null) {
 			ose.addError(UserErrorCode.DUP_LOGIN_NAME);
 		}
 	}

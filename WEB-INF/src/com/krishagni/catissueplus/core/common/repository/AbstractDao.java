@@ -42,17 +42,9 @@ public class AbstractDao<T> implements Dao<T> {
 	}
 	
 	@Override
-	public T getById(Long id) {
-		return getById(id, "activityStatus != 'Disabled'");
-	}
-	
 	@SuppressWarnings("unchecked")
-	public T getById(Long id, String activeCondition) {
+	public T getById(Long id) {
 		String hql = "from " + getType().getName() + " t0 where t0.id = :id";
-		
-		if (activeCondition != null) {
-			hql += " and " + activeCondition;
-		}
 		
 		List<T> result = sessionFactory.getCurrentSession()
 				.createQuery(hql)

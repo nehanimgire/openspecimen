@@ -62,7 +62,9 @@
       cascade="none" 
       class="com.krishagni.catissueplus.core.administrative.domain.User"
       column="DISTRIBUTOR_ID"/>
-        
+    
+    <filter name="activeDistributionOrders" condition="activity_status != 'Disabled'"/>
+    
     <query name="getDistributionOrderByName">
       from 
         com.krishagni.catissueplus.core.administrative.domain.DistributionOrder
@@ -70,4 +72,6 @@
         name = :name and activityStatus = 'Active'
     </query>
   </class>
+  
+  <filter-def name="activeDistributionOrders"/>
 </hibernate-mapping>

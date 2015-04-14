@@ -46,12 +46,29 @@
  
     <property name="admin" column="IS_ADMIN"/>
     
+    <filter name="activeUsers" condition="activity_status != 'Disabled'"/>
+    
     <query name="getUsersByIds">
       from 
         com.krishagni.catissueplus.core.administrative.domain.User 
       where 
         id in (:userIds) 
         and activityStatus != 'Disabled'
+    </query>
+    
+    <query name="getUserByLoginName">
+      from 
+        com.krishagni.catissueplus.core.administrative.domain.User 
+      where 
+        loginName = :loginName and 
+        authDomain.name = :domainName
+    </query>
+    
+    <query name="getUserByEmailAddress">
+      from 
+        com.krishagni.catissueplus.core.administrative.domain.User 
+      where 
+        emailAddress = :emailAddress
     </query>
     
     <sql-query name="getDependentEntities">
@@ -61,7 +78,7 @@
       select 
         de.entityName as entityName, de.count as count
       from
-        (Select
+        (select
           'site' as entityName, count(s.identifier) as count  
         from 
           catissue_site s
@@ -85,9 +102,19 @@
           catissue_distribution_protocol dp 
         where
           dp.activity_status != 'Disabled' and
-          dp.principal_investigator_id = :userId) de
+          dp.principal_investigator_id = :userId
+        union
+        select 
+          'distribution order' as entityName, count(ord.identifier) as count
+        from
+           os_orders ord
+        where
+          ord.activity_status != 'Disabled'
+          (ord.requestor_id = :userId or ord.distributor_id = :userId)) de
       where 
         de.count > 0
     </sql-query>
   </class>
+  
+  <filter-def name="activeUsers"/>
 </hibernate-mapping>

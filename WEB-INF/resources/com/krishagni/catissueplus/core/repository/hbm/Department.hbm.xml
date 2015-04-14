@@ -25,6 +25,7 @@
       table="CATISSUE_USER">
       <key column="DEPARTMENT_ID"/>
       <one-to-many  class="com.krishagni.catissueplus.core.administrative.domain.User" />
+      <filter name="activeUsers" condition="activity_status != 'Disabled'"/>
     </set>
     
     <query name="getDepartment">

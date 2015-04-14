@@ -63,17 +63,23 @@
     <set name="collectionProtocolEvents" table="CATISSUE_COLL_PROT_EVENT" inverse="true" cascade="save-update">
       <key column="COLLECTION_PROTOCOL_ID"/>
       <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.CollectionProtocolEvent"/>
+      <filter name="activeCpEvents" condition="activity_status != 'Disabled'"/>
     </set>
     
     <set name="collectionProtocolRegistrations" inverse="false" cascade="none">
       <key column="COLLECTION_PROTOCOL_ID"/>
       <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.CollectionProtocolRegistration"/>
+      <filter name="activeCpRegistrations" condition="activity_status != 'Disabled'"/>
     </set>
     
     <set name="storageContainers" table="OS_STOR_CONTAINER_CPS" inverse="false">
       <key column="CP_ID"/>
-      <many-to-many class="com.krishagni.catissueplus.core.administrative.domain.StorageContainer" column="STORAGE_CONTAINER_ID"/>
+      <many-to-many class="com.krishagni.catissueplus.core.administrative.domain.StorageContainer" column="STORAGE_CONTAINER_ID">
+        <filter name="activeStorageContainers" condition="activity_status != 'Disabled'"/>
+      </many-to-many>
     </set>
+    
+    <filter name="activeCollectionProtocols" condition="activity_status != 'Disabled'"/>
 
     <sql-query name="getParticipantAndSpecimenCount">
       <return-scalar column="cpId" type="long"/>
@@ -147,4 +153,6 @@
         and cp_site.site_id in (:siteIds)
     </sql-query>
   </class>
+  
+  <filter-def name="activeCollectionProtocols"/>
 </hibernate-mapping>

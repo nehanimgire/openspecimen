@@ -595,6 +595,10 @@ public class StorageContainer extends BaseEntity {
 			child.deleteWithoutCheck();
 		}
 		
+		if (getParentContainer() != null) {
+			getParentContainer().getOccupiedPositions().remove(getPosition());
+			setPosition(null);
+		}
 		setName(Utility.appendTimestamp(getName()));
 		if (getBarcode() != null) {
 			setBarcode(Utility.appendTimestamp(getBarcode()));

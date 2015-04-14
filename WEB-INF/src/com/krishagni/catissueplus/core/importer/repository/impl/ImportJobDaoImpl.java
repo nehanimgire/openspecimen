@@ -10,13 +10,4 @@ public class ImportJobDaoImpl extends AbstractDao<ImportJob> implements ImportJo
 		return ImportJob.class;
 	}
 	
-	@Override
-	public ImportJob getById(Long id) {		
-		return super.getById(id, null);
-	}
-
-	@Override
-	public ImportJob getById(Long id, String activeCondition) {
-		return getById(id);
-	}
 }

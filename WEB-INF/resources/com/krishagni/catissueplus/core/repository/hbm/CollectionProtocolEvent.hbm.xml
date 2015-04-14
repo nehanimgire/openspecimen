@@ -72,8 +72,7 @@
       cascade="save-update">
         
       <key column="COLLECTION_PROTOCOL_EVENT_ID"/>
-      <one-to-many
-            class="com.krishagni.catissueplus.core.biospecimen.domain.SpecimenRequirement"/>
+      <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.SpecimenRequirement"/>
     </set>
 
     <set
@@ -87,7 +86,11 @@
 
       <one-to-many class="com.krishagni.catissueplus.core.biospecimen.domain.Visit"/>
     </set>
+    
+    <filter name="activeCpEvents" condition="activity_status != 'Disabled'"/>
   </class>
+  
+  <filter-def name="activeCpEvents"/>
 </hibernate-mapping>
 
 
