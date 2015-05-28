@@ -27,5 +27,12 @@
     <property name="specimenSvc" ref="specimenSvc"/>
   </bean>
   
+  <bean id="tridPrintSvc" class="com.krishagni.openspecimen.custom.sgh.services.impl.TridPrintSvcImpl">
+    <property name="cfgSvc" ref="cfgSvc"/>
+  </bean>
+  
+  <bean id="tridGenrator" class="com.krishagni.openspecimen.custom.sgh.TridGenerator">
+    <property name="daoFactory"  ref="biospecimenDaoFactory"/>
+  </bean>
 
 </beans>
