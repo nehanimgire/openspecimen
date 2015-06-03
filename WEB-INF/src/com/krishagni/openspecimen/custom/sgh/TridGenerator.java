@@ -6,15 +6,15 @@ import com.krishagni.catissueplus.core.biospecimen.repository.DaoFactory;
 public class TridGenerator {
 
 	private static DaoFactory daoFactory;
+	
+	private static final String TRID_PREFIX = "z";
 
 	public static void setDaoFactory(DaoFactory daoFactory) {
 		TridGenerator.daoFactory = daoFactory;
 	}
 
 	public static String getNextTrid(){
-			return TRID_PREFIX + daoFactory.getUniqueIdGenerator().getUniqueId("TRID", "TRID");
+		return TRID_PREFIX + daoFactory.getUniqueIdGenerator().getUniqueId("TRID", "SGH");
 	}
-	
-	private static final String TRID_PREFIX = "z";
 	
 }

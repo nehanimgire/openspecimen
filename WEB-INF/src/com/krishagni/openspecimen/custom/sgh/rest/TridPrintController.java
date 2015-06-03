@@ -23,9 +23,9 @@ public class TridPrintController {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody	
-	public BulkTridPrintSummary generateAndPrintTrids(@RequestBody BulkTridPrintSummary summary) {
+	public Boolean generateAndPrintTrids(@RequestBody BulkTridPrintSummary summary) {
 		RequestEvent<BulkTridPrintSummary> req = new RequestEvent<BulkTridPrintSummary>(summary);
-		ResponseEvent<BulkTridPrintSummary> resp = tridPrintSvc.generateAndPrintTrids(req);
+		ResponseEvent<Boolean> resp = tridPrintSvc.generateAndPrintTrids(req);
 		resp.throwErrorIfUnsuccessful();
 		
 		return resp.getPayload();

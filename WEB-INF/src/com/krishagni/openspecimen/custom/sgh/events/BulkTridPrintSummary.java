@@ -3,14 +3,14 @@ package com.krishagni.openspecimen.custom.sgh.events;
 
 public class BulkTridPrintSummary {
 
-	private Integer tridsCount;
+	private Integer tridCount;
 	
-	public Integer getTridsCount() {
-		return tridsCount;
+	public Integer getTridCount() {
+		return tridCount;
 	}
 
-	public void setTridsCount(Integer tridsCount) {
-		this.tridsCount = tridsCount;
+	public void setTridCount(Integer tridCount) {
+		this.tridCount = tridCount;
 	}
 	
 }

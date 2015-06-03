@@ -6,6 +6,6 @@ import com.krishagni.openspecimen.custom.sgh.events.BulkTridPrintSummary;
 
 
 public interface TridPrintSvc {
-	public ResponseEvent<BulkTridPrintSummary> generateAndPrintTrids(RequestEvent<BulkTridPrintSummary> req);
+	public ResponseEvent<Boolean> generateAndPrintTrids(RequestEvent<BulkTridPrintSummary> req);
 
 }
