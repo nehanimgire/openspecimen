@@ -27,7 +27,9 @@
     "specimen_lists_desc": "Create, share and manage specimen lists",
     "forms_desc": "Create and manage custom forms",
     "settings_desc": "Manage application configuration settings",
-    "distribution_orders_desc": "Create, execute request orders for distributing specimens"
+    "distribution_orders_desc": "Create, execute request orders for distributing specimens",
+    "bulk_pre_print": "Bulk Pre Printing",
+    "bulk_print_description": "Bulk Pre Print the TRIDs"
   },
 
   "common": {

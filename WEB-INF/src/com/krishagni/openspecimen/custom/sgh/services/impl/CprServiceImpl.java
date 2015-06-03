@@ -26,6 +26,7 @@ import com.krishagni.catissueplus.core.common.events.RequestEvent;
 import com.krishagni.catissueplus.core.common.events.ResponseEvent;
 import com.krishagni.catissueplus.core.common.util.Status;
 import com.krishagni.openspecimen.custom.sgh.SghErrorCode;
+import com.krishagni.openspecimen.custom.sgh.TridGenerator;
 import com.krishagni.openspecimen.custom.sgh.events.BulkParticipantRegDetail;
 import com.krishagni.openspecimen.custom.sgh.events.BulkParticipantRegSummary;
 import com.krishagni.openspecimen.custom.sgh.services.CprService;
@@ -111,7 +112,9 @@ public class CprServiceImpl implements CprService {
 	private CollectionProtocolRegistrationDetail getRegistrationDetail(CollectionProtocol cp) {
 		CollectionProtocolRegistrationDetail cprDetail = new CollectionProtocolRegistrationDetail();
 		cprDetail.setRegistrationDate(new Date());
-		cprDetail.setCpId(cp.getId()); 
+		cprDetail.setCpId(cp.getId());
+		String trid = TridGenerator.getNextTrid();
+		cprDetail.setPpid(trid);
 		
 		ParticipantDetail participant = new ParticipantDetail();
 		cprDetail.setParticipant(participant);
@@ -120,7 +123,7 @@ public class CprServiceImpl implements CprService {
 	
 	private RequestEvent<VisitSpecimenDetail> getVisitCollReq(CollectionProtocolRegistrationDetail cprDetail, CollectionProtocolEvent cpe, int visitCnt) {
 		VisitDetail visit = createVisit(cprDetail, cpe);
-//		visit.setName(cprDetail.getPpid() + "-v" + visitCnt);
+		visit.setName(cprDetail.getPpid() + "-v" + visitCnt);
 		
 		VisitSpecimenDetail visitSpecDetail = new VisitSpecimenDetail();
 		visitSpecDetail.setVisit(visit);

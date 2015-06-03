@@ -30,5 +30,12 @@
   <bean id="sghReportsDeIdentifier" class="com.krishagni.openspecimen.custom.sgh.services.impl.SprDeIdentifier">
     <property name="daoFactory"  ref="biospecimenDaoFactory"/>
   </bean>
+  <bean id="tridPrintSvc" class="com.krishagni.openspecimen.custom.sgh.services.impl.TridPrintSvcImpl">
+    <property name="cfgSvc" ref="cfgSvc"/>
+  </bean>
+  
+  <bean id="tridGenrator" class="com.krishagni.openspecimen.custom.sgh.TridGenerator">
+    <property name="daoFactory"  ref="biospecimenDaoFactory"/>
+  </bean>
 
 </beans>
