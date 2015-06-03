@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.List;
 
 import com.krishagni.catissueplus.core.biospecimen.ConfigParams;
-import com.krishagni.catissueplus.core.biospecimen.domain.SpecimenLabelPrintJob;
 import com.krishagni.catissueplus.core.biospecimen.domain.factory.SpecimenErrorCode;
 import com.krishagni.catissueplus.core.biospecimen.services.SpecimenLabelPrinter;
 import com.krishagni.catissueplus.core.common.OpenSpecimenAppCtxProvider;
@@ -19,11 +18,11 @@ import com.krishagni.openspecimen.custom.sgh.TridGenerator;
 import com.krishagni.openspecimen.custom.sgh.events.BulkTridPrintSummary;
 import com.krishagni.openspecimen.custom.sgh.services.TridPrintSvc;
 
-public class TridPrintSvcImpl implements TridPrintSvc{
+public class TridPrintSvcImpl implements TridPrintSvc {
 
-	private ConfigurationService cfgSvc;
-	
 	private static final String SGH_MODULE = "sgh";
+	
+	private ConfigurationService cfgSvc;
 	
 	public void setCfgSvc(ConfigurationService cfgSvc) {
 		this.cfgSvc = cfgSvc;
@@ -37,14 +36,14 @@ public class TridPrintSvcImpl implements TridPrintSvc{
 		if (tridsCount < 1) {
 			return ResponseEvent.userError(SghErrorCode.INVALID_TRID_COUNT);
 		}
+		
 		SpecimenLabelPrinter printer = getLabelPrinter();
 		if (printer == null) {
 			throw OpenSpecimenException.serverError(SpecimenErrorCode.NO_PRINTER_CONFIGURED);
 		}
 		
 		List<String> labels = new ArrayList<String>();
-		for(int i=0; i < printReq.getTridCount(); i++){
-			
+		for(int i = 0; i < printReq.getTridCount(); i++){
 			String trid = TridGenerator.getNextTrid(); 
 			labels.addAll(getSpecimenLabels(trid));
 		}
@@ -61,13 +60,14 @@ public class TridPrintSvcImpl implements TridPrintSvc{
 		List<String> labels = new ArrayList<String>();
 		labels.add(parentLabel);
 		
-		for (int i=0; i < getMalignantAliqCnt(); i++) {
-			
-			labels.add(parentLabel + "_" + getMalignantAliqSuffix() + "_" + i);
+		String malignantAliqPrefix = parentLabel + "_" + getMalignantAliqSuffix() + "_"; 
+		for (int i = 0; i < getMalignantAliqCnt(); i++) {
+			labels.add(malignantAliqPrefix + i);
 		}
-		for (int i=0; i < getNonMalignantAliqCnt(); i++) {
-			 
-			labels.add(parentLabel + "_" + getNonMalignantAliqSuffix() + "_" + i);
+		
+		String nonMalignantAliqPrefix = parentLabel + "_" + getNonMalignantAliqSuffix() + "_";
+		for (int i = 0; i < getNonMalignantAliqCnt(); i++) {
+			labels.add(nonMalignantAliqPrefix + i);
 		}
 		return labels;
 	}

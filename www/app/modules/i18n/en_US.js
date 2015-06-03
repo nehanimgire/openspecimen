@@ -29,7 +29,7 @@
     "settings_desc": "Manage application configuration settings",
     "distribution_orders_desc": "Create, execute request orders for distributing specimens",
     "bulk_pre_print": "Bulk Pre Printing",
-    "bulk_print_description": "Bulk Pre Print the TRIDs"
+    "bulk_print_description": "Bulk Pre Print the TRID"
   },
 
   "common": {

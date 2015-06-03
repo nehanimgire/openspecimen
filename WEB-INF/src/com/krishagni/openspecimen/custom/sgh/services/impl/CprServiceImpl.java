@@ -113,8 +113,7 @@ public class CprServiceImpl implements CprService {
 		CollectionProtocolRegistrationDetail cprDetail = new CollectionProtocolRegistrationDetail();
 		cprDetail.setRegistrationDate(new Date());
 		cprDetail.setCpId(cp.getId());
-		String trid = TridGenerator.getNextTrid();
-		cprDetail.setPpid(trid);
+		cprDetail.setPpid(TridGenerator.getNextTrid());
 		
 		ParticipantDetail participant = new ParticipantDetail();
 		cprDetail.setParticipant(participant);
