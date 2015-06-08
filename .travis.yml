@@ -14,11 +14,11 @@ script: gradle build
 notifications:
   email:
     recipients:
-      - os-v20-devs@krishagni.com
+      - ajay.samgir@krishagni.com
     on_success: always
     on_failure: always
 
 
 branches:
   only:
-    - OS_v20
+    - OS_v20_Travis_Setup
