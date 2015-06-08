@@ -22,3 +22,11 @@ notifications:
 branches:
   only:
     - OS_v20_Travis_Setup
+    
+deploy:
+  provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file: "openspecimen.war"
+  skip_cleanup: true
+  on:
+    tags: true
