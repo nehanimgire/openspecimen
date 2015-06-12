@@ -23,10 +23,20 @@ branches:
   only:
     - OS_v20_Travis_Setup
     
+before_deploy:
+  - export RELEASE_FILE=$(ls build/libs/*.war)
+  - echo "Deploying $RELEASE_FILE to GitHub"
+
 deploy:
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
-  file: "openspecimen.war"
+
+  api_key:
+    secure: \nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCMbbw9W7EhEpELFFnjVuL1smWi\nYMZI1JBqLNHRtySP4r9MQGKro2NQ51/1fGVsfpJ+mHjf53sH+0ZXQI0ruLpnbydj\n7Do1PEBeifrucQAqRN72ktmZxuFNhxGailJY6zMOL8aIghYDIs0XpLlrAgG2a/Y5\nKtJFVxkB10svS2wG2wIDAQAB\n
+
+  file:
+    - "${RELEASE_FILE}"
   skip_cleanup: true
+
   on:
-    tags: true
+    repo: krishagni/openspecimen
+    all_branches: true
