@@ -37,7 +37,6 @@ deploy:
     - "${RELEASE_FILE}"
   
   skip_cleanup: true
-
   on:
     repo: krishagni/openspecimen
     all_branches: true
