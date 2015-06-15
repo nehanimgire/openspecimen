@@ -40,4 +40,4 @@ deploy:
 
   on:
     repo: krishagni/openspecimen
-    all_branches: true
+    
