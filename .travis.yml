@@ -35,6 +35,7 @@ deploy:
 
   file:
     - "${RELEASE_FILE}"
+  
   skip_cleanup: true
 
   on:
