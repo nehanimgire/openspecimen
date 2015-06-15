@@ -21,7 +21,7 @@ notifications:
 
 branches:
   only:
-    - OS_v20_Travis_Setup
+    - OS_v20_AS_Travis_Setup
     
 before_deploy:
   - export RELEASE_FILE=$(ls build/libs/*.war)
