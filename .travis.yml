@@ -30,13 +30,13 @@ deploy:
   provider: releases
 
   api_key:
-    secure: \nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCMbbw9W7EhEpELFFnjVuL1smWi\nYMZI1JBqLNHRtySP4r9MQGKro2NQ51/1fGVsfpJ+mHjf53sH+0ZXQI0ruLpnbydj\n7Do1PEBeifrucQAqRN72ktmZxuFNhxGailJY6zMOL8aIghYDIs0XpLlrAgG2a/Y5\nKtJFVxkB10svS2wG2wIDAQAB\n
+    secure: "sNhOF3z/MoMztB5BZsUA334tEAYahsTYAsHhBNXg1JSpqbXrY6QEHpWxhRsaaLP93R7xrOK/7FGhYmKK1IiClaAh9qr2QuAYu/c/p85vpP2w1PIwtPmFUvtM8wq9yX9E0knuD9VElN5lesU3gf/oQuOQdhMHYt7RAdFoOUVSyxq9+F5NO6c4ahT39HDc3fziUHznTnF+wzTnHMFjP2/+9KIzI0BmxppQ33tltz8aTDItd7Bq4Tf2XIc2DCxUL3RhiY3q3tddlCG/QcrLIxhHp0ZYOt2JPZlJKBEmt9Uj4cUczPFAONC/SHslsiSMoHWnh0YXwt0Zimce+9/Kk7oou8Y0BVTz20dcv7EVAubUuzCmCD6dLCmr+kyZxsUBYSW0KfyY7e9hwAMVWO0keQPCWQcuvZcSLxANS3kKEKJ1j6TE/xZVk0K52desReIkabsFe/SYdowsrTu8KRz698Egg4gNqVU9SzPx2zxIC1bE20wyO3rlhSW+wtt5WaMdQ3lQWWZe0OBzIGjoQlrpkBFd1+W0T84/YilRZ+NGU/ChBc3/s7w7zhCR9j7+VKEARXnEMSyEzMIx/bhSN0BpIueJDvOSMiwQV9zezfiF+v/Vw9a0fsvf5BOEyMNGhB97PIHPxLjN4ra41+aeKQUvgIM2SoZp7eXwDmZJmgf6mbq47U8=" 
 
   file:
     - "${RELEASE_FILE}"
   
   skip_cleanup: true
+  
   on:
     repo: krishagni/openspecimen
     all_branches: true
-    tags: true
