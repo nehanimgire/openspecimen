@@ -18,7 +18,6 @@ notifications:
     on_success: always
     on_failure: always
 
-
 branches:
   only:
     - OS_v20_AS_Travis_Setup
