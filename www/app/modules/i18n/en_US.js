@@ -218,6 +218,7 @@
       "signed_consent_form": "Signed Consent Form",
       "deleting_consent_form": "Deleting Signed Consent Form",
       "confirm_delete_consent_form": "Are you sure you want to delete {{consentDocumentName}}?",
+      "no_consent": "No consents specified to clinical study. Do you want to add now?",
       "consents": "Consents",
       "consent": "Consent",
       "response": "Response",

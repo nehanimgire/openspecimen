@@ -46,6 +46,10 @@
 
   <div class="col-xs-10">
     <h3 class="os-sub-section-title" translate="participant.consent.consents">Consents</h3>
+    <div ng-if="consent.consentTierResponses.length == 0" class="alert alert-warning">
+      <span translate="participant.consent.no_consent">No consents specified to clinical study. Do you want to add now?</span>
+    </div>
+    <div ng-if="consent.consentTierResponses.length > 0">
       <div class="form-horizontal os-bio-spmn-form">
         <div class="col-xs-9">
           <div class="form-group">
@@ -135,5 +139,6 @@
           </button>
         </div>
       </div>
+    </div>
   </div>
 </div>
