@@ -181,7 +181,7 @@ public class CollectionProtocolRegistrationFactoryImpl implements CollectionProt
 			response.setCpr(cpr);
 			
 			for (ConsentTierResponseDetail userResp : consentDetail.getConsentTierResponses()) {
-				if (consent.getStatement().equals(userResp.getConsentStatment())) {
+				if (consent.getStatement().equals(userResp.getConsentStatement())) {
 					response.setResponse(userResp.getParticipantResponse());
 					break;
 				}

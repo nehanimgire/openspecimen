@@ -170,7 +170,7 @@ public class CollectionProtocolRegistrationDetail {
 			for (ConsentTierResponse response : cpr.getConsentResponses()) {
 				ConsentTierResponseDetail stmt = new ConsentTierResponseDetail();
 				if (response.getConsentTier() != null) {
-					stmt.setConsentStatment(response.getConsentTier().getStatement());
+					stmt.setConsentStatement(response.getConsentTier().getStatement());
 					stmt.setParticipantResponse(response.getResponse());
 					consent.getConsentTierResponses().add(stmt);
 				}

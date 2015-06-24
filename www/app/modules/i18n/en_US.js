@@ -213,10 +213,23 @@
     "spmn_label_or_barcode": "Specimen Label / Barcode",
     "collection_protocol": "Collection Protocol",
     "regDate": "Registration Date",
-  
-    "signed_consent_form": "Signed Consent Form",
-    "deleting_consent_form": "Deleting Signed Consent Form",
-    "confirm_delete_consent_form": "Are you sure you want to delete {{consentDocumentName}}?",
+
+    "consent": {
+      "signed_consent_form": "Signed Consent Form",
+      "deleting_consent_form": "Deleting Signed Consent Form",
+      "confirm_delete_consent_form": "Are you sure you want to delete {{consentDocumentName}}?",
+      "consents": "Consents",
+      "consent": "Consent",
+      "response": "Response",
+      "date": "Date",
+      "witness": "Witness",
+      "response_value": {
+        "yes": "Yes",
+        "no": "No",
+        "not_specified": "Not Specified",
+        "withdrawn": "Withdrawn"
+      }
+    },
 
     "similar_participants": "Following participants found that are similar to new participant being registered",
     "matched_attrs": "Matched Attributes",
