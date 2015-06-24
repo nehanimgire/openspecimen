@@ -1,6 +1,6 @@
 angular.module('os.biospecimen.specimenlist.addedit', ['os.biospecimen.models'])
   .controller('AddEditSpecimenListCtrl', function(
-    $scope, $state, list, SpecimenList, SpecimensHolder, DeleteUtil) {
+    $scope, $state, list, SpecimenList, SpecimensHolder, DeleteUtil, Alerts) {
  
     function init() { 
       $scope.list = list;
@@ -38,6 +38,7 @@ angular.module('os.biospecimen.specimenlist.addedit', ['os.biospecimen.models'])
       $q.then(
         function(savedList) {
           if ($scope.isQueryOrSpecimenPage) {
+            Alerts.success('specimen_list.specimens_added', {name: savedList.name});
             $scope.back();
           } else {
             $state.go('specimen-list', {listId: savedList.id});

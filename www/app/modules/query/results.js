@@ -2,7 +2,7 @@
 angular.module('os.query.results', ['os.query.models'])
   .controller('QueryResultsCtrl', function(
     $scope, $state, $stateParams, $modal, 
-    queryCtx, QueryUtil, QueryExecutor, SpecimenList, SpecimensHolder, Alerts) {
+    queryCtx, QueryUtil, QueryExecutor, SpecimenList, QueryCtxHolder, SpecimensHolder, Alerts) {
 
     function init() {
       $scope.queryCtx = queryCtx;
@@ -37,11 +37,19 @@ angular.module('os.query.results', ['os.query.models'])
     }
 
     function executeQuery(editMode) {
+      var queryCtx = QueryCtxHolder.getQueryCtx();
+      if (!!queryCtx && $scope.queryCtx.id == queryCtx.id) {
+        $scope.queryCtx = queryCtx;
+        editMode = true;
+      }
+
       if (!editMode && isParameterized()) {
         showParameterizedFilters();
       } else {
         loadRecords();
       }
+
+      QueryCtxHolder.setQueryCtx(undefined);
     }
 
     function loadAllSpecimenList() {
@@ -302,6 +310,7 @@ angular.module('os.query.results', ['os.query.models'])
     }
 
     $scope.createNewSpecimenList = function() {
+      QueryCtxHolder.setQueryCtx($scope.queryCtx);
       SpecimensHolder.setSpecimens(getSelectedSpecimens());
       $state.go('specimen-list-addedit', {listId: ''});
     };
